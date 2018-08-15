@@ -3,7 +3,7 @@
 " echo "Loading general setting"
 
 
-set whichwrap+=<,>,h,l,[,]
+set whichwrap+=<,>,[,]
 
 set selection=exclusive
 
