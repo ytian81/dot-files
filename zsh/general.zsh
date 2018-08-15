@@ -1,5 +1,5 @@
 # general setting
-echo "Loading general setting"
+# echo "Loading general setting"
 
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

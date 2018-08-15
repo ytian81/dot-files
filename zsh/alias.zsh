@@ -1,5 +1,5 @@
 # alias setting
-echo "Loading alias setting"
+# echo "Loading alias setting"
 
 alias diff='colordiff'
 alias gdmd='git difftool --tool=meld --dir-diff'

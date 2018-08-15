@@ -1,5 +1,5 @@
 # color setting
-echo "Loading color setting"
+# echo "Loading color setting"
 
 export TERM='xterm-256color'
 
