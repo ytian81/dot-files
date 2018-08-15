@@ -10,4 +10,5 @@ if [ `uname` = 'Linux' ]; then
     alias o='xdg-open'
 elif [ `uname` = 'Darwin' ]; then
     alias o='open'
+    alias vim='mvim -v'
 fi
