@@ -35,3 +35,6 @@ fi
 
 # install powerline
 pip install powerline-status
+
+# fix unicode ⚡ in iTerm2
+# disable automatically set locale in preference
