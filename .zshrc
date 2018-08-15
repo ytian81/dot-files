@@ -74,6 +74,8 @@ plugins=(
   zsh-syntax-highlighting
 )
 
+source $ZSH/oh-my-zsh.sh
+
 # Include local plugins
 zshrc_dir=$(dirname $(readlink "${(%):-%N}"))
 _include_local_plugin() {
@@ -90,8 +92,6 @@ _include_local_plugin general.zsh
 _include_local_plugin alias.zsh
 _include_local_plugin color.zsh
 # _include_local_plugin local.zsh
-
-source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
