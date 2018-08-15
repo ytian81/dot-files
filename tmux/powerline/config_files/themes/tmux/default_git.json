@@ -22,6 +22,12 @@
 			},
 			{
 				"function": "powerline.segments.common.vcs.branch"
+			},
+			{
+				"function": "powerline.segments.common.net.hostname",
+				"args": {
+					"onlyf_if_ssh": true
+				}
 			}
 		]
 	}
