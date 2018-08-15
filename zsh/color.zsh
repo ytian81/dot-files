@@ -17,6 +17,6 @@ fi
 
 # tmux powerline status branch
 if [[ -z $powerline_dir ]]; then
-    export powerline_dir=$(pip show powerline-status | grep Location | awk {'print $2'})
+    export powerline_dir=$(pip show powerline-status | grep Location | awk {'print $2'})/powerline/
 fi
-source $powerline_dir"/powerline/bindings/zsh/powerline.zsh"
+source $powerline_dir"/bindings/zsh/powerline.zsh"
