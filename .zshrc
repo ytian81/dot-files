@@ -1,3 +1,6 @@
+# uncomment to profile prompt startup with zprof
+# zmodload zsh/zprof
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -64,7 +67,6 @@ HIST_STAMPS="mm/dd/yyyy"
 plugins=(
   autojump
   colored-man-pages
-  command-not-found
   git
   tmux
   zsh-completions
@@ -119,3 +121,6 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# uncomment to finish profiling
+# zprof
