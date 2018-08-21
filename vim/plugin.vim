@@ -78,7 +78,6 @@ let g:gutentags_ctags_extra_args += ['--output-format=e-ctags']
 let g:gutentags_auto_add_gtags_cscope = 0
 let g:gutentags_define_advanced_commands = 1
 
-
 " nathanaelkane/vim-indent-guides
 let g:indent_guides_enable_on_vim_startup=1
 let g:indent_guides_exclude_filetypes=['help', 'nerdtree']
@@ -92,8 +91,20 @@ let g:cpp_class_decl_highlight = 1
 let g:cpp_experimental_template_highlight = 1
 let g:cpp_concepts_highlight = 1
 
-"majutsushi/ majutsushi/tagbar
+" majutsushi/tagbar
 nnoremap <Leader>p :TagbarToggle<CR>
+
+" skywind3000/gutentags_plus
+let g:gutentags_plus_nomap = 1
+noremap <silent> <leader>as :GscopeFind s <C-R><C-W><cr>
+noremap <silent> <leader>ag :GscopeFind g <C-R><C-W><cr>
+noremap <silent> <leader>ac :GscopeFind c <C-R><C-W><cr>
+noremap <silent> <leader>at :GscopeFind t <C-R><C-W><cr>
+noremap <silent> <leader>ae :GscopeFind e <C-R><C-W><cr>
+noremap <silent> <leader>af :GscopeFind f <C-R>=expand("<cfile>")<cr><cr>
+noremap <silent> <leader>ai :GscopeFind i <C-R>=expand("<cfile>")<cr><cr>
+noremap <silent> <leader>ad :GscopeFind d <C-R><C-W><cr>
+noremap <silent> <leader>aa :GscopeFind a <C-R><C-W><cr>
 
 " tpope/vim-fugitive
 nnoremap <Leader>b :Gblame<CR>

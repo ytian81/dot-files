@@ -51,6 +51,7 @@ Plug 'mhinz/vim-startify'
 Plug 'morhetz/gruvbox'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'skywind3000/gutentags_plus'
 Plug 'terryma/vim-expand-region'
 Plug 'tpope/vim-fugitive', { 'on': ['Gblame', 'Gdiff', 'Gbrowse'] }
 Plug 'tpope/vim-rhubarb', { 'on': 'Gbrowse' }
