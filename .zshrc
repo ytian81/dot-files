@@ -91,7 +91,7 @@ _include_local_plugin() {
 _include_local_plugin general.zsh
 _include_local_plugin alias.zsh
 _include_local_plugin color.zsh
-# _include_local_plugin local.zsh
+_include_local_plugin local.zsh
 
 # User configuration
 
