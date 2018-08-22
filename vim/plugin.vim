@@ -12,7 +12,7 @@ sunmap e
 sunmap ge
 
 " derekwyatt/vim-fswitch
-nmap <silent> <Leader>s :FSHere<CR>
+nmap <silent> <Leader>a :FSHere<CR>
 nmap <silent> <Leader>sh :FSSplitLeft<CR>
 nmap <silent> <Leader>sl :FSSplitRight<CR>
 nmap <silent> <Leader>sj :FSSplitBelow<CR>
