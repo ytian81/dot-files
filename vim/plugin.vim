@@ -54,29 +54,29 @@ nnoremap <Leader>h :Buffers<CR>
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
-" ludovicchabant/vim-gutentags
-let $GTAGSLABEL = 'native-pygments'
-let $GTAGSCONF = fnamemodify(expand('<sfile>:p'), ':h').'/.gtags.conf'
-let g:gutentags_project_root = ['.root', '.svn', '.git', '.hg', '.project']
-let g:gutentags_ctags_tagfile = '.tags'
-let g:gutentags_modules = []
-if executable('ctags')
-	let g:gutentags_modules += ['ctags']
-endif
-if executable('gtags-cscope') && executable('gtags')
-    let g:gutentags_modules += ['gtags_cscope']
-endif
-let s:vim_tags = expand('~/.cache/tags')
-if !isdirectory(s:vim_tags)
-   silent! call mkdir(s:vim_tags, 'p')
-endif
-let g:gutentags_cache_dir = s:vim_tags
-let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
-let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
-let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
-let g:gutentags_ctags_extra_args += ['--output-format=e-ctags']
-let g:gutentags_auto_add_gtags_cscope = 0
-let g:gutentags_define_advanced_commands = 1
+" " ludovicchabant/vim-gutentags
+" let $GTAGSLABEL = 'native-pygments'
+" let $GTAGSCONF = fnamemodify(expand('<sfile>:p'), ':h').'/.gtags.conf'
+" let g:gutentags_project_root = ['.root', '.svn', '.git', '.hg', '.project']
+" let g:gutentags_ctags_tagfile = '.tags'
+" let g:gutentags_modules = []
+" if executable('ctags')
+" 	let g:gutentags_modules += ['ctags']
+" endif
+" if executable('gtags-cscope') && executable('gtags')
+"     let g:gutentags_modules += ['gtags_cscope']
+" endif
+" let s:vim_tags = expand('~/.cache/tags')
+" if !isdirectory(s:vim_tags)
+"    silent! call mkdir(s:vim_tags, 'p')
+" endif
+" let g:gutentags_cache_dir = s:vim_tags
+" let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
+" let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
+" let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
+" let g:gutentags_ctags_extra_args += ['--output-format=e-ctags']
+" let g:gutentags_auto_add_gtags_cscope = 0
+" let g:gutentags_define_advanced_commands = 1
 
 " nathanaelkane/vim-indent-guides
 let g:indent_guides_enable_on_vim_startup=1
@@ -94,17 +94,17 @@ let g:cpp_concepts_highlight = 1
 " majutsushi/tagbar
 nnoremap <Leader>p :TagbarToggle<CR>
 
-" skywind3000/gutentags_plus
-let g:gutentags_plus_nomap = 1
-noremap <silent> <leader>as :GscopeFind s <C-R><C-W><cr>
-noremap <silent> <leader>ag :GscopeFind g <C-R><C-W><cr>
-noremap <silent> <leader>ac :GscopeFind c <C-R><C-W><cr>
-noremap <silent> <leader>at :GscopeFind t <C-R><C-W><cr>
-noremap <silent> <leader>ae :GscopeFind e <C-R><C-W><cr>
-noremap <silent> <leader>af :GscopeFind f <C-R>=expand("<cfile>")<cr><cr>
-noremap <silent> <leader>ai :GscopeFind i <C-R>=expand("<cfile>")<cr><cr>
-noremap <silent> <leader>ad :GscopeFind d <C-R><C-W><cr>
-noremap <silent> <leader>aa :GscopeFind a <C-R><C-W><cr>
+" " skywind3000/gutentags_plus
+" let g:gutentags_plus_nomap = 1
+" noremap <silent> <leader>as :GscopeFind s <C-R><C-W><cr>
+" noremap <silent> <leader>ag :GscopeFind g <C-R><C-W><cr>
+" noremap <silent> <leader>ac :GscopeFind c <C-R><C-W><cr>
+" noremap <silent> <leader>at :GscopeFind t <C-R><C-W><cr>
+" noremap <silent> <leader>ae :GscopeFind e <C-R><C-W><cr>
+" noremap <silent> <leader>af :GscopeFind f <C-R>=expand("<cfile>")<cr><cr>
+" noremap <silent> <leader>ai :GscopeFind i <C-R>=expand("<cfile>")<cr><cr>
+" noremap <silent> <leader>ad :GscopeFind d <C-R><C-W><cr>
+" noremap <silent> <leader>aa :GscopeFind a <C-R><C-W><cr>
 
 " tpope/vim-fugitive
 nnoremap <Leader>b :Gblame<CR>
@@ -152,7 +152,7 @@ function! AirlineInit()
     " let g:airline_section_b = '%f'
     let g:airline_section_b = "%{fnamemodify(expand('%'),':.')}"
     let g:airline_section_c = ''
-    let g:airline_section_x = airline#section#create(['tagbar', 'gutentags'])
+    let g:airline_section_x = airline#section#create(['tagbar'])
 endfunction
 autocmd User AirlineAfterInit call AirlineInit()
 " let g:airline#extensions#default#layout = [
