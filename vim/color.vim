@@ -4,7 +4,7 @@
 set cursorline
 highlight CursorLine cterm=None ctermbg=238 ctermfg=None guibg=black guifg=green
 
-set textwidth=80
+set textwidth=100
 autocmd FileType * set formatoptions+=t
 set colorcolumn=+1
 highlight ColorColumn ctermbg=238 guibg=#2c2d27
