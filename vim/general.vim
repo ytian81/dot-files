@@ -43,6 +43,9 @@ set report=0
 set confirm
 set autowrite
 
+" Activate matchit.vim
+packadd! matchit
+
 set encoding=utf-8
 set termencoding=utf-8
 set fileencodings=utf-8,ucs-bom,shift-jis,gb18030,gbk,gb2312,cp936,latin1
