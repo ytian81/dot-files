@@ -1,15 +1,15 @@
 " Plugin configuration
 " echo "Loading plugin configuration"
 
-" bkad/CamelCaseMotion
-map <silent> w <Plug>CamelCaseMotion_w
-map <silent> b <Plug>CamelCaseMotion_b
-map <silent> e <Plug>CamelCaseMotion_e
-map <silent> ge <Plug>CamelCaseMotion_ge
-sunmap w
-sunmap b
-sunmap e
-sunmap ge
+" " bkad/CamelCaseMotion
+" map <silent> w <Plug>CamelCaseMotion_w
+" map <silent> b <Plug>CamelCaseMotion_b
+" map <silent> e <Plug>CamelCaseMotion_e
+" map <silent> ge <Plug>CamelCaseMotion_ge
+" sunmap w
+" sunmap b
+" sunmap e
+" sunmap ge
 
 " derekwyatt/vim-fswitch
 nmap <silent> <Leader>a :FSHere<CR>
@@ -29,11 +29,11 @@ autocmd! BufEnter *.h let b:fswitchdst  = 'cpp,c'
             \                         reg:/include.*/src/,
             \                         ../src'
 
-" easymotion/vim-easymotion
-nmap f <Plug>(easymotion-bd-f)
-nmap t <Plug>(easymotion-bd-t)
-nmap <Leader>w <Plug>(easymotion-bd-w)
-let g:EasyMotion_space_jump_first = 1
+" " easymotion/vim-easymotion
+" nmap f <Plug>(easymotion-bd-f)
+" nmap t <Plug>(easymotion-bd-t)
+" nmap <Leader>w <Plug>(easymotion-bd-w)
+" let g:EasyMotion_space_jump_first = 1
 
 " editorconfig/editorconfig-vim
 let g:EditorConfig_exclude_patterns=['fugitive://.*']

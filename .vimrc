@@ -36,10 +36,10 @@ call s:IncludeLocalPlugin('function.vim')
 call plug#begin('~/.vim/plugged')
 
 " Declare the list of plugins.
-Plug 'bkad/CamelCaseMotion'
+" Plug 'bkad/CamelCaseMotion'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'derekwyatt/vim-fswitch'
-Plug 'easymotion/vim-easymotion'
+" Plug 'easymotion/vim-easymotion'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
