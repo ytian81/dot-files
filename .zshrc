@@ -83,8 +83,6 @@ _include_local_plugin() {
     if [[ -e $zshrc_plugin ]]
     then
         source $zshrc_plugin
-    else
-        echo "$zshrc_plugin not found"
     fi
 }
 
