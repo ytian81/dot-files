@@ -77,7 +77,7 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 # Include local plugins
-zshrc_dir=$(dirname $(readlink "${(%):-%N}"))
+export zshrc_dir=$(dirname $(readlink "${(%):-%N}"))
 _include_local_plugin() {
     zshrc_plugin="$zshrc_dir/zsh/$1"
     if [[ -e $zshrc_plugin ]]
