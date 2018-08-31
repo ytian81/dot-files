@@ -46,7 +46,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim', { 'do': function('InstallRg') }
 Plug 'junegunn/vim-easy-align'
 " Plug 'ludovicchabant/vim-gutentags', { 'do': function('InstallGTags')}
-Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle'}
+Plug 'majutsushi/tagbar'
 Plug 'mhinz/vim-startify'
 Plug 'morhetz/gruvbox'
 Plug 'nathanaelkane/vim-indent-guides'
