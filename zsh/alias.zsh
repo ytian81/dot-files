@@ -1,6 +1,7 @@
 # alias setting
 # echo "Loading alias setting"
 
+alias e='exit'
 alias diff='colordiff'
 alias gdmd='git difftool --tool=meld --dir-diff'
 alias gdmdc='git difftool --tool=meld --dir-diff --cached'
