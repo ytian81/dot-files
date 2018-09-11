@@ -3,6 +3,7 @@
 
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f ~/.fzf-extras/fzf-extras.zsh ] && source ~/.fzf-extras/fzf-extras.zsh
 
 # capslock tap as Escape key
 if [[ `uname` = 'Linux' ]]; then

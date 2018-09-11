@@ -8,6 +8,7 @@
 	zsh-completions
 	zsh-autosuggestions
 	zsh-syntax-highlighting
+	fzf-extras
 	dircolors
 	powerline-status
 	powerline-config
@@ -42,8 +43,10 @@ zsh-autosuggestions:
 	git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
 zsh-syntax-highlighting:
 	git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+fzf-extras:
+	git clone https://github.com/atweiden/fzf-extras.git ~/.fzf-extras
 dircolors:
-	curl https://raw.githubusercontent.com/coreutils/coreutils/master/src/dircolors.hin -o ~/.dircolors
+	curl -fsSL https://raw.githubusercontent.com/coreutils/coreutils/master/src/dircolors.hin -o ~/.dircolors
 
 powerline-status:
 	pip install powerline-status 2>/dev/null
