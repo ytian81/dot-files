@@ -4,7 +4,7 @@
 let mapleader="\<Space>"
 
 " Visual select matching pair
-nnoremap <silent> m v%
+nmap <silent> m v%
 
 " Filtered Up and Down
 cnoremap <C-p> <Up>
