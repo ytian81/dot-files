@@ -55,6 +55,7 @@ Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'terryma/vim-expand-region'
 Plug 'tpope/vim-fugitive', { 'on': ['Gblame', 'Gdiff', 'Gbrowse'] }
 Plug 'tpope/vim-rhubarb', { 'on': 'Gbrowse' }
+Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'rhysd/vim-clang-format', { 'do': function('InstallClangFormat') }
