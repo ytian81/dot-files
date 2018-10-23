@@ -16,7 +16,7 @@ unset -f e
 
 # capslock tap as Escape key
 if [[ `uname` = 'Linux' ]]; then
-    xcape -e 'Control_L=Escape'
+    xcape -e 'Caps_Lock=Escape'
 # elif [[ `uname` = 'Dawin' ]]; then
 #     echo "macOS: capslock tap as ESC key"
 fi
