@@ -20,3 +20,7 @@ if [[ `uname` = 'Linux' ]]; then
 # elif [[ `uname` = 'Dawin' ]]; then
 #     echo "macOS: capslock tap as ESC key"
 fi
+
+# deduplicate history
+# manually: sort -t ";" -k 2 -u ~/.zsh_history | sort -o ~/.zsh_history
+setopt HIST_IGNORE_ALL_DUPS
