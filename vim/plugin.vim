@@ -125,6 +125,7 @@ let g:NERDDefaultAlign='left'
 let g:NERDCommentEmptyLines=1
 
 " scrooloose/nerdtree
+let NERDTreeShowLineNumbers=1
 map <Leader>e :edit %:h<CR>
 map <Leader>q :NERDTreeToggle<CR>
 autocmd BufEnter * if (winnr("$") == 1 &&
