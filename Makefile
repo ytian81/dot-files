@@ -46,7 +46,7 @@ zsh-syntax-highlighting:
 fzf-extras:
 	git clone https://github.com/atweiden/fzf-extras.git ~/.fzf-extras
 dircolors:
-	curl -fsSL https://raw.githubusercontent.com/coreutils/coreutils/master/src/dircolors.hin -o ~/.dircolors
+	curl -fsSL https://raw.githubusercontent.com/seebi/dircolors-solarized/master/dircolors.ansi-dark -o ~/.dircolors
 
 powerline-status:
 	pip install powerline-status 2>/dev/null
