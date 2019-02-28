@@ -51,11 +51,11 @@ dircolors:
 powerline-status:
 	pip install powerline-status 2>/dev/null
 powerline-config:
-	ln -sf `pwd`/tmux/powerline/config_files/colors.json $${powerline_dir}/config_files/colors.json
-	ln -sf `pwd`/tmux/powerline/config_files/config.json $${powerline_dir}/config_files/config.json
-	ln -sf `pwd`/tmux/powerline/config_files/themes/tmux/default_git.json $${powerline_dir}/config_files/themes/tmux/default_git.json
-	ln -sf `pwd`/tmux/powerline/config_files/colorschemes/tmux/gruvbox.json $${powerline_dir}/config_files/colorschemes/tmux/gruvbox.json
-	ln -sf `pwd`/tmux/powerline/config_files/colorschemes/gruvbox.json $${powerline_dir}/config_files/colorschemes/gruvbox.json
+	ln -sf `pwd`/tmux/powerline/config_files/colors.json "${powerline_dir}/config_files/colors.json"
+	ln -sf `pwd`/tmux/powerline/config_files/config.json "${powerline_dir}/config_files/config.json"
+	ln -sf `pwd`/tmux/powerline/config_files/themes/tmux/default_git.json "${powerline_dir}/config_files/themes/tmux/default_git.json"
+	ln -sf `pwd`/tmux/powerline/config_files/colorschemes/tmux/gruvbox.json "${powerline_dir}/config_files/colorschemes/tmux/gruvbox.json"
+	ln -sf `pwd`/tmux/powerline/config_files/colorschemes/gruvbox.json "${powerline_dir}/config_files/colorschemes/gruvbox.json"
 
 youcompleteme:
 	cd ~/.vim/plugged/YouCompleteMe; ./install.py --clang-completer
