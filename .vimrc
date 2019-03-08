@@ -47,6 +47,7 @@ Plug 'junegunn/fzf.vim', { 'do': function('InstallRg') }
 Plug 'junegunn/vim-easy-align'
 " Plug 'ludovicchabant/vim-gutentags', { 'do': function('InstallGTags')}
 Plug 'majutsushi/tagbar'
+Plug 'markonm/traces.vim'
 Plug 'mhinz/vim-startify'
 Plug 'morhetz/gruvbox'
 Plug 'nathanaelkane/vim-indent-guides'
