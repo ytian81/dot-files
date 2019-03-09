@@ -38,6 +38,7 @@ call plug#begin('~/.vim/plugged')
 " Declare the list of plugins.
 Plug 'airblade/vim-gitgutter'
 " Plug 'bkad/CamelCaseMotion'
+Plug 'christoomey/vim-sort-motion'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'derekwyatt/vim-fswitch'
 " Plug 'easymotion/vim-easymotion'
@@ -55,16 +56,16 @@ Plug 'myusuf3/numbers.vim'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'octol/vim-cpp-enhanced-highlight'
 " Plug 'skywind3000/gutentags_plus'
-Plug 'tenfyzhong/axring.vim'
-Plug 'terryma/vim-expand-region'
-Plug 'tpope/vim-fugitive', { 'on': ['Gblame', 'Gdiff', 'Gbrowse'] }
-Plug 'tpope/vim-rhubarb', { 'on': 'Gbrowse' }
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-sensible'
-Plug 'tpope/vim-surround'
 Plug 'rhysd/vim-clang-format', { 'do': function('InstallClangFormat') }
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
+Plug 'tenfyzhong/axring.vim'
+Plug 'terryma/vim-expand-region'
+Plug 'tpope/vim-fugitive', { 'on': ['Gblame', 'Gdiff', 'Gbrowse'] }
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-rhubarb', { 'on': 'Gbrowse' }
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-surround'
 Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
 Plug 'vim-airline/vim-airline', {'do': function('InstallPowerlineFont')}
 Plug 'vim-airline/vim-airline-themes'
