@@ -32,7 +32,8 @@ set smartcase
 set hlsearch
 
 set number
-set relativenumber
+autocmd WinEnter    * set relativenumber
+autocmd WinLeave    * set norelativenumber
 
 if function#linux()
     set clipboard=unnamedplus
