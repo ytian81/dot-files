@@ -109,6 +109,19 @@ nnoremap <Leader>p :TagbarToggle<CR>
 " noremap <silent> <leader>ad :GscopeFind d <C-R><C-W><cr>
 " noremap <silent> <leader>aa :GscopeFind a <C-R><C-W><cr>
 
+" Plug 'tenfyzhong/axring.vim'
+let g:axring_rings = [
+      \ ['&&', '||'],
+      \ ['&', '|', '^'],
+      \ ['&=', '|=', '^='],
+      \ ['>>', '<<'],
+      \ ['==', '!='],
+      \ ['>', '<', '>=', '<='],
+      \ ['++', '--'],
+      \ ['true', 'false'],
+      \ ['verbose', 'debug', 'info', 'warn', 'error', 'fatal'],
+      \ ]
+
 " tpope/vim-fugitive
 nnoremap <Leader>b :Gblame<CR>
 nnoremap <Leader>o :Gbrowse<CR>
