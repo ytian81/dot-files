@@ -1,7 +1,8 @@
 " Color setting
 " echo "Loading color setting"
 
-set cursorline
+autocmd BufRead,WinEnter    * set cursorline
+autocmd WinLeave            * set nocursorline
 highlight CursorLine cterm=None ctermbg=238 ctermfg=None guibg=black guifg=green
 
 set textwidth=100
