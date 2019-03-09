@@ -69,6 +69,7 @@ Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
 Plug 'vim-airline/vim-airline', {'do': function('InstallPowerlineFont')}
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-scripts/ReplaceWithRegister'
+Plug 'wellle/targets.vim'
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
