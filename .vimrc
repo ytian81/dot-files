@@ -51,6 +51,7 @@ Plug 'majutsushi/tagbar'
 Plug 'markonm/traces.vim'
 Plug 'mhinz/vim-startify'
 Plug 'morhetz/gruvbox'
+Plug 'myusuf3/numbers.vim'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'octol/vim-cpp-enhanced-highlight'
 " Plug 'skywind3000/gutentags_plus'
@@ -67,7 +68,6 @@ Plug 'scrooloose/nerdtree'
 Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
 Plug 'vim-airline/vim-airline', {'do': function('InstallPowerlineFont')}
 Plug 'vim-airline/vim-airline-themes'
-
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
