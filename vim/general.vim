@@ -16,6 +16,8 @@ set matchtime=1
 
 set nofoldenable
 
+set signcolumn=yes
+
 set nowrap
 
 autocmd FileType * set formatoptions-=o

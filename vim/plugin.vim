@@ -1,6 +1,9 @@
 " Plugin configuration
 " echo "Loading plugin configuration"
 
+" Plug 'airblade/vim-gitgutter'
+let g:gitgutter_override_sign_column_highlight=1
+
 " " bkad/CamelCaseMotion
 " map <silent> w <Plug>CamelCaseMotion_w
 " map <silent> b <Plug>CamelCaseMotion_b
