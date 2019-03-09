@@ -177,6 +177,7 @@ autocmd User AirlineAfterInit call AirlineInit()
 "   \ [ 'x', 'y', 'z', 'error', 'warning' ]
 "   \ ]
 let g:airline_inactive_collapse=0
+let g:airline#extensions#ale#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#tab_nr_type = 1
 let g:airline#extensions#tabline#show_tab_nr = 1
@@ -234,3 +235,6 @@ let g:airline#extensions#default#section_truncate_width = {
   \ 'warning': 99,
   \ 'error': 99,
   \ }
+
+" Plug 'w0rp/ale'
+let g:ale_c_parse_compile_commands=1

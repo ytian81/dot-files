@@ -71,6 +71,7 @@ Plug 'vim-airline/vim-airline', {'do': function('InstallPowerlineFont')}
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'wellle/targets.vim'
+Plug 'w0rp/ale'
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
