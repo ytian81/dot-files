@@ -169,10 +169,11 @@ nnoremap <leader>z :YcmCompleter GoTo<CR>
 
 " vim-airline/vim-airline
 let g:airline_powerline_fonts=1
+let g:airline#extensions#hunks#non_zero_only = 1
 function! AirlineInit()
     " let g:airline_section_b = '%f'
     let g:airline_section_b = "%{fnamemodify(expand('%'),':.')}"
-    let g:airline_section_c = ''
+    let g:airline_section_c = airline#section#create(['hunks'])
     let g:airline_section_x = airline#section#create(['tagbar'])
 endfunction
 autocmd User AirlineAfterInit call AirlineInit()
