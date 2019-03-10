@@ -14,6 +14,8 @@ set completeopt=menuone
 set showmatch
 set matchtime=1
 
+set updatetime=100
+
 set nofoldenable
 
 set signcolumn=yes
