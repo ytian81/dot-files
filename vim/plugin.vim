@@ -4,7 +4,24 @@
 " Plug 'airblade/vim-gitgutter'
 let g:gitgutter_override_sign_column_highlight=1
 
-" " bkad/CamelCaseMotion
+" Plug 'AndrewRadev/switch.vim'
+let g:switch_mapping = "<c-x>"
+let g:switch_reverse_mapping = "<c-a>"
+let g:switch_custom_definitions = [
+      \ ['&&', '||'],
+      \ ['&', '|', '^'],
+      \ ['&=', '|=', '^='],
+      \ ['>>', '<<'],
+      \ ['>>=', '<<='],
+      \ ['==', '!='],
+      \ ['>', '<', '>=', '<='],
+      \ ['++', '--'],
+      \ ['DEBUG', 'INFO', 'WARN', 'ERROR', 'FATAL'],
+      \ ['EXPECT', 'ASSERT'],
+      \ ['EQ', 'TRUE', 'FALSE', 'DOUBLE_EQ', 'FLOAT_EQ'],
+      \ ]
+
+" " bkadCamelCaseMotion
 " map <silent> w <Plug>CamelCaseMotion_w
 " map <silent> b <Plug>CamelCaseMotion_b
 " map <silent> e <Plug>CamelCaseMotion_e
@@ -108,19 +125,6 @@ nnoremap <Leader>p :TagbarToggle<CR>
 " noremap <silent> <leader>ai :GscopeFind i <C-R>=expand("<cfile>")<cr><cr>
 " noremap <silent> <leader>ad :GscopeFind d <C-R><C-W><cr>
 " noremap <silent> <leader>aa :GscopeFind a <C-R><C-W><cr>
-
-" Plug 'tenfyzhong/axring.vim'
-let g:axring_rings = [
-      \ ['&&', '||'],
-      \ ['&', '|', '^'],
-      \ ['&=', '|=', '^='],
-      \ ['>>', '<<'],
-      \ ['==', '!='],
-      \ ['>', '<', '>=', '<='],
-      \ ['++', '--'],
-      \ ['true', 'false'],
-      \ ['verbose', 'debug', 'info', 'warn', 'error', 'fatal'],
-      \ ]
 
 " tpope/vim-fugitive
 nnoremap <Leader>b :Gblame<CR>

@@ -37,6 +37,7 @@ call plug#begin('~/.vim/plugged')
 
 " Declare the list of plugins.
 Plug 'airblade/vim-gitgutter'
+Plug 'AndrewRadev/switch.vim'
 " Plug 'bkad/CamelCaseMotion'
 Plug 'christoomey/vim-sort-motion'
 Plug 'christoomey/vim-tmux-navigator'
@@ -58,7 +59,6 @@ Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'rhysd/vim-clang-format', { 'do': function('InstallClangFormat') }
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
-Plug 'tenfyzhong/axring.vim'
 Plug 'terryma/vim-expand-region'
 Plug 'tpope/vim-fugitive', { 'on': ['Gblame', 'Gdiff', 'Gbrowse'] }
 Plug 'tpope/vim-repeat'
