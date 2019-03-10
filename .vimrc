@@ -8,25 +8,25 @@ endif
 " Load local plugins in `vim` directory. Pass 1 after plugin name to debug
 let s:vimrc_dir=fnamemodify(resolve(expand('<sfile>:p')), ':h')
 function! s:IncludeLocalPlugin(...)
-    let a:name=a:1
+    let l:name=a:1
 
     if a:0>1
-        let a:debug=a:2
+        let l:debug=a:2
     else
-        let a:debug=0
+        let l:debug=0
     endif
 
-    let a:plugin=s:vimrc_dir.'/vim/'.a:name
+    let l:plugin=s:vimrc_dir.'/vim/'.l:name
 
-    if a:debug
-        echo "Try to find ".a:plugin
+    if l:debug
+        echo "Try to find ".l:plugin
     endif
 
-    if filereadable(a:plugin)
-        exec "source ".a:plugin
+    if filereadable(l:plugin)
+        exec "source ".l:plugin
     else
-        if a:debug
-            echo "Cannot find ".a:plugin
+        if l:debug
+            echo "Cannot find ".l:plugin
         endif
     endif
 endfunction
