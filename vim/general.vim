@@ -48,6 +48,9 @@ set report=0
 set confirm
 set autowrite
 
+set splitright
+set splitbelow
+
 " Activate matchit.vim
 packadd! matchit
 
