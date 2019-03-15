@@ -14,13 +14,6 @@ alias fd="zd"
 # unset e for editing frequent files becuase fasd is not available yet
 unset -f e
 
-# capslock tap as Escape key
-if [[ `uname` = 'Linux' ]]; then
-    xcape -e 'Control_L=Escape'
-# elif [[ `uname` = 'Dawin' ]]; then
-#     echo "macOS: capslock tap as ESC key"
-fi
-
 # deduplicate history
 # manually: sort -t ";" -k 2 -u ~/.zsh_history | sort -o ~/.zsh_history
 setopt HIST_IGNORE_ALL_DUPS
