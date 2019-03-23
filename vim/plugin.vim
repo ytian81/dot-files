@@ -124,6 +124,8 @@ let g:cpp_experimental_template_highlight = 1
 let g:cpp_concepts_highlight = 1
 
 " majutsushi/tagbar
+let g:tagbar_show_linenumbers=1
+let g:tagbar_width=50
 nnoremap <Leader>p :TagbarToggle<CR>
 
 " " skywind3000/gutentags_plus
