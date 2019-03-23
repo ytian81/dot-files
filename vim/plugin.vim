@@ -44,7 +44,7 @@ nnoremap <silent> <Leader><c-a> :call switch#Switch({'reverse': 1,'definitions':
 " sunmap ge
 
 " derekwyatt/vim-fswitch
-nmap <silent> <Leader>a :FSHere<CR>
+nmap <silent> <Leader>ss :FSHere<CR>
 nmap <silent> <Leader>sh :FSSplitLeft<CR>
 nmap <silent> <Leader>sl :FSSplitRight<CR>
 nmap <silent> <Leader>sj :FSSplitBelow<CR>
@@ -80,7 +80,7 @@ command! -bang -nargs=* Rg
 nnoremap <Leader>f :Files<CR>
 nnoremap <Leader>g :Rg<Space>
 nnoremap <Leader>j :BTags<CR>
-nnoremap <Leader>h :Buffers<CR>
+nnoremap <Leader>a :Buffers<CR>
 
 " junegunn/vim-easy-align
 xmap ga <Plug>(EasyAlign)
