@@ -86,6 +86,21 @@ nnoremap <Leader>a :Buffers<CR>
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
+" Plug 'kamykn/spelunker.vim'
+let g:enable_spelunker_vim = 1
+let g:spelunker_target_min_char_len = 4
+let g:spelunker_max_suggest_words = 15
+let g:spelunker_max_hi_words_each_buf = 100
+let g:spelunker_spell_bad_group = 'SpelunkerSpellBad'
+let g:spelunker_complex_or_compound_word_group = 'SpelunkerComplexOrCompoundWord'
+" highlight SpelunkerSpellBad cterm=underline ctermfg=247 gui=underline guifg=#9e9e9e
+" highlight SpelunkerComplexOrCompoundWord cterm=underline ctermfg=NONE gui=underline guifg=NONE
+let g:spelunker_disable_auto_group = 1
+augroup spelunker
+  autocmd!
+  autocmd BufWinEnter,BufWritePost *.h,*.cpp call spelunker#check()
+augroup END
+
 " " ludovicchabant/vim-gutentags
 " let $GTAGSLABEL = 'native-pygments'
 " let $GTAGSCONF = fnamemodify(expand('<sfile>:p'), ':h').'/.gtags.conf'
