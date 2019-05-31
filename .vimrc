@@ -68,6 +68,7 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-rhubarb', { 'on': 'Gbrowse' }
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
 Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
 Plug 'vim-airline/vim-airline', {'do': function('InstallPowerlineFont')}
 Plug 'vim-airline/vim-airline-themes'
