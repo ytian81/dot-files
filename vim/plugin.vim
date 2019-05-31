@@ -34,14 +34,14 @@ nnoremap <silent> <Leader><c-x> :call switch#Switch({'definitions': g:variable_s
 nnoremap <silent> <Leader><c-a> :call switch#Switch({'reverse': 1,'definitions': g:variable_style_switch_definitions})<cr>
 
 " " bkadCamelCaseMotion
-" map <silent> w <Plug>CamelCaseMotion_w
-" map <silent> b <Plug>CamelCaseMotion_b
-" map <silent> e <Plug>CamelCaseMotion_e
-" map <silent> ge <Plug>CamelCaseMotion_ge
-" sunmap w
-" sunmap b
-" sunmap e
-" sunmap ge
+map <silent> W <Plug>CamelCaseMotion_w
+map <silent> B <Plug>CamelCaseMotion_b
+map <silent> E <Plug>CamelCaseMotion_e
+map <silent> gE <Plug>CamelCaseMotion_ge
+sunmap W
+sunmap B
+sunmap E
+sunmap gE
 
 " derekwyatt/vim-fswitch
 nmap <silent> <Leader>ss :FSHere<CR>
