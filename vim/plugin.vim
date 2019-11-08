@@ -114,12 +114,18 @@ autocmd! BufEnter *.h let b:fswitchdst  = 'cpp,c'
 let g:EditorConfig_exclude_patterns=['fugitive://.*']
 
 " junegunn/fzf.vim
+" Similarly, we can apply it to fzf#vim#grep. To use ripgrep instead of ag:
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
+  \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
   \   <bang>0 ? fzf#vim#with_preview('up:60%')
   \           : fzf#vim#with_preview('right:50%:hidden', '?'),
   \   <bang>0)
+
+" Likewise, Files command with preview window
+command! -bang -nargs=? -complete=dir Files
+  \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+
 nnoremap <Leader>f :Files<CR>
 nnoremap <Leader>g :Rg<Space>
 nnoremap <Leader>j :BTags<CR>
