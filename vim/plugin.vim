@@ -153,7 +153,7 @@ let g:spelunker_complex_or_compound_word_group = 'SpelunkerComplexOrCompoundWord
 let g:spelunker_disable_auto_group = 1
 augroup spelunker
   autocmd!
-  autocmd BufWinEnter,BufWritePost *.h,*.cpp call spelunker#check()
+  autocmd BufWinEnter,BufWritePost *.h,*.cpp,*.py call spelunker#check()
 augroup END
 
 " " ludovicchabant/vim-gutentags
