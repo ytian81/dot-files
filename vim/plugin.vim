@@ -43,6 +43,49 @@ sunmap B
 sunmap E
 sunmap gE
 
+"" ddrscott/vim-window
+" Unimpaired mapping
+nnoremap ]r :<C-U>call window#rotate(-1 * v:count1)<cr>
+nnoremap [r :<C-U>call window#rotate(1 * v:count1)<cr>
+
+" Improved window rotate to work with all layouts
+nmap <C-w>r ]r
+nmap <C-w><C-r> ]r
+
+" Improve window exchange to work with all layouts
+nnoremap <C-w>x :<C-U>call window#exchange(v:count)<cr>
+nnoremap <C-w><c-x> :<C-U>call window#exchange(v:count)<cr>
+
+" [g]lue windows together.
+"    l = glue to right side
+"    h = glue to left side
+"    j = glue to bottom
+"    k = glue to top
+"
+" `normal! 100zh` scrolls window contents into view since it gets messy when
+" narrower window tries refocuses its cursor.
+nnoremap <C-w>gl :<C-U>call window#join('rightbelow vsplit', v:count) <BAR>normal! 100zh<CR>
+nnoremap <C-w>gh :<C-U>call window#join('leftabove vsplit', v:count)  <BAR>normal! 100zh<CR>
+nnoremap <C-w>gj :<C-U>call window#join('belowright split', v:count)  <BAR>normal! 100zh<CR>
+nnoremap <C-w>gk :<C-U>call window#join('aboveleft split', v:count)   <BAR>normal! 100zh<CR>
+
+" Force a primary window layout.
+" The capital HJKL forces the primary window to a specific direction.
+command! -nargs=* LayoutH call window#layout('ball', 'H', <args>)
+command! -nargs=* LayoutJ call window#layout('vertical ball', 'J', <args>)
+command! -nargs=* LayoutK call window#layout('vertical ball', 'K', <args>)
+command! -nargs=* LayoutL call window#layout('ball', 'L', <args>)
+
+" Map the layout commands to something if that's your style.
+nnoremap <C-w>gH :<C-U>LayoutH v:count<CR>
+nnoremap <C-w>gJ :<C-U>LayoutJ v:count<CR>
+nnoremap <C-w>gK :<C-U>LayoutK v:count<CR>
+nnoremap <C-w>gL :<C-U>LayoutL v:count<CR>
+
+" Improve window only, to split to new tab instead
+nnoremap <C-w>o :call window#only()<cr>
+nnoremap <C-w><c-o> :call window#only()<cr>
+
 " derekwyatt/vim-fswitch
 nmap <silent> <Leader>ss :FSHere<CR>
 nmap <silent> <Leader>sh :FSSplitLeft<CR>
