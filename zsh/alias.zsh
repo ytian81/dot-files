@@ -7,6 +7,7 @@ alias gdmd='git difftool --tool=meld --dir-diff'
 alias gdmdc='git difftool --tool=meld --dir-diff --cached'
 alias gdvd='git difftool --tool=vimdiff'
 alias gdvdc='git difftool --tool=vimdiff --cached'
+alias gstf='gst | fpp'
 if [ `uname` = 'Linux' ]; then
     alias o='xdg-open'
 elif [ `uname` = 'Darwin' ]; then
