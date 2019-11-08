@@ -68,6 +68,7 @@ plugins=(
   autojump
   colored-man-pages
   git
+  thefuck
   tmux
   zsh-completions
   zsh-autosuggestions
