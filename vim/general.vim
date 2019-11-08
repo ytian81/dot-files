@@ -8,6 +8,7 @@ set whichwrap+=<,>,[,]
 set selection=exclusive
 
 set mouse=a
+set ttymouse=sgr
 
 set completeopt=menuone
 
