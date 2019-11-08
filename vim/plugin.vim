@@ -220,8 +220,8 @@ nnoremap <silent> <Leader>l :nohlsearch<C-R>=
             \ has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
 
 " rhysd/vim-clang-format
-nnoremap <Leader>cf :ClangFormat<CR>
-vnoremap <Leader>cf :ClangFormat<CR>
+autocmd FileType cpp nnoremap <Leader>cf :ClangFormat<CR>
+autocmd FileType cpp vnoremap <Leader>cf :ClangFormat<CR>
 
 " scrooloose/nerdcommenter
 let g:NERDSpaceDelims=1
