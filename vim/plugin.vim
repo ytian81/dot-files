@@ -129,6 +129,12 @@ nnoremap <Leader>a :Buffers<CR>
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
+" justinmk/vim-sneak
+map f <Plug>Sneak_f
+map F <Plug>Sneak_F
+map t <Plug>Sneak_t
+map T <Plug>Sneak_T
+
 " Plug 'kamykn/spelunker.vim'
 let g:enable_spelunker_vim = 1
 let g:spelunker_target_min_char_len = 4

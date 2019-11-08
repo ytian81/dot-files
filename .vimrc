@@ -51,6 +51,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim', { 'do': function('InstallRg') }
 Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/vim-peekaboo'
+Plug 'justinmk/vim-sneak'
 Plug 'kamykn/spelunker.vim'
 " Plug 'ludovicchabant/vim-gutentags', { 'do': function('InstallGTags')}
 Plug 'majutsushi/tagbar'
