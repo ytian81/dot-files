@@ -1,6 +1,7 @@
 # alias setting
 # echo "Loading alias setting"
 
+alias cat='bat'
 alias x='exit'
 alias diff='colordiff'
 alias gdmd='git difftool --tool=meld --dir-diff'
