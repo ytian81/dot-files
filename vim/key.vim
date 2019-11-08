@@ -10,9 +10,6 @@ nmap <silent> gm v%
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
 
-" Search visual selection
-vnoremap // y/\V<C-r>=escape(@",'/\')<CR><CR>
-
 " Tab navigations
 nnoremap <Tab>h :tabfirst<CR>
 nnoremap <Tab>l :tablast<CR>
