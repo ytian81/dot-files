@@ -71,6 +71,7 @@ Plug 'tpope/vim-fugitive', { 'on': ['Gblame', 'Gdiff', 'Gbrowse'] }
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-rhubarb', { 'on': 'Gbrowse' }
 Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
