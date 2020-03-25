@@ -67,7 +67,7 @@ Plug 'rhysd/vim-clang-format', { 'do': function('InstallClangFormat') }
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'terryma/vim-expand-region'
-Plug 'tpope/vim-fugitive', { 'on': ['Gblame', 'Gdiff', 'Gbrowse'] }
+Plug 'tpope/vim-fugitive', { 'on': ['Gblame', 'Gdiff', 'Gbrowse', 'Gcommit', 'Gstatus'] }
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-rhubarb', { 'on': 'Gbrowse' }
 Plug 'tpope/vim-sensible'
