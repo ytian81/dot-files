@@ -1,6 +1,7 @@
 # alias setting
 # echo "Loading alias setting"
 
+alias c='clear'
 alias cat='bat'
 alias x='exit'
 alias diff='colordiff'
@@ -9,6 +10,7 @@ alias gdmdc='git difftool --tool=meld --dir-diff --cached'
 alias gdvd='git difftool --tool=vimdiff'
 alias gdvdc='git difftool --tool=vimdiff --cached'
 alias gstf='gst | fpp'
+alias xclip='xclip -selection c'
 if [ `uname` = 'Linux' ]; then
     alias o='xdg-open'
 elif [ `uname` = 'Darwin' ]; then
