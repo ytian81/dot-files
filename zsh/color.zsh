@@ -11,12 +11,12 @@ elif [ `uname` = 'Darwin' ]; then
     eval `gdircolors  ~/.dircolors`
 fi
 
-# tmux powerline status branch
-if [[ -z $powerline_dir ]]; then
-    powerline-daemon -q
-    export powerline_dir="$(pip show powerline-status 2>/dev/null | grep Location | awk {'print $2'})/powerline"
-fi
-source $powerline_dir"/bindings/zsh/powerline.zsh"
+# # tmux powerline status branch
+# if [[ -z $powerline_dir ]]; then
+#     powerline-daemon -q
+#     export powerline_dir="$(pip show powerline-status 2>/dev/null | grep Location | awk {'print $2'})/powerline"
+# fi
+# source $powerline_dir"/bindings/zsh/powerline.zsh"
 
 # draw line between two commands
 setopt promptsubst
