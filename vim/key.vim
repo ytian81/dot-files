@@ -17,3 +17,6 @@ nnoremap <Tab>n :tabnew<CR>
 nnoremap <Tab>e <C-W>T
 nnoremap ta :bufdo tab split<CR><CR>
 nnoremap to :tabonly<CR>
+
+" Source vimrc
+nnoremap <expr> <leader>sv (expand('%:p') ==? expand($MYVIMRC) ? ":w \|" : ":")."source $MYVIMRC<CR>"
