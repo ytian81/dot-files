@@ -45,7 +45,7 @@ Plug 'derekwyatt/vim-fswitch'
 Plug 'dstein64/vim-win'
 " Plug 'easymotion/vim-easymotion'
 Plug 'editorconfig/editorconfig-vim'
-" Plug 'jeetsukumaran/vim-markology'
+Plug 'jacquesbh/vim-showmarks'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim', { 'do': function('InstallRg') }

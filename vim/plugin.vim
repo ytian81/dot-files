@@ -113,6 +113,10 @@ autocmd! BufEnter *.h let b:fswitchdst  = 'cpp,c'
 " editorconfig/editorconfig-vim
 let g:EditorConfig_exclude_patterns=['fugitive://.*']
 
+" jacquesbh/vim-showmarks
+autocmd BufRead,WinEnter    * :DoShowMarks
+" autocmd WinLeave            * :NoShowMarks
+
 " junegunn/fzf.vim
 " Similarly, we can apply it to fzf#vim#grep. To use ripgrep instead of ag:
 command! -bang -nargs=* Rg
@@ -126,10 +130,14 @@ command! -bang -nargs=* Rg
 command! -bang -nargs=? -complete=dir Files
   \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 
+command! -bang Marks
+  \ call fzf#vim#marks({'options': ['--preview', 'echo line = {}']})
+
 nnoremap <Leader>f :Files<CR>
 nnoremap <Leader>g :Rg<Space>
 nnoremap <Leader>j :BTags<CR>
 nnoremap <Leader>a :Buffers<CR>
+nnoremap <Leader>m :Marks<CR>
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6, 'highlight': 'Todo', 'rounded': v:false } }
 let g:fzf_colors =
     \ { 'fg':      ['fg', 'Normal'],
