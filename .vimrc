@@ -61,11 +61,11 @@ Plug 'markonm/traces.vim'
 Plug 'mhinz/vim-startify'
 Plug 'morhetz/gruvbox'
 Plug 'nathanaelkane/vim-indent-guides'
-Plug 'octol/vim-cpp-enhanced-highlight'
 " Plug 'skywind3000/gutentags_plus'
 Plug 'rhysd/vim-clang-format', { 'do': function('InstallClangFormat') }
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
+Plug 'sheerun/vim-polyglot'
 Plug 'terryma/vim-expand-region'
 Plug 'tpope/vim-fugitive', { 'on': ['Gblame', 'Gdiff', 'Gbrowse', 'Gcommit', 'Gstatus'] }
 Plug 'tpope/vim-repeat'
