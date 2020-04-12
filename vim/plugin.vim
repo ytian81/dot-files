@@ -136,6 +136,7 @@ nnoremap <Leader>g :Rg<Space>
 nnoremap <Leader>j :BTags<CR>
 nnoremap <Leader>a :Buffers<CR>
 nnoremap <Leader>m :Marks<CR>
+nnoremap <Leader>h :History<CR>
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6, 'highlight': 'Todo', 'rounded': v:false } }
 let g:fzf_colors =
     \ { 'fg':      ['fg', 'Normal'],
@@ -203,7 +204,7 @@ augroup END
 
 " nathanaelkane/vim-indent-guides
 let g:indent_guides_enable_on_vim_startup=1
-let g:indent_guides_exclude_filetypes=['help', 'nerdtree']
+let g:indent_guides_exclude_filetypes=['help', 'nerdtree', 'fzf']
 let g:indent_guides_guide_size=1
 let g:indent_guides_start_level=2
 

@@ -48,7 +48,7 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'honza/vim-snippets'
 Plug 'jacquesbh/vim-showmarks'
 Plug 'jiangmiao/auto-pairs'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --no-bash' }
 Plug 'junegunn/fzf.vim', { 'do': function('InstallRg') }
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/vim-easy-align'
