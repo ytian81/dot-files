@@ -207,12 +207,61 @@ let g:indent_guides_exclude_filetypes=['help', 'nerdtree']
 let g:indent_guides_guide_size=1
 let g:indent_guides_start_level=2
 
-" octol/cpp-enhanced-highlight
-let g:cpp_class_scope_highlight = 1
-let g:cpp_member_variable_highlight = 1
-let g:cpp_class_decl_highlight = 1
-let g:cpp_experimental_template_highlight = 1
-let g:cpp_concepts_highlight = 1
+" neoclide/coc.nvim
+set hidden
+set shortmess+=c
+" Use tab for trigger completion with characters ahead and navigate.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
+" use <tab> for trigger completion and navigate to the next complete item
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
+" position. Coc only does snippet and additional edit on confirm.
+if exists('*complete_info')
+  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+else
+  imap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+endif
+" Use `[g` and `]g` to navigate diagnostics
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+" Use K to show documentation in preview window.
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
+" Formatting selected code.
+xmap <leader>cf  <Plug>(coc-format-selected) <CR>
+nmap <leader>cf  <Plug>(coc-format) <CR>
+" Introduce function text object
+" NOTE: Requires 'textDocument.documentSymbol' support from the language server.
+xmap if <Plug>(coc-funcobj-i)
+xmap af <Plug>(coc-funcobj-a)
+omap if <Plug>(coc-funcobj-i)
+omap af <Plug>(coc-funcobj-a)
+" Use <C-j> for both expand and jump (make expand higher priority.
+imap <C-j> <Plug>(coc-snippets-expand-jump)
 
 " majutsushi/tagbar
 let g:tagbar_show_linenumbers=1
@@ -240,10 +289,6 @@ nnoremap <Leader>d :Gdiff<CR>
 nnoremap <silent> <Leader>l :nohlsearch<C-R>=
             \ has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
 
-" rhysd/vim-clang-format
-autocmd FileType cpp nnoremap <Leader>cf :ClangFormat<CR>
-autocmd FileType cpp vnoremap <Leader>cf :ClangFormat<CR>
-
 " scrooloose/nerdcommenter
 let g:NERDSpaceDelims=1
 let g:NERDDefaultAlign='left'
@@ -255,22 +300,6 @@ map <Leader>e :edit %:h<CR>
 map <Leader>q :NERDTreeToggle<CR>
 autocmd BufEnter * if (winnr("$") == 1 &&
             \ exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
-" Valloric/YouCompleteMe
-let g:ycm_complete_in_comments=1
-let g:ycm_confirm_extra_conf=0
-let g:ycm_collect_identifiers_from_tags_files=0
-let g:ycm_global_ycm_extra_conf=
-            \ fnamemodify(expand('<sfile>:p'), ':h').
-            \ '/.ycm_extra_conf.py'
-let g:ycm_log_level='warning'
-let g:ycm_seed_identifiers_with_syntax=1
-let g:ycm_show_diagnostics_ui=0
-let g:ycm_semantic_triggers =  {
-            \ 'c,cpp,python,java,go,erlang,perl': ['re!\w{3}'],
-            \ 'cs,lua,javascript': ['re!\w{2}'],
-            \ }
-nnoremap <leader>z :YcmCompleter GoTo<CR>
 
 " vim-airline/vim-airline
 let g:airline_powerline_fonts=1
