@@ -166,6 +166,15 @@ let g:indent_guides_exclude_filetypes=['help', 'nerdtree', 'fzf']
 let g:indent_guides_guide_size=1
 let g:indent_guides_start_level=2
 
+" sheerun/vim-polyglot
+" octol/cpp-enhanced-highlight
+let g:cpp_class_scope_highlight = 1
+let g:cpp_member_variable_highlight = 1
+let g:cpp_class_decl_highlight = 1
+let g:cpp_posix_standard = 1
+let g:cpp_experimental_simple_template_highlight = 1
+let g:cpp_concepts_highlight = 1
+
 " neoclide/coc.nvim
 set hidden
 set shortmess+=c
