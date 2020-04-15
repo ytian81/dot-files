@@ -5,7 +5,7 @@
 
 set whichwrap+=<,>,[,]
 
-set selection=exclusive
+set selection=inclusive
 
 set mouse=a
 set ttymouse=sgr
