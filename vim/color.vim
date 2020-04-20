@@ -23,7 +23,9 @@ set pumheight=10
 " set t_8f=[38;2;%lu;%lu;%lum
 " set t_8b=[48;2;%lu;%lu;%lum
 " set termguicolors
-set term=screen-256color
+if !has('nvim')
+    set term=screen-256color
+endif
 let g:gruvbox_invert_selection=0
 colorscheme gruvbox
 

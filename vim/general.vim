@@ -8,7 +8,9 @@ set whichwrap+=<,>,[,]
 set selection=inclusive
 
 set mouse=a
-set ttymouse=sgr
+if !has('nvim')
+    set ttymouse=sgr
+endif
 
 set completeopt=menuone
 
