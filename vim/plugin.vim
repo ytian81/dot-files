@@ -264,6 +264,16 @@ nnoremap <Leader>d :Gdiff<CR>
 nnoremap <silent> <Leader>l :nohlsearch<C-R>=
             \ has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
 
+" rhysd/git-messenger.vim
+let g:git_messenger_no_default_mappings=v:true
+let g:git_messenger_always_into_popup=v:true
+nmap <leader>hm <Plug>(git-messenger)
+" Normal color in popup window with 'CursorLine'
+highlight link gitmessengerPopupNormal CursorLine
+highlight link gitmessengerHeader Statement
+highlight link gitmessengerHash Special
+highlight link gitmessengerHistory Title
+
 " scrooloose/nerdcommenter
 let g:NERDSpaceDelims=1
 let g:NERDDefaultAlign='left'

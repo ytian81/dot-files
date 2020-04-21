@@ -61,6 +61,7 @@ Plug 'markonm/traces.vim'
 Plug 'mhinz/vim-startify'
 Plug 'morhetz/gruvbox'
 Plug 'nathanaelkane/vim-indent-guides'
+Plug 'rhysd/git-messenger.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Plug 'skywind3000/gutentags_plus'
 Plug 'scrooloose/nerdcommenter'
