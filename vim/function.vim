@@ -14,21 +14,6 @@ silent function! function#windows()
     return  (has('win32') || has('win64'))
 endfunction
 
-" Install clang-format
-function! InstallClangFormat(info)
-  " info is a dictionary with 3 fields
-  " - name:   name of the plugin
-  " - status: 'installed', 'updated', or 'unchanged'
-  " - force:  set on PlugInstall! or PlugUpdate!
-  if a:info.status == 'installed' || a:info.force
-      if function#mac()
-          !brew install clang-format
-      elseif function#linux()
-          !sudo apt install clang-format
-      endif
-  endif
-endfunction
-
 " Install GTags and Universal Ctags
 function! InstallGTags(info)
   " info is a dictionary with 3 fields
