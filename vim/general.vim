@@ -5,7 +5,7 @@
 
 set whichwrap+=<,>,[,]
 
-set selection=inclusive
+set selection=exclusive
 
 set mouse=a
 if !has('nvim')

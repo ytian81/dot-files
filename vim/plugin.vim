@@ -175,6 +175,13 @@ let g:cpp_posix_standard = 1
 let g:cpp_experimental_simple_template_highlight = 1
 let g:cpp_concepts_highlight = 1
 
+" terryma/vim-multiple-cursors
+highlight link multiple_cursors_visual Visual
+augroup MultipleCursorsSelectionFix
+    autocmd User MultipleCursorsPre  if &selection ==# 'exclusive' | let g:multi_cursor_save_selection = &selection | set selection=inclusive | endif
+    autocmd User MultipleCursorsPost if exists('g:multi_cursor_save_selection') | let &selection = g:multi_cursor_save_selection | unlet g:multi_cursor_save_selection | endif
+augroup END
+
 " neoclide/coc.nvim
 set hidden
 set shortmess+=c
