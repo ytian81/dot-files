@@ -61,14 +61,16 @@ Plug 'markonm/traces.vim'
 Plug 'mhinz/vim-startify'
 Plug 'morhetz/gruvbox'
 Plug 'nathanaelkane/vim-indent-guides'
-Plug 'rhysd/git-messenger.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Plug 'skywind3000/gutentags_plus'
+Plug 'rhysd/conflict-marker.vim'
+Plug 'rhysd/git-messenger.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'sheerun/vim-polyglot'
 Plug 'terryma/vim-expand-region'
 Plug 'terryma/vim-multiple-cursors'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'tpope/vim-fugitive', { 'on': ['Gblame', 'Gdiff', 'Gbrowse', 'Gcommit', 'Gstatus'] }
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-rhubarb', { 'on': 'Gbrowse' }
@@ -81,7 +83,6 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'vim-scripts/star-search'
 Plug 'wellle/targets.vim'
-Plug 'w0rp/ale'
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 

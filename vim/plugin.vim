@@ -281,7 +281,6 @@ highlight link ConflictMarkerEnd DiffText
 let g:git_messenger_no_default_mappings=v:true
 let g:git_messenger_always_into_popup=v:true
 nmap <leader>hm <Plug>(git-messenger)
-" Normal color in popup window with 'CursorLine'
 highlight link gitmessengerPopupNormal CursorLine
 highlight link gitmessengerHeader Statement
 highlight link gitmessengerHash Special
