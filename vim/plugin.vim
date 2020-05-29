@@ -265,6 +265,18 @@ nnoremap <Leader>d :Gdiff<CR>
 nnoremap <silent> <Leader>l :nohlsearch<C-R>=
             \ has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
 
+" rhysd/conflict-marker.vim
+" disable the default highlight group
+let g:conflict_marker_highlight_group = ''
+" Include text after begin and end markers
+let g:conflict_marker_begin = '^<<<<<<< .*$'
+let g:conflict_marker_end   = '^>>>>>>> .*$'
+highlight link ConflictMarkerBegin DiffText
+highlight link ConflictMarkerOurs DiffAdd
+highlight link ConflictMarkerSeparator DiffText
+highlight link ConflictMarkerTheirs DiffChange
+highlight link ConflictMarkerEnd DiffText
+
 " rhysd/git-messenger.vim
 let g:git_messenger_no_default_mappings=v:true
 let g:git_messenger_always_into_popup=v:true
