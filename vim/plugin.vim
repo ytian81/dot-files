@@ -242,6 +242,7 @@ imap <C-j> <Plug>(coc-snippets-expand-jump)
 let g:tagbar_show_linenumbers=1
 let g:tagbar_width=50
 nnoremap <Leader>p :TagbarToggle<CR>
+highlight link TagbarSignature Comment
 
 " " skywind3000/gutentags_plus
 " let g:gutentags_plus_nomap = 1
