@@ -20,6 +20,7 @@ set matchtime=1
 set updatetime=100
 
 set nofoldenable
+set foldmethod=indent
 
 set signcolumn=yes
 
