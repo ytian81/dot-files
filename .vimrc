@@ -72,7 +72,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'terryma/vim-expand-region'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-Plug 'tpope/vim-fugitive', { 'on': ['Gblame', 'Gdiff', 'Gbrowse', 'Gcommit', 'Gstatus'] }
+Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-rhubarb', { 'on': 'Gbrowse' }
 Plug 'tpope/vim-sensible'
