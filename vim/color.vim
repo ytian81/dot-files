@@ -1,5 +1,6 @@
 " Color setting
 " echo "Loading color setting"
+" :so $VIMRUNTIME/syntax/hitest.vim
 
 autocmd BufRead,WinEnter    * set cursorline
 autocmd WinLeave            * set nocursorline
