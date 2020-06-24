@@ -11,10 +11,6 @@ cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
 
 " Tab navigations
-nnoremap <Tab>h :tabfirst<CR>
-nnoremap <Tab>l :tablast<CR>
-nnoremap <Tab>n :tabnew<CR>
-nnoremap <Tab>e <C-W>T
 nnoremap ta :bufdo tab split<CR><CR>
 nnoremap to :tabonly<CR>
 
