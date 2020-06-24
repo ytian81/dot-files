@@ -16,3 +16,6 @@ nnoremap to :tabonly<CR>
 
 " Source vimrc
 nnoremap <expr> <leader>sv (expand('%:p') ==? expand($MYVIMRC) ? ":w \|" : ":")."source $MYVIMRC<CR>"
+
+" Open current dir
+map <Leader>e :edit %:h<CR>
