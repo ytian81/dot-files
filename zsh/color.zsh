@@ -19,8 +19,8 @@ fi
 # source $powerline_dir"/bindings/zsh/powerline.zsh"
 
 # draw line between two commands
-setopt promptsubst
-PS1=$'${(r:$COLUMNS::\u2504:)}'$PS1
+# setopt promptsubst
+# PS1=$'${(r:$COLUMNS::\u2504:)}'$PS1
 
 # bat theme
 export BAT_THEME='gruvbox'
