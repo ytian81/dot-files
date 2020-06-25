@@ -56,7 +56,7 @@ Plug 'junegunn/vim-peekaboo'
 Plug 'justinmk/vim-sneak'
 Plug 'kamykn/spelunker.vim'
 " Plug 'ludovicchabant/vim-gutentags', { 'do': function('InstallGTags')}
-Plug 'majutsushi/tagbar'
+Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle'}
 Plug 'markonm/traces.vim'
 Plug 'mhinz/vim-startify'
 Plug 'morhetz/gruvbox'
