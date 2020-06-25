@@ -137,6 +137,8 @@ augroup spelunker
   autocmd!
   autocmd CursorHold *.h,*.cpp,*.py,*go,*md call spelunker#check_displayed_words()
 augroup END
+nmap [s <Plug>(spelunker-jump-prev)
+nmap ]s <Plug>(spelunker-jump-next)
 " let g:spelunker_spell_bad_group = 'SpelunkerSpellBad'
 " let g:spelunker_complex_or_compound_word_group = 'SpelunkerComplexOrCompoundWord'
 " highlight SpelunkerSpellBad cterm=underline ctermfg=247 gui=underline guifg=#9e9e9e
