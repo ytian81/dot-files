@@ -351,8 +351,6 @@ nmap [6 <Plug>AirlineSelectTab6
 nmap [7 <Plug>AirlineSelectTab7
 nmap [8 <Plug>AirlineSelectTab8
 nmap [9 <Plug>AirlineSelectTab9
-nmap [j <Plug>AirlineSelectNextTab
-nmap [k <Plug>AirlineSelectPrevTab
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline#extensions#ycm#enabled = 1
 let g:airline#extensions#ycm#error_symbol = 'E:'
