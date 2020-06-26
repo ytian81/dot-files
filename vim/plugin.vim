@@ -170,7 +170,7 @@ nmap ]s <Plug>(spelunker-jump-next)
 
 " nathanaelkane/vim-indent-guides
 let g:indent_guides_enable_on_vim_startup=1
-let g:indent_guides_exclude_filetypes=['help', 'nerdtree', 'fzf']
+let g:indent_guides_exclude_filetypes=['coc-explorer', 'help', 'fzf']
 let g:indent_guides_guide_size=1
 let g:indent_guides_start_level=2
 
@@ -246,6 +246,10 @@ omap af <Plug>(coc-funcobj-a)
 " Use <C-j> for both expand and jump (make expand higher priority.
 imap <C-j> <Plug>(coc-snippets-expand-jump)
 
+" coc-explorer
+nmap <leader>e :CocCommand explorer<CR>
+highlight link CocExplorerNormalFloat Normal
+
 " majutsushi/tagbar
 let g:tagbar_show_linenumbers=1
 let g:tagbar_width=50
@@ -298,12 +302,6 @@ highlight link gitmessengerHistory Title
 let g:NERDSpaceDelims=1
 let g:NERDDefaultAlign='left'
 let g:NERDCommentEmptyLines=1
-
-" scrooloose/nerdtree
-let NERDTreeShowLineNumbers=1
-map <Leader>q :NERDTreeToggle<CR>
-autocmd BufEnter * if (winnr("$") == 1 &&
-            \ exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " vim-airline/vim-airline
 let g:airline_powerline_fonts=1
