@@ -39,7 +39,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'airblade/vim-gitgutter'
 Plug 'AndrewRadev/switch.vim'
 Plug 'bkad/CamelCaseMotion'
-Plug 'christoomey/vim-sort-motion'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'derekwyatt/vim-fswitch'
 Plug 'dstein64/vim-win'
