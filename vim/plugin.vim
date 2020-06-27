@@ -251,7 +251,7 @@ omap af <Plug>(coc-funcobj-a)
 imap <C-j> <Plug>(coc-snippets-expand-jump)
 
 " coc-explorer
-nmap <leader>e :CocCommand explorer<CR>
+nmap <leader>e :CocCommand explorer --sources file+<CR>
 highlight link CocExplorerNormalFloat Normal
 
 " majutsushi/tagbar
