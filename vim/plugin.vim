@@ -5,15 +5,19 @@
 let g:gitgutter_override_sign_column_highlight=1
 let g:gitgutter_preview_win_floating = 0
 
-" Plug 'AndrewRadev/switch.vim'
-let g:switch_mapping = "<c-x>"
-let g:switch_reverse_mapping = "<c-a>"
+" Plug 'AndrewRadev/switch.vim' with Plug 'tpope/vim-speeddating'
+" speeddating key maps have to be disabled so that they don't override switch key maps
+let g:speeddating_no_mappings=1
+" speeddating fallback keys are still map to vim's vanilla <c-a> and <c-x>
+nnoremap <Plug>SpeedDatingFallbackUp <C-A>
+nnoremap <Plug>SpeedDatingFallbackDown <C-X>
+nnoremap <c-a> :if !switch#Switch() <bar>
+      \ call speeddating#increment(v:count1) <bar> endif<cr>
+nnoremap <c-x> :if !switch#Switch({'reverse': 1}) <bar>
+      \ call speeddating#increment(-v:count1) <bar> endif<cr>
 let g:switch_custom_definitions = [
       \ ['&&', '||'],
-      \ ['&', '|', '^'],
-      \ ['&=', '|=', '^='],
       \ ['>>', '<<'],
-      \ ['>>=', '<<='],
       \ ['==', '!='],
       \ ['>', '<', '>=', '<='],
       \ ['++', '--'],
