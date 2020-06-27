@@ -23,7 +23,7 @@ function! ShowKeyMappings()
     silent verbose map
     redir END
     " edit temporary file
-    edit Key\ Mapping
+    vsp Key\ Mapping
     " set filetype for syntax highlight
     setlocal filetype=vim
     " insert mappings
