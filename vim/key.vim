@@ -22,10 +22,6 @@ function! ShowKeyMappings()
     redir @a
     silent verbose map
     redir END
-    " Open a new window if the current one isn't empty
-    if line("$") != 1 || getline(1) != ""
-      vnew
-    endif
     " edit temporary file
     edit Key\ Mapping
     " set filetype for syntax highlight
@@ -38,4 +34,4 @@ function! ShowKeyMappings()
     " we don't want to save this temporary file
     set nomodified
 endfunction
-nnoremap <leader>kk :call ShowKeyMappings()<cr>
+nnoremap <silent> <leader>kk :silent call ShowKeyMappings()<cr>
