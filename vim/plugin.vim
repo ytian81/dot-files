@@ -83,23 +83,31 @@ autocmd BufRead,WinEnter    * :DoShowMarks
 " Similarly, we can apply it to fzf#vim#grep. To use ripgrep instead of ag:
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
-  \   fzf#vim#with_preview(), <bang>0)
+  \   'rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
+  \   fzf#vim#with_preview({'options': ['--no-border']}), <bang>0)
 
 " Likewise, Files command with preview window
 command! -bang -nargs=? -complete=dir Files
-  \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+  \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'options': ['--no-border']}), <bang>0)
 
 command! -bang Marks
-  \ call fzf#vim#marks({'options': ['--preview', 'echo line = {}']})
+  \ call fzf#vim#marks({'options': ['--preview', 'echo line = {}', '--no-border']})
+
+command! -bang -nargs=* BTags
+  \ call fzf#vim#buffer_tags(<q-args>,
+  \ fzf#vim#with_preview({'placeholder': '{2}:{3}', 'options': ['-d', '\t', '--no-border']}), <bang>0)
+
+command! -bar -bang -nargs=? -complete=buffer Buffers
+  \ call fzf#vim#buffers(<q-args>,
+  \ fzf#vim#with_preview({ 'placeholder': '{1}', 'options': ['-d', '\t', '--no-border']}), <bang>0)
 
 nnoremap <Leader>f :Files<CR>
 nnoremap <Leader>g :Rg<Space>
 nnoremap <Leader>j :BTags<CR>
 nnoremap <Leader>a :Buffers<CR>
 nnoremap <Leader>m :Marks<CR>
-nnoremap <Leader>h :History<CR>
-let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6, 'highlight': 'Todo', 'rounded': v:false } }
+nnoremap <Leader>hh :History<CR>
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6, 'highlight': 'Comment', 'rounded': v:false } }
 let g:fzf_colors =
     \ { 'fg':      ['fg', 'Normal'],
       \ 'bg':      ['bg', 'Normal'],
