@@ -295,11 +295,11 @@ let g:conflict_marker_highlight_group = ''
 " Include text after begin and end markers
 let g:conflict_marker_begin = '^<<<<<<< .*$'
 let g:conflict_marker_end   = '^>>>>>>> .*$'
-highlight link ConflictMarkerBegin DiffText
-highlight link ConflictMarkerOurs DiffAdd
-highlight link ConflictMarkerSeparator DiffText
-highlight link ConflictMarkerTheirs DiffChange
-highlight link ConflictMarkerEnd DiffText
+highlight link ConflictMarkerBegin WildMenu
+highlight link ConflictMarkerOurs TabLineFill
+highlight link ConflictMarkerSeparator WildMenu
+highlight link ConflictMarkerTheirs TabLineSel
+highlight link ConflictMarkerEnd WildMenu
 
 " rhysd/git-messenger.vim
 let g:git_messenger_no_default_mappings=v:true
