@@ -261,6 +261,7 @@ imap <C-j> <Plug>(coc-snippets-expand-jump)
 " coc-explorer
 nmap <leader>e :CocCommand explorer --sources file+<CR>
 highlight link CocExplorerNormalFloat Normal
+highlight link CocExplorerNormalFloatBorder Comment
 
 " majutsushi/tagbar
 let g:tagbar_show_linenumbers=1
