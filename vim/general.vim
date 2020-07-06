@@ -17,7 +17,7 @@ set completeopt=menuone
 set showmatch
 set matchtime=1
 
-set updatetime=100
+set updatetime=1000
 
 set nofoldenable
 set foldmethod=indent
