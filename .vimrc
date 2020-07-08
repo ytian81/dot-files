@@ -75,7 +75,7 @@ Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
-Plug 'tweekmonster/startuptime.vim'
+Plug 'tweekmonster/startuptime.vim', { 'on': 'StartupTime' }
 Plug 'vim-airline/vim-airline', {'do': function('InstallPowerlineFont')}
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-scripts/ReplaceWithRegister'
