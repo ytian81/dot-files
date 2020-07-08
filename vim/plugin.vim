@@ -287,8 +287,7 @@ nnoremap <Leader>o :Gbrowse<CR>
 nnoremap <Leader>d :Gdiff<CR>
 
 " tpope/vim-sensible
-nnoremap <silent> <Leader>l :nohlsearch<C-R>=
-            \ has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
+nnoremap <silent> <Leader>l <Esc>:nohlsearch<CR><Esc>
 
 " rhysd/conflict-marker.vim
 " disable the default highlight group
