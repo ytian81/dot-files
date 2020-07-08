@@ -27,8 +27,9 @@ set pumheight=10
 if !has('nvim')
     set term=screen-256color
 endif
-let g:gruvbox_invert_selection=0
-colorscheme gruvbox
 
 set background=dark
 set termguicolors
+
+let g:gruvbox_invert_selection=0
+colorscheme gruvbox
