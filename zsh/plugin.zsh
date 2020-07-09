@@ -1,4 +1,6 @@
 # vi-mode
+# 10ms for key sequences
+KEYTIMEOUT=1
 # Use vim keys in tab complete menu:
 bindkey -M menuselect 'h' vi-backward-char
 bindkey -M menuselect 'k' vi-up-line-or-history
