@@ -107,6 +107,7 @@ nnoremap <Leader>j :BTags<CR>
 nnoremap <Leader>a :Buffers<CR>
 nnoremap <Leader>m :Marks<CR>
 nnoremap <Leader>hh :History<CR>
+let g:fzf_buffers_jump=1
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6, 'highlight': 'Comment', 'rounded': v:false } }
 let g:fzf_colors =
     \ { 'fg':      ['fg', 'Normal'],
