@@ -23,7 +23,7 @@ let g:switch_custom_definitions = [
       \ ['++', '--'],
       \ ['DEBUG', 'INFO', 'WARN', 'ERROR', 'FATAL'],
       \ ['EXPECT', 'ASSERT'],
-      \ ['EQ', 'TRUE', 'FALSE', 'DOUBLE_EQ', 'FLOAT_EQ'],
+      \ ['EQ', 'TRUE', 'FALSE', 'DOUBLE_EQ', 'FLOAT_EQ', 'THAT'],
       \ ]
 let g:variable_style_switch_definitions = [
       \   {
