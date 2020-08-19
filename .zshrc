@@ -80,6 +80,7 @@ plugins=(
   git
   thefuck
   tmux
+  you-should-use
   zsh-completions
   zsh-autosuggestions
   zsh-syntax-highlighting
