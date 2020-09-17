@@ -21,6 +21,9 @@ set updatetime=200
 
 set nofoldenable
 set foldmethod=indent
+set foldlevelstart=99
+set foldopen&
+set foldclose&
 
 set signcolumn=yes
 
