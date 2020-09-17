@@ -21,6 +21,14 @@ highlight Pmenu ctermfg=blue ctermbg=238 guifg=#005f87 guibg=#EEE8D5
 highlight PmenuSel ctermfg=green ctermbg=238 guifg=#AFD700 guibg=#106900
 set pumheight=10
 
+nmap <leader>sp :call <SID>SynStack()<CR>
+function! <SID>SynStack()
+  if !exists("*synstack")
+    return
+  endif
+  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+endfunc
+
 " set t_8f=[38;2;%lu;%lu;%lum
 " set t_8b=[48;2;%lu;%lu;%lum
 " set termguicolors
