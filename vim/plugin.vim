@@ -264,6 +264,9 @@ nmap <leader>e :CocCommand explorer --sources file+<CR>
 highlight link CocExplorerNormalFloat Normal
 highlight link CocExplorerNormalFloatBorder Comment
 
+" PeterRincker/vim-searchlight
+highlight link Searchlight Incsearch
+
 " majutsushi/tagbar
 let g:tagbar_show_linenumbers=1
 let g:tagbar_width=50
