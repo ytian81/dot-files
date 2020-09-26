@@ -58,7 +58,7 @@ Plug 'kamykn/spelunker.vim'
 Plug 'majutsushi/tagbar'
 Plug 'markonm/traces.vim'
 Plug 'mhinz/vim-startify'
-Plug 'morhetz/gruvbox'
+Plug 'gruvbox-community/gruvbox'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'PeterRincker/vim-searchlight'

@@ -41,4 +41,5 @@ set termguicolors
 
 let g:gruvbox_invert_selection=0
 let g:gruvbox_italic=1
+let g:gruvbox_sign_column='bg0'
 colorscheme gruvbox

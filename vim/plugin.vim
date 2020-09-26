@@ -2,7 +2,6 @@
 " echo "Loading plugin configuration"
 
 " Plug 'airblade/vim-gitgutter'
-let g:gitgutter_override_sign_column_highlight=1
 let g:gitgutter_preview_win_floating = 0
 
 " Plug 'AndrewRadev/switch.vim' with Plug 'tpope/vim-speeddating'
