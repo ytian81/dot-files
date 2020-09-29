@@ -11,7 +11,7 @@ alias gdvd='git difftool --tool=vimdiff'
 alias gdvdc='git difftool --tool=vimdiff --cached'
 alias gstf='gst | fpp'
 alias xclip='xclip -selection c'
-alias vim='nvim'
+[[ -n "$(command -v nvim)" ]] && alias vim="nvim"
 if [ `uname` = 'Linux' ]; then
     alias o='xdg-open'
 elif [ `uname` = 'Darwin' ]; then

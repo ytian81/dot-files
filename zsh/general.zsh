@@ -19,3 +19,10 @@ unset -f e
 # deduplicate history
 # manually: sort -t ";" -k 2 -u ~/.zsh_history | sort -o ~/.zsh_history
 setopt HIST_IGNORE_ALL_DUPS
+
+# use nvim if it exists, otherwise use vim
+if [ -n "$(command -v nvim)" ]; then
+    export EDITOR="nvim"
+else
+    export EDITOR="vim"
+fi
