@@ -38,6 +38,7 @@ call plug#begin('~/.vim/plugged')
 " Declare the list of plugins.
 Plug 'airblade/vim-gitgutter'
 Plug 'AndrewRadev/switch.vim'
+Plug 'bfredl/nvim-miniyank'
 Plug 'bkad/CamelCaseMotion'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'derekwyatt/vim-fswitch'

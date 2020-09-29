@@ -45,9 +45,9 @@ autocmd BufRead,WinEnter    * set relativenumber
 autocmd WinLeave            * set norelativenumber
 
 if function#linux()
-    set clipboard=unnamedplus
+    set clipboard+=unnamedplus
 elseif function#mac()
-    set clipboard=unnamed
+    set clipboard+=unnamed
 endif
 
 set report=0
