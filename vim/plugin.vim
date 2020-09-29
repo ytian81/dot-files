@@ -160,6 +160,31 @@ nmap ]s <Plug>(spelunker-jump-next)
 " highlight SpelunkerSpellBad cterm=underline ctermfg=247 gui=underline guifg=#9e9e9e
 " highlight SpelunkerComplexOrCompoundWord cterm=underline ctermfg=NONE gui=underline guifg=NONE
 
+" kevinhwang91/rnvimr
+let g:rnvimr_enable_ex = 1
+let g:rnvimr_enable_picker = 1
+let g:rnvimr_draw_border = 1
+let g:rnvimr_hide_gitignore = 1
+let g:rnvimr_border_attr = {'fg': 243, 'bg': -1}
+let g:rnvimr_enable_bw = 1
+let g:rnvimr_ranger_cmd = 'ranger --cmd="set column_ratios 1,1"
+            \ --cmd="set draw_borders both"'
+highlight link RnvimrNormal CursorLine
+nnoremap <silent> <leader>e :RnvimrToggle<CR>
+let g:rnvimr_action = {
+            \ '<C-t>': 'NvimEdit tabedit',
+            \ '<C-x>': 'NvimEdit split',
+            \ '<C-v>': 'NvimEdit vsplit',
+            \ 'gw': 'JumpNvimCwd',
+            \ 'yw': 'EmitRangerCwd'
+            \ }
+let g:rnvimr_layout = { 'relative': 'editor',
+            \ 'width': float2nr(round(0.6 * &columns)),
+            \ 'height': float2nr(round(0.6 * &lines)),
+            \ 'col': float2nr(round(0.2 * &columns)),
+            \ 'row': float2nr(round(0.2 * &lines)),
+            \ 'style': 'minimal' }
+
 " " ludovicchabant/vim-gutentags
 " let $GTAGSLABEL = 'native-pygments'
 " let $GTAGSCONF = fnamemodify(expand('<sfile>:p'), ':h').'/.gtags.conf'
@@ -186,7 +211,7 @@ nmap ]s <Plug>(spelunker-jump-next)
 
 " nathanaelkane/vim-indent-guides
 let g:indent_guides_enable_on_vim_startup=1
-let g:indent_guides_exclude_filetypes=['coc-explorer', 'help', 'fzf']
+let g:indent_guides_exclude_filetypes=['help', 'fzf']
 let g:indent_guides_guide_size=1
 let g:indent_guides_start_level=2
 
@@ -261,11 +286,6 @@ omap if <Plug>(coc-funcobj-i)
 omap af <Plug>(coc-funcobj-a)
 " Use <C-j> for both expand and jump (make expand higher priority.
 imap <C-j> <Plug>(coc-snippets-expand-jump)
-
-" coc-explorer
-nmap <leader>e :CocCommand explorer --sources file+<CR>
-highlight link CocExplorerNormalFloat Normal
-highlight link CocExplorerNormalFloatBorder Comment
 
 " PeterRincker/vim-searchlight
 highlight link Searchlight Incsearch

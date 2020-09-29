@@ -55,6 +55,7 @@ Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/vim-peekaboo'
 Plug 'justinmk/vim-sneak'
 Plug 'kamykn/spelunker.vim'
+Plug 'kevinhwang91/rnvimr'
 " Plug 'ludovicchabant/vim-gutentags', { 'do': function('InstallGTags')}
 Plug 'majutsushi/tagbar'
 Plug 'markonm/traces.vim'
