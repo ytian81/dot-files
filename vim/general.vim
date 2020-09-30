@@ -41,8 +41,11 @@ set smartcase
 set hlsearch
 
 set number
-autocmd BufRead,WinEnter    * set relativenumber
-autocmd WinLeave            * set norelativenumber
+augroup RelativeLineNumber
+    autocmd!
+    autocmd BufRead,WinEnter,FocusGained * set relativenumber
+    autocmd WinLeave,FocusLost   * set norelativenumber
+augroup end
 
 if function#linux()
     set clipboard+=unnamedplus
