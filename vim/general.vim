@@ -28,6 +28,9 @@ set foldclose&
 set signcolumn=yes
 
 set nowrap
+set linebreak
+set breakindent
+let &showbreak='↳ '
 
 autocmd FileType * set formatoptions-=o
 
