@@ -40,6 +40,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'AndrewRadev/switch.vim'
 Plug 'bfredl/nvim-miniyank'
 Plug 'bkad/CamelCaseMotion'
+Plug 'chrisbra/Colorizer', {'on': 'ColorToggle'}
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'derekwyatt/vim-fswitch'
 Plug 'dstein64/vim-win'
@@ -63,7 +64,6 @@ Plug 'mhinz/vim-startify'
 Plug 'gruvbox-community/gruvbox'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'PeterRincker/vim-searchlight'
-Plug 'powerman/vim-plugin-AnsiEsc', {'on': 'AnsiEsc'}
 " Plug 'skywind3000/gutentags_plus'
 Plug 'rhysd/conflict-marker.vim'
 Plug 'rhysd/git-messenger.vim'
