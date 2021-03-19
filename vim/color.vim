@@ -11,12 +11,6 @@ autocmd FileType * set formatoptions+=t
 set colorcolumn=+1
 highlight ColorColumn ctermbg=238 guibg=#2c2d27
 
-highlight ExtraWhitespace ctermbg=darkred guibg=darkred
-autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
-autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-autocmd BufWinLeave * call clearmatches()
-
 highlight Pmenu ctermfg=blue ctermbg=238 guifg=#005f87 guibg=#EEE8D5
 highlight PmenuSel ctermfg=green ctermbg=238 guifg=#AFD700 guibg=#106900
 set pumheight=10

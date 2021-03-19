@@ -61,7 +61,6 @@ Plug 'majutsushi/tagbar'
 Plug 'markonm/traces.vim'
 Plug 'mhinz/vim-startify'
 Plug 'gruvbox-community/gruvbox'
-Plug 'nathanaelkane/vim-indent-guides'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'PeterRincker/vim-searchlight'
 " Plug 'skywind3000/gutentags_plus'
@@ -85,6 +84,7 @@ Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'vim-scripts/star-search'
 Plug 'wellle/targets.vim'
 Plug 'Xuyuanp/scrollbar.nvim'
+Plug 'Yggdroot/indentLine'
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 

@@ -209,12 +209,6 @@ let g:rnvimr_layout = { 'relative': 'editor',
 " let g:gutentags_auto_add_gtags_cscope = 0
 " let g:gutentags_define_advanced_commands = 1
 
-" nathanaelkane/vim-indent-guides
-let g:indent_guides_enable_on_vim_startup=1
-let g:indent_guides_exclude_filetypes=['help', 'fzf']
-let g:indent_guides_guide_size=1
-let g:indent_guides_start_level=2
-
 " sheerun/vim-polyglot
 " octol/cpp-enhanced-highlight
 let g:cpp_class_scope_highlight = 1
@@ -418,3 +412,6 @@ let g:scrollbar_highlight = {
     \ }
 let g:scrollbar_min_size = 5
 let g:scrollbar_max_size = 5
+
+" Yggdroot/indentLine
+let g:indentLine_fileTypeExclude=['help', 'fzf', 'startify']
