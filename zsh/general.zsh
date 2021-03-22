@@ -12,6 +12,8 @@ export FZF_DEFAULT_OPTS='
   --height 40%
   --border
 '
+export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --ignore-vcs'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 if [[ `uname` = 'Linux' ]]; then
     export OPENER=xdg-open
