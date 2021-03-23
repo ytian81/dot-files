@@ -18,8 +18,17 @@ nnoremap to :tabonly<CR>
 nnoremap <expr> <leader>sv (expand('%:p') ==? expand($MYVIMRC) ? ":w \|" : ":")."source $MYVIMRC<CR>"
 
 " Smooth scrall
-map <C-U> <C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y>
-map <C-D> <C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E>
+map <C-U> <C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y>
+map <C-D> <C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E>
+
+" Mark before searching
+nnoremap / ms/
+
+" Always jump to exact location
+nnoremap ' `
+
+" map z<cr> to zt
+nnoremap z<cr> zt
 
 " Show all kep mappings
 function! ShowKeyMappings()
