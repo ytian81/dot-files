@@ -11,7 +11,7 @@ export FZF_DEFAULT_OPTS='
   --layout=reverse
   --height 40%
   --border
-  --bind ctrl-u:preview-up,ctrl-d:preview-down
+  --bind ctrl-u:preview-half-page-up,ctrl-d:preview-half-page-down
 '
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --ignore-vcs'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
