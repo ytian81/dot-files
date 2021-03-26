@@ -78,6 +78,7 @@ plugins=(
   autojump
   colored-man-pages
   git
+  fzf-tab
   thefuck
   tmux
   you-should-use
