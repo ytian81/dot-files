@@ -111,7 +111,8 @@ nnoremap <Leader>a :Buffers<CR>
 nnoremap <Leader>m :Marks<CR>
 nnoremap <Leader>hh :History<CR>
 let g:fzf_buffers_jump=1
-let g:fzf_layout = { 'window': { 'width': 0.6, 'height': 0.6, 'highlight': 'Comment', 'rounded': v:false } }
+let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.6, 'highlight': 'Comment', 'rounded': v:false } }
+let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h %an %s%d %C(green)%C(bold)%cr"'
 " let g:fzf_colors =
 "     \ { 'fg':      ['fg', 'Normal'],
 "       \ 'bg':      ['bg', 'Normal'],
