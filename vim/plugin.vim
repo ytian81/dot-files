@@ -346,7 +346,7 @@ function! AirlineInit()
     " let g:airline_section_b = '%f'
     let g:airline_section_b = "%{fnamemodify(expand('%'),':.')}"
     let g:airline_section_c = airline#section#create(['hunks'])
-    let g:airline_section_x = airline#section#create(['tagbar'])
+    let g:airline_section_x = "%{tagbar#currenttag('%s', '', '', 'scoped-stl')}"
 endfunction
 autocmd User AirlineAfterInit call AirlineInit()
 " let g:airline#extensions#default#layout = [
