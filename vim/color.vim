@@ -4,15 +4,11 @@ nnoremap <leader>kc :so $VIMRUNTIME/syntax/hitest.vim<cr>
 
 autocmd BufRead,WinEnter    * set cursorline
 autocmd WinLeave            * set nocursorline
-highlight CursorLine cterm=None ctermbg=238 ctermfg=None guibg=black guifg=green
 
 set textwidth=100
 autocmd FileType * set formatoptions+=t
 set colorcolumn=+1
-highlight ColorColumn ctermbg=238 guibg=#2c2d27
 
-highlight Pmenu ctermfg=blue ctermbg=238 guifg=#005f87 guibg=#EEE8D5
-highlight PmenuSel ctermfg=green ctermbg=238 guifg=#AFD700 guibg=#106900
 set pumheight=10
 
 nmap <leader>sp :call <SID>SynStack()<CR>
