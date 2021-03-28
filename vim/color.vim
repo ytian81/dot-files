@@ -11,17 +11,33 @@ set colorcolumn=+1
 
 set pumheight=10
 
-nmap <leader>sp :call <SID>SynStack()<CR>
-function! <SID>SynStack()
-  if !exists("*synstack")
-    return
-  endif
-  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
-endfunc
+nmap <leader>sp :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+
 augroup highlight_yank
     autocmd!
-    au TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=700}
+    autocmd TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=700}
 augroup END
+
+" Show all highlight
+function! ShowHighLight()
+    redir @a
+    silent verbose highlight
+    redir END
+    " edit temporary file
+    vsp Auto\ Command
+    " set filetype for syntax highlight
+    setlocal filetype=vim
+    " insert mappings
+    % delete
+    put a
+    " delete empty lines
+    global /^ *$/ delete
+    " we don't want to save this temporary file
+    set nomodified
+endfunction
+nnoremap <silent> <leader>kh :silent call ShowHighLight()<cr>
 
 " set t_8f=[38;2;%lu;%lu;%lum
 " set t_8b=[48;2;%lu;%lu;%lum
@@ -44,6 +60,8 @@ augroup ColorSchemeOverWrite
     autocmd!
     autocmd ColorScheme * call MyHighlights()
 augroup END
+
+let g:airline_theme='gruvbox'
 let g:gruvbox_invert_selection=0
 let g:gruvbox_italic=1
 let g:gruvbox_sign_column='bg0'
