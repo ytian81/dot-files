@@ -43,11 +43,12 @@ set smartcase
 
 set hlsearch
 
-set number
+let g:LineNumberBlocklist = ['startify', 'fzf', 'fugitiveblame']
 augroup RelativeLineNumber
     autocmd!
-    autocmd BufRead,WinEnter,FocusGained * set relativenumber
-    autocmd WinLeave,FocusLost   * set norelativenumber
+    autocmd BufRead,WinEnter,FocusGained * if index(g:LineNumberBlocklist, &ft) < 0 | set number
+    autocmd BufRead,WinEnter,FocusGained * if index(g:LineNumberBlocklist, &ft) < 0 | set relativenumber
+    autocmd WinLeave,FocusLost   *         if index(g:LineNumberBlocklist, &ft) < 0 | set norelativenumber
 augroup end
 
 if function#linux()
