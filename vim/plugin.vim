@@ -106,10 +106,13 @@ command! -bar -bang -nargs=? -complete=buffer Buffers
 
 nnoremap <Leader>f :Files<CR>
 nnoremap <Leader>g :Rg<Space>
+nnoremap <Leader>* :execute 'Rg '.expand('<cword>')<CR>
 nnoremap <Leader>j :BTags<CR>
 nnoremap <Leader>a :Buffers<CR>
 nnoremap <Leader>m :Marks<CR>
 nnoremap <Leader>hh :History<CR>
+nnoremap <Leader>hl :Commits<CR>
+nnoremap <Leader>hb :BCommits<CR>
 let g:fzf_buffers_jump=1
 let g:fzf_layout = { 'window': { 'width': &columns > 240 ? 0.6 : 0.8, 'height': 0.6, 'highlight': 'Comment', 'rounded': v:false } }
 let g:fzf_commits_log_options = '--color=always --format="%C(auto)%h %C(green)%C(italic)%an%C(auto) %s%d %C(magenta)%cr"'
