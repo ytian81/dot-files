@@ -98,7 +98,7 @@ command! -bang Marks
 
 command! -bang -nargs=* BTags
   \ call fzf#vim#buffer_tags(<q-args>,
-  \ fzf#vim#with_preview({'placeholder': '{2}:{3}', 'options': ['-d', '\t', '--no-border']}), <bang>0)
+  \ fzf#vim#with_preview({'placeholder': '{2}:{3}', 'options': ['--with-nth', '1,4']}), <bang>0)
 
 command! -bar -bang -nargs=? -complete=buffer Buffers
   \ call fzf#vim#buffers(<q-args>,
@@ -111,7 +111,7 @@ nnoremap <Leader>a :Buffers<CR>
 nnoremap <Leader>m :Marks<CR>
 nnoremap <Leader>hh :History<CR>
 let g:fzf_buffers_jump=1
-let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.6, 'highlight': 'Comment', 'rounded': v:false } }
+let g:fzf_layout = { 'window': { 'width': 0.6, 'height': 0.6, 'highlight': 'Comment', 'rounded': v:false } }
 let g:fzf_commits_log_options = '--color=always --format="%C(auto)%h %C(green)%C(italic)%an%C(auto) %s%d %C(magenta)%cr"'
 " let g:fzf_colors =
 "     \ { 'fg':      ['fg', 'Normal'],
