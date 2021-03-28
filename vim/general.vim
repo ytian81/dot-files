@@ -57,7 +57,12 @@ elseif function#mac()
     set clipboard+=unnamed
 endif
 
+set virtualedit+=block
+
 set report=0
+
+set undodir=~/.vim/undodir
+set undofile
 
 set confirm
 set autowrite
