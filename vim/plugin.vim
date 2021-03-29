@@ -286,6 +286,7 @@ omap if <Plug>(coc-funcobj-i)
 omap af <Plug>(coc-funcobj-a)
 " Use <C-j> for both expand and jump (make expand higher priority.
 imap <C-j> <Plug>(coc-snippets-expand-jump)
+nnoremap <leader>he :CocCommand git.showCommit<CR>
 
 " PeterRincker/vim-searchlight
 highlight link Searchlight Incsearch
@@ -327,15 +328,6 @@ highlight link ConflictMarkerOurs TabLineFill
 highlight link ConflictMarkerSeparator WildMenu
 highlight link ConflictMarkerTheirs TabLineSel
 highlight link ConflictMarkerEnd WildMenu
-
-" rhysd/git-messenger.vim
-let g:git_messenger_no_default_mappings=v:true
-let g:git_messenger_always_into_popup=v:true
-nmap <leader>hm <Plug>(git-messenger)
-highlight link gitmessengerPopupNormal CursorLine
-highlight link gitmessengerHeader Statement
-highlight link gitmessengerHash Special
-highlight link gitmessengerHistory Title
 
 " scrooloose/nerdcommenter
 let g:NERDSpaceDelims=1
