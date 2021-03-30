@@ -310,9 +310,12 @@ highlight link TagbarSignature Comment
 " noremap <silent> <leader>aa :GscopeFind a <C-R><C-W><cr>
 
 " tpope/vim-fugitive
-nnoremap <Leader>b :Gblame<CR>
+nnoremap <Leader>b :Git blame<CR>
+nnoremap <Leader>hg :Git<CR>
+nnoremap <Leader>hc :Git commit<CR>
 nnoremap <Leader>o :Gbrowse<CR>
-nnoremap <Leader>d :Gdiff<CR>
+nnoremap <Leader>d :Gdiffsplit<CR>
+autocmd FileType git setlocal foldmethod=syntax
 
 " tpope/vim-sensible
 nnoremap <silent> <Leader>l <Esc>:nohlsearch<CR><Esc>
