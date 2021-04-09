@@ -91,9 +91,9 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 # Include local plugins
-export zshrc_dir=$(dirname $(readlink "${(%):-%N}"))
+export DOT_FILES_DIR=$(dirname $(readlink "${(%):-%N}"))
 _include_local_plugin() {
-    zshrc_plugin="$zshrc_dir/zsh/$1"
+    zshrc_plugin="$DOT_FILES_DIR/zsh/$1"
     if [[ -e $zshrc_plugin ]]
     then
         source $zshrc_plugin

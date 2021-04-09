@@ -55,4 +55,26 @@ _set_color faded_purple    '#8f3f71'  96      # 143-63-113
 _set_color faded_aqua      '#427b58'  65      # 66-123-88
 _set_color faded_orange    '#af3a03'  130     # 175-58-3
 
-#}}}
+# }}}
+# Tmux theme {{{
+
+# Xterm
+tmux set-option -g default-terminal "xterm-256color"
+
+# Clock
+tmux set-option -gF clock-mode-colour "#{@gruvbox_bright_blue}"
+
+# Message infos
+tmux set-option -gF message-style "fg=#{@gruvbox_light1},bg=#{@gruvbox_dark2}"
+
+# Pane border
+tmux set-option -gF pane-active-border-style "fg=#{@gruvbox_light2}"
+tmux set-option -gF pane-border-style "fg=#{@gruvbox_dark1}"
+
+# Pane number display
+tmux set-option -gF display-panes-active-colour "#{@gruvbox_light2}"
+tmux set-option -gF display-panes-colour "#{@gruvbox_dark1}"
+
+# }}}
+
+# vim:filetype=tmux:foldmethod=marker
