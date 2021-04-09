@@ -24,3 +24,9 @@ fi
 
 # bat theme
 export BAT_THEME='gruvbox'
+
+# Set COLORTERM if it is not set and the terminal support true color
+if [[ (-z $COLORTERM) && ($(tput colors) == 256) ]]
+then
+    export COLORTERM=truecolor
+fi
