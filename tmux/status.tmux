@@ -110,15 +110,13 @@ tmux set-option -g status-left                  "$(_make_session_section light3 
 # }}}
 # Status right {{{
 
-# dynamically change status right length
 tmux set-option -g status-right-length "300"
 tmux set-option -g status-right "\
-#{pomodoro_status}\
-$(_make_right_section light4 dark1 tail  ' #{sysstat_cpu}')\
-$(_make_right_section light4 dark1 dark1  ' #{sysstat_mem}')\
-$(_make_right_section light4 dark1 dark1  ' #{sysstat_swap}')\
-$(_make_right_section light4 dark1 dark1  ' #{sysstat_loadavg} ')\
-$(_make_right_section light4 dark2 dark1  '#{simple_git_status}')\
+$(_make_right_section light4 dark1 tail  '#{?#{>:#{client_width},140}, #{sysstat_cpu},}')\
+$(_make_right_section light4 dark1 dark1 '#{?#{>:#{client_width},140}, #{sysstat_mem},}')\
+$(_make_right_section light4 dark1 dark1 '#{?#{>:#{client_width},140}, #{sysstat_swap},}')\
+$(_make_right_section light4 dark1 dark1 '#{?#{>:#{client_width},140}, #{sysstat_loadavg} ,}')\
+$(_make_right_section light4 dark2 dark1 '#{simple_git_status}')\
 $(_make_right_section light2 dark3 dark2 ' #{battery_icon_status} - #{battery_icon_charge} #{battery_percentage} #{battery_remain} ')\
 $(_make_right_section light2 dark4 dark3 ' %b %d  %H:%M') "
 
