@@ -3,8 +3,8 @@
 # Title {{{
 
 # Terminal title
-tmux setoption -g set-titles on
-tmux setoption -g set-titles-string '❐ #S ● #I #W'
+tmux set-option -g set-titles on
+tmux set-option -g set-titles-string '❐ #S ● #I #W'
 
 # }}}
 # Window {{{
