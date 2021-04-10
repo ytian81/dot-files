@@ -77,13 +77,14 @@ _make_right_section () {
         tbg="#{@gruvbox_$tail_option}"
     fi
 
+    # Use #, to escape , because this function maybe inside a conditional
     local status_section
 
     # Content
-    status_section="#[fg=$ffg,bg=$fbg]$1${status_section}"
+    status_section="#[fg=$ffg#,bg=$fbg]$1${status_section}"
 
     # Always have tail 
-    status_section="#[fg=$fbg,bg=$tbg]${status_section}"
+    status_section="#[fg=$fbg#,bg=$tbg]${status_section}"
 
     echo "$status_section"
 }
@@ -110,16 +111,23 @@ tmux set-option -g status-left                  "$(_make_session_section light3 
 # }}}
 # Status right {{{
 
+# Automatically collapse the first tier status when the client window width is less than the value.
+# Nesting FORMAT into conditional would result no output.
+# Nesting conditional into FORMAT would keep the status tail.
+tmux set-option -g @collapse_tier1 140
+tmux set-option -g @collapse_tier2 100
+
 tmux set-option -g status-right-length "300"
 tmux set-option -g status-right "\
-$(_make_right_section light4 dark1 tail  '#{?#{>:#{client_width},140}, #{sysstat_cpu},}')\
-$(_make_right_section light4 dark1 dark1 '#{?#{>:#{client_width},140}, #{sysstat_mem},}')\
-$(_make_right_section light4 dark1 dark1 '#{?#{>:#{client_width},140}, #{sysstat_swap},}')\
-$(_make_right_section light4 dark1 dark1 '#{?#{>:#{client_width},140}, #{sysstat_loadavg} ,}')\
-$(_make_right_section light4 dark2 dark1 '#{simple_git_status}')\
+$(_make_right_section light4 dark1 tail  '#{?#{>:#{client_width},#{@collapse_tier1}}, #{sysstat_cpu},}')\
+#{?#{>:#{client_width},#{@collapse_tier1}},$(_make_right_section light4 dark1 dark1 ' #{sysstat_mem}'),}\
+#{?#{>:#{client_width},#{@collapse_tier1}},$(_make_right_section light4 dark1 dark1 ' #{sysstat_swap}'),}\
+#{?#{>:#{client_width},#{@collapse_tier1}},$(_make_right_section light4 dark1 dark1 ' #{sysstat_loadavg} '),}\
+$(_make_right_section light4 dark2 dark1 '#{?#{>:#{client_width},#{@collapse_tier2}},#{simple_git_status},}')\
 $(_make_right_section light2 dark3 dark2 ' #{battery_icon_status} - #{battery_icon_charge} #{battery_percentage} #{battery_remain} ')\
 $(_make_right_section light2 dark4 dark3 ' %b %d  %H:%M') "
 
 # }}}
+
 
 # vim:filetype=tmux:foldmethod=marker
