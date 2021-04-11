@@ -117,7 +117,7 @@ tmux set-option -g status-right-length "300"
 # Nesting FORMAT into conditional would result no output.
 # Nesting conditional into FORMAT would keep the status tail.
 tmux set-option -g @collapse_tier1 140
-tmux set-option -g @collapse_tier2 120
+tmux set-option -g @collapse_tier2 100
 
 # The format conditional is string comparison, we have to use regex to check the number of digits
 # before comparing. More details at https://github.com/tmux/tmux/issues/2318.
