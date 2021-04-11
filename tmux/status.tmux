@@ -35,7 +35,7 @@ _make_window_section () {
 }
 
 _make_session_section () {
-    if [[ "$#" != 5 ]]
+    if [[ "$#" != 7 ]]
     then
         return
     fi
@@ -46,14 +46,16 @@ _make_session_section () {
     local fbg="#{@gruvbox_$1}"; shift
     local affg="#{@gruvbox_$1}"; shift
     local afbg="#{@gruvbox_$1}"; shift
+    local vffg="#{@gruvbox_$1}"; shift
+    local vfbg="#{@gruvbox_$1}"; shift
 
     local status_section
 
     # Content
-    status_section="${status_section}#{?client_prefix,#[fg=$affg]#[bg=$afbg]$1,#[fg=$ffg]#[bg=$fbg]$1}"
+    status_section="${status_section}#{?client_prefix,#[fg=$affg]#[bg=$afbg]$1,#{?pane_in_mode,#[fg=$vffg]#[bg=$vfbg]$1,#[fg=$ffg]#[bg=$fbg]$1}}"
 
     # Always have tail 
-    status_section="${status_section}#{?client_prefix,#[fg=$afbg]#[bg=$bg],#[fg=$fbg]#[bg=$bg]}"
+    status_section="${status_section}#{?client_prefix,#[fg=$afbg]#[bg=$bg],#{?pane_in_mode,#[fg=$vfbg]#[bg=$bg],#[fg=$fbg]#[bg=$bg]}}"
 
     echo "$status_section"
 }
@@ -106,7 +108,7 @@ tmux set-option -g window-status-current-format "$(_make_window_section dark0_ha
 # Status left {{{
 
 tmux set-option -g status-left-length "50"
-tmux set-option -g status-left                  "$(_make_session_section light3 dark3 dark0_hard neutral_aqua ' #S ')"
+tmux set-option -g status-left                  "$(_make_session_section light3 dark3 dark0_hard neutral_aqua dark0_hard bright_orange ' #S ')"
 
 # }}}
 # Status right {{{
