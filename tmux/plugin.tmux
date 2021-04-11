@@ -33,8 +33,10 @@ tmux set-option -g @sysstat_swap_color_stress "#{@gruvbox_neutral_red}"
 # }}}
 # ytian/tmux-pomodoro {{{
 
-tmux set-option -g @pomodoro_minutes 1
 tmux set-option -g @pomodoro_hook "tmux clock-mode"
+tmux set-option -g @pomodoro_minutes 25
+tmux bind-key e set-option -g @pomodoro_minutes 5
+tmux bind-key u set-option -g @pomodoro_minutes 25
 
 # }}}
 
