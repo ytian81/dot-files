@@ -122,6 +122,7 @@ tmux set-option -g @collapse_tier2 120
 # The format conditional is string comparison, we have to use regex to check the number of digits
 # before comparing. More details at https://github.com/tmux/tmux/issues/2318.
 tmux set-option -g status-right "\
+#{pomodoro_status} \
 $(_make_right_section light4 dark1 tail  '#{?#{&&:#{m/ri:^[0-9][0-9][0-9]$,#{window_width}},#{>:#{window_width},#{@collapse_tier1}}}, #{sysstat_cpu},}')\
 #{?#{&&:#{m/ri:^[0-9][0-9][0-9]$,#{window_width}},#{>:#{window_width},#{@collapse_tier1}}},$(_make_right_section light4 dark1 dark1 ' #{sysstat_mem}'),}\
 #{?#{&&:#{m/ri:^[0-9][0-9][0-9]$,#{window_width}},#{>:#{window_width},#{@collapse_tier1}}},$(_make_right_section light4 dark1 dark1 ' #{sysstat_swap}'),}\

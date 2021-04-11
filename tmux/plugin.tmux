@@ -31,5 +31,11 @@ tmux set-option -g @sysstat_swap_color_medium "#{@gruvbox_neutral_yellow}"
 tmux set-option -g @sysstat_swap_color_stress "#{@gruvbox_neutral_red}"
 
 # }}}
+# ytian/tmux-pomodoro {{{
+
+tmux set-option -g @pomodoro_minutes 1
+tmux set-option -g @pomodoro_hook "tmux clock-mode"
+
+# }}}
 
 # vim:filetype=tmux:foldmethod=marker
