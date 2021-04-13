@@ -78,13 +78,14 @@ plugins=(
   autojump
   colored-man-pages
   git
+  forgit
   fzf-tab
   thefuck
   tmux
   you-should-use
   zsh-completions
   zsh-autosuggestions
-  zsh-syntax-highlighting
+  fast-syntax-highlighting
   vi-mode
 )
 
