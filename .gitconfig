@@ -1,7 +1,10 @@
+[user]
+	name = Yang Tian
+
 [core]
-  pager = "{                                                           \
+    pager = "{                                                       \
     COLUMNS=$(tput cols);                                            \
-    if [ $COLUMNS -ge 200 ] && [ -z $FZF_PREVIEW_COLUMNS ]; then      \
+    if [ $COLUMNS -ge 200 ] && [ -z $FZF_PREVIEW_COLUMNS ]; then     \
         delta --side-by-side -w $COLUMNS;                            \
     elif [ $COLUMNS -ge 200 ] && [ ! -z $FZF_PREVIEW_COLUMNS ]; then \
         delta --side-by-side -w $FZF_PREVIEW_COLUMNS;                \
@@ -12,3 +15,13 @@
 
 [branch]
     sort = -committerdate
+
+[delta]
+    features = side-by-side line-numbers decorations
+    whitespace-error-style = 22 reverse
+    syntax-theme = gruvbox-dark
+
+[delta "decorations"]
+    commit-decoration-style = bold yellow box ul
+    file-style = bold yellow ul
+    file-decoration-style = none
