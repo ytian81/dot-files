@@ -94,19 +94,20 @@ source $ZSH/oh-my-zsh.sh
 
 # Include local plugins
 export DOT_FILES_DIR=$(dirname $(readlink "${(%):-%N}"))
-_include_local_plugin() {
-    zshrc_plugin="$DOT_FILES_DIR/zsh/$1"
-    if [[ -e $zshrc_plugin ]]
+_load_file() {
+    local zshrc_plugin="$DOT_FILES_DIR/zsh/$1"
+    if [[ -f $zshrc_plugin ]]
     then
         source $zshrc_plugin
     fi
 }
 
-_include_local_plugin local.zsh
-_include_local_plugin general.zsh
-_include_local_plugin alias.zsh
-_include_local_plugin color.zsh
-_include_local_plugin plugin.zsh
+_load_file local.zsh
+_load_file general.zsh
+_load_file alias.zsh
+_load_file color.zsh
+_load_file plugin.zsh
+_load_file p10k.zsh
 
 # User configuration
 
