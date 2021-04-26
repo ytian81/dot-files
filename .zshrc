@@ -140,6 +140,3 @@ _load_file p10k.zsh
 
 # uncomment to finish profiling
 # zprof
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
