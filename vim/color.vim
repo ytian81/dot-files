@@ -41,13 +41,13 @@ nnoremap <silent> <leader>kh :silent call ShowHighLight()<cr>
 
 " set t_8f=[38;2;%lu;%lu;%lum
 " set t_8b=[48;2;%lu;%lu;%lum
-" set termguicolors
 if !has('nvim')
     set term=screen-256color
+else
+    set termguicolors
 endif
 
 set background=dark
-set termguicolors
 
 " https://gist.github.com/romainl/379904f91fa40533175dfaec4c833f2f
 function! MyHighlights() abort
