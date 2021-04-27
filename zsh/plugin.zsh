@@ -33,3 +33,4 @@ bindkey '^o' edit-command-line
 
 # Use ctrl-v to open commit in vim
 export FORGIT_LOG_FZF_OPTS="--bind=\"ctrl-v:execute(echo {} |grep -Eo '[a-f0-9]+' | head -1 | xargs printf -- 'Gedit %s' | xargs -0 nvim -c )\" "
+export FORGIT_DIFF_FZF_OPTS="--bind=\"ctrl-v:execute(echo {} | awk '{print \$2}' | xargs nvim )\" "
