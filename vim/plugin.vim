@@ -326,9 +326,12 @@ highlight link TagbarSignature Comment
 nnoremap <Leader>b :Git blame<CR>
 nnoremap <Leader>hg :Git<CR>
 nnoremap <Leader>hc :Git commit<CR>
-nnoremap <Leader>o :Gbrowse<CR>
+nnoremap <Leader>o :GBrowse<CR>
 nnoremap <Leader>d :Gdiffsplit<CR>
-autocmd FileType git setlocal foldmethod=syntax
+augroup GitHistoricalBufferFold
+    autocmd!
+    autocmd FileType git setlocal foldmethod=syntax
+augroup end
 
 " tpope/vim-sensible
 nnoremap <silent> <Leader>l <Esc>:nohlsearch<CR><Esc>
