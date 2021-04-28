@@ -182,7 +182,7 @@ let g:rnvimr_enable_ex = 1
 let g:rnvimr_enable_picker = 1
 let g:rnvimr_draw_border = 1
 let g:rnvimr_hide_gitignore = 1
-let g:rnvimr_border_attr = {'fg': 243, 'bg': -1}
+let g:rnvimr_border_attr = {'fg': 246, 'bg': -1}
 let g:rnvimr_enable_bw = 1
 let g:rnvimr_ranger_cmd = 'ranger --cmd="set column_ratios 1,1"
             \ --cmd="set draw_borders both"'
