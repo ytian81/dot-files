@@ -9,7 +9,7 @@ _make_window_section () {
     fi
 
     # Use status line background color
-    local bg="$(tmux show-option -gv status-style | sed 's/fg=\(.*\),bg=\(.*\)/\2/')"
+    local bg="$(tmux show-option -gv status-style | sed 's/\(.*\)bg=\(.*\)/\2/')"
     local ffg="#{@gruvbox_$1}"; shift
     local fbg="#{@gruvbox_$1}"; shift
 
@@ -41,7 +41,7 @@ _make_session_section () {
     fi
 
     # Use status line background color
-    local bg="$(tmux show-option -gv status-style | sed 's/fg=\(.*\),bg=\(.*\)/\2/')"
+    local bg="$(tmux show-option -gv status-style | sed 's/\(.*\)bg=\(.*\)/\2/')"
     local ffg="#{@gruvbox_$1}"; shift
     local fbg="#{@gruvbox_$1}"; shift
     local affg="#{@gruvbox_$1}"; shift
@@ -52,10 +52,10 @@ _make_session_section () {
     local status_section
 
     # Content
-    status_section="${status_section}#{?client_prefix,#[fg=$affg]#[bg=$afbg]$1,#{?pane_in_mode,#[fg=$vffg]#[bg=$vfbg]$1,#[fg=$ffg]#[bg=$fbg]$1}}"
+    status_section="${status_section}#{?client_prefix,#[fg=$affg#,bg=$afbg]$1,#{?pane_in_mode,#[fg=$vffg#,bg=$vfbg]$1,#[fg=$ffg#,bg=$fbg]$1}}"
 
     # Always have tail 
-    status_section="${status_section}#{?client_prefix,#[fg=$afbg]#[bg=$bg],#{?pane_in_mode,#[fg=$vfbg]#[bg=$bg],#[fg=$fbg]#[bg=$bg]}}"
+    status_section="${status_section}#{?client_prefix,#[fg=$afbg#,bg=$bg],#{?pane_in_mode,#[fg=$vfbg#,bg=$bg],#[fg=$fbg#,bg=$bg]}}"
 
     echo "$status_section"
 }
@@ -66,7 +66,7 @@ _make_right_section () {
         return
     fi
 
-    local bg="$(tmux show-option -gv status-style | sed 's/fg=\(.*\),bg=\(.*\)/\2/')"
+    local bg="$(tmux show-option -gv status-style | sed 's/\(.*\)bg=\(.*\)/\2/')"
     local ffg="#{@gruvbox_$1}"; shift
     local fbg="#{@gruvbox_$1}"; shift
 
