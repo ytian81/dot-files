@@ -227,13 +227,7 @@ let g:rnvimr_layout = { 'relative': 'editor',
 " let g:gutentags_define_advanced_commands = 1
 
 " sheerun/vim-polyglot
-" octol/cpp-enhanced-highlight
-let g:cpp_class_scope_highlight = 1
-let g:cpp_member_variable_highlight = 1
-let g:cpp_class_decl_highlight = 1
-let g:cpp_posix_standard = 1
-let g:cpp_experimental_simple_template_highlight = 1
-let g:cpp_concepts_highlight = 1
+let g:cpp_member_highlight = 1
 
 " terryma/vim-multiple-cursors
 highlight link multiple_cursors_visual Visual
