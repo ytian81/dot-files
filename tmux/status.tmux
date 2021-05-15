@@ -130,7 +130,7 @@ $(_make_right_section light4 dark1 tail  '#{?#{&&:#{m/ri:^[0-9][0-9][0-9]$,#{win
 #{?#{&&:#{m/ri:^[0-9][0-9][0-9]$,#{window_width}},#{>:#{window_width},#{@collapse_tier1}}},$(_make_right_section light4 dark1 dark1 ' #{sysstat_swap}'),}\
 #{?#{&&:#{m/ri:^[0-9][0-9][0-9]$,#{window_width}},#{>:#{window_width},#{@collapse_tier1}}},$(_make_right_section light4 dark1 dark1 ' #{sysstat_loadavg} '),}\
 $(_make_right_section light4 dark2 dark1 '#{?#{&&:#{m/ri:^[0-9][0-9][0-9]$,#{window_width}},#{>:#{window_width},#{@collapse_tier2}}},#{gitstatusd},}')\
-$(_make_right_section light2 dark3 dark2 ' #{battery_icon_status} - #{battery_icon_charge} #{battery_percentage} #{battery_remain}')\
+$(_make_right_section light2 dark3 dark2 ' #{battery_icon_status} - #{battery_icon_charge} #{battery_percentage} #{battery_remain} ')\
 $(_make_right_section light2 dark4 dark3 ' %b %d  %H:%M') "
 
 # }}}
