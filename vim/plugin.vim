@@ -236,6 +236,10 @@ augroup MultipleCursorsSelectionFix
     autocmd User MultipleCursorsPost if exists('g:multi_cursor_save_selection') | let &selection = g:multi_cursor_save_selection | unlet g:multi_cursor_save_selection | endif
 augroup END
 
+" mhinz/vim-startify
+let g:startify_change_to_dir = 0
+let g:startify_change_to_vcs_root = 1
+
 " neoclide/coc.nvim
 set hidden
 set shortmess+=c
