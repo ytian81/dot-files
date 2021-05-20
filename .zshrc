@@ -85,6 +85,7 @@ plugins=(
   you-should-use
   zsh-completions
   vi-mode
+  fzf
   fzf-tab
   zsh-autosuggestions
   fast-syntax-highlighting

@@ -2,7 +2,6 @@
 # echo "Loading general setting"
 
 # fzf
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -f ~/.fzf-extras/fzf-extras.sh ] && source ~/.fzf-extras/fzf-extras.sh
 [ -f ~/.fzf-extras/fzf-extras.zsh ] && source ~/.fzf-extras/fzf-extras.zsh
 export FZF_DEFAULT_OPTS='
