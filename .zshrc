@@ -90,8 +90,6 @@ plugins=(
   vi-mode
 )
 
-source $ZSH/oh-my-zsh.sh
-
 # Include local plugins
 export DOT_FILES_DIR=$(dirname $(readlink "${(%):-%N}"))
 _load_file() {
@@ -108,6 +106,8 @@ _load_file alias.zsh
 _load_file color.zsh
 _load_file plugin.zsh
 _load_file p10k.zsh
+
+source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
