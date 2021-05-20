@@ -36,8 +36,6 @@ else
     export EDITOR="vim"
 fi
 
-# fzf-tab
-enable-fzf-tab
 # disable sort when completing `git checkout`
 zstyle ':completion:*:git-checkout:*' sort false
 # set descriptions format to enable group support

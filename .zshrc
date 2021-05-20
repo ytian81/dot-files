@@ -80,14 +80,14 @@ plugins=(
   colored-man-pages
   git
   forgit
-  fzf-tab
   thefuck
   tmux
   you-should-use
   zsh-completions
+  vi-mode
+  fzf-tab
   zsh-autosuggestions
   fast-syntax-highlighting
-  vi-mode
 )
 
 # Include local plugins
