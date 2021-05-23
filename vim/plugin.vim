@@ -223,6 +223,9 @@ let g:rnvimr_layout = { 'relative': 'editor',
 " sheerun/vim-polyglot
 let g:cpp_member_highlight = 1
 
+" skywind3000/asyncrun.vim
+noremap <leader>rm :AsyncRun make<cr>
+
 " terryma/vim-multiple-cursors
 highlight link multiple_cursors_visual Visual
 augroup MultipleCursorsSelectionFix
