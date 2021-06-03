@@ -4,6 +4,9 @@
 " Plug 'airblade/vim-gitgutter'
 let g:gitgutter_preview_win_floating = 0
 
+" Plug antoinemadec/FixCursorHold.nvim
+let g:cursorhold_updatetime = 200
+
 " Plug 'AndrewRadev/switch.vim' with Plug 'tpope/vim-speeddating'
 " speeddating key maps have to be disabled so that they don't override switch key maps
 let g:speeddating_no_mappings=1
