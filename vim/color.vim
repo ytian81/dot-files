@@ -54,7 +54,7 @@ function! MyHighlights() abort
     highlight DiffAdd     gui=none guifg=none    guibg=#15420e
     highlight DiffDelete  gui=none guifg=#4b0000 guibg=#4b0000
     highlight DiffChange  gui=none guifg=none    guibg=#516c5b
-    highlight DiffText    gui=none guifg=none    guibg=#a7722c
+    highlight DiffText    gui=none guifg=#fabd2f guibg=#516c5b
 endfunction
 augroup ColorSchemeOverWrite
     autocmd!
