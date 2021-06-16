@@ -341,11 +341,6 @@ let g:conflict_marker_highlight_group = ''
 " Include text after begin and end markers
 let g:conflict_marker_begin = '^<<<<<<< .*$'
 let g:conflict_marker_end   = '^>>>>>>> .*$'
-highlight link ConflictMarkerBegin WildMenu
-highlight link ConflictMarkerOurs TabLineFill
-highlight link ConflictMarkerSeparator WildMenu
-highlight link ConflictMarkerTheirs TabLineSel
-highlight link ConflictMarkerEnd WildMenu
 
 " scrooloose/nerdcommenter
 let g:NERDSpaceDelims=1

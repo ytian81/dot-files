@@ -55,6 +55,12 @@ function! MyHighlights() abort
     highlight DiffDelete  gui=none guifg=#4b0000 guibg=#4b0000
     highlight DiffChange  gui=none guifg=none    guibg=#516c5b
     highlight DiffText    gui=none guifg=#fabd2f guibg=#516c5b
+    highlight ConflictMarkerBegin               gui=italic guifg=none    guibg=#2f7366
+    highlight ConflictMarkerOurs                gui=none   guifg=#fb4934 guibg=#2e5049
+    highlight ConflictMarkerTheirs              gui=none   guifg=#b8bb26 guibg=#344f69
+    highlight ConflictMarkerSeparator           gui=italic guifg=none    guibg=none
+    highlight ConflictMarkerEnd                 gui=italic guifg=none    guibg=#2f628e
+    highlight ConflictMarkerCommonAncestorsHunk gui=italic guifg=none    guibg=#754a81
 endfunction
 augroup ColorSchemeOverWrite
     autocmd!
