@@ -350,6 +350,8 @@ let g:NERDCommentEmptyLines=1
 " vim-airline/vim-airline
 " Disable vim9 script
 let g:airline_experimental = 0
+" Disable search count because of native vim support. Check :help shortmess
+let g:airline#extensions#searchcount#enabled = 0
 let g:airline_powerline_fonts=1
 let g:airline#extensions#hunks#non_zero_only = 1
 function! AirlineInit()
