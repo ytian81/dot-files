@@ -183,7 +183,6 @@ let g:rnvimr_border_attr = {'fg': 246, 'bg': -1}
 let g:rnvimr_enable_bw = 1
 let g:rnvimr_ranger_cmd = 'ranger --cmd="set column_ratios 1,1"
             \ --cmd="set draw_borders both"'
-highlight link RnvimrNormal CursorLine
 nnoremap <silent> <leader>e :RnvimrToggle<CR>
 let g:rnvimr_action = {
             \ '<C-t>': 'NvimEdit tabedit',
@@ -198,6 +197,15 @@ let g:rnvimr_layout = { 'relative': 'editor',
             \ 'col': float2nr(round(0.2 * &columns)),
             \ 'row': float2nr(round(0.2 * &lines)),
             \ 'style': 'minimal' }
+
+" skywind3000/asyncrun.vim
+" Opening quickfix window when AsyncRun starts
+augroup asyncrun_quickfix
+    autocmd User AsyncRunStart call asyncrun#quickfix_toggle(8, 1)
+augroup END
+
+" lakshayg/vim-bazel
+let g:bazel_make_command = "AsyncRun -program=make"
 
 " " ludovicchabant/vim-gutentags
 " let $GTAGSLABEL = 'native-pygments'
@@ -241,6 +249,8 @@ let g:startify_change_to_dir = 0
 let g:startify_change_to_vcs_root = 1
 
 " neoclide/coc.nvim
+" disable coc default semantic highlighting
+let g:coc_default_semantic_highlight_groups=0
 set hidden
 set shortmess+=c
 " Use tab for trigger completion with characters ahead and navigate.
