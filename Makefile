@@ -1,6 +1,7 @@
 .PHONY:
 	link
 	link-vimrc
+	link-initvim
 	link-zshrc
 	link-tmuxconf
 	oh-my-zsh
@@ -22,6 +23,8 @@ link:
 	make link-tmuxconf
 link-vimrc:
 	ln -sf `pwd`/.vimrc ~/.vimrc
+link-initvim:
+	ln -sf `pwd`/vim/init.vim ~/.config/nvim/init.vim
 link-zshrc:
 	ln -sf `pwd`/.zshrc ~/.zshrc
 link-tmuxconf:
