@@ -38,18 +38,30 @@ zsh-plugins:
 	@echo "Install oh-my-zsh and plugins"
 	make zsh-completions
 	make zsh-autosuggestions
-	make zsh-syntax-highlighting
-	make dircolors
+	make fast-syntax-highlighting
+	make fzf-tab
+	make forgit
+	make you-should-use
+	make autoupdate
 zsh-completions:
 	git clone https://github.com/zsh-users/zsh-completions ~/.oh-my-zsh/custom/plugins/zsh-completions
 zsh-autosuggestions:
 	git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
-zsh-syntax-highlighting:
-	git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
-fzf-extras:
-	git clone https://github.com/atweiden/fzf-extras.git ~/.fzf-extras
+fast-syntax-highlighting:
+	git clone https://github.com/zdharma/fast-syntax-highlighting ~/.oh-my-zsh/custom/plugins/fast-syntax-highlighting
+fzf-tab:
+	git clone https://github.com/Aloxaf/fzf-tab ~/.oh-my-zsh/custom/plugins/fzf-tab
+forgit:
+	git clone https://github.com/wfxr/forgit ~/.oh-my-zsh/custom/plugins/forgit
+you-should-use:
+	git clone https://github.com/MichaelAquilina/zsh-you-should-use ~/.oh-my-zsh/custom/plugins/you-should-use
+autoupdate:
+	git clone https://github.com/TamCore/autoupdate-oh-my-zsh-plugins ~/.oh-my-zsh/custom/plugins/autoupdate
+
 dircolors:
 	curl -fsSL https://raw.githubusercontent.com/seebi/dircolors-solarized/master/dircolors.ansi-dark -o ~/.dircolors
+fzf-extras:
+	git clone https://github.com/atweiden/fzf-extras.git ~/.fzf-extras
 
 powerline-status:
 	pip install powerline-status 2>/dev/null
