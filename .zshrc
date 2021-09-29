@@ -101,12 +101,12 @@ _load_file() {
     fi
 }
 
-_load_file local.zsh
 _load_file general.zsh
 _load_file alias.zsh
 _load_file color.zsh
 _load_file plugin.zsh
 _load_file p10k.zsh
+_load_file local.zsh
 
 source $ZSH/oh-my-zsh.sh
 
