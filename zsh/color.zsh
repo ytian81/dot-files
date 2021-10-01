@@ -23,7 +23,7 @@ fi
 # PS1=$'${(r:$COLUMNS::\u2504:)}'$PS1
 
 # bat theme
-export BAT_THEME='gruvbox'
+export BAT_THEME='gruvbox-dark'
 
 # Set COLORTERM if it is not set and the terminal support true color
 if [[ (-z $COLORTERM) && ($(tput colors) == 256) ]]
