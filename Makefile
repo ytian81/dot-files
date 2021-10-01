@@ -15,6 +15,10 @@
 	powerline-status
 	powerline-config
 	youcompleteme
+	ranger
+	ranger-rc-conf
+	ranger-plugins-devicon2
+	ranger-colorschemes-gruvbox
 	clean
 
 link:
@@ -77,6 +81,18 @@ powerline-config:
 
 youcompleteme:
 	cd ~/.vim/plugged/YouCompleteMe; ./install.py --clang-completer
+
+ranger:
+	make ranger-rc-conf
+	make ranger-plugins-devicon2
+	make ranger-colorschemes-gruvbox
+ranger-rc-conf:
+	ln -sf `pwd`/ranger/rc.conf ~/.config/ranger/rc.conf
+ranger-plugins-devicon2:
+	git clone https://github.com/cdump/ranger-devicons2 ~/.config/ranger/plugins/devicons2
+ranger-colorschemes-gruvbox:
+	ln -sf `pwd`/ranger/colorschemes/gruvbox.py ~/.config/ranger/colorschemes/gruvbox.py
+
 
 clean:
 	@echo "Cleaning all dot files"
