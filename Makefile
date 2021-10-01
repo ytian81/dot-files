@@ -2,6 +2,7 @@
 	link
 	link-vimrc
 	link-initvim
+	link-coc-settings
 	link-zshrc
 	link-tmuxconf
 	oh-my-zsh
@@ -25,6 +26,8 @@ link-vimrc:
 	ln -sf `pwd`/.vimrc ~/.vimrc
 link-initvim:
 	ln -sf `pwd`/vim/init.vim ~/.config/nvim/init.vim
+link-coc-settings:
+	ln -sf `pwd`/vim/coc-settings.json ~/.config/nvim/coc-settings.json
 link-zshrc:
 	ln -sf `pwd`/.zshrc ~/.zshrc
 link-tmuxconf:
