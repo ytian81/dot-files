@@ -91,6 +91,7 @@ ranger-rc-conf:
 ranger-plugins-devicon2:
 	git clone https://github.com/cdump/ranger-devicons2 ~/.config/ranger/plugins/devicons2
 ranger-colorschemes-gruvbox:
+	mkdir -p ~/.config/ranger/colorschemes
 	ln -sf `pwd`/ranger/colorschemes/gruvbox.py ~/.config/ranger/colorschemes/gruvbox.py
 
 
