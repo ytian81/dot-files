@@ -16,6 +16,7 @@
 	powerline-config
 	youcompleteme
 	bat-syntax
+	ctags
 	ranger
 	ranger-rc-conf
 	ranger-plugins-devicon2
@@ -83,6 +84,8 @@ powerline-config:
 youcompleteme:
 	cd ~/.vim/plugged/YouCompleteMe; ./install.py --clang-completer
 
+ctags:
+	ln -sf `pwd`/.ctags.d ~/.ctags.d
 bat-syntax:
 	mkdir -p ~/.config/bat/syntaxes
 	git clone https://github.com/facelessuser/sublime-languages ~/.config/bat/syntaxes
