@@ -3,10 +3,10 @@
     "git.addGBlameToVirtualText": true,
     "git.conflict.enabled": false,
     "git.splitWindowCommand": "below sp",
-    "hover.floatMaxWidth": 100,
     "snippets.priority": 100,
     // "clangd.trace.server": "verbose",
     // "clangd.trace.file": "/tmp/clangd.log",
     "clangd.arguments": ["--pretty", "--malloc-trim"],
+    "clangd.compilationDatabasePath": "build/bin",
     "clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/12.0.1/clangd_12.0.1/bin/clangd"
 }
