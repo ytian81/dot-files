@@ -48,6 +48,7 @@ Plug 'derekwyatt/vim-fswitch'
 Plug 'dstein64/vim-win'
 " Plug 'easymotion/vim-easymotion'
 Plug 'editorconfig/editorconfig-vim'
+Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'honza/vim-snippets'
 Plug 'jacquesbh/vim-showmarks'
 Plug 'jiangmiao/auto-pairs'
