@@ -371,7 +371,7 @@ nnoremap <Leader>b :Git blame<CR>
 nnoremap <Leader>hg :Git<CR>
 nnoremap <Leader>hc :Git commit<CR>
 nnoremap <Leader>ha :Git add %<CR>
-nnoremap <Leader>o :GBrowse<CR>
+nnoremap <Leader>o :.GBrowse<CR>
 nnoremap <Leader>d :Gdiffsplit<CR>
 augroup GitHistoricalBufferFold
     autocmd!
