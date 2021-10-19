@@ -6,7 +6,12 @@
     "snippets.priority": 100,
     // "clangd.trace.server": "verbose",
     // "clangd.trace.file": "/tmp/clangd.log",
-    "clangd.arguments": ["--pretty", "--malloc-trim"],
-    "clangd.compilationDatabasePath": "build/bin",
+    "clangd.arguments": [
+        "--clang-tidy",
+        "--pretty",
+        "--malloc-trim",
+        "--compile-commands-dir=${workspaceFolder}/build/bin",
+        // "--enable-config",
+    ],
     "clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/12.0.1/clangd_12.0.1/bin/clangd"
 }
