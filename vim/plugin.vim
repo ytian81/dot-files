@@ -227,12 +227,17 @@ let g:rnvimr_action = {
             \ 'gw': 'JumpNvimCwd',
             \ 'yw': 'EmitRangerCwd'
             \ }
-let g:rnvimr_layout = { 'relative': 'editor',
+let g:rnvimr_presets = [{}]
+
+augroup RnvimrLayoutResize
+    autocmd!
+    autocmd VimEnter,VimResized  * let g:rnvimr_layout = { 'relative': 'editor',
             \ 'width': float2nr(round((&columns > 240 ? 0.6 : 0.8) * &columns)),
             \ 'height': float2nr(round(0.6 * &lines)),
             \ 'col': float2nr(round((&columns > 240 ? 0.2 : 0.1 ) * &columns)),
             \ 'row': float2nr(round(0.2 * &lines)),
             \ 'style': 'minimal' }
+augroup END
 
 " skywind3000/asyncrun.vim
 " Opening quickfix window when AsyncRun starts
