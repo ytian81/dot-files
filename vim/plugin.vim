@@ -290,6 +290,7 @@ let g:startify_change_to_dir = 0
 let g:startify_change_to_vcs_root = 1
 
 " neoclide/coc.nvim
+let g:coc_global_extensions = ['coc-clangd', 'coc-git', 'coc-highlight', 'coc-marketplace', 'coc-yaml', 'coc-snippets']
 " disable coc default semantic highlighting
 let g:coc_default_semantic_highlight_groups=0
 set hidden
