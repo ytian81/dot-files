@@ -46,7 +46,6 @@ Plug 'chrisbra/Colorizer', {'on': 'ColorToggle'}
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'derekwyatt/vim-fswitch'
 Plug 'dstein64/vim-win'
-" Plug 'easymotion/vim-easymotion'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'honza/vim-snippets'
@@ -62,7 +61,6 @@ Plug 'kamykn/spelunker.vim'
 Plug 'kevinhwang91/rnvimr'
 Plug 'skywind3000/asyncrun.vim'
 Plug 'lakshayg/vim-bazel'
-" Plug 'ludovicchabant/vim-gutentags', { 'do': function('InstallGTags')}
 Plug 'machakann/vim-swap'
 Plug 'majutsushi/tagbar'
 Plug 'markonm/traces.vim'
@@ -70,7 +68,6 @@ Plug 'mhinz/vim-startify'
 Plug 'gruvbox-community/gruvbox'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'PeterRincker/vim-searchlight'
-" Plug 'skywind3000/gutentags_plus'
 Plug 'rhysd/conflict-marker.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'sheerun/vim-polyglot'
