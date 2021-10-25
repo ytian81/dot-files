@@ -151,6 +151,7 @@ nnoremap <Leader>m :Marks<CR>
 nnoremap <Leader>hh :History<CR>
 nnoremap <Leader>hl :Commits<CR>
 nnoremap <Leader>hb :BCommits<CR>
+let g:fzf_preview_window = ['up:50%', 'ctrl-/']
 let g:fzf_buffers_jump=1
 augroup FzfLayoutResize
     autocmd!
