@@ -360,6 +360,24 @@ let g:tagbar_show_linenumbers=1
 let g:tagbar_width=50
 nnoremap <Leader>p :TagbarToggle<CR>
 highlight link TagbarSignature Comment
+let g:tagbar_type_yaml = {
+    \ 'ctagstype' : 'yaml',
+    \ 'kinds' : [
+        \ 'a:anchors',
+        \ 's:section',
+        \ 'e:entry'
+    \ ],
+  \ 'sro' : '.',
+    \ 'scope2kind': {
+      \ 'section': 's',
+      \ 'entry': 'e'
+    \ },
+    \ 'kind2scope': {
+      \ 's': 'section',
+      \ 'e': 'entry'
+    \ },
+    \ 'sort' : 0
+    \ }
 
 " " skywind3000/gutentags_plus
 " let g:gutentags_plus_nomap = 1
