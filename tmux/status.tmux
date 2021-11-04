@@ -92,9 +92,14 @@ _make_right_section () {
 }
 
 # }}}
+# Status position {{{
+
+tmux set-option -g status-position top
+
+# }}}
 # Status color {{{
 
-tmux set-option -gF status-style        "fg=#{@gruvbox_light1},    bg=#{@gruvbox_dark0_hard}"
+tmux set-option -gF status-style        "fg=#{@gruvbox_light1},    bg=#{@gruvbox_dark0_soft}"
 
 # }}}
 # Status window {{{
