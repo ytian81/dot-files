@@ -419,70 +419,31 @@ let g:NERDDefaultAlign='left'
 let g:NERDCommentEmptyLines=1
 
 " vim-airline/vim-airline
-" Disable vim9 script
-let g:airline_experimental = 0
+let g:airline_inactive_collapse=0
+let g:airline_powerline_fonts=1
+let g:airline_skip_empty_sections = 1
+let g:airline_extensions = ['coc', 'fugitiveline', 'hunks', 'quickfix', 'wordcount']
+let g:airline#extensions#coc#enabled = 1
+let g:airline#extensions#tagbar#enabled = 0
+let g:airline#extensions#fzf#enabled = 0
 " Disable search count because of native vim support. Check :help shortmess
 let g:airline#extensions#searchcount#enabled = 0
-let g:airline_powerline_fonts=1
+let g:airline#extensions#hunks#enabled = 1
 let g:airline#extensions#hunks#non_zero_only = 1
 function! AirlineInit()
-    " let g:airline_section_b = '%f'
-    let g:airline_section_b = "%{fnamemodify(expand('%'),':.')}"
-    let g:airline_section_c = airline#section#create(['hunks'])
-    let g:airline_section_x = "%{tagbar#currenttag('%s', '', '', 'scoped-stl')}"
+  let g:airline_section_b = airline#section#create(['hunks', 'file'])
+  let g:airline_section_c = airline#section#create(['%<', 'readonly', 'coc_status'])
 endfunction
 autocmd User AirlineAfterInit call AirlineInit()
-" let g:airline#extensions#default#layout = [
-"   \ [ 'a', 'b', 'c'],
-"   \ [ 'x', 'y', 'z', 'error', 'warning' ]
-"   \ ]
-let g:airline_inactive_collapse=0
-let g:airline#extensions#ale#enabled = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#tab_nr_type = 1
-let g:airline#extensions#tabline#show_tab_nr = 1
-let g:airline#extensions#tabline#buffer_nr_show = 0
-let g:airline#extensions#tabline#fnametruncate = 16
-let g:airline#extensions#tabline#fnamecollapse = 2
-let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
-let g:airline#extensions#tabline#buffer_min_count = 0
-let g:airline_mode_map = {
-      \ '__' : '-',
-      \ 'n'  : 'N',
-      \ 'i'  : 'I',
-      \ 'R'  : 'R',
-      \ 'c'  : 'C',
-      \ 'v'  : 'V',
-      \ 'V'  : 'V',
-      \ '' : 'V',
-      \ 's'  : 'S',
-      \ 'S'  : 'S',
-      \ '' : 'S',
-      \ 't'  : 'T',
-      \ }
-let g:airline#extensions#tabline#buffer_idx_mode = 1
-nmap [1 <Plug>AirlineSelectTab1
-nmap [2 <Plug>AirlineSelectTab2
-nmap [3 <Plug>AirlineSelectTab3
-nmap [4 <Plug>AirlineSelectTab4
-nmap [5 <Plug>AirlineSelectTab5
-nmap [6 <Plug>AirlineSelectTab6
-nmap [7 <Plug>AirlineSelectTab7
-nmap [8 <Plug>AirlineSelectTab8
-nmap [9 <Plug>AirlineSelectTab9
-let g:airline#extensions#tabline#formatter = 'unique_tail'
-let g:airline#extensions#ycm#enabled = 1
-let g:airline#extensions#ycm#error_symbol = 'E:'
-let g:airline#extensions#ycm#warning_symbol = 'W:'
-let g:airline#extensions#branch#format = 1
+let g:airline_stl_path_style = 'short'
 let g:airline#extensions#default#section_truncate_width = {
-  \ 'b': 80,
-  \ 'c': 60,
-  \ 'x': 45,
-  \ 'y': 88,
-  \ 'z': 45,
-  \ 'warning': 99,
-  \ 'error': 99,
+  \ 'b': 0,
+  \ 'c': 0,
+  \ 'x': 79,
+  \ 'y': 120,
+  \ 'z': 79,
+  \ 'warning': 45,
+  \ 'error': 45,
   \ }
 
 " Xuyuanp/scrollbar.nvim
