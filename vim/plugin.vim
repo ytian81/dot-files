@@ -443,7 +443,7 @@ let g:airline#extensions#default#section_truncate_width = {
   \ 'b': 0,
   \ 'c': 0,
   \ 'x': 79,
-  \ 'y': 120,
+  \ 'y': 130,
   \ 'z': 79,
   \ 'warning': 45,
   \ 'error': 45,
