@@ -104,7 +104,7 @@ tmux set-option -gF status-style        "fg=#{@gruvbox_light1},    bg=#{@gruvbox
 # }}}
 # Status window {{{
 
-tmux set-option -g status-justify "left"
+tmux set-option -g status-justify "absolute-centre"
 tmux set-option -g window-status-separator ""
 tmux set-option -g window-status-format         "$(_make_window_section light1     dark2          no_bold ' #I  #W ')"
 tmux set-option -g window-status-current-format "$(_make_window_section dark0_hard neutral_yellow bold    ' #I  #W ')"
