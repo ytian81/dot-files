@@ -177,6 +177,9 @@ augroup END
 "       \ 'spinner': ['fg', 'Label'],
 "       \ 'header':  ['fg', 'Comment'] }
 
+let g:coc_fzf_preview = 'right,60%'
+let g:coc_fzf_opts = ['--layout=reverse']
+
 " junegunn/vim-easy-align
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
