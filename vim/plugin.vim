@@ -397,7 +397,7 @@ nnoremap <Leader>hc :Git commit<CR>
 nnoremap <Leader>ha :Git add %<CR>
 nnoremap <Leader>b  :Git blame<CR>
 nnoremap <Leader>o  :.GBrowse<CR>
-nnoremap <Leader>d  :Gdiffsplit<CR>
+nnoremap <Leader>d  :Gvdiffsplit<CR>
 augroup GitHistoricalBufferFold
     autocmd!
     autocmd FileType git setlocal foldmethod=syntax
