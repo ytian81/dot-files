@@ -62,7 +62,7 @@ Plug 'kevinhwang91/rnvimr'
 Plug 'skywind3000/asyncrun.vim'
 Plug 'lakshayg/vim-bazel'
 Plug 'machakann/vim-swap'
-Plug 'majutsushi/tagbar'
+Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
 Plug 'markonm/traces.vim'
 Plug 'mhinz/vim-startify'
 Plug 'gruvbox-community/gruvbox'
