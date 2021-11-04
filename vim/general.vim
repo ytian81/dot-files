@@ -70,6 +70,8 @@ set autowrite
 set splitright
 set splitbelow
 
+set showtabline=0
+
 " Activate matchit.vim
 packadd! matchit
 
