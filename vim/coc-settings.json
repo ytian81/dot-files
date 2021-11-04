@@ -4,6 +4,7 @@
     "git.conflict.enabled": false,
     "git.splitWindowCommand": "below sp",
     "snippets.priority": 100,
+    "coc.preferences.currentFunctionSymbolAutoUpdate": true,
     // "clangd.trace.server": "verbose",
     // "clangd.trace.file": "/tmp/clangd.log",
     "clangd.arguments": [
