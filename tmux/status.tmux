@@ -34,14 +34,44 @@ _make_window_section () {
     echo "$status_section"
 }
 
-_make_session_section () {
-    if [[ "$#" != 7 ]]
+_make_left_section () {
+    if [[ "$#" != 4 ]]
     then
         return
     fi
 
     # Use status line background color
     local bg="$(tmux show-option -gv status-style | sed 's/\(.*\)bg=\(.*\)/\2/')"
+    local ffg="#{@gruvbox_$1}"; shift
+    local fbg="#{@gruvbox_$1}"; shift
+
+    local bold
+    local bold_option=$1; shift
+    if [[ $bold_option == "bold" ]]
+    then
+        bold=",bold"
+    fi
+
+    local status_section
+
+    # Content
+    status_section="${status_section}#[fg=$ffg,bg=$fbg$bold]$1"
+
+    # Always have tail 
+    status_section="${status_section}#[fg=$fbg,bg=$bg]"
+
+    echo "$status_section"
+}
+
+_make_session_section () {
+    if [[ "$#" != 8 ]]
+    then
+        return
+    fi
+
+    # Use status line background color
+    # local bg="$(tmux show-option -gv status-style | sed 's/\(.*\)bg=\(.*\)/\2/')"
+    local bg="#{@gruvbox_$1}"; shift
     local ffg="#{@gruvbox_$1}"; shift
     local fbg="#{@gruvbox_$1}"; shift
     local affg="#{@gruvbox_$1}"; shift
@@ -90,6 +120,14 @@ _make_right_section () {
 
     echo "$status_section"
 }
+# }}}
+# Status constants {{{
+
+# Automatically collapse the status section when the window width is less than the tier value.
+# Nesting FORMAT into conditional would result no output.
+# Nesting conditional into FORMAT would keep the status tail.
+tmux set-option -g @collapse_tier1 140
+tmux set-option -g @collapse_tier2 100
 
 # }}}
 # Status position {{{
@@ -112,19 +150,15 @@ tmux set-option -g window-status-current-format "$(_make_window_section dark0_ha
 # }}}
 # Status left {{{
 
-tmux set-option -g status-left-length "50"
-tmux set-option -g status-left                  "$(_make_session_section light3 dark3 dark0_hard neutral_aqua dark0_hard bright_orange ' #S ')"
+tmux set-option -g status-left-length "200"
+tmux set-option -g status-left                  "\
+$(_make_session_section dark2 light3 dark3 dark0_hard neutral_aqua dark0_hard bright_orange ' #S ')\
+$(_make_left_section light4 dark2 dark1 '#{?#{&&:#{m/ri:^[0-9][0-9][0-9]$,#{window_width}},#{>:#{window_width},#{@collapse_tier2}}},#{gitstatusd},}')"
 
 # }}}
 # Status right {{{
 
 tmux set-option -g status-right-length "300"
-
-# Automatically collapse the status section when the window width is less than the tier value.
-# Nesting FORMAT into conditional would result no output.
-# Nesting conditional into FORMAT would keep the status tail.
-tmux set-option -g @collapse_tier1 140
-tmux set-option -g @collapse_tier2 100
 
 # The format conditional is string comparison, we have to use regex to check the number of digits
 # before comparing. More details at https://github.com/tmux/tmux/issues/2318.
@@ -134,8 +168,7 @@ $(_make_right_section light4 dark1 tail  '#{?#{&&:#{m/ri:^[0-9][0-9][0-9]$,#{win
 #{?#{&&:#{m/ri:^[0-9][0-9][0-9]$,#{window_width}},#{>:#{window_width},#{@collapse_tier1}}},$(_make_right_section light4 dark1 dark1 ' #{sysstat_mem}'),}\
 #{?#{&&:#{m/ri:^[0-9][0-9][0-9]$,#{window_width}},#{>:#{window_width},#{@collapse_tier1}}},$(_make_right_section light4 dark1 dark1 ' #{sysstat_swap}'),}\
 #{?#{&&:#{m/ri:^[0-9][0-9][0-9]$,#{window_width}},#{>:#{window_width},#{@collapse_tier1}}},$(_make_right_section light4 dark1 dark1 ' #{sysstat_loadavg} '),}\
-$(_make_right_section light4 dark2 dark1 '#{?#{&&:#{m/ri:^[0-9][0-9][0-9]$,#{window_width}},#{>:#{window_width},#{@collapse_tier2}}},#{gitstatusd},}')\
-$(_make_right_section light2 dark3 dark2 ' #{battery_icon_status} - #{battery_icon_charge} #{battery_percentage} #{battery_remain} ')\
+$(_make_right_section light2 dark3 dark1 ' #{battery_icon_status} - #{battery_icon_charge} #{battery_percentage} #{battery_remain} ')\
 $(_make_right_section light2 dark4 dark3 ' %b %d  %H:%M') "
 
 # }}}
