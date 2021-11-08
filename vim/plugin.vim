@@ -230,7 +230,7 @@ let g:rnvimr_action = {
             \ 'gw': 'JumpNvimCwd',
             \ 'yw': 'EmitRangerCwd'
             \ }
-let g:rnvimr_presets = []
+" let g:rnvimr_presets = []
 
 augroup RnvimrLayoutResize
     autocmd!
