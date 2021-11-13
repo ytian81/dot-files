@@ -433,6 +433,7 @@ let g:airline#extensions#fzf#enabled = 0
 let g:airline#extensions#searchcount#enabled = 0
 let g:airline#extensions#hunks#enabled = 1
 let g:airline#extensions#hunks#non_zero_only = 1
+let g:airline_highlighting_cache=1
 function! AirlineInit()
   let g:airline_section_b = airline#section#create(['hunks', 'file'])
   let g:airline_section_c = airline#section#create(['%<', 'readonly', 'coc_status'])
