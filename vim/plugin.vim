@@ -398,6 +398,8 @@ let g:tagbar_type_yaml = {
 nnoremap <Leader>hg :Git<space>
 nnoremap <Leader>hc :Git commit<CR>
 nnoremap <Leader>ha :Git add %<CR>
+" https://github.com/tpope/vim-fugitive/issues/1272#issuecomment-747818629
+nnoremap <Leader>u :Git -c push.default=current push<CR>
 nnoremap <Leader>b  :Git blame<CR>
 nnoremap <Leader>o  :.GBrowse<CR>
 nnoremap <Leader>d  :Gvdiffsplit<CR>
