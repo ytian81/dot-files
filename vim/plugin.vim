@@ -155,7 +155,7 @@ let g:fzf_buffers_jump=1
 augroup FzfLayoutResize
     autocmd!
     autocmd VimEnter,VimResized  * let g:fzf_layout = { 'window': {
-                \ 'width': &columns > 240 ? 0.6 : 0.8,
+                \ 'width': &columns > 240 ? 0.8 : 0.9,
                 \ 'height': 0.6,
                 \ 'highlight': 'Comment',
                 \ 'rounded': v:false
@@ -235,9 +235,9 @@ let g:rnvimr_action = {
 augroup RnvimrLayoutResize
     autocmd!
     autocmd VimEnter,VimResized  * let g:rnvimr_layout = { 'relative': 'editor',
-            \ 'width': float2nr(round((&columns > 240 ? 0.6 : 0.8) * &columns)),
+            \ 'width': float2nr(round((&columns > 240 ? 0.8 : 0.9) * &columns)),
             \ 'height': float2nr(round(0.6 * &lines)),
-            \ 'col': float2nr(round((&columns > 240 ? 0.2 : 0.1 ) * &columns)),
+            \ 'col': float2nr(round((&columns > 240 ? 0.1 : 0.05 ) * &columns)),
             \ 'row': float2nr(round(0.2 * &lines)),
             \ 'style': 'minimal' }
 augroup END
