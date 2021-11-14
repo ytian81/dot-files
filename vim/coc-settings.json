@@ -13,6 +13,8 @@
         "--malloc-trim",
         "--compile-commands-dir=${workspaceFolder}/build/bin",
         // "--enable-config",
+        "--remote-index-address=localhost:9090",
+        "--project-root=${workspaceFolder}",
     ],
     "clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/12.0.1/clangd_12.0.1/bin/clangd"
 }
