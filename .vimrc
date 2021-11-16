@@ -68,6 +68,7 @@ Plug 'mhinz/vim-startify'
 Plug 'gruvbox-community/gruvbox'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'PeterRincker/vim-searchlight'
+Plug 'psliwka/vim-smoothie'
 Plug 'rhysd/conflict-marker.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'sheerun/vim-polyglot'
