@@ -13,9 +13,9 @@ let g:speeddating_no_mappings=1
 " speeddating fallback keys are still map to vim's vanilla <c-a> and <c-x>
 nnoremap <Plug>SpeedDatingFallbackUp <C-A>
 nnoremap <Plug>SpeedDatingFallbackDown <C-X>
-nnoremap <c-a> :if !switch#Switch() <bar>
+nnoremap <silent> <c-a> :if !switch#Switch() <bar>
       \ call speeddating#increment(v:count1) <bar> endif<cr>
-nnoremap <c-x> :if !switch#Switch({'reverse': 1}) <bar>
+nnoremap <silent> <c-x> :if !switch#Switch({'reverse': 1}) <bar>
       \ call speeddating#increment(-v:count1) <bar> endif<cr>
 let g:switch_custom_definitions = [
       \ ['&&', '||'],
