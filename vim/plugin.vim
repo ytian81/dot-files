@@ -192,29 +192,6 @@ map F <Plug>Sneak_F
 map t <Plug>Sneak_t
 map T <Plug>Sneak_T
 
-" Plug 'kamykn/spelunker.vim'
-set nospell
-let g:enable_spelunker_vim = 1
-let g:spelunker_target_min_char_len = 4
-let g:spelunker_max_suggest_words = 15
-let g:spelunker_max_hi_words_each_buf = 100
-let g:spelunker_check_type = 2
-let g:spelunker_highlight_type = 2
-let g:spelunker_disable_uri_checking = 1
-let g:spelunker_disable_email_checking = 1
-let g:spelunker_disable_account_name_checking = 1
-let g:spelunker_disable_auto_group = 1
-augroup spelunker
-  autocmd!
-  autocmd CursorHold *.h,*.cpp,*.py,*go,*md call spelunker#check_displayed_words()
-augroup END
-nmap [s <Plug>(spelunker-jump-prev)
-nmap ]s <Plug>(spelunker-jump-next)
-" let g:spelunker_spell_bad_group = 'SpelunkerSpellBad'
-" let g:spelunker_complex_or_compound_word_group = 'SpelunkerComplexOrCompoundWord'
-" highlight SpelunkerSpellBad cterm=underline ctermfg=247 gui=underline guifg=#9e9e9e
-" highlight SpelunkerComplexOrCompoundWord cterm=underline ctermfg=NONE gui=underline guifg=NONE
-
 " kevinhwang91/rnvimr
 let g:rnvimr_enable_ex = 1
 let g:rnvimr_enable_picker = 1
@@ -295,7 +272,7 @@ let g:startify_change_to_dir = 0
 let g:startify_change_to_vcs_root = 1
 
 " neoclide/coc.nvim
-let g:coc_global_extensions = ['coc-clangd', 'coc-git', 'coc-highlight', 'coc-marketplace', 'coc-yaml']
+let g:coc_global_extensions = ['coc-clangd', 'coc-git', 'coc-highlight', 'coc-marketplace', 'coc-yaml', 'coc-spell-checker']
 " disable coc default semantic highlighting
 let g:coc_default_semantic_highlight_groups=0
 set hidden
