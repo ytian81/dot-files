@@ -68,5 +68,6 @@ function! TurnOffGutter()
     setlocal  norelativenumber
     setlocal  nonumber
     setlocal  signcolumn=no
+    setlocal  conceallevel=0
 endfunction
 nnoremap <silent> <leader>cg :call TurnOffGutter()<cr>
