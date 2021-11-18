@@ -71,3 +71,8 @@ function! TurnOffGutter()
     setlocal  conceallevel=0
 endfunction
 nnoremap <silent> <leader>cg :call TurnOffGutter()<cr>
+
+" disable Ex command-line window
+map q: :q
+map q/ /q
+map q? ?q
