@@ -375,8 +375,8 @@ let g:tagbar_type_yaml = {
 " noremap <silent> <leader>aa :GscopeFind a <C-R><C-W><cr>
 
 " tpope/vim-fugitive
-nnoremap <Leader>hg :Git<space>
-nnoremap <Leader>hc :Git commit<CR>
+nnoremap <Leader>H :Git<space>
+nnoremap <Leader>hc :Git commit -v<CR>
 nnoremap <Leader>ha :Git add %<CR>
 " https://github.com/tpope/vim-fugitive/issues/1272#issuecomment-747818629
 nnoremap <Leader>u :Git -c push.default=current push<CR>
@@ -385,7 +385,7 @@ nnoremap <Leader>o  :.GBrowse<CR>
 nnoremap <Leader>d  :Gvdiffsplit<CR>
 augroup GitHistoricalBufferFold
     autocmd!
-    autocmd FileType git setlocal foldmethod=syntax
+    autocmd FileType git,gitcommit setlocal foldmethod=syntax
 augroup end
 
 " tpope/vim-sensible
