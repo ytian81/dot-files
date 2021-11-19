@@ -2,8 +2,10 @@
 " echo "Loading color setting"
 nnoremap <leader>kc :so $VIMRUNTIME/syntax/hitest.vim<cr>
 
-autocmd BufRead,WinEnter    * set cursorline
-autocmd WinLeave            * set nocursorline
+augroup active_cursorline
+    autocmd BufRead,WinEnter    * set cursorline
+    autocmd WinLeave            * set nocursorline
+augroup END
 
 set textwidth=100
 autocmd FileType * set formatoptions+=t
