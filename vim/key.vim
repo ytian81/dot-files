@@ -69,6 +69,7 @@ function! TurnOffGutter()
     setlocal  nonumber
     setlocal  signcolumn=no
     setlocal  conceallevel=0
+    lua require('scrollbar').clear()
 endfunction
 nnoremap <silent> <leader>cg :call TurnOffGutter()<cr>
 
