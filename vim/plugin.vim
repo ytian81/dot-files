@@ -199,7 +199,7 @@ let g:rnvimr_draw_border = 1
 let g:rnvimr_hide_gitignore = 1
 let g:rnvimr_border_attr = {'fg': 245, 'bg': -1}
 let g:rnvimr_enable_bw = 1
-let g:rnvimr_ranger_cmd = 'ranger --cmd="set column_ratios 1,1"
+let g:rnvimr_ranger_cmd = 'ranger --cmd="set column_ratios 1,2,3"
             \ --cmd="set draw_borders both"'
 nnoremap <silent> <leader>e :RnvimrToggle<CR>
 let g:rnvimr_action = {
