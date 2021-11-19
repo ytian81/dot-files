@@ -306,6 +306,7 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gc <Plug>(coc-references)
+nmap <silent> gf <Plug>(coc-codeaction-cursor)
 " Use K to show documentation in preview window.
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
