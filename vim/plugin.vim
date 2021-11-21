@@ -229,6 +229,7 @@ augroup END
 
 " lakshayg/vim-bazel
 let g:bazel_make_command = "AsyncRun -program=make"
+" set g:bazel_bash_completion_path to bash complete script
 
 " " ludovicchabant/vim-gutentags
 " let $GTAGSLABEL = 'native-pygments'
