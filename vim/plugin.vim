@@ -228,8 +228,12 @@ augroup asyncrun_quickfix
 augroup END
 
 " lakshayg/vim-bazel
-let g:bazel_make_command = "AsyncRun -program=make"
+nnoremap <Leader>B :Bazel<space>
+" nnoremap <Leader>bb :Bazel build<space>
+" nnoremap <Leader>bt :Bazel test<space>
+" nnoremap <Leader>br :Bazel run<space>
 " set g:bazel_bash_completion_path to bash complete script
+let g:bazel_make_command = "AsyncRun -program=make"
 
 " " ludovicchabant/vim-gutentags
 " let $GTAGSLABEL = 'native-pygments'
