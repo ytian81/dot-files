@@ -150,7 +150,7 @@ nnoremap <Leader>a :Buffers<CR>
 nnoremap <Leader>m :Marks<CR>
 nnoremap <Leader>hh :History<CR>
 nnoremap <Leader>hl :Commits<CR>
-nnoremap <Leader>hb :BCommits<CR>
+nnoremap <Leader>h; :BCommits<CR>
 let g:fzf_buffers_jump=1
 augroup FzfLayoutResize
     autocmd!
@@ -386,7 +386,7 @@ nnoremap <Leader>hc :Git commit -v<CR>
 nnoremap <Leader>ha :Git add %<CR>
 " https://github.com/tpope/vim-fugitive/issues/1272#issuecomment-747818629
 nnoremap <Leader>u :Git -c push.default=current push<CR>
-nnoremap <Leader>b  :Git blame<CR>
+nnoremap <Leader>hb  :Git blame<CR>
 nnoremap <Leader>o  :.GBrowse<CR>
 nnoremap <Leader>d  :Gvdiffsplit<CR>
 augroup GitHistoricalBufferFold
