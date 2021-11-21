@@ -101,7 +101,10 @@ ranger-plugins-devicon2:
 ranger-colorschemes-gruvbox:
 	mkdir -p ~/.config/ranger/colorschemes
 	ln -sf `pwd`/ranger/colorschemes/gruvbox.py ~/.config/ranger/colorschemes/gruvbox.py
-
+bazel-zsh-autocomplete:
+	mkdir -p ~/.zsh/completion
+	mkdir -p ~/.zsh/cache
+	wget https://raw.githubusercontent.com/bazelbuild/bazel/master/scripts/zsh_completion/_bazel --output-document ~/.zsh/completion/_bazel
 
 clean:
 	@echo "Cleaning all dot files"
