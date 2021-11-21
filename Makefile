@@ -105,6 +105,7 @@ bazel-zsh-autocomplete:
 	mkdir -p ~/.zsh/completion
 	mkdir -p ~/.zsh/cache
 	wget https://raw.githubusercontent.com/bazelbuild/bazel/master/scripts/zsh_completion/_bazel --output-document ~/.zsh/completion/_bazel
+	rm -f ~/.zcompdump; compinit
 
 clean:
 	@echo "Cleaning all dot files"
