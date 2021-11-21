@@ -79,32 +79,36 @@ autocmd! BufEnter *.h let b:fswitchdst  = 'cpp,c'
 " let g:EasyMotion_space_jump_first = 1
 
 " gelguy/wilder.nvim
-call wilder#setup({'modes': [':']})
-call wilder#set_option('pipeline', [
-       \   wilder#branch(
-       \     [
-       \       wilder#check({_, x -> empty(x)}),
-       \       wilder#history(15),
-       \     ],
-       \     wilder#cmdline_pipeline({
-       \       'language': 'python',
-       \       'fuzzy': 1,
-       \     }),
-       \     wilder#python_search_pipeline({
-       \       'pattern': wilder#python_fuzzy_pattern(),
-       \       'sorter': wilder#python_difflib_sorter(),
-       \       'engine': 're',
-       \     }),
-       \   ),
-       \ ])
-call wilder#set_option('renderer', wilder#popupmenu_renderer({
-      \ 'highlighter': wilder#basic_highlighter(),
-      \ 'max_height': '15%',
-      \ 'reverse': 1,
-      \ 'highlights': {
-      \   'accent': wilder#make_hl('WilderAccent', 'Pmenu', [{}, {}, {'foreground': '#fabd2f'}]),
-      \ },
-      \ }))
+" set up an autocmd to defer initialization to the first CmdlineEnter:
+autocmd CmdlineEnter * ++once call s:wilder_init() | call wilder#main#start()
+function! s:wilder_init() abort
+    call wilder#setup({'modes': [':']})
+    call wilder#set_option('pipeline', [
+           \   wilder#branch(
+           \     [
+           \       wilder#check({_, x -> empty(x)}),
+           \       wilder#history(15),
+           \     ],
+           \     wilder#cmdline_pipeline({
+           \       'language': 'python',
+           \       'fuzzy': 1,
+           \     }),
+           \     wilder#python_search_pipeline({
+           \       'pattern': wilder#python_fuzzy_pattern(),
+           \       'sorter': wilder#python_difflib_sorter(),
+           \       'engine': 're',
+           \     }),
+           \   ),
+           \ ])
+    call wilder#set_option('renderer', wilder#popupmenu_renderer({
+          \ 'highlighter': wilder#basic_highlighter(),
+          \ 'max_height': '15%',
+          \ 'reverse': 1,
+          \ 'highlights': {
+          \   'accent': wilder#make_hl('WilderAccent', 'Pmenu', [{}, {}, {'foreground': '#fabd2f'}]),
+          \ },
+          \ }))
+endfunction
 
 " editorconfig/editorconfig-vim
 let g:EditorConfig_exclude_patterns=['fugitive://.*']
