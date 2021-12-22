@@ -396,7 +396,7 @@ nnoremap <Leader>o  :.GBrowse<CR>
 nnoremap <Leader>d  :Gvdiffsplit<CR>
 augroup GitHistoricalBufferFold
     autocmd!
-    autocmd FileType git,gitcommit setlocal foldmethod=syntax
+    autocmd FileType git,gitcommit,fugitive setlocal foldmethod=syntax
 augroup end
 
 " tpope/vim-sensible
