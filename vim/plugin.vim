@@ -63,14 +63,14 @@ nmap <silent> <Leader>sk :FSSplitAbove<CR>
 let g:fsnonewfiles=1
 autocmd! BufEnter *.cpp let b:fswitchdst = 'h,hpp'
             \ | let b:fswitchlocs = 'reg:|\(.*\)src|\1include/**/|,
-            \                        reg:/src/include/,
-            \                        reg:|src|include/**|,
-            \                        ../include'
+                                    \reg:/src/include/,
+                                    \reg:|src|include/**|,
+                                    \../include'
 autocmd! BufEnter *.h let b:fswitchdst  = 'cpp,c'
-            \ | let b:fswitchlocs =  'reg:|\(.*\)include\(.*\)|\1src/**|,
-            \                         reg:/include/src/,
-            \                         reg:/include.*/src/,
-            \                         ../src'
+            \ | let b:fswitchlocs = 'reg:|\(.*\)include\(.*\)|\1src/**|,
+                                    \reg:/include/src/,
+                                    \reg:/include.*/src/,
+                                    \../src'
 
 " " easymotion/vim-easymotion
 " nmap f <Plug>(easymotion-bd-f)
