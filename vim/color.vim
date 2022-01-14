@@ -3,8 +3,8 @@
 nnoremap <leader>kc :so $VIMRUNTIME/syntax/hitest.vim<cr>
 
 augroup active_cursorline
-    autocmd BufRead,WinEnter    * set cursorline
-    autocmd WinLeave            * set nocursorline
+    autocmd WinEnter,FocusGained,CursorMoved,VimResized * set cursorline
+    autocmd BufLeave,WinLeave,FocusLost                 * set nocursorline
 augroup END
 
 set textwidth=100
