@@ -15,7 +15,7 @@
     // "clangd.trace.server": "verbose",
     "coc.preferences.currentFunctionSymbolAutoUpdate": true,
     "diagnostic.floatConfig": {
-        "maxWidth": 150,
+        "maxWidth": 100,
         "focusable": false,
     },
     "git.addGBlameToVirtualText": true,
@@ -23,14 +23,14 @@
     "git.enableGutters": false,
     "git.splitWindowCommand": "below sp",
     "hover.floatConfig": {
-        "maxWidth": 150,
+        "maxWidth": 100,
         "focusable": false,
     },
     "lightbulb.enableSign": true,
     "lightbulb.enableVirtualText": false,
     "snippets.priority": 100,
     "suggest.floatConfig": {
-        "maxWidth": 150,
+        "maxWidth": 100,
         "focusable": false,
     },
 }
