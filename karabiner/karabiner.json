@@ -10,7 +10,7 @@
                 "parameters": {
                     "basic.simultaneous_threshold_milliseconds": 50,
                     "basic.to_delayed_action_delay_milliseconds": 500,
-                    "basic.to_if_alone_timeout_milliseconds": 1000,
+                    "basic.to_if_alone_timeout_milliseconds": 500,
                     "basic.to_if_held_down_threshold_milliseconds": 500,
                     "mouse_motion_to_scroll.speed": 100
                 },
@@ -196,12 +196,12 @@
                             {
                                 "conditions": [
                                     {
-                                        "type": "frontmost_application_if",
                                         "bundle_identifiers": [
                                             "^com.google.Chrome",
                                             "^org.mozilla.firefox",
                                             "^com.tinyspeck.slackmacgap"
-                                        ]
+                                        ],
+                                        "type": "frontmost_application_if"
                                     }
                                 ],
                                 "from": {
@@ -223,15 +223,14 @@
                                 "type": "basic"
                             },
                             {
-                                "type": "basic",
                                 "conditions": [
                                     {
-                                        "type": "frontmost_application_if",
                                         "bundle_identifiers": [
                                             "^com.google.Chrome",
                                             "^org.mozilla.firefox",
                                             "^com.tinyspeck.slackmacgap"
-                                        ]
+                                        ],
+                                        "type": "frontmost_application_if"
                                     }
                                 ],
                                 "from": {
@@ -250,11 +249,6 @@
                                         }
                                     }
                                 ],
-                                "to_if_alone": [
-                                    {
-                                        "key_code": "spacebar"
-                                    }
-                                ],
                                 "to_after_key_up": [
                                     {
                                         "set_variable": {
@@ -262,10 +256,22 @@
                                             "value": 0
                                         }
                                     }
-                                ]
+                                ],
+                                "to_if_alone": [
+                                    {
+                                        "key_code": "spacebar"
+                                    }
+                                ],
+                                "type": "basic"
                             },
                             {
-                                "type": "basic",
+                                "conditions": [
+                                    {
+                                        "name": "vim_normal_mode",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "w"
                                 },
@@ -277,16 +283,16 @@
                                         ]
                                     }
                                 ],
-                                "conditions": [
-                                    {
-                                        "type": "variable_if",
-                                        "name": "vim_normal_mode",
-                                        "value": 1
-                                    }
-                                ]
+                                "type": "basic"
                             },
                             {
-                                "type": "basic",
+                                "conditions": [
+                                    {
+                                        "name": "vim_normal_mode",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "b"
                                 },
@@ -298,16 +304,16 @@
                                         ]
                                     }
                                 ],
-                                "conditions": [
-                                    {
-                                        "type": "variable_if",
-                                        "name": "vim_normal_mode",
-                                        "value": 1
-                                    }
-                                ]
+                                "type": "basic"
                             },
                             {
-                                "type": "basic",
+                                "conditions": [
+                                    {
+                                        "name": "vim_normal_mode",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "h"
                                 },
@@ -316,16 +322,16 @@
                                         "key_code": "left_arrow"
                                     }
                                 ],
-                                "conditions": [
-                                    {
-                                        "type": "variable_if",
-                                        "name": "vim_normal_mode",
-                                        "value": 1
-                                    }
-                                ]
+                                "type": "basic"
                             },
                             {
-                                "type": "basic",
+                                "conditions": [
+                                    {
+                                        "name": "vim_normal_mode",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "l"
                                 },
@@ -334,16 +340,16 @@
                                         "key_code": "right_arrow"
                                     }
                                 ],
-                                "conditions": [
-                                    {
-                                        "type": "variable_if",
-                                        "name": "vim_normal_mode",
-                                        "value": 1
-                                    }
-                                ]
+                                "type": "basic"
                             },
                             {
-                                "type": "basic",
+                                "conditions": [
+                                    {
+                                        "name": "vim_normal_mode",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "j"
                                 },
@@ -352,16 +358,16 @@
                                         "key_code": "down_arrow"
                                     }
                                 ],
-                                "conditions": [
-                                    {
-                                        "type": "variable_if",
-                                        "name": "vim_normal_mode",
-                                        "value": 1
-                                    }
-                                ]
+                                "type": "basic"
                             },
                             {
-                                "type": "basic",
+                                "conditions": [
+                                    {
+                                        "name": "vim_normal_mode",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "k"
                                 },
@@ -370,19 +376,27 @@
                                         "key_code": "up_arrow"
                                     }
                                 ],
-                                "conditions": [
-                                    {
-                                        "type": "variable_if",
-                                        "name": "vim_normal_mode",
-                                        "value": 1
-                                    }
-                                ]
+                                "type": "basic"
                             }
                         ]
                     }
                 ]
             },
-            "devices": [],
+            "devices": [
+                {
+                    "disable_built_in_keyboard_if_exists": false,
+                    "fn_function_keys": [],
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "is_pointing_device": false,
+                        "product_id": 635,
+                        "vendor_id": 1452
+                    },
+                    "ignore": false,
+                    "manipulate_caps_lock_led": true,
+                    "simple_modifications": []
+                }
+            ],
             "fn_function_keys": [
                 {
                     "from": {
