@@ -1,7 +1,7 @@
 {
     "global": {
         "check_for_updates_on_startup": true,
-        "show_in_menu_bar": true,
+        "show_in_menu_bar": false,
         "show_profile_name_in_menu_bar": false
     },
     "profiles": [
@@ -273,7 +273,10 @@
                                     }
                                 ],
                                 "from": {
-                                    "key_code": "w"
+                                    "key_code": "w",
+                                    "modifiers": {
+                                        "optional": ["shift"]
+                                    }
                                 },
                                 "to": [
                                     {
@@ -294,7 +297,10 @@
                                     }
                                 ],
                                 "from": {
-                                    "key_code": "e"
+                                    "key_code": "e",
+                                    "modifiers": {
+                                        "optional": ["shift"]
+                                    }
                                 },
                                 "to": [
                                     {
@@ -315,7 +321,10 @@
                                     }
                                 ],
                                 "from": {
-                                    "key_code": "b"
+                                    "key_code": "b",
+                                    "modifiers": {
+                                        "optional": ["shift"]
+                                    }
                                 },
                                 "to": [
                                     {
@@ -336,7 +345,10 @@
                                     }
                                 ],
                                 "from": {
-                                    "key_code": "h"
+                                    "key_code": "h",
+                                    "modifiers": {
+                                        "optional": ["shift"]
+                                    }
                                 },
                                 "to": [
                                     {
@@ -354,7 +366,10 @@
                                     }
                                 ],
                                 "from": {
-                                    "key_code": "l"
+                                    "key_code": "l",
+                                    "modifiers": {
+                                        "optional": ["shift"]
+                                    }
                                 },
                                 "to": [
                                     {
@@ -372,7 +387,10 @@
                                     }
                                 ],
                                 "from": {
-                                    "key_code": "j"
+                                    "key_code": "j",
+                                    "modifiers": {
+                                        "optional": ["shift"]
+                                    }
                                 },
                                 "to": [
                                     {
@@ -390,7 +408,10 @@
                                     }
                                 ],
                                 "from": {
-                                    "key_code": "k"
+                                    "key_code": "k",
+                                    "modifiers": {
+                                        "optional": ["shift"]
+                                    }
                                 },
                                 "to": [
                                     {
@@ -408,7 +429,10 @@
                                     }
                                 ],
                                 "from": {
-                                    "key_code": "0"
+                                    "key_code": "0",
+                                    "modifiers": {
+                                        "optional": ["shift"]
+                                    }
                                 },
                                 "to": [
                                     {
