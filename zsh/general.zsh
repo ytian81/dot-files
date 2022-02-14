@@ -15,7 +15,6 @@ export FZF_DEFAULT_OPTS='
   --layout=reverse
   --height 80%
   --border
-  --keep-right
   --bind ctrl-b:preview-half-page-up,ctrl-f:preview-half-page-down,ctrl-/:toggle-preview
   --preview-window=right,60%
 '
