@@ -275,7 +275,9 @@
                                 "from": {
                                     "key_code": "w",
                                     "modifiers": {
-                                        "optional": ["shift"]
+                                        "optional": [
+                                            "shift"
+                                        ]
                                     }
                                 },
                                 "to": [
@@ -299,7 +301,9 @@
                                 "from": {
                                     "key_code": "e",
                                     "modifiers": {
-                                        "optional": ["shift"]
+                                        "optional": [
+                                            "shift"
+                                        ]
                                     }
                                 },
                                 "to": [
@@ -323,7 +327,9 @@
                                 "from": {
                                     "key_code": "b",
                                     "modifiers": {
-                                        "optional": ["shift"]
+                                        "optional": [
+                                            "shift"
+                                        ]
                                     }
                                 },
                                 "to": [
@@ -347,7 +353,9 @@
                                 "from": {
                                     "key_code": "h",
                                     "modifiers": {
-                                        "optional": ["shift"]
+                                        "optional": [
+                                            "shift"
+                                        ]
                                     }
                                 },
                                 "to": [
@@ -368,7 +376,9 @@
                                 "from": {
                                     "key_code": "l",
                                     "modifiers": {
-                                        "optional": ["shift"]
+                                        "optional": [
+                                            "shift"
+                                        ]
                                     }
                                 },
                                 "to": [
@@ -389,7 +399,9 @@
                                 "from": {
                                     "key_code": "j",
                                     "modifiers": {
-                                        "optional": ["shift"]
+                                        "optional": [
+                                            "shift"
+                                        ]
                                     }
                                 },
                                 "to": [
@@ -410,7 +422,9 @@
                                 "from": {
                                     "key_code": "k",
                                     "modifiers": {
-                                        "optional": ["shift"]
+                                        "optional": [
+                                            "shift"
+                                        ]
                                     }
                                 },
                                 "to": [
@@ -431,7 +445,9 @@
                                 "from": {
                                     "key_code": "0",
                                     "modifiers": {
-                                        "optional": ["shift"]
+                                        "optional": [
+                                            "shift"
+                                        ]
                                     }
                                 },
                                 "to": [
@@ -460,6 +476,19 @@
                     },
                     "ignore": false,
                     "manipulate_caps_lock_led": true,
+                    "simple_modifications": []
+                },
+                {
+                    "disable_built_in_keyboard_if_exists": false,
+                    "fn_function_keys": [],
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "is_pointing_device": false,
+                        "product_id": 591,
+                        "vendor_id": 1452
+                    },
+                    "ignore": false,
+                    "manipulate_caps_lock_led": false,
                     "simple_modifications": []
                 }
             ],
