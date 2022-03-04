@@ -40,5 +40,10 @@ tmux bind-key -T copy-mode-vi 'v' send -X begin-selection
 tmux bind-key C-p paste-buffer
 
 #}}}
+# Save history to file {{{
+
+tmux bind-key M command-prompt -p 'save history to filename:' -I '/tmp/tmux.history' 'capture-pane -S -32768 ; save-buffer %1 ; delete-buffer'
+
+#}}}
 
 # vim:filetype=tmux:foldmethod=marker
