@@ -432,7 +432,9 @@ function! AirlineInit()
   let g:airline_section_c = airline#section#create(['%<', 'readonly', 'coc_status'])
 endfunction
 autocmd User AirlineAfterInit call AirlineInit()
-let g:airline_stl_path_style = 'short'
+if !function#global_statusline()
+    let g:airline_stl_path_style = 'short'
+endif
 let g:airline#extensions#default#section_truncate_width = {
   \ 'b': 0,
   \ 'c': 0,

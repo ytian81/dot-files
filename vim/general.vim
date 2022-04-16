@@ -72,6 +72,12 @@ set splitbelow
 
 set showtabline=0
 
+if function#global_statusline()
+    set laststatus=3
+else
+    set laststatus=2
+endif
+
 " Activate matchit.vim
 packadd! matchit
 

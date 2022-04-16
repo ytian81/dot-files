@@ -14,6 +14,11 @@ silent function! function#windows()
     return  (has('win32') || has('win64'))
 endfunction
 
+" global status line
+silent function! function#global_statusline()
+    return has('nvim-0.7')
+endfunction
+
 " Install GTags and Universal Ctags
 function! InstallGTags(info)
   " info is a dictionary with 3 fields
