@@ -41,3 +41,7 @@ Modularized dot-files
    Word wise movement
  * [Lock screen](https://ke-complex-modifications.pqrs.org/#lock_screen) 
    Option + L to lock screen
+
+* [Alt-Tab](https://github.com/lwouis/alt-tab-macos)
+
+* [Rectangle](https://github.com/rxhanson/Rectangle)
