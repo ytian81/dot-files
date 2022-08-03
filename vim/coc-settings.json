@@ -33,4 +33,5 @@
         "maxWidth": 100,
         "focusable": false,
     },
+    "suggest.labelMaxLength": 100,
 }
