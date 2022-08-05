@@ -64,7 +64,7 @@ function! MyHighlights() abort
     highlight ConflictMarkerEnd                 gui=italic guifg=none    guibg=#2f628e
     highlight ConflictMarkerCommonAncestorsHunk gui=italic guifg=none    guibg=#754a81
     highlight link RnvimrNormal Normal
-    highlight CocHintSign gui=none guifg=#427b58 guibg=none
+    highlight CocHintVirtualText gui=none guifg=#427b58 guibg=none
 endfunction
 augroup ColorSchemeOverWrite
     autocmd!
