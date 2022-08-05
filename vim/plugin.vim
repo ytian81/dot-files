@@ -100,14 +100,20 @@ function! s:wilder_init() abort
            \     }),
            \   ),
            \ ])
-    call wilder#set_option('renderer', wilder#popupmenu_renderer({
+    call wilder#set_option('renderer', wilder#popupmenu_renderer(wilder#popupmenu_border_theme({
           \ 'highlighter': wilder#basic_highlighter(),
           \ 'max_height': '15%',
           \ 'reverse': 1,
           \ 'highlights': {
-          \   'accent': wilder#make_hl('WilderAccent', 'Pmenu', [{}, {}, {'foreground': '#fabd2f'}]),
+          \   'default': "Normal",
+          \   'selected': wilder#make_hl('WilderSelected', 'Normal', [{}, {}, {'background': '#3c3836', 'bold': 1}]),
+          \   'selected_accent': wilder#make_hl('WilderSelectedAccent', 'Normal', [{}, {}, {'foreground': '#fabd2f', 'background': '#3c3836', 'bold': 1}]),
+          \   'accent': wilder#make_hl('WilderAccent', 'Normal', [{}, {}, {'foreground': '#fabd2f'}]),
+          \   'border': 'Comment',
           \ },
-          \ }))
+          \ 'border': 'rounded',
+          \ 'pumblend': 10,
+          \ })))
 endfunction
 
 " editorconfig/editorconfig-vim
