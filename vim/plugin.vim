@@ -113,6 +113,10 @@ function! s:wilder_init() abort
           \ },
           \ 'border': 'rounded',
           \ 'pumblend': 10,
+          \ 'right': [
+          \   ' ',
+          \   wilder#popupmenu_scrollbar({'thumb_hl': 'Comment', 'scrollbar_hl': 'Normal'}),
+          \ ],
           \ })))
 endfunction
 
