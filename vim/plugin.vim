@@ -466,6 +466,11 @@ augroup ScrollbarInit
   autocmd WinEnter,FocusGained,CursorMoved,VimResized * silent! lua require('scrollbar').show()
   autocmd BufLeave,WinLeave,FocusLost                 * silent! lua require('scrollbar').clear()
 augroup end
+let g:scrollbar_shape = {
+    \ 'head': '',
+    \ 'body': '█',
+    \ 'tail': '',
+    \ }
 let g:scrollbar_highlight = {
     \ 'head': 'LineNr',
     \ 'body': 'LineNr',
