@@ -24,6 +24,8 @@
         "rounded": true,
         "winblend": 10,
     },
+    "dialog.floatBorderHighlight": "Comment",
+    "dialog.floatHighlight": "Normal",
     "git.addGBlameToVirtualText": true,
     "git.conflict.enabled": false,
     "git.enableGutters": false,
