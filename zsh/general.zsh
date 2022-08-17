@@ -56,3 +56,7 @@ zstyle ':fzf-tab:*' switch-group ',' '.'
 fpath[1,0]=~/.zsh/completion/
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path ~/.zsh/cache
+
+# bat configuation
+export BAT_THEME='gruvbox-dark'
+export BAT_STYLE='numbers,changes,rule'
