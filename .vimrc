@@ -59,6 +59,8 @@ Plug 'justinmk/vim-sneak'
 Plug 'kevinhwang91/rnvimr'
 Plug 'skywind3000/asyncrun.vim'
 Plug 'lakshayg/vim-bazel'
+Plug 'lambdalisue/glyph-palette.vim'
+Plug 'lambdalisue/nerdfont.vim'
 Plug 'machakann/vim-swap'
 Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
 Plug 'markonm/traces.vim'
