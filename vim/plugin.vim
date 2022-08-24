@@ -285,7 +285,7 @@ let g:bazel_make_command = "AsyncRun -program=make"
 let g:cpp_member_highlight = 1
 
 " skywind3000/asyncrun.vim
-noremap <leader>rm :AsyncRun make<cr>
+noremap <leader>rm :AsyncRun make<space>
 
 " terryma/vim-multiple-cursors
 highlight link multiple_cursors_visual Visual

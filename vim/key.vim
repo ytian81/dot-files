@@ -77,3 +77,5 @@ nnoremap <silent> <leader>cg :call TurnOffGutter()<cr>
 map q: :q
 map q/ /q
 map q? ?q
+
+nnoremap <silent> <leader>U :PlugUpdate \| CocUpdate<cr>
