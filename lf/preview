@@ -1,0 +1,11 @@
+#!/bin/sh
+case "$(file --dereference --brief --mime-type -- "$1")" in
+    *.tar*) tar tf "$1";;
+    *.zip) unzip -l "$1";;
+    *.rar) unrar l "$1";;
+    *.7z) 7z l "$1";;
+    *.pdf) pdftotext "$1" -;;
+    *) bat --style changes,numbers,rule -f "$1" ;;
+esac
+
+exit 1
