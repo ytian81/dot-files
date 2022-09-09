@@ -227,35 +227,6 @@ map t <Plug>Sneak_t
 map T <Plug>Sneak_T
 let g:sneak#label = 1
 
-" kevinhwang91/rnvimr
-let g:rnvimr_enable_ex = 1
-let g:rnvimr_enable_picker = 1
-let g:rnvimr_draw_border = 1
-let g:rnvimr_hide_gitignore = 1
-let g:rnvimr_border_attr = {'fg': 245, 'bg': -1}
-let g:rnvimr_enable_bw = 1
-let g:rnvimr_ranger_cmd = 'ranger --cmd="set column_ratios 1,2,3"
-            \ --cmd="set draw_borders both"'
-nnoremap <silent> <leader>e :RnvimrToggle<CR>
-let g:rnvimr_action = {
-            \ '<C-t>': 'NvimEdit tabedit',
-            \ '<C-x>': 'NvimEdit split',
-            \ '<C-v>': 'NvimEdit vsplit',
-            \ 'gw': 'JumpNvimCwd',
-            \ 'yw': 'EmitRangerCwd'
-            \ }
-" let g:rnvimr_presets = []
-
-augroup RnvimrLayoutResize
-    autocmd!
-    autocmd VimEnter,VimResized  * let g:rnvimr_layout = { 'relative': 'editor',
-            \ 'width': float2nr(round((&columns > 240 ? 0.8 : 0.9) * &columns)),
-            \ 'height': float2nr(round(0.6 * &lines)),
-            \ 'col': float2nr(round((&columns > 240 ? 0.1 : 0.05 ) * &columns)),
-            \ 'row': float2nr(round(0.2 * &lines)),
-            \ 'style': 'minimal' }
-augroup END
-
 " skywind3000/asyncrun.vim
 " Opening quickfix window when AsyncRun starts
 augroup asyncrun_quickfix

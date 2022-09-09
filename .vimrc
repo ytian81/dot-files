@@ -56,7 +56,6 @@ Plug 'junegunn/fzf.vim', { 'do': function('InstallRg') }
 Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/vim-peekaboo'
 Plug 'justinmk/vim-sneak'
-Plug 'kevinhwang91/rnvimr'
 Plug 'skywind3000/asyncrun.vim'
 Plug 'lakshayg/vim-bazel'
 Plug 'lambdalisue/glyph-palette.vim'
