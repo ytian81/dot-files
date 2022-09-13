@@ -14,6 +14,7 @@
     // "clangd.trace.file": "/tmp/clangd.log",
     // "clangd.trace.server": "verbose",
     "coc.preferences.currentFunctionSymbolAutoUpdate": true,
+    "coc.preferences.enableMessageDialog": true,
     "diagnostic.floatConfig": {
         "border": true,
         "borderhighlight": "Comment",
