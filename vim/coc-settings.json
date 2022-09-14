@@ -8,7 +8,7 @@
         "--malloc-trim",
         "--pretty",
         "--project-root=${workspaceFolder}",
-        "--remote-index-address=0.0.0.0:9090",
+        "--remote-index-address=0.0.0.0:9090"
     ],
     "clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/14.0.3/clangd_14.0.3/bin/clangd",
     // "clangd.trace.file": "/tmp/clangd.log",
@@ -23,7 +23,7 @@
         "maxHeight": 120,
         "maxWidth": 100,
         "rounded": true,
-        "winblend": 10,
+        "winblend": 10
     },
     "dialog.floatBorderHighlight": "Comment",
     "dialog.floatHighlight": "Normal",
@@ -38,7 +38,7 @@
         "maxHeight": 120,
         "maxWidth": 100,
         "rounded": true,
-        "winblend": 10,
+        "winblend": 10
     },
     "git.showCommitInFloating": true,
     "hover.floatConfig": {
@@ -49,7 +49,7 @@
         "maxHeight": 120,
         "maxWidth": 100,
         "rounded": true,
-        "winblend": 10,
+        "winblend": 10
     },
     "lightbulb.enableSign": true,
     "lightbulb.enableVirtualText": false,
@@ -63,7 +63,7 @@
         "maxHeight": 120,
         "maxWidth": 100,
         "rounded": true,
-        "winblend": 10,
+        "winblend": 10
     },
     "suggest.labelMaxLength": 100,
 }
