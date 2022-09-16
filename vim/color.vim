@@ -63,7 +63,6 @@ function! MyHighlights() abort
     highlight ConflictMarkerSeparator           gui=italic guifg=none    guibg=none
     highlight ConflictMarkerEnd                 gui=italic guifg=none    guibg=#2f628e
     highlight ConflictMarkerCommonAncestorsHunk gui=italic guifg=none    guibg=#754a81
-    highlight link RnvimrNormal Normal
     highlight CocHintVirtualText gui=none guifg=#427b58 guibg=none
     highlight CocInlayHint gui=none guifg=#427b58 guibg=none
     highlight CocMenuSel gui=bold guifg=none guibg=#3c3836
