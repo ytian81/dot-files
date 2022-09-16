@@ -15,6 +15,7 @@
     // "clangd.trace.server": "verbose",
     "coc.preferences.currentFunctionSymbolAutoUpdate": true,
     "coc.preferences.enableMessageDialog": true,
+    "colors.filetypes": ["vim"],
     "diagnostic.floatConfig": {
         "border": true,
         "borderhighlight": "Comment",
