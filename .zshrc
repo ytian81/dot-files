@@ -92,9 +92,9 @@ plugins=(
 )
 
 # Include local plugins
-export DOT_FILES_DIR=$(dirname $(readlink "${(%):-%N}"))
+export DOT_FILES_PATH=$(dirname $(readlink "${(%):-%N}"))
 _load_file() {
-    local zshrc_plugin="$DOT_FILES_DIR/zsh/$1"
+    local zshrc_plugin="$DOT_FILES_PATH/zsh/$1"
     if [[ -f $zshrc_plugin ]]
     then
         source $zshrc_plugin
