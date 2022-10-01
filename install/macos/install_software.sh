@@ -9,7 +9,11 @@ IFS=$'\n\t'
 
 # install cli-software
 brew install autojump
+brew install bat
+brew install colordiff
+brew install coreutils # for gdircolors
 brew install git
+brew install git-delta
 brew install neovim
 brew install node
 brew install svn
