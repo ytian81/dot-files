@@ -40,6 +40,7 @@ function link_config_files() {
   ln -sf ${DOT_FILES_PATH:-$HOME/Documents/Configurations/dot-files}/.vimrc $HOME/.vimrc
   ln -sf ${DOT_FILES_PATH:-$HOME/Documents/Configurations/dot-files}/vim/coc-settings.json $HOME/.config/nvim/coc-settings.json
   ln -sf ${DOT_FILES_PATH:-$HOME/Documents/Configurations/dot-files}/vim/init.vim $HOME/.config/nvim/init.vim
+  pip3 install pynvim
 
   # tmux
   ln -sf ${DOT_FILES_PATH:-$HOME/Documents/Configurations/dot-files}/.tmux.conf $HOME/.tmux.conf
