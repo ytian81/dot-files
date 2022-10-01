@@ -87,6 +87,7 @@ plugins=(
   vi-mode
   fzf
   fzf-tab
+  fzf-extras
   zsh-autosuggestions
   fast-syntax-highlighting
 )
