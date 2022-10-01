@@ -19,6 +19,7 @@ brew install node
 brew install svn
 brew install thefuck
 brew install tmux
+brew install universal-ctags
 
 # install gui-software
 brew install iterm2

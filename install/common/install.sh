@@ -60,5 +60,11 @@ function link_config_files() {
   mkdir -p $HOME/.config/bat/syntaxes
   git clone https://github.com/facelessuser/sublime-languages $HOME/.config/bat/syntaxes
   bat cache --build
+
+  # git config
+  ln -sf ${DOT_FILES_PATH:-$HOME/Documents/Configurations/dot-files}/.gitconfig $HOME/.gitconfig
+
+  # editor config
+  ln -sf ${DOT_FILES_PATH:-$HOME/Documents/Configurations/dot-files}/.editorconfig $HOME/.editorconfig
 }
 # link_config_files
