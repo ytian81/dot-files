@@ -104,5 +104,5 @@
         "rounded": true,
         "winblend": 10
     },
-    "suggest.labelMaxLength": 100,
+    "suggest.labelMaxLength": 100
 }
