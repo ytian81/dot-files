@@ -11,12 +11,12 @@ IFS=$'\n\t'
 brew install autojump
 brew install git
 brew install neovim
+brew install node
 brew install svn
 brew install thefuck
 brew install tmux
 
 # install gui-software
-brew install alt-tab
 brew install iterm2
 brew install karabiner-elements
 brew install rectangle
