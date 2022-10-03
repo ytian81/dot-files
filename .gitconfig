@@ -12,6 +12,7 @@
         delta;                                                       \
     fi                                                               \
     }"
+	excludesfile = ~/.gitignore
 
 [branch]
     sort = -committerdate
