@@ -26,9 +26,13 @@ if [[ `uname` = 'Linux' ]]; then
 elif [[ `uname` = 'Dawin' ]]; then
     export OPENER=open
 fi
-alias fd="zd"
-# unset e for editing frequent files becuase fasd is not available yet
-unset -f e
+
+# fasd
+eval "$(fasd --init auto)"
+# fzf-extras overloads zz
+unalias zz
+# prefer oh-mh-zsh's d behavior
+unalias d
 
 # deduplicate history
 # manually: sort -t ";" -k 2 -u ~/.zsh_history | sort -o ~/.zsh_history
