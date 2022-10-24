@@ -198,7 +198,7 @@ augroup FzfLayoutResize
                 \ 'rounded': v:false
                 \ }}
 augroup END
-" let g:fzf_commits_log_options = '--color=always --format="%C(auto)%h %C(green)%C(italic)%an%C(auto) %s%d %C(magenta)%cr"'
+let g:fzf_commits_log_options = '--color=always --format="%C(auto)%h%d %s %C(white)%C(bold)%aN %cr%Creset"'
 " let g:fzf_colors =
 "     \ { 'fg':      ['fg', 'Normal'],
 "       \ 'bg':      ['bg', 'Normal'],
