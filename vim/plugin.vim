@@ -183,6 +183,7 @@ nnoremap <Leader>f :Files<CR>
 nnoremap <Leader>g :Rg<Space>
 nnoremap <Leader>* :execute 'Rg '.expand('<cword>')<CR>
 nnoremap <Leader>j :BTags<CR>
+nnoremap <Leader>J :CocFzfList outline<CR>
 nnoremap <Leader>a :Buffers<CR>
 nnoremap <Leader>m :Marks<CR>
 nnoremap <Leader>hh :History<CR>
