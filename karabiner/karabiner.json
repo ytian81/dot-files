@@ -166,14 +166,14 @@
                         ]
                     },
                     {
-                        "description": "Command + j/k Keys to Control + Left/Right Keys",
+                        "description": "Option + j/k Keys to Control + Left/Right Keys",
                         "manipulators": [
                             {
                                 "from": {
                                     "key_code": "k",
                                     "modifiers": {
                                         "mandatory": [
-                                            "command"
+                                            "option"
                                         ]
                                     }
                                 },
@@ -192,7 +192,7 @@
                                     "key_code": "j",
                                     "modifiers": {
                                         "mandatory": [
-                                            "command"
+                                            "option"
                                         ]
                                     }
                                 },
