@@ -54,7 +54,7 @@ function link_config_files() {
   # bazel zsh auto completion
   mkdir -p $HOME/.zsh/completion
   mkdir -p $HOME/.zsh/cache
-  wget https://raw.githubusercontent.com/bazelbuild/bazel/master/scripts/zsh_completion/_bazel --output-document $HOME/.zsh/completion/_bazel
+  curl -fsSL https://raw.githubusercontent.com/bazelbuild/bazel/master/scripts/zsh_completion/_bazel -o $HOME/.zsh/completion/_bazel
   rm -f $HOME/.zcompdump; compinit
 
   # bat-syntax
