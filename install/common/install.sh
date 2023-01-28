@@ -51,21 +51,22 @@ function link_config_files() {
   # ctags
   ln -sf ${DOT_FILES_PATH:-$HOME/Documents/Configurations/dot-files}/.ctags.d $HOME/.ctags.d
 
-  # bazel zsh auto completion
-  mkdir -p $HOME/.zsh/completion
-  mkdir -p $HOME/.zsh/cache
-  curl -fsSL https://raw.githubusercontent.com/bazelbuild/bazel/master/scripts/zsh_completion/_bazel -o $HOME/.zsh/completion/_bazel
-  rm -f $HOME/.zcompdump; compinit
-
-  # bat-syntax
-  mkdir -p $HOME/.config/bat/syntaxes
-  git clone https://github.com/facelessuser/sublime-languages $HOME/.config/bat/syntaxes
-  bat cache --build
-
   # git config
   ln -sf ${DOT_FILES_PATH:-$HOME/Documents/Configurations/dot-files}/.gitconfig $HOME/.gitconfig
 
   # editor config
   ln -sf ${DOT_FILES_PATH:-$HOME/Documents/Configurations/dot-files}/.editorconfig $HOME/.editorconfig
+
+  # bat-syntax
+  mkdir -p $HOME/.config/bat/syntaxes
+  git clone https://github.com/facelessuser/sublime-languages $HOME/.config/bat/syntaxes
+  batcat cache --build
+
+  # bazel zsh auto completion
+  mkdir -p $HOME/.zsh/completion
+  mkdir -p $HOME/.zsh/cache
+  curl -fsSL https://raw.githubusercontent.com/bazelbuild/bazel/master/scripts/zsh_completion/_bazel -o $HOME/.zsh/completion/_bazel
+  rm -f $HOME/.zcompdump;
+  # compinit is called in everytime ohmyzsh is sourced
 }
 # link_config_files
