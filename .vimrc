@@ -52,7 +52,7 @@ Plug 'honza/vim-snippets'
 Plug 'jacquesbh/vim-showmarks'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --no-zsh' }
-Plug 'junegunn/fzf.vim', { 'do': function('InstallRg') }
+Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/vim-peekaboo'
 Plug 'justinmk/vim-sneak'
