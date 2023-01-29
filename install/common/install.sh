@@ -72,3 +72,8 @@ function link_config_files() {
   # compinit is called in everytime ohmyzsh is sourced
 }
 # link_config_files
+
+function install_vim_plugins() {
+  vim --headless +PlugInstall +CocUpdate +qall 1> /dev/null
+}
+# install_vim_plugins
