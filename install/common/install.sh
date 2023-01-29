@@ -26,7 +26,7 @@ function install_zsh() {
   install_oh_my_zsh
   install_zsh_themes_and_plugins
 }
-# install_zsh
+install_zsh
 
 # install dot files
 function download_dot_files() {
@@ -71,10 +71,10 @@ function link_config_files() {
   rm -f $HOME/.zcompdump;
   # compinit is called in everytime ohmyzsh is sourced
 }
-# link_config_files
+link_config_files
 
 function install_vim_plugins() {
   vim --headless +PlugInstall +qall 1> /dev/null
   vim --headless +CocUpdate +qall 1> /dev/null
 }
-# install_vim_plugins
+install_vim_plugins
