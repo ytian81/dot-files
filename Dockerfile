@@ -10,12 +10,13 @@ RUN apt-get -y install zsh
 RUN apt-get -y install python3 python3-pip
 RUN apt-get -y install nodejs
 
-RUN apt-get -y install neovim
 RUN apt-get -y install tmux
 # # build neovim from source
-# RUN apt-get -y install ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip curl doxygen
-# RUN git clone https://github.com/neovim/neovim /root/Documents
-# RUN cd /root/Documents/neovim && git checkout stable && make -j4 && make install
+# RUN apt-get -y install neovim
+RUN apt-get -y install ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip curl doxygen
+RUN mkdir -p /root/Documents/Applications
+RUN git clone https://github.com/neovim/neovim /root/Documents/Applications/neovim
+RUN cd /root/Documents/Applications/neovim && git checkout stable && make -j4 && make install
 
 # copy all files into docker image
 ENV DOT_FILES_PATH=/root/Documents/Configurations/dot-files
