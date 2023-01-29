@@ -74,6 +74,7 @@ function link_config_files() {
 # link_config_files
 
 function install_vim_plugins() {
-  vim --headless +PlugInstall +CocUpdate +qall 1> /dev/null
+  vim --headless +PlugInstall +qall 1> /dev/null
+  vim --headless +CocUpdate +qall 1> /dev/null
 }
 # install_vim_plugins
