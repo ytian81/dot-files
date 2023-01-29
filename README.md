@@ -45,3 +45,15 @@ Modularized dot-files
 * [Alt-Tab](https://github.com/lwouis/alt-tab-macos)
 
 * [Rectangle](https://github.com/rxhanson/Rectangle)
+
+# Docker
+
+Build an image
+```
+docker image build -t ytian/ide .
+```
+
+Run the container
+```
+docker container run -v /path/to/host:/root/workspace -it ytian/ide zsh
+```

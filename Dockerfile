@@ -11,6 +11,7 @@ RUN apt-get -y install python3 python3-pip
 RUN apt-get -y install nodejs
 
 RUN apt-get -y install tmux
+
 # # build neovim from source
 # RUN apt-get -y install neovim
 RUN apt-get -y install ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip curl doxygen
