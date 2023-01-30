@@ -76,5 +76,7 @@ link_config_files
 function install_vim_plugins() {
   nvim --headless +PlugInstall +qall 1> /dev/null
   nvim --headless +CocUpdate +qall 1> /dev/null
+  # load remote plugin for once for wilder.nvim
+  nvim --headless +UpdateRemotePlugins +qall 1> /dev/null
 }
 install_vim_plugins
