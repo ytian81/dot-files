@@ -475,4 +475,33 @@ let g:scrollbar_min_size = 5
 let g:scrollbar_max_size = 5
 
 " Yggdroot/indentLine
-let g:indentLine_fileTypeExclude=['help', 'fzf', 'startify']
+let g:indentLine_fileTypeExclude=['help', 'fzf', 'startify', 'Fm']
+
+" fm-nvim
+if has('nvim')
+lua << EOF
+require('fm-nvim').setup{
+  ui = {
+    float = {
+        border    = "rounded",
+        float_hl  = "Normal",
+        border_hl = "Comment",
+        blend     = 10,
+
+        width     = vim.api.nvim_win_get_width(0) > 240 and 0.8 or 0.9,
+        height    = 0.65,
+        x         = 0.5,
+        y         = 0.5,
+      }
+  },
+}
+EOF
+
+nnoremap <silent> <leader>e :Lf %<CR>
+augroup LfFileExplorer
+    autocmd!
+    autocmd VimEnter * ++once silent! autocmd! FileExplorer
+    autocmd VimEnter * ++once let s:buf_path = expand("<amatch>") | if isdirectory(s:buf_path) | bdelete! | silent! execute(printf("Lf " . s:buf_path)) | endif
+augroup END
+
+endif
