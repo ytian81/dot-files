@@ -8,6 +8,7 @@ alias diff='colordiff'
 alias gdc='gd --cached'
 alias gstf='gst | fpp'
 alias xclip='xclip -selection c'
+alias vi='vim -u NONE'
 [[ -n "$(command -v nvim)" ]] && alias vim="nvim"
 if [ `uname` = 'Linux' ]; then
     alias o='xdg-open'
