@@ -46,9 +46,9 @@ set hlsearch
 let g:LineNumberExcludeFileType = ['startify', 'fzf', 'fugitiveblame', 'tagbar', 'rnvimr']
 augroup RelativeLineNumber
     autocmd!
-    autocmd BufRead,WinEnter,FocusGained * if index(g:LineNumberExcludeFileType, &filetype) < 0 | set number
-    autocmd BufRead,WinEnter,FocusGained * if index(g:LineNumberExcludeFileType, &filetype) < 0 | set relativenumber
-    autocmd WinLeave,FocusLost   *         if index(g:LineNumberExcludeFileType, &filetype) < 0 | set norelativenumber
+    autocmd WinEnter,FocusGained,BufRead,InsertLeave,CmdlineLeave * if index(g:LineNumberExcludeFileType, &filetype) < 0 | set number
+    autocmd WinEnter,FocusGained,BufRead,InsertLeave,CmdlineLeave * if index(g:LineNumberExcludeFileType, &filetype) < 0 | set relativenumber
+    autocmd WinLeave,FocusLost,BufLeave,InsertEnter,CmdLineEnter * if index(g:LineNumberExcludeFileType, &filetype) < 0 | set norelativenumber
 augroup end
 
 if function#linux()
