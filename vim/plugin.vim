@@ -507,6 +507,9 @@ require('fm-nvim').setup{
       }
   },
 }
+
+require('mini.splitjoin').setup()
+
 EOF
 
 nnoremap <silent> <leader>e :Lf %<CR>
