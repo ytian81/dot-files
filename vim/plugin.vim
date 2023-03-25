@@ -512,11 +512,11 @@ require('mini.splitjoin').setup()
 
 EOF
 
+endif
+
 nnoremap <silent> <leader>e :Lf %<CR>
 augroup LfFileExplorer
     autocmd!
     autocmd VimEnter * ++once silent! autocmd! FileExplorer
     autocmd VimEnter * ++once let s:buf_path = expand("<amatch>") | if isdirectory(s:buf_path) | bdelete! | silent! execute(printf("Lf " . s:buf_path)) | endif
 augroup END
-
-endif
