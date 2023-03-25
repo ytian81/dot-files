@@ -75,6 +75,10 @@ tmux set-option -gF pane-border-style "fg=#{@gruvbox_dark1}"
 tmux set-option -gF display-panes-active-colour "#{@gruvbox_light2}"
 tmux set-option -gF display-panes-colour "#{@gruvbox_dark1}"
 
+# Popup border
+tmux set-option -gF popup-border-style "fg=#{@gruvbox_gray_244}"
+tmux set-option -g  popup-border-lines "rounded"
+
 # }}}
 
 # vim:filetype=tmux:foldmethod=marker
