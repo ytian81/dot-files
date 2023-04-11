@@ -4,7 +4,7 @@
 alias c='clear'
 alias cat='bat'
 alias x='exit'
-alias diff='colordiff'
+alias diff='delta --side-by-side'
 alias gdc='gd --cached'
 alias gstf='gst | fpp'
 alias xclip='xclip -selection c'

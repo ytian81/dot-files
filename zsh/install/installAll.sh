@@ -10,9 +10,6 @@ fi
 # autojump
 $installer autojump
 
-# colordiff
-$install colordiff
-
 # tmux
 ./installTmux.sh
 

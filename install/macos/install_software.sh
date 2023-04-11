@@ -10,7 +10,6 @@ IFS=$'\n\t'
 # install cli-software
 brew install autojump
 brew install bat
-brew install colordiff
 brew install coreutils # for gdircolors
 brew install fasd
 brew install git
