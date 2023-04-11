@@ -19,6 +19,7 @@ export FZF_DEFAULT_OPTS='
 '
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --ignore-vcs'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_CTRL_R_OPTS="${FZF_CTRL_R_OPTS:+$FZF_CTRL_R_OPTS }--preview 'echo {}' --preview-window down:5:wrap"
 
 if [[ `uname` = 'Linux' ]]; then
     export OPENER=xdg-open
@@ -63,3 +64,8 @@ zstyle ':completion:*' cache-path ~/.zsh/cache
 # bat configuation
 export BAT_THEME='gruvbox-dark'
 export BAT_STYLE='numbers,changes,rule'
+
+# fix ssh-agent issue
+function fix_ssh_auth() {
+    ln -sf `ls /tmp/ssh-*/agent*` ~/.ssh/ssh_auth_sock
+}
