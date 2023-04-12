@@ -4,6 +4,8 @@
 alias c='clear'
 alias cat='bat'
 alias x='exit'
+alias :q='exit'
+alias :wq='exit'
 alias diff='delta --side-by-side'
 alias gdc='gd --cached'
 alias gstf='gst | fpp'
