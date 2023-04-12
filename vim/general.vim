@@ -14,6 +14,10 @@ endif
 
 set completeopt=menuone
 
+set diffopt+=linematch:50
+
+set splitkeep=screen
+
 set showmatch
 set matchtime=1
 
