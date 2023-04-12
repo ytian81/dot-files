@@ -39,5 +39,11 @@ tmux bind-key e set-option -g @pomodoro_minutes 5
 tmux bind-key u set-option -g @pomodoro_minutes 25
 
 # }}}
+# wfxr/tmux-fzf-url {{{
+
+tmux set-option -g @fzf-url-bind 'o'
+tmux set-option -g @fzf-url-fzf-options "-w 80% -h 60% --multi -0 --preview 'echo {}' --preview-window down:5:wrap"
+
+# }}}
 
 # vim:filetype=tmux:foldmethod=marker
