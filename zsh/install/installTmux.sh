@@ -10,7 +10,7 @@ sudo apt install -y ncurses-dev
 echo "installTmux.sh ...."
 git clone https://github.com/tmux/tmux.git
 cd tmux
-git checkout 3.3
+git checkout 3.3a
 sh autogen.sh
 ./configure && make
 sudo make install
