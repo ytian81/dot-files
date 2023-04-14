@@ -15,6 +15,7 @@ endif
 set completeopt=menuone
 
 set diffopt+=linematch:50
+set diffopt+=iwhite
 
 set splitkeep=screen
 
