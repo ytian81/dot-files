@@ -48,7 +48,7 @@ set smartcase
 
 set hlsearch
 
-let g:LineNumberExcludeFileType = ['startify', 'fzf', 'fugitiveblame', 'tagbar', 'rnvimr']
+let g:LineNumberExcludeFileType = ['startify', 'fzf', 'fugitiveblame', 'tagbar', 'fm']
 augroup RelativeLineNumber
     autocmd!
     autocmd WinEnter,FocusGained,BufRead,InsertLeave,CmdlineLeave * if index(g:LineNumberExcludeFileType, &filetype) < 0 | set number
