@@ -69,6 +69,7 @@ function! MyHighlights() abort
     highlight CocSearch gui=none guifg=#fabd2f guibg=none
     highlight link CocFloatDividingLine Comment
     highlight link BqfPreviewBorder Comment
+    highlight link NoicePopupmenuSelected CocMenuSel
 endfunction
 augroup ColorSchemeOverWrite
     autocmd!

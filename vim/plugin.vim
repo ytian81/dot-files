@@ -78,6 +78,7 @@ autocmd! BufEnter *.h let b:fswitchdst  = 'cpp,c'
 " nmap <Leader>w <Plug>(easymotion-bd-w)
 " let g:EasyMotion_space_jump_first = 1
 
+if !has('nvim-0.9')
 " gelguy/wilder.nvim
 " set up an autocmd to defer initialization to the first CmdlineEnter:
 autocmd CmdlineEnter * ++once call s:wilder_init() | call wilder#main#start()
@@ -126,6 +127,7 @@ function! s:wilder_init() abort
           \ ],
           \ })))
 endfunction
+endif
 
 " editorconfig/editorconfig-vim
 let g:EditorConfig_exclude_patterns=['fugitive://.*']
@@ -510,6 +512,30 @@ require('fm-nvim').setup{
 
 require('mini.splitjoin').setup()
 
+EOF
+
+endif
+
+if has('nvim-0.9')
+lua << EOF
+require("noice").setup({
+  lsp = {
+    -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
+    override = {
+      ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+      ["vim.lsp.util.stylize_markdown"] = true,
+      ["cmp.entry.get_documentation"] = true,
+    },
+  },
+  -- you can enable a preset for easier configuration
+  presets = {
+    bottom_search = true, -- use a classic bottom cmdline for search
+    command_palette = true, -- position the cmdline and popupmenu together
+    long_message_to_split = false, -- long messages will be sent to a split
+    inc_rename = false, -- enables an input dialog for inc-rename.nvim
+    lsp_doc_border = false, -- add a border to hover docs and signature help
+  },
+})
 EOF
 
 endif
