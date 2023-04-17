@@ -190,17 +190,17 @@ command! -bar -bang -nargs=? -complete=buffer Buffers
 command! -bar -bang Marks
   \ call fzf#vim#marks(fzf#vim#with_preview({ "placeholder": "{4}:{2}" , 'options': ['--prompt', ' ']}),<bang>0)
 
-nnoremap <Leader>f :Files<CR>
-nnoremap <Leader>g :Rg<Space>
-nnoremap <Leader>* :execute 'Rg '.expand('<cword>')<CR>
-nnoremap <Leader>j :BTags<CR>
-nnoremap <Leader>J :CocFzfList outline<CR>
-nnoremap <Leader>a :Buffers<CR>
-nnoremap <Leader>m :Marks<CR>
-nnoremap <Leader>hh :History<CR>
-nnoremap <Leader>hl :Commits<CR>
-nnoremap <Leader>h; :BCommits<CR>
-nnoremap <Leader>; :Jumps<CR>
+nnoremap <silent> <Leader>f :Files<CR>
+nnoremap <silent> <Leader>g :Rg<Space>
+nnoremap <silent> <Leader>* :execute 'Rg '.expand('<cword>')<CR>
+nnoremap <silent> <Leader>j :BTags<CR>
+nnoremap <silent> <Leader>J :CocFzfList outline<CR>
+nnoremap <silent> <Leader>a :Buffers<CR>
+nnoremap <silent> <Leader>m :Marks<CR>
+nnoremap <silent> <Leader>hh :History<CR>
+nnoremap <silent> <Leader>hl :Commits<CR>
+nnoremap <silent> <Leader>h; :BCommits<CR>
+nnoremap <silent> <Leader>; :Jumps<CR>
 let g:fzf_buffers_jump=1
 augroup FzfLayoutResize
     autocmd!
@@ -357,7 +357,7 @@ omap if <Plug>(coc-funcobj-i)
 omap af <Plug>(coc-funcobj-a)
 " Use <C-j> for both expand and jump (make expand higher priority)
 imap <C-j> <Plug>(coc-snippets-expand-jump)
-nnoremap <leader>he :CocCommand git.showCommit<CR>
+nnoremap <silent> <leader>he :CocCommand git.showCommit<CR>
 " Remap <C-f> and <C-b> for scroll float windows/popups.
 if has('nvim-0.4.0') || has('patch-8.2.0750')
   nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "<Plug>(SmoothieForwards)"
@@ -374,7 +374,7 @@ highlight link Searchlight Incsearch
 " majutsushi/tagbar
 let g:tagbar_show_linenumbers=1
 let g:tagbar_width=50
-nnoremap <Leader>p :TagbarToggle<CR>
+nnoremap <silent> <Leader>p :TagbarToggle<CR>
 highlight link TagbarSignature Comment
 let g:tagbar_type_yaml = {
     \ 'ctagstype' : 'yaml',
@@ -409,13 +409,13 @@ let g:tagbar_type_yaml = {
 
 " tpope/vim-fugitive
 nnoremap <Leader>H :Git<space>
-nnoremap <Leader>hc :Git commit -v<CR>
-nnoremap <Leader>ha :Git add %<CR>
+nnoremap <silent> <Leader>hc :Git commit -v<CR>
+nnoremap <silent> <Leader>ha :Git add %<CR>
 " https://github.com/tpope/vim-fugitive/issues/1272#issuecomment-747818629
-nnoremap <Leader>u :Git -c push.default=current push<CR>
-nnoremap <Leader>hb  :Git blame<CR>
-nnoremap <Leader>o  :.GBrowse<CR>
-nnoremap <Leader>d  :Gvdiffsplit<CR>
+nnoremap <silent> <Leader>u :Git -c push.default=current push<CR>
+nnoremap <silent> <Leader>hb  :Git blame<CR>
+nnoremap <silent> <Leader>o  :.GBrowse<CR>
+nnoremap <silent> <Leader>d  :Gvdiffsplit<CR>
 augroup GitHistoricalBufferFold
     autocmd!
     autocmd FileType git,gitcommit,fugitive setlocal foldmethod=syntax
