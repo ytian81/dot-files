@@ -19,6 +19,10 @@ silent function! function#global_statusline()
     return has('nvim-0.7')
 endfunction
 
+silent function! function#is_in_ssh()
+    return $SSH_CONNECTION !=""
+endfunction
+
 " Install GTags and Universal Ctags
 function! InstallGTags(info)
   " info is a dictionary with 3 fields

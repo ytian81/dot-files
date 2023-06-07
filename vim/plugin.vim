@@ -416,12 +416,15 @@ nnoremap <silent> <Leader>ha :Git add %<CR>
 " https://github.com/tpope/vim-fugitive/issues/1272#issuecomment-747818629
 nnoremap <silent> <Leader>u :Git -c push.default=current push<CR>
 nnoremap <silent> <Leader>hb  :Git blame<CR>
-" copy url to clipboard
-nnoremap <silent> <Leader>o  :.GBrowse!<CR>
-xnoremap <silent> <Leader>o :'<'>GBrowse!<CR>
-" open url
-nnoremap <silent> <Leader>O  :.GBrowse<CR>
-xnoremap <silent> <Leader>O :'<'>GBrowse<CR>
+if function#is_in_ssh()
+    " copy url to clipboard
+    nnoremap <silent> <Leader>o  :.GBrowse!<CR>
+    xnoremap <silent> <Leader>o :'<'>GBrowse!<CR>
+else
+    " open url
+    nnoremap <silent> <Leader>o  :.GBrowse<CR>
+    xnoremap <silent> <Leader>o :'<'>GBrowse<CR>
+endif
 nnoremap <silent> <Leader>d  :Gvdiffsplit<CR>
 augroup GitHistoricalBufferFold
     autocmd!
