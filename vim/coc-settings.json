@@ -15,6 +15,7 @@
     // "clangd.trace.server": "verbose",
     "coc.preferences.currentFunctionSymbolAutoUpdate": true,
     "coc.preferences.enableMessageDialog": true,
+    "coc.source.emoji.filetypes": ["markdown", "gitcommit"]
     "colors.filetypes": ["vim"],
     "floatFactory.floatConfig": {
         "border": true,
