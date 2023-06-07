@@ -42,7 +42,7 @@ tmux bind-key C-p paste-buffer
 #}}}
 # Save history to file {{{
 
-tmux bind-key M command-prompt -p 'save history to filename:' -I '/tmp/tmux.history' 'capture-pane -S -32768 ; save-buffer %1 ; delete-buffer'
+tmux bind-key M command-prompt -p 'save history to filename:' -I '/tmp/tmux.history' 'capture-pane -J -S- -E-; save-buffer %1 ; delete-buffer'
 
 #}}}
 # Float window for top {{{
