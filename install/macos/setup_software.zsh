@@ -68,7 +68,7 @@ function setup_iterm2_color() {
   pushd /tmp
   git clone --depth=1 https://github.com/mbadolato/iTerm2-Color-Schemes 2>/dev/null 1>&2
   cd iTerm2-Color-Schemes
-  tools/import-scheme.sh -v 'Gruvbox Dark' 2>/dev/null 1>&2
+  tools/import-scheme.sh -v 'GruvboxDark' 2>/dev/null 1>&2
   popd
   print -nP " %2FOK%f"
   print -P ""
@@ -76,7 +76,7 @@ function setup_iterm2_color() {
   print -nP -- "Changing %BiTerm2%b profile ..."
   # This doesn't persist after restart of iTerm2
   # echo -e "\033]1337;SetColors=preset=Gruvbox Dark\a"
-  /usr/libexec/PlistBuddy -x -c "Print :\"Custom Color Presets\":\"Gruvbox Dark\"" ~/Library/Preferences/com.googlecode.iterm2.plist > /tmp/gruvbox.plist
+  /usr/libexec/PlistBuddy -x -c "Print :\"Custom Color Presets\":\"GruvboxDark\"" ~/Library/Preferences/com.googlecode.iterm2.plist > /tmp/gruvbox.plist
   /usr/libexec/PlistBuddy -x -c "Print :\"New Bookmarks\":0" ~/Library/Preferences/com.googlecode.iterm2.plist > /tmp/new_bookmarks.plist
   # Merge will skip duplicate entries, so we first delete "New Bookmarks", set color and merge back
   # "New Bookmarks"
