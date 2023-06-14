@@ -15,11 +15,16 @@
     // "clangd.trace.server": "verbose",
     "coc.preferences.currentFunctionSymbolAutoUpdate": true,
     "coc.preferences.enableMessageDialog": true,
-    "coc.source.emoji.filetypes": ["markdown", "gitcommit"],
+    "coc.source.emoji.filetypes": [
+        "markdown",
+        "gitcommit"
+    ],
     "diagnostic.errorSign": "✘",
     "diagnostic.warningSign": "",
     "diagnostic.infoSign": "",
-    "colors.filetypes": ["vim"],
+    "colors.filetypes": [
+        "vim"
+    ],
     "floatFactory.floatConfig": {
         "border": true,
         "borderhighlight": "Comment",
