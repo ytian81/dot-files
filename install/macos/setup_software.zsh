@@ -50,6 +50,7 @@ function setup_iterm2_profile() {
     '"Ambiguous Double Width"'                      bool   0
     '"Draw Powerline Glyphs"'                       bool   1
     '"Only The Default BG Color Uses Transparency"' bool   1
+    '"Show Mark Indicators"'                        bool   0
   )
 
   print -nP -- "Changing %BiTerm2%b profile ..."
