@@ -25,10 +25,12 @@ tmux set-option -g base-index 1
 tmux set-option -g pane-base-index 1
 
 # }}}
-# Misc {{{
-
-# Mouse
+# Mouse {{{
 tmux set-option -g mouse on
+
+# }}}
+# Clipboard {{{
+tmux set-option -g set-clipboard on
 
 # }}}
 

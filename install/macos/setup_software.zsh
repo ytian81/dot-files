@@ -1,6 +1,21 @@
 #!/usr/bin/env zsh
 
 # set up iTerm2
+function setup_iterm2_general() {
+  local -r settings=(
+    '"AllowClipboardAccess"'                        bool   1
+  )
+
+  print -nP -- "Changing %BiTerm2%b general ..."
+  local k t v
+  for k t v in $settings; do
+    /usr/libexec/PlistBuddy -c "Set :$k $v" \
+      ~/Library/Preferences/com.googlecode.iterm2.plist 2>/dev/null && continue
+    /usr/libexec/PlistBuddy -c "Add :$k $t $v" ~/Library/Preferences/com.googlecode.iterm2.plist
+  done
+  print -nP " %2FOK%f"
+  print -P ""
+}
 function setup_iterm2_appearance() {
   local -r settings=(
     '"TabStyleWithAutomaticOption"'                 real   5
@@ -16,7 +31,6 @@ function setup_iterm2_appearance() {
   done
   print -nP " %2FOK%f"
   print -P ""
-
 }
 function setup_iterm2_profile() {
   local -r font_size=12
@@ -74,6 +88,7 @@ function setup_iterm2_color() {
   print -P ""
 }
 function setup_iterm2 {
+  setup_iterm2_general
   setup_iterm2_appearance
   setup_iterm2_profile
   setup_iterm2_color
