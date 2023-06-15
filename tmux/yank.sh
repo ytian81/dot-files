@@ -53,6 +53,14 @@ if [ "$buflen" -gt "$maxlen" ]; then
   printf "input is %d bytes too long" "$(( buflen - maxlen ))" >&2
 fi
 
+# if tmux is greater than 3.2 than we can directly use tmux load buffer -w flag to
+# access system clipboard
+tmux_version=$(tmux -V | sed 's/[^0-9.]//g')
+if [[ $(awk '{print ($1 >= 3.2)}' <<< "$tmux_version" 2> /dev/null || bc -l <<< "$tmux_version >= 3.2") = 1 ]]; then
+    echo $buf | tmux load-buffer -w -
+    exit;
+fi
+
 # build up OSC 52 ANSI escape sequence
 esc="\033]52;c;$( printf %s "$buf" | head -c $maxlen | base64 | tr -d '\r\n' )\a"
 
