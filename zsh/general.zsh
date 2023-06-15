@@ -14,6 +14,7 @@ export FZF_DEFAULT_OPTS='
   --height 80%
   --border
   --no-separator
+  --info=inline-right
   --bind ctrl-b:preview-half-page-up,ctrl-f:preview-half-page-down,ctrl-/:toggle-preview,ctrl-d:half-page-down,ctrl-u:half-page-up
   --preview-window=right,60%
 '
