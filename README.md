@@ -24,6 +24,8 @@ Modularized dot-files
  * [caps2esc](https://gitlab.com/interception/linux/plugins/caps2esc)
  * [space2meta](https://gitlab.com/interception/linux/plugins/space2meta)
 
+* [tmux](https://medium.com/@alexeysamoshkin/tmux-in-practice-series-of-posts-ae34f16cfab0)
+
 # Mac Setup
 
 * iTerm2
@@ -45,6 +47,8 @@ Modularized dot-files
 * [Alt-Tab](https://github.com/lwouis/alt-tab-macos)
 
 * [Rectangle](https://github.com/rxhanson/Rectangle)
+
+* [tmux](https://medium.com/@alexeysamoshkin/tmux-in-practice-series-of-posts-ae34f16cfab0)
 
 # Docker
 
