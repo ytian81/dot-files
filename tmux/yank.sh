@@ -27,8 +27,8 @@ if [ -n "$copy_backend" ]; then
   exit;
 fi
 
-if [ -z "$TMUX" ]; then
-  printf "tmux is not running"
+if [ -z "${TMUX-}" ]; then
+  printf "tmux is not running" >&2
   exit;
 fi
 
