@@ -45,5 +45,11 @@ tmux set-option -g @fzf-url-bind 'o'
 tmux set-option -g @fzf-url-fzf-options "-w 80% -h 60% --multi -0 --preview 'echo {}' --preview-window down:5:wrap --bind=\"ctrl-y:execute-silent( echo -n {2..}  | $YANK_SCRIPT )\" --header 'Press CTRL-Y to url into clipboard'"
 
 # }}}
+# tmux-plugins/tmux-yank {{{
+
+# stay in copy mode instead of return to command mode
+tmux set-option -g @yank_action 'copy-pipe'
+
+# }}}
 
 # vim:filetype=tmux:foldmethod=marker
