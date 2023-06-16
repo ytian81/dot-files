@@ -6,8 +6,10 @@
 #     PATH="$HOME/.local/bin:$PATH"
 # fi
 
+export YANK_SCRIPT="$DOT_FILES_PATH/tmux/yank.sh"
+
 # fzf
-export FZF_DEFAULT_OPTS='
+export FZF_DEFAULT_OPTS="
   --color fg:#ebdbb2,bg:#282828,hl:#fabd2f,fg+:#ebdbb2,bg+:#3c3836,hl+:#fabd2f
   --color info:#83a598,prompt:#bdae93,spinner:#fabd2f,pointer:#83a598,marker:#fe8019,header:#665c54
   --layout=reverse
@@ -15,9 +17,12 @@ export FZF_DEFAULT_OPTS='
   --border
   --no-separator
   --info=inline-right
-  --bind ctrl-b:preview-half-page-up,ctrl-f:preview-half-page-down,ctrl-/:toggle-preview,ctrl-d:half-page-down,ctrl-u:half-page-up
+  --bind=ctrl-b:preview-half-page-up,ctrl-f:preview-half-page-down
+  --bind=ctrl-u:half-page-up,ctrl-d:half-page-down
+  --bind=ctrl-/:toggle-preview
+  --bind='ctrl-y:execute-silent(print {} | $YANK_SCRIPT)'
   --preview-window=right,60%
-'
+"
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --ignore-vcs'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_CTRL_R_OPTS="${FZF_CTRL_R_OPTS:+$FZF_CTRL_R_OPTS }--preview 'echo {}' --preview-window down:5:wrap"
