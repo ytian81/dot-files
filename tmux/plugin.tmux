@@ -42,7 +42,7 @@ tmux bind-key u set-option -g @pomodoro_minutes 25
 # wfxr/tmux-fzf-url {{{
 
 tmux set-option -g @fzf-url-bind 'o'
-tmux set-option -g @fzf-url-fzf-options "-w 80% -h 60% --multi -0 --preview 'echo {}' --preview-window down:5:wrap --bind=\"ctrl-y:execute-silent( echo -n {2..} | $YANK_SCRIPT )\" "
+tmux set-option -g @fzf-url-fzf-options "-w 80% -h 60% --multi -0 --preview 'echo {}' --preview-window down:5:wrap --bind=\"ctrl-y:execute-silent( echo -n {2..}  | $YANK_SCRIPT )\" --header 'Press CTRL-Y to url into clipboard'"
 
 # }}}
 
