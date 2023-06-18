@@ -2,7 +2,13 @@
 
 set -eu
 
-buf=$(cat "$@")
+if (( $# == 0 )) ; then
+    # if no argument, read from standard input from pipe
+    buf=$(cat "$@")
+else
+    # otherwise read from all arguments
+    buf=$@
+fi
 
 # wrap notificatin esccape sequence
 esc="\e]9;$buf\a"

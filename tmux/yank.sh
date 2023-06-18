@@ -7,7 +7,13 @@ is_app_installed() {
 }
 
 # get data either form stdin or from file
-buf=$(cat "$@")
+if (( $# == 0 )) ; then
+    # if no argument, read from standard input from pipe
+    buf=$(cat "$@")
+else
+    # otherwise read from all arguments
+    buf=$@
+fi
 
 # Resolve copy backend: pbcopy (OSX), reattach-to-user-namespace (OSX), xclip/xsel (Linux)
 copy_backend=""
