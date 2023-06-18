@@ -7,6 +7,9 @@
 # fi
 
 export YANK_SCRIPT="$DOT_FILES_PATH/tmux/yank.sh"
+alias yank=$YANK_SCRIPT
+export NOTIFY_SCRIPT="$DOT_FILES_PATH/tmux/notify-iterm2.sh"
+alias notify=$NOTIFY_SCRIPT
 
 # fzf
 export FZF_DEFAULT_OPTS="
