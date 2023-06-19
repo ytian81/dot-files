@@ -3,27 +3,24 @@
 set -eu
 
 if (( $# == 0 )) ; then
-    # if no argument, read from standard input from pipe
-    buf=$(cat "$@")
+  # if no argument, read from standard input from pipe
+  buf=$(cat "$@")
 else
-    # otherwise read from all arguments
-    buf=$@
+  # otherwise read from all arguments
+  buf=$@
 fi
 
 # wrap notificatin esccape sequence
 esc="\e]9;$buf\a"
 
-# for an interactive shell, we can directly do `printf "$esc"` to pipe thing content to right tty
-# printf "$esc"
-
 # otherwise, we need to wire the content to the right tty ourselves
 if [ -n "${TMUX-}" ]; then
   # wrap tmux pass through escape sequence
   esc="\ePtmux;\e$esc\e\\"
-  # set to tmux pane tty
-  target_tty=$(tmux list-panes -F "#{pane_active} #{pane_tty}" | awk '$1=="1" { print $2 }')
+  # set to tmux client tty
+  target_tty=$(tmux display-message -p "#{client_tty}")
 else
-  # set to normal tty
+  # set to normal tty if not in tmux
   target_tty=$(tty)
 fi
 

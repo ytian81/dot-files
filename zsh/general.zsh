@@ -6,9 +6,9 @@
 #     PATH="$HOME/.local/bin:$PATH"
 # fi
 
-export YANK_SCRIPT="$DOT_FILES_PATH/tmux/yank.sh"
+export YANK_SCRIPT="$DOT_FILES_PATH/scripts/yank.sh"
 alias yank=$YANK_SCRIPT
-export NOTIFY_SCRIPT="$DOT_FILES_PATH/tmux/notify-iterm2.sh"
+export NOTIFY_SCRIPT="$DOT_FILES_PATH/scripts/notify-iterm2.sh"
 alias notify=$NOTIFY_SCRIPT
 
 # fzf
