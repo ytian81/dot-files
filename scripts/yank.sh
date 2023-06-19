@@ -53,7 +53,7 @@ esc="\033]52;c;$( printf %s "$buf" | head -c $maxlen | base64 | tr -d '\r\n' )\a
 if [ -n "${TMUX-}" ]; then
   # if tmux is greater than 3.2 than we can directly use tmux load buffer -w flag to
   # access system clipboard
-  tmux_version=$(tmux -V | sed 's/[^0-9.]//g')
+  tmux_version=${TMUX_VERSION-:$(tmux -V | sed -En 's/^tmux[^0-9]*([.0-9]+).*/\1/p')}
   if [[ $(awk '{print ($1 >= 3.2)}' <<< "$tmux_version" 2> /dev/null || bc -l <<< "$tmux_version >= 3.2") = 1 ]]; then
     printf "$buf" | tmux load-buffer -w -
     exit;

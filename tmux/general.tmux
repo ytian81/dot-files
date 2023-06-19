@@ -33,5 +33,10 @@ tmux set-option -g mouse on
 tmux set-option -g set-clipboard on
 
 # }}}
+# tmux version {{{
+
+tmux set-environment -g TMUX_VERSION $(tmux -V | sed -En "s/^tmux[^0-9]*([.0-9]+).*/\1/p")
+
+# }}}
 
 # vim:filetype=tmux:foldmethod=marker
