@@ -49,6 +49,8 @@ tmux set-option -g @fzf-url-fzf-options "-w 80% -h 60% --multi -0 --preview 'ech
 
 # stay in copy mode instead of return to command mode
 tmux set-option -g @yank_action 'copy-pipe'
+# customize tmux-yank command to avoid requiring other dependencies
+tmux set-option -g @custom_copy_command 'yank'
 
 # }}}
 
