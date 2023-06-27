@@ -19,6 +19,8 @@
         "markdown",
         "gitcommit"
     ],
+    "coc.source.around.priority": 100,
+    "suggest.languageSourcePriority": 95,
     "diagnostic.errorSign": "✘",
     "diagnostic.warningSign": "",
     "diagnostic.infoSign": "",
