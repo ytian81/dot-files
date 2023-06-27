@@ -317,7 +317,7 @@ inoremap <silent><expr> <TAB>
   \ coc#pum#visible() ? coc#pum#next(1):
   \ <SID>check_back_space() ? "\<Tab>" :
   \ coc#refresh()
-inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+inoremap <silent><expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 " Make <CR> to accept selected completion item or activate auto-pairs return
 " <C-g>u breaks current undo, please make your own choice.
 let g:AutoPairsMapCR = 0
