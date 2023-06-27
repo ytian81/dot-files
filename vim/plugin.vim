@@ -318,10 +318,11 @@ inoremap <silent><expr> <TAB>
   \ <SID>check_back_space() ? "\<Tab>" :
   \ coc#refresh()
 inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
-" Make <CR> to accept selected completion item or notify coc.nvim to format
+" Make <CR> to accept selected completion item or activate auto-pairs return
 " <C-g>u breaks current undo, please make your own choice.
-inoremap <silent><expr> <CR> coc#pum#visible() ? coc#_select_confirm()
-  \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+let g:AutoPairsMapCR = 0
+inoremap <silent><expr> <cr> coc#pum#visible() ? coc#_select_confirm()
+  \: "\<C-g>u\<CR>\<Plug>AutoPairsReturn"
 " Use `[g` and `]g` to navigate diagnostics
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)

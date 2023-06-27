@@ -55,7 +55,7 @@ Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'honza/vim-snippets'
 Plug 'is0n/fm-nvim'
 Plug 'jacquesbh/vim-showmarks'
-Plug 'jiangmiao/auto-pairs'
+Plug 'LunarWatcher/auto-pairs'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --no-zsh' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
