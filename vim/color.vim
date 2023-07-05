@@ -11,7 +11,7 @@ set textwidth=100
 autocmd FileType * set formatoptions+=t
 set colorcolumn=+1
 
-set pumheight=10
+set pumheight=15
 
 nmap <leader>sp :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
 \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
