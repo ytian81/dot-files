@@ -37,7 +37,7 @@ set linebreak
 set breakindent
 let &showbreak='↳ '
 
-autocmd FileType * set formatoptions-=o
+set formatoptions-=o
 
 set expandtab
 set softtabstop=4
@@ -95,3 +95,14 @@ autocmd BufReadPost *
 set encoding=utf-8
 set termencoding=utf-8
 set fileencodings=utf-8,ucs-bom,shift-jis,gb18030,gbk,gb2312,cp936,latin1
+
+function! general#clang_format()
+    silent! execute '!' . 'clang-format' . ' -i % ' . '--lines=' . v:lnum . ':' . (v:lnum+v:count-1)
+endfunction
+
+augroup CppFormat
+    autocmd!
+    " " Prefer to set formatexpr over formatprg because the latter doesn't accept range
+    autocmd FileType cpp setlocal formatexpr=general#clang_format()
+    " autocmd FileType cpp setlocal formatprg=clang-format
+augroup end

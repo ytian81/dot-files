@@ -349,9 +349,6 @@ nnoremap <silent> K :call <SID>show_documentation()<CR>
 autocmd CursorHold * silent call CocActionAsync('highlight')
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
-" Formatting selected code.
-xmap <leader>cf  <Plug>(coc-format-selected) <CR>
-nmap <leader>cf  <Plug>(coc-format) <CR>
 " Introduce function text object
 " NOTE: Requires 'textDocument.documentSymbol' support from the language server.
 xmap if <Plug>(coc-funcobj-i)
