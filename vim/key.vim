@@ -79,6 +79,3 @@ map q/ /q
 map q? ?q
 
 nnoremap <silent> <leader>U :PlugUpdate \| CocUpdate<cr>
-
-" `` is to go back to previous jump
-nnoremap <silent> gQ gggqG``
