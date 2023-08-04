@@ -9,7 +9,7 @@ augroup END
 
 set textwidth=100
 autocmd FileType * set formatoptions+=t
-set colorcolumn=+1
+set colorcolumn=101
 
 set pumheight=15
 

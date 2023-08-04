@@ -99,8 +99,8 @@ set fileencodings=utf-8,ucs-bom,shift-jis,gb18030,gbk,gb2312,cp936,latin1
 function! general#clang_format()
     let l:clang_format_binary = get(g:, 'clang_format_binary', 'clang-format')
     let l:cmd = '!' . l:clang_format_binary . ' -i % '
-    if exists(v:lnum) && exists(v:count)
-        let l:cmd=l:cmd . '--lines=' . v:lnum . ':' . (v:lnum+v:count-1)
+    if v:count
+        let l:cmd .= '--lines=' . v:lnum . ':' . (v:lnum+v:count-1)
     endif
     silent! execute l:cmd
 endfunction
@@ -109,6 +109,8 @@ augroup CppFormat
     autocmd!
     " " Prefer to set formatexpr over formatprg because the latter doesn't accept range
     autocmd FileType cpp setlocal formatexpr=general#clang_format()
+    " " disable textwidth because clang-format has better C++ context for wrapping text
+    autocmd FileType cpp setlocal textwidth=0
     " autocmd FileType cpp setlocal formatprg=clang-format
 augroup end
 
