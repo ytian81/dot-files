@@ -193,7 +193,7 @@ command! -bar -bang Marks
   \ call fzf#vim#marks(fzf#vim#with_preview({ "placeholder": "{4}:{2}" , 'options': ['--prompt', ' ']}),<bang>0)
 
 nnoremap <silent> <Leader>f :Files<CR>
-nnoremap <silent> <Leader>g :Rg<Space>
+nnoremap <Leader>g :Rg<Space>
 nnoremap <silent> <Leader>* :execute 'Rg '.expand('<cword>')<CR>
 nnoremap <silent> <Leader>j :BTags<CR>
 nnoremap <silent> <Leader>J :CocFzfList outline<CR>
