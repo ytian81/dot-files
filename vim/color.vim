@@ -8,7 +8,7 @@ augroup active_cursorline
 augroup END
 
 set textwidth=100
-autocmd FileType * set formatoptions+=t
+set formatoptions-=o
 set colorcolumn=101
 
 set pumheight=15

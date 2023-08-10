@@ -37,8 +37,6 @@ set linebreak
 set breakindent
 let &showbreak='↳ '
 
-set formatoptions-=o
-
 set expandtab
 set softtabstop=4
 set shiftwidth=4
