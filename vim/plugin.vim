@@ -248,7 +248,7 @@ let g:sneak#label = 1
 " skywind3000/asyncrun.vim
 " Opening quickfix window when AsyncRun starts
 augroup asyncrun_quickfix
-    autocmd User AsyncRunStart call asyncrun#quickfix_toggle(8, 1)
+    autocmd User AsyncRunStart call asyncrun#quickfix_toggle(10, 1)
 augroup END
 
 " lakshayg/vim-bazel
