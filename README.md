@@ -50,6 +50,8 @@ Modularized dot-files
 
 * [tmux](https://medium.com/@alexeysamoshkin/tmux-in-practice-series-of-posts-ae34f16cfab0)
 
+* [local-opener](https://github.com/superbrothers/opener)
+
 # Docker
 
 Build an image
