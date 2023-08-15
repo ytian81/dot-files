@@ -22,6 +22,8 @@ brew install tldr
 brew install tree
 brew install tmux
 brew install universal-ctags
+brew install superbrothers/opener/opener
+brew services start opener
 
 # install gui-software
 brew install iterm2
