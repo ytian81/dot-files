@@ -415,14 +415,15 @@ nnoremap <silent> <Leader>ha :Git add %<CR>
 nnoremap <silent> <Leader>u :Git -c push.default=current push<CR>
 nnoremap <silent> <Leader>hb  :Git blame<CR>
 if function#is_in_ssh()
-    " copy url to clipboard
-    nnoremap <silent> <Leader>o  :.GBrowse!<CR>
-    xnoremap <silent> <Leader>o :'<'>GBrowse!<CR>
-else
-    " open url
-    nnoremap <silent> <Leader>o  :.GBrowse<CR>
-    xnoremap <silent> <Leader>o :'<'>GBrowse<CR>
+    let g:netrw_browsex_viewer = $DOT_FILES_PATH . '/scripts/local-open.sh'
 endif
+" open file under current branch in github
+nnoremap <silent> <Leader>o  :.GBrowse<CR>
+xnoremap <silent> <Leader>o  :'<'>GBrowse<CR>
+" open file under origin/master in github
+nnoremap <silent> <Leader>O  :.GBrowse origin/master:%<CR>
+xnoremap <silent> <Leader>O  :'<'>GBrowse origin/master:%<CR>
+
 nnoremap <silent> <Leader>d  :Gvdiffsplit<CR>
 augroup GitHistoricalBufferFold
     autocmd!
