@@ -5,3 +5,4 @@ apt-get install -y bat
 apt-get install -y tldr
 apt-get install -y fasd
 apt-get install -y ripgrep
+apt-get install -y netcat
