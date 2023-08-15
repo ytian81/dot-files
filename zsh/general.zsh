@@ -10,6 +10,8 @@ export YANK_SCRIPT="$DOT_FILES_PATH/scripts/yank.sh"
 alias yank=$YANK_SCRIPT
 export NOTIFY_SCRIPT="$DOT_FILES_PATH/scripts/notify-iterm2.sh"
 alias notify=$NOTIFY_SCRIPT
+export LOCAL_OPEN_SCRIPT="$DOT_FILES_PATH/scripts/local-open.sh"
+alias local-open=$LOCAL_OPEN_SCRIPT
 
 # fzf
 export FZF_DEFAULT_OPTS="
