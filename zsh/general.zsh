@@ -16,6 +16,11 @@ alias notify=$NOTIFY_SCRIPT
 export LOCAL_OPEN_SCRIPT="$DOT_FILES_PATH/scripts/local-open.sh"
 alias local-open=$LOCAL_OPEN_SCRIPT
 
+# check if in ssh session, if so, use local-open
+if [[ -n $SSH_CONNECTION ]]; then
+    export BROWSER=$LOCAL_OPEN_SCRIPT
+fi
+
 # fzf
 export FZF_DEFAULT_OPTS="
   --color fg:#ebdbb2,bg:#282828,hl:#fabd2f,fg+:#ebdbb2,bg+:#3c3836,hl+:#fabd2f
