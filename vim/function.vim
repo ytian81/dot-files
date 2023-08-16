@@ -65,3 +65,17 @@ function! InstallPowerlineFont(info)
       exec "!bash ".s:function."/install/installPowerlineFont.sh"
   endif
 endfunction
+
+" Parse GTest filter
+" Heavily inspired by https://github.com/alepez/vim-gtest
+function function#get_gtest_filter()
+    let l:line = getline('.')
+    if 0 != match(l:line, "^TEST")
+        let l:line = getline(search('^TEST', 'bnW'))
+        if 0 != match(l:line, "^TEST")
+            return ''
+        endif
+    endif
+    let l:ms = matchlist(l:line, '^\(TEST\S*\)\s*(\s*\(\S\{-1,}\),\s*\(\S\{-1,}\)\s*).*$')
+    return '--test_arg=--gtest_filter='.l:ms[2] . '.' . l:ms[3]
+endfunction

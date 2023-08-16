@@ -253,11 +253,16 @@ augroup END
 
 " lakshayg/vim-bazel
 nnoremap <Leader>B :Bazel<space>
-" nnoremap <Leader>bb :Bazel build<space>
-" nnoremap <Leader>bt :Bazel test<space>
-" nnoremap <Leader>br :Bazel run<space>
 " set g:bazel_bash_completion_path to bash complete script
 let g:bazel_make_command = "AsyncRun -program=make"
+augroup CppBazelBuild
+    autocmd!
+    autocmd FileType cpp nnoremap <silent> gb :Bazel build  <cr>
+    autocmd FileType cpp nnoremap <silent> gt :execute 'Bazel test --test_output=all --config=local --cache_test_results=no ' . function#get_gtest_filter() <cr>
+    autocmd FileType cpp noremap <Leader>bb :Bazel build<space>
+    autocmd FileType cpp noremap <Leader>bt :Bazel test<space>
+    autocmd FileType cpp noremap <Leader>br :Bazel run<space>
+augroup end
 
 " " ludovicchabant/vim-gutentags
 " let $GTAGSLABEL = 'native-pygments'
