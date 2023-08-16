@@ -43,7 +43,6 @@ tmux bind-key u set-option -g @pomodoro_minutes 25
 
 tmux set-option -g @fzf-url-bind 'o'
 tmux set-option -g @fzf-url-fzf-options "-w 80% -h 60% --multi -0 --preview 'echo {}' --preview-window down:5:wrap --bind=\"ctrl-y:execute-silent( echo -n {2..}  | $YANK_SCRIPT )\" --header 'Press CTRL-Y to url into clipboard'"
-tmux if-shell '[ -n $SSH_CONNECTION ]' 'tmux setenv -g BROWSER $YANK_SCRIPT'
 
 # }}}
 # tmux-plugins/tmux-yank {{{
