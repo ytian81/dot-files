@@ -250,6 +250,7 @@ let g:sneak#label = 1
 augroup asyncrun_quickfix
     autocmd User AsyncRunStart call asyncrun#quickfix_toggle(10, 1)
 augroup END
+nnoremap <silent> go :call asyncrun#quickfix_toggle(10)<cr>
 
 " lakshayg/vim-bazel
 nnoremap <Leader>B :Bazel<space>
@@ -413,6 +414,7 @@ let g:tagbar_type_yaml = {
 " noremap <silent> <leader>aa :GscopeFind a <C-R><C-W><cr>
 
 " tpope/vim-fugitive
+nnoremap <silent> gh :Git<CR>
 nnoremap <Leader>H :Git<space>
 nnoremap <silent> <Leader>hc :Git commit -v<CR>
 nnoremap <silent> <Leader>ha :Git add %<CR>
