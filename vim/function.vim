@@ -80,5 +80,10 @@ function function#get_gtest_filter()
     " if next line is not a test name, it will be ignored
     let l:line = join(getline(l:lnum, l:lnum+1))
     let l:ms = matchlist(l:line, '^\(TEST\S*\)\s*(\s*\(\S\{-1,}\),\s*\(\S\{-1,}\)\s*).*$')
-    return '--test_arg=--gtest_filter=' . l:ms[2] . '.' . l:ms[3]
+    let l:ret = l:ms[2] . '.' . l:ms[3]
+    if 0 == match(l:line, '^TEST_P')
+        let l:ret = '*' . l:ret . '*'
+    endif
+    let l:ret = ' --test_arg=--gtest_filter="' . l:ret . '"'
+    return l:ret
 endfunction
