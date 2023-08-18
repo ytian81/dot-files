@@ -8,6 +8,7 @@ alias :q='exit'
 alias :wq='exit'
 alias diff='delta --side-by-side'
 alias gdc='gd --cached'
+alias gce='git commit --no-edit'
 alias gstf='gst | fpp'
 alias vi='vim -u NONE'
 [[ -n "$(command -v nvim)" ]] && alias vim="nvim"
