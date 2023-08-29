@@ -109,6 +109,7 @@ augroup CppFormat
     autocmd FileType cpp setlocal formatexpr=general#clang_format()
     " " disable textwidth because clang-format has better C++ context for wrapping text
     autocmd FileType cpp setlocal textwidth=0
+    autocmd FileType cpp setlocal formatoptions-=o
     " autocmd FileType cpp setlocal formatprg=clang-format
 augroup end
 

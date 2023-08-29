@@ -8,7 +8,6 @@ augroup active_cursorline
 augroup END
 
 set textwidth=100
-set formatoptions-=o
 set colorcolumn=101
 
 set pumheight=15
