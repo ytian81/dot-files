@@ -250,7 +250,7 @@ let g:sneak#label = 1
 augroup asyncrun_quickfix
     autocmd User AsyncRunStart call asyncrun#quickfix_toggle(10, 1)
 augroup END
-nnoremap <silent> go :call asyncrun#quickfix_toggle(10)<cr>
+nnoremap <silent> yq :call asyncrun#quickfix_toggle(10)<cr>
 
 " lakshayg/vim-bazel
 nnoremap <Leader>B :Bazel<space>
