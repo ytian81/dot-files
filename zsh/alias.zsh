@@ -11,6 +11,7 @@ alias gdc='gd --cached'
 alias gce='git commit --no-edit'
 alias gstf='gst | fpp'
 alias vi='vim -u NONE'
+alias gcn='forgit::clean'
 [[ -n "$(command -v nvim)" ]] && alias vim="nvim"
 if [ `uname` = 'Linux' ]; then
     alias o='xdg-open'
