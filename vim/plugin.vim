@@ -427,9 +427,15 @@ endif
 " open file under current branch in github
 nnoremap <silent> <Leader>o  :.GBrowse<CR>
 xnoremap <silent> <Leader>o  :'<'>GBrowse<CR>
+" cope link under current branch in github
+nnoremap <silent> <Leader>ho  :.GBrowse!<CR>
+xnoremap <silent> <Leader>ho  :'<'>GBrowse!<CR>
 " open file under origin/master in github
 nnoremap <silent> <Leader>O  :.GBrowse origin/master:%<CR>
 xnoremap <silent> <Leader>O  :'<'>GBrowse origin/master:%<CR>
+" copy link under origin/master in github
+nnoremap <silent> <Leader>hO  :.GBrowse! origin/master:%<CR>
+xnoremap <silent> <Leader>hO  :'<'>GBrowse! origin/master:%<CR>
 
 nnoremap <silent> <Leader>d  :Gvdiffsplit<CR>
 augroup GitHistoricalBufferFold
