@@ -233,6 +233,7 @@ let g:fzf_commits_log_options = '--color=always --format="%C(auto)%h%d %s %C(whi
 let g:coc_fzf_preview = 'right,60%'
 let g:coc_fzf_opts = ['--layout=reverse']
 nnoremap <silent> gl :<C-u>CocFzfList<CR>
+nnoremap <silent> g; :<C-u>CocFzfList diagnostics<CR>
 
 " junegunn/vim-easy-align
 xmap ga <Plug>(EasyAlign)
