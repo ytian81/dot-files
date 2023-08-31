@@ -10,7 +10,7 @@
         "--project-root=${workspaceFolder}",
         "--remote-index-address=0.0.0.0:9090"
     ],
-    "clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/15.0.6/clangd_15.0.6/bin/clangd",
+    "clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/16.0.2/clangd_16.0.2/bin/clangd",
     // "clangd.trace.file": "/tmp/clangd.log",
     // "clangd.trace.server": "verbose",
     "coc.preferences.currentFunctionSymbolAutoUpdate": true,
