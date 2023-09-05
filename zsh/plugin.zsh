@@ -37,6 +37,7 @@ bindkey '^o' edit-command-line
 export FORGIT_LOG_FZF_OPTS="--bind=\"ctrl-v:execute(echo {} |grep -Eo '[a-f0-9]+' | head -1 | xargs printf -- 'Gedit %s' | xargs -0 nvim -c )\" "
 export FORGIT_GLO_FORMAT="%C(auto)%h%d %s %C(black)%C(bold)%aN %cr%Creset"
 export FORGIT_DIFF_FZF_OPTS="--bind=\"ctrl-v:execute( export FZF_DEFAULT_OPTS=\$FZF_DEFAULT_OPTS_RESET && $EDITOR {2} )\" "
+export FORGIT_COPY_CMD=$YANK_SCRIPT
 
 # fzf-tab config for fzf height
 export FZF_TMUX_HEIGHT='80%'
