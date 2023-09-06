@@ -63,7 +63,7 @@ function! MyHighlights() abort
     highlight ConflictMarkerEnd                 gui=italic guifg=none    guibg=#2f628e
     highlight ConflictMarkerCommonAncestorsHunk gui=italic guifg=none    guibg=#754a81
     highlight CocHintVirtualText gui=none guifg=#427b58 guibg=none
-    highlight CocInlayHint gui=none guifg=#427b58 guibg=none
+    highlight CocInlayHint gui=italic guifg=#a89984 guibg=#32302f
     highlight CocMenuSel gui=bold guifg=none guibg=#3c3836
     highlight CocSearch gui=none guifg=#fabd2f guibg=none
     highlight link CocFloatDividingLine Comment
