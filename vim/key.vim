@@ -78,4 +78,8 @@ map q: :q
 map q/ /q
 map q? ?q
 
+" update both plugins and coc extensions
 nnoremap <silent> <leader>U :PlugUpdate \| CocUpdate<cr>
+
+" copy file name to clipboard
+nnoremap <silent> y; :let @+ = expand('%:t')<cr>
