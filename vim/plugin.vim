@@ -374,6 +374,7 @@ if has('nvim-0.4.0') || has('patch-8.2.0750')
   vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "<Plug>(SmoothieForwards)"
   vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "<Plug>(SmoothieBackwards)"
 endif
+nnoremap <silent> yv :CocCommand document.toggleInlayHint<cr>
 
 " PeterRincker/vim-searchlight
 highlight link Searchlight Incsearch
