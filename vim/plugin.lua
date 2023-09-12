@@ -36,5 +36,3 @@ require('fm-nvim').setup{
       }
   },
 }
-
-require('mini.splitjoin').setup()

@@ -49,7 +49,6 @@ Plug 'chrisbra/Colorizer', {'on': 'ColorToggle'}
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'derekwyatt/vim-fswitch'
 Plug 'dstein64/vim-win'
-Plug 'echasnovski/mini.splitjoin'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'honza/vim-snippets'
