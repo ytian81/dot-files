@@ -252,6 +252,7 @@ augroup asyncrun_quickfix
     autocmd User AsyncRunStart call asyncrun#quickfix_toggle(10, 1)
 augroup END
 nnoremap <silent> yq :call asyncrun#quickfix_toggle(10)<cr>
+nnoremap <silent> gS :AsyncStop!<cr>
 
 " lakshayg/vim-bazel
 nnoremap <Leader>B :Bazel<space>
