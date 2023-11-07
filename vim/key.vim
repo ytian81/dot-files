@@ -82,4 +82,9 @@ map q? ?q
 nnoremap <silent> <leader>U :PlugUpdate \| CocUpdate<cr>
 
 " copy file name to clipboard
-nnoremap <silent> y; :let @+ = expand('%:t')<cr>
+function! YankInput(input)
+    let @+ = a:input
+    echom "Copied " . a:input . " to clipboard"
+endfunction
+nnoremap <silent> y; :call YankInput(expand('%:t'))<cr>
+nnoremap <silent> y' :call YankInput(expand('%:.'))<cr>
