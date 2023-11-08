@@ -524,3 +524,7 @@ augroup END
 if has('nvim')
     exec 'source ' . expand('<sfile>:p:h') . '/plugin.lua'
 endif
+
+" github/copilot.vim
+imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
+let g:copilot_no_tab_map = v:true

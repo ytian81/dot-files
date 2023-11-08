@@ -93,6 +93,7 @@ Plug 'vim-scripts/star-search'
 Plug 'wellle/targets.vim'
 Plug 'Xuyuanp/scrollbar.nvim'
 Plug 'Yggdroot/indentLine'
+Plug 'github/copilot.vim'
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
