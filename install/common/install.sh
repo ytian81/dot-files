@@ -16,7 +16,7 @@ function install_zsh_themes_and_plugins() {
   git clone --depth=1 https://github.com/Aloxaf/fzf-tab ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/fzf-tab
   git clone --depth=1 https://github.com/MichaelAquilina/zsh-you-should-use ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/you-should-use
   git clone --depth=1 https://github.com/TamCore/autoupdate-oh-my-zsh-plugins ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/autoupdate
-  git clone --depth=1 https://github.com/wfxr/forgit ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/forgit
+  git clone --depth=1 https://github.com/ytian81/forgit ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/forgit
   git clone --depth=1 https://github.com/zdharma-continuum/fast-syntax-highlighting ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/fast-syntax-highlighting
   git clone --depth=1 https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
   git clone --depth=1 https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-completions

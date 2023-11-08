@@ -61,7 +61,7 @@ fast-syntax-highlighting:
 fzf-tab:
 	git clone https://github.com/Aloxaf/fzf-tab ~/.oh-my-zsh/custom/plugins/fzf-tab
 forgit:
-	git clone https://github.com/wfxr/forgit ~/.oh-my-zsh/custom/plugins/forgit
+	git clone https://github.com/ytian81/forgit ~/.oh-my-zsh/custom/plugins/forgit
 you-should-use:
 	git clone https://github.com/MichaelAquilina/zsh-you-should-use ~/.oh-my-zsh/custom/plugins/you-should-use
 autoupdate:
