@@ -79,6 +79,7 @@ plugins=(
   autojump
   colored-man-pages
   git
+  gnu-utils
   forgit
   thefuck
   tmux
