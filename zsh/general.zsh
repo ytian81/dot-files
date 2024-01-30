@@ -34,6 +34,7 @@ export FZF_DEFAULT_OPTS="
   --bind=ctrl-u:half-page-up,ctrl-d:half-page-down
   --bind=ctrl-/:toggle-preview
   --bind='ctrl-y:execute-silent(print {} | $YANK_SCRIPT)'
+  --header=\"$(printf ':: Press \033[38;5;208mCTRL-Y\033[0m to yank, \033[38;5;208mCTRL-/\033[0m to toggle preview')\"
   --preview-window=right,60%
 "
 export FZF_DEFAULT_OPTS_RESET=$FZF_DEFAULT_OPTS
