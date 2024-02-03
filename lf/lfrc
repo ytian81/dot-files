@@ -25,6 +25,7 @@ set icons
 
 # turn on border
 set drawbox
+set borderfmt "\033[38;2;92;83;74m"
 
 # preview files
 set previewer ~/.config/lf/preview
