@@ -4,6 +4,7 @@
 alias c='clear'
 alias cat='bat'
 alias x='exit'
+alias duf='duf -theme ansi'
 alias :q='exit'
 alias :wq='exit'
 alias diff='delta --side-by-side'
