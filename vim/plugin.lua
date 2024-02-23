@@ -21,7 +21,7 @@ require("noice").setup({
 --     timeout = 500,
 -- })
 
-require('fm-nvim').setup{
+require('fm-nvim').setup({
   ui = {
     float = {
         border    = "rounded",
@@ -35,4 +35,11 @@ require('fm-nvim').setup{
         y         = 0.5,
       }
   },
-}
+})
+
+require('bqf').setup({
+  preview = {
+    win_height = 30,
+    win_vheight = 30,
+  },
+})
