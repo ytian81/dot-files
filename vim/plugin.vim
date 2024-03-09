@@ -3,6 +3,9 @@
 
 " Plug 'airblade/vim-gitgutter'
 let g:gitgutter_preview_win_floating = 0
+let g:gitgutter_sign_added = ''
+let g:gitgutter_sign_modified = ''
+let g:gitgutter_sign_removed = ''
 
 " Plug antoinemadec/FixCursorHold.nvim
 let g:cursorhold_updatetime = 200
