@@ -101,6 +101,6 @@ function setup_iterm2 {
 # set up karabiner-elements
 function setup_karabiner(){
   mkdir -p $HOME/.config/karabiner
-  # ln karabiner.json
+  ln -f $DOT_FILES_PATH/karabiner/karabiner.json $HOME/.config/karabiner
 }
 # setup_karabiner

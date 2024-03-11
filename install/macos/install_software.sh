@@ -13,10 +13,10 @@ brew install bat
 brew install coreutils # for gdircolors
 brew install fasd
 brew install git
+brew install ripgrep
 brew install git-delta
 brew install neovim
 brew install node
-brew install svn
 brew install thefuck
 brew install tldr
 brew install tree
@@ -26,9 +26,10 @@ brew install superbrothers/opener/opener
 brew services start opener
 
 # install gui-software
+brew install 1password
+brew install google-chrome
 brew install iterm2
 brew install karabiner-elements
-brew install rectangle
+brew install logi-options-plus
+brew install raycast
 brew install visual-studio-code
-brew tap homebrew/cask-drivers
-brew install --cask logitech-options
