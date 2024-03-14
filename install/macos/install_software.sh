@@ -15,6 +15,7 @@ brew install fasd
 brew install git
 brew install ripgrep
 brew install git-delta
+brew install lf
 brew install neovim
 brew install node
 brew install thefuck
