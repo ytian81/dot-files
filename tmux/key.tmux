@@ -22,20 +22,24 @@ tmux bind-key k split-window -vb -c "#{pane_current_path}"
 # }}}
 # Pane resize {{{
 
+
+# press w to use WINDOW key table
+tmux bind-key w switch-client -T WINDOW
+
 tmux set-option -g repeat-time 1000
-tmux bind-key -r C-h resize-pane -L 5
-tmux bind-key -r C-j resize-pane -D 5
-tmux bind-key -r C-k resize-pane -U 5
-tmux bind-key -r C-l resize-pane -R 5
+tmux bind-key -T WINDOW -r C-h 'resize-pane -L 5 ; switch-client -T WINDOW'
+tmux bind-key -T WINDOW -r C-j 'resize-pane -D 5 ; switch-client -T WINDOW'
+tmux bind-key -T WINDOW -r C-k 'resize-pane -U 5 ; switch-client -T WINDOW'
+tmux bind-key -T WINDOW -r C-l 'resize-pane -R 5 ; switch-client -T WINDOW'
 
 # }}}
 # Pane movement {{{
 
 # move pane to the far right/left/bottom/top
-tmux bind-key H 'split-window -fhb ; swap-pane -t ! ; kill-pane -t !'
-tmux bind-key L 'split-window -fh  ; swap-pane -t ! ; kill-pane -t !'
-tmux bind-key J 'split-window -fv  ; swap-pane -t ! ; kill-pane -t !'
-tmux bind-key K 'split-window -fvb ; swap-pane -t ! ; kill-pane -t !'
+tmux bind-key -T WINDOW H 'split-window -fhb ; swap-pane -t ! ; kill-pane -t !'
+tmux bind-key -T WINDOW L 'split-window -fh  ; swap-pane -t ! ; kill-pane -t !'
+tmux bind-key -T WINDOW J 'split-window -fv  ; swap-pane -t ! ; kill-pane -t !'
+tmux bind-key -T WINDOW K 'split-window -fvb ; swap-pane -t ! ; kill-pane -t !'
 
 #}}}
 # Copy mode {{{
