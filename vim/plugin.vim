@@ -75,6 +75,21 @@ autocmd! BufEnter *.h let b:fswitchdst  = 'cpp,c'
                                     \reg:/include.*/src/,
                                     \../src'
 
+" dstein64/vim-win
+let g:win_resize_height = 5
+let g:win_resize_width = 5
+let g:win_ext_command_map = {
+	      \   '=': 'wincmd =',
+	      \   'H': 'wincmd H',
+	      \   'J': 'wincmd J',
+	      \   'K': 'wincmd K',
+	      \   'L': 'wincmd L',
+	      \   "\<c-h>": 'call win_move_separator(winnr("h"), -g:win_resize_width)',
+	      \   "\<c-l>": 'call win_move_separator(winnr("h"), g:win_resize_width)',
+	      \   "\<c-j>": 'call win_move_statusline(winnr("k"), g:win_resize_width)',
+	      \   "\<c-k>": 'call win_move_statusline(winnr("k"), -g:win_resize_width)',
+	      \ }
+
 " " easymotion/vim-easymotion
 " nmap f <Plug>(easymotion-bd-f)
 " nmap t <Plug>(easymotion-bd-t)
