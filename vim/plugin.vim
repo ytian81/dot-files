@@ -76,6 +76,17 @@ autocmd! BufEnter *.h let b:fswitchdst  = 'cpp,c'
                                     \../src'
 
 " dstein64/vim-win
+function s:win_wrapper()
+      Noice dismiss
+      Noice disable
+      set cmdheight=1
+      redraw!
+      Win
+      Noice enable
+      set cmdheight=0
+      redraw!
+endfunction
+map <silent> <unique> <leader>w :call <SID>win_wrapper()<CR>
 let g:win_resize_height = 5
 let g:win_resize_width = 5
 let g:win_ext_command_map = {
