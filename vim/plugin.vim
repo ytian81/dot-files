@@ -91,6 +91,9 @@ let g:win_resize_height = 5
 let g:win_resize_width = 5
 let g:win_ext_command_map = {
 	      \   '=': 'wincmd =',
+	      \   'z': 'wincmd |',
+	      \   'T': 'wincmd T',
+	      \   'o': 'wincmd o',
 	      \   'H': 'wincmd H',
 	      \   'J': 'wincmd J',
 	      \   'K': 'wincmd K',
