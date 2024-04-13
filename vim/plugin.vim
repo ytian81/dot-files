@@ -88,6 +88,13 @@ let g:win_ext_command_map = {
 	      \   "\<c-l>": 'call win_move_separator(winnr("h"), g:win_resize_width)',
 	      \   "\<c-j>": 'call win_move_statusline(winnr("k"), g:win_resize_width)',
 	      \   "\<c-k>": 'call win_move_statusline(winnr("k"), -g:win_resize_width)',
+	      \   'v': 'wincmd v',
+	      \   's': 'wincmd s',
+	      \   'h': 'Win#exit',
+	      \   'j': 'Win#exit',
+	      \   'k': 'Win#exit',
+	      \   'l': 'Win#exit',
+	      \   "\<space>": 'Win#exit',
 	      \ }
 
 " " easymotion/vim-easymotion
