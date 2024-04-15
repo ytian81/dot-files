@@ -22,7 +22,6 @@ tmux bind-key k split-window -vb -c "#{pane_current_path}"
 # }}}
 # Pane resize {{{
 
-
 # press w to use WINDOW key table
 tmux bind-key w switch-client -T WINDOW
 
@@ -40,6 +39,9 @@ tmux bind-key -T WINDOW H 'split-window -fhb ; swap-pane -t ! ; kill-pane -t !'
 tmux bind-key -T WINDOW L 'split-window -fh  ; swap-pane -t ! ; kill-pane -t !'
 tmux bind-key -T WINDOW J 'split-window -fv  ; swap-pane -t ! ; kill-pane -t !'
 tmux bind-key -T WINDOW K 'split-window -fvb ; swap-pane -t ! ; kill-pane -t !'
+tmux bind-key -T WINDOW T 'break-pane'
+
+tmux bind-key r command-prompt -I "#W" "rename-window '%%'"
 
 #}}}
 # Copy mode {{{
