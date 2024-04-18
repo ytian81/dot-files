@@ -8,6 +8,7 @@ VI_MODE_CURSOR_INSERT=5
 # Edit line in vim with ctrl-o:
 autoload edit-command-line; zle -N edit-command-line
 bindkey '^o' edit-command-line
+bindkey -M vicmd '^o' edit-command-line
 
 # https://unix.stackexchange.com/questions/373302/is-it-possible-to-make-vi-mode-in-zsh-not-interfere-with-escape-sequences
 # '^[b' and '^[f' are built-in escape sequence to move cursor by word. However, when vi mode is
