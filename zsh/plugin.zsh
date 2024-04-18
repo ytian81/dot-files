@@ -2,15 +2,6 @@
 # 10ms for key sequences for faster mode transition in zsh vi-mode
 KEYTIMEOUT=1 # in hundredth of a second
 
-# Use vim keys in tab complete menu:
-zstyle ':completion:*' menu select
-zmodload zsh/complist
-bindkey -M menuselect 'h' vi-backward-char
-bindkey -M menuselect 'k' vi-up-line-or-history
-bindkey -M menuselect 'l' vi-forward-char
-bindkey -M menuselect 'j' vi-down-line-or-history
-bindkey -v '^?' backward-delete-char
-
 VI_MODE_SET_CURSOR=true
 VI_MODE_CURSOR_INSERT=5
 
