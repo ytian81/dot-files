@@ -19,3 +19,9 @@ if [ `uname` = 'Linux' ]; then
 elif [ `uname` = 'Darwin' ]; then
     alias o='open'
 fi
+
+alias \
+	cp="cp -iv" \
+	mv="mv -iv" \
+	rm="rm -vI" \
+	mkd="mkdir -pv" \
