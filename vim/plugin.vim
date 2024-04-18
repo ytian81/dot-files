@@ -300,7 +300,7 @@ let g:bazel_make_command = "AsyncRun -program=make"
 augroup CppBazelBuild
     autocmd!
     autocmd FileType cpp nnoremap <silent> gb :Bazel build  <cr>
-    autocmd FileType cpp nnoremap <silent> gt :execute 'Bazel test --test_output=all --config=local --cache_test_results=no --test_arg=--gtest_color=no' . function#get_gtest_filter() <cr>
+    autocmd FileType cpp nnoremap <silent> gt :execute 'Bazel test --test_output=all --cache_test_results=no --test_arg=--gtest_color=no' . function#get_gtest_filter() <cr>
     autocmd FileType cpp noremap <Leader>bb :Bazel build<space>
     autocmd FileType cpp noremap <Leader>bt :Bazel test<space>
     autocmd FileType cpp noremap <Leader>br :Bazel run<space>
