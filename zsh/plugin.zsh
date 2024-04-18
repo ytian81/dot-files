@@ -29,9 +29,18 @@ zle-line-init() {
 zle -N zle-line-init
 echo -ne '\e[5 q' # Use beam shape cursor on startup.
 preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
+
 # Edit line in vim with ctrl-e:
 autoload edit-command-line; zle -N edit-command-line
 bindkey '^o' edit-command-line
+
+# https://unix.stackexchange.com/questions/373302/is-it-possible-to-make-vi-mode-in-zsh-not-interfere-with-escape-sequences
+# '^[b' and '^[f' are built-in escape sequence to move cursor by word. However, when vi mode is
+# enabled in zsh, then the escape '^[' will be captured by zsh to enter normal mode regardless of
+# KEYTIMEOUT value. So it needs to be explicitly defined as a key map in the vi insert mode to avoid
+# any interference.
+bindkey -M viins '^[b' vi-backward-word # or backward-word
+bindkey -M viins '^[f' vi-forward-word # or forward-word
 
 # forgit Use ctrl-v to open commit in vim
 export FORGIT_LOG_FZF_OPTS="--bind=\"ctrl-v:execute(echo {} |grep -Eo '[a-f0-9]+' | head -1 | xargs printf -- 'Gedit %s' | xargs -0 nvim -c )\" "
