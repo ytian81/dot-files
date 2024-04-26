@@ -38,5 +38,10 @@ tmux set-option -g set-clipboard on
 tmux set-environment -g TMUX_VERSION $(tmux -V | sed -En "s/^tmux[^0-9]*([.0-9]+).*/\1/p")
 
 # }}}
+# tmux cursor shape {{{
+
+tmux set-hook -g after-copy-mode 'set -p cursor-style bar'
+
+# }}}
 
 # vim:filetype=tmux:foldmethod=marker
