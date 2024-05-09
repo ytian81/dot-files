@@ -10,7 +10,7 @@
         "--project-root=${workspaceFolder}",
         "--remote-index-address=0.0.0.0:9090"
     ],
-    "clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/17.0.3/clangd_17.0.3/bin/clangd",
+    "clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/18.1.3/clangd_18.1.3/bin/clangd",
     // "clangd.trace.file": "/tmp/clangd.log",
     // "clangd.trace.server": "verbose",
     "inlayHint.display": false,
