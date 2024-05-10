@@ -1,6 +1,6 @@
 # vi-mode
-# 10ms for key sequences for faster mode transition in zsh vi-mode
-KEYTIMEOUT=1 # in hundredth of a second
+# 100ms for key sequences for faster mode transition in zsh vi-mode
+KEYTIMEOUT=10 # in hundredth of a second
 
 VI_MODE_SET_CURSOR=true
 VI_MODE_CURSOR_INSERT=5
