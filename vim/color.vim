@@ -68,6 +68,7 @@ function! MyHighlights() abort
     highlight link CocFloatDividingLine Comment
     highlight link BqfPreviewBorder Comment
     highlight link NoicePopupmenuSelected CocMenuSel
+    highlight link WinSeparator VertSplit
 endfunction
 augroup ColorSchemeOverWrite
     autocmd!
