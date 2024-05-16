@@ -416,6 +416,19 @@ if has('nvim-0.4.0') || has('patch-8.2.0750')
 endif
 nnoremap <silent> yv :CocCommand document.toggleInlayHint<cr>
 
+" Function to delay the toggling of inlay hints
+function! DelayedToggleInlayHints(delay)
+  call timer_start(a:delay, {-> execute('CocCommand document.toggleInlayHint')})
+endfunction
+" Set up autocommands to toggle inlay hints on insert mode change, only for C++ files
+augroup CocInlayHintsToggleCpp
+  autocmd!
+  " toggle inlay hints immediately upon entering insert mode
+  autocmd FileType cpp,python autocmd InsertEnter <buffer> call DelayedToggleInlayHints(0)
+  " toggle inlay hints 5s after leaving insert mode
+  autocmd FileType cpp,python autocmd InsertLeave <buffer> call DelayedToggleInlayHints(5000)
+augroup END
+
 " PeterRincker/vim-searchlight
 highlight link Searchlight Incsearch
 
