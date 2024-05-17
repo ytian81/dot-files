@@ -416,17 +416,38 @@ if has('nvim-0.4.0') || has('patch-8.2.0750')
 endif
 nnoremap <silent> yv :CocCommand document.toggleInlayHint<cr>
 
-" Function to delay the toggling of inlay hints
-function! DelayedToggleInlayHints(delay)
-  call timer_start(a:delay, {-> execute('CocCommand document.toggleInlayHint')})
+let g:inlay_hint_enabled = 1
+let g:inlay_hint_delay = 20000
+function! DisableInLayHints()
+    if g:inlay_hint_enabled == 0
+        return
+    endif
+    let g:inlay_hint_enabled = 0
+    execute('CocCommand document.toggleInlayHint')
 endfunction
-" Set up autocommands to toggle inlay hints on insert mode change, only for C++ files
+function! EnableInLayHints(timer_id)
+    if g:inlay_hint_enabled == 1
+        return
+    endif
+    let g:inlay_hint_enabled = 1
+    execute('CocCommand document.toggleInlayHint')
+endfunction
+function! DelayedEnableInLayHints(delay)
+  " If a previous timer exists, stop it
+  if exists("g:enableInlayHints_job")
+    call timer_stop(g:enableInlayHints_job)
+  endif
+  " Start a new timer to re-enable inlay hints after the specified delay
+  let g:enableInlayHints_job = timer_start(a:delay, 'EnableInLayHints')
+endfunction
 augroup CocInlayHintsToggleCpp
   autocmd!
-  " toggle inlay hints immediately upon entering insert mode
-  autocmd FileType cpp,python autocmd InsertEnter <buffer> call DelayedToggleInlayHints(0)
-  " toggle inlay hints 5s after leaving insert mode
-  autocmd FileType cpp,python autocmd InsertLeave <buffer> call DelayedToggleInlayHints(5000)
+  " disable inlay hints immediately upon entering insert mode
+  autocmd FileType cpp,python autocmd InsertEnter <buffer> call DisableInLayHints()
+  " enable inlay hints 5s after leaving insert mode
+  autocmd FileType cpp,python autocmd InsertLeave <buffer> call DelayedEnableInLayHints(g:inlay_hint_delay)
+  " disable inlay hints immediately after text change, and re-enable it if idle for a period of time
+  autocmd FileType cpp,python autocmd TextChanged <buffer> call DisableInLayHints() | call DelayedEnableInLayHints(g:inlay_hint_delay)
 augroup END
 
 " PeterRincker/vim-searchlight
