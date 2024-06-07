@@ -52,6 +52,10 @@ Modularized dot-files
 
 * [local-opener](https://github.com/superbrothers/opener)
 
+* [Ligaturizer](https://github.com/ToxicFrog/Ligaturizer)
+
+* [source-code-pro](https://github.com/adobe-fonts/source-code-pro)
+
 # Docker
 
 Build an image
