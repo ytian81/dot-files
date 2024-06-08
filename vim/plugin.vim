@@ -176,6 +176,7 @@ autocmd BufRead,WinEnter    * :DoShowMarks
 " autocmd WinLeave            * :NoShowMarks
 
 " junegunn/fzf.vim
+let g:fzf_vim = {"grep_multi_line": 1}
 function! RipgrepFzf(query, fullscreen)
   let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case -- %s || true'
   let initial_command = printf(command_fmt, shellescape(a:query))
