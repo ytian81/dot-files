@@ -243,15 +243,19 @@ nnoremap <silent> <Leader>hl :Commits<CR>
 nnoremap <silent> <Leader>h; :BCommits<CR>
 nnoremap <silent> <Leader>; :Jumps<CR>
 let g:fzf_buffers_jump=1
-augroup FzfLayoutResize
-    autocmd!
-    autocmd VimEnter,VimResized  * let g:fzf_layout = { 'window': {
-                \ 'width': &columns > 240 ? 0.8 : 0.9,
-                \ 'height': 0.6,
-                \ 'highlight': 'Comment',
-                \ 'rounded': v:false
-                \ }}
-augroup END
+if exists('$TMUX')
+    let g:fzf_layout = { 'tmux': '80%,60%' }
+else
+    augroup FzfLayoutResize
+        autocmd!
+        autocmd VimEnter,VimResized  * let g:fzf_layout = { 'window': {
+                    \ 'width': &columns > 240 ? 0.8 : 0.9,
+                    \ 'height': 0.6,
+                    \ 'highlight': 'Comment',
+                    \ 'rounded': v:false
+                    \ }}
+    augroup END
+endif
 let g:fzf_commits_log_options = '--color=always --format="%C(auto)%h%d %s %C(white)%C(bold)%aN %cr%Creset"'
 " let g:fzf_colors =
 "     \ { 'fg':      ['fg', 'Normal'],
