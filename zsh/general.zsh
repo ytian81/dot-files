@@ -22,11 +22,12 @@ if [[ -n $SSH_CONNECTION ]]; then
 fi
 
 # fzf
+# Open in tmux popup if on tmux, otherwise use --height mode
+export FZF_DISPLAY_OPTS="--height 80% --tmux center,80%,60%"
 export FZF_DEFAULT_OPTS="
   --color fg:#ebdbb2,bg:#282828,hl:#fabd2f,fg+:#ebdbb2,bg+:#3c3836,hl+:#fabd2f
   --color info:#83a598,prompt:#bdae93,spinner:#fabd2f,pointer:#83a598,marker:#fe8019,header:#665c54
   --layout=reverse
-  --height 80%
   --border
   --no-separator
   --info=inline-right
@@ -36,6 +37,7 @@ export FZF_DEFAULT_OPTS="
   --bind='ctrl-y:execute-silent(print {} | $YANK_SCRIPT)'
   --header=\"$(printf ':: Press \033[38;5;208mCTRL-Y\033[0m to yank, \033[38;5;208mCTRL-/\033[0m to toggle preview')\"
   --preview-window=right,60%
+  $FZF_DISPLAY_OPTS
 "
 export FZF_DEFAULT_OPTS_RESET=$FZF_DEFAULT_OPTS
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --ignore-vcs'
