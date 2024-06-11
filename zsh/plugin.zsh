@@ -20,7 +20,7 @@ bindkey -M viins '^[f' vi-forward-word # or forward-word
 
 # forgit Use ctrl-v to open commit in vim
 export FORGIT_LOG_FZF_OPTS="--bind=\"ctrl-v:become(echo {} |grep -Eo '[a-f0-9]+' | head -1 | xargs printf -- 'Gedit %s' | xargs -0 nvim -c )\" "
-export FORGIT_GLO_FORMAT="%C(auto)%h%d %s %C(black)%C(bold)%aN %cr%Creset"
+export FORGIT_GLO_FORMAT=$FZF_GIT_COMMITS_LOG_FORMAT
 export FORGIT_DIFF_FZF_OPTS="--bind=\"ctrl-v:become( export FZF_DEFAULT_OPTS=\$FZF_DEFAULT_OPTS_RESET && $EDITOR {2} )\" "
 export FORGIT_COPY_CMD=$YANK_SCRIPT
 

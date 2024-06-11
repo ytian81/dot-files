@@ -257,7 +257,7 @@ else
                     \ }}
     augroup END
 endif
-let g:fzf_commits_log_options = '--color=always --format="%C(auto)%h%d %s %C(white)%C(bold)%aN %cr%Creset"'
+let g:fzf_commits_log_options = printf('--color=always --format="%s"', expand('$FZF_GIT_COMMITS_LOG_FORMAT'))
 " let g:fzf_colors =
 "     \ { 'fg':      ['fg', 'Normal'],
 "       \ 'bg':      ['bg', 'Normal'],

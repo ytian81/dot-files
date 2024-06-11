@@ -43,6 +43,7 @@ export FZF_DEFAULT_OPTS_RESET=$FZF_DEFAULT_OPTS
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --ignore-vcs'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_CTRL_R_OPTS="${FZF_CTRL_R_OPTS:+$FZF_CTRL_R_OPTS }--preview 'echo {}' --preview-window down:5:wrap"
+export FZF_GIT_COMMITS_LOG_FORMAT="%C(auto)%h%d %s %C(black)%C(bold)%aN %cr%Creset"
 
 if [[ `uname` = 'Linux' ]]; then
     export OPENER=xdg-open
