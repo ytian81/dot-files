@@ -195,9 +195,6 @@ command! -bang -nargs=* Rg
 command! -bar -bang -nargs=? -complete=buffer Buffers
   \ call fzf#vim#buffers(<q-args>, fzf#vim#with_preview({ "placeholder": "{1}", 'options': ['--prompt', '  ']}), <bang>0)
 
-command! -bar -bang Marks
-  \ call fzf#vim#marks(fzf#vim#with_preview({ "placeholder": "{4}:{2}" , 'options': ['--prompt', ' ']}),<bang>0)
-
 nnoremap <silent> <Leader>f :Files<CR>
 nnoremap <Leader>g :Rg<Space>
 nnoremap <silent> <Leader>* :execute 'Rg '.expand('<cword>')<CR>
