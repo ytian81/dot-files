@@ -188,31 +188,6 @@ command! -bang -nargs=* BTags
   \                                   '-n', '1,3..',
   \ ]}), <bang>0)
 
-" https://github.com/junegunn/fzf.vim/issues/865
-function! GoTo(jumpline)
-  let values = split(a:jumpline, ":")
-  execute "e ".values[0]
-  call cursor(str2nr(values[1]), str2nr(values[2]))
-  execute "normal zvzz"
-endfunction
-
-function! Jumps()
-  " Get jumps with filename added
-
-  " vim-startify generates an unlisted-buffer which has no info. So it has to be removed
-  let jumps = map(filter(reverse(copy(getjumplist()[0])), {idx, val -> !empty(getbufinfo(val.bufnr))}),
-    \ { key, val -> extend(val, {'name': fnamemodify(getbufinfo(val.bufnr)[0].name, ":~:.") }) })
-
-  let jumptext = map(copy(jumps), { index, val -> (val.name).':'.(val.lnum).':'.(val.col+1)})
-
-  call fzf#run(fzf#vim#with_preview(fzf#wrap({
-        \ 'source': jumptext,
-        \ 'column': 1,
-        \ 'options': ['--delimiter', ':', '--bind', 'alt-a:select-all,alt-d:deselect-all', '--preview-window', '+{2}-/2'],
-        \ 'sink': function('GoTo')})))
-endfunction
-command! Jumps call Jumps()
-
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case -- ".shellescape(<q-args>), 1,
   \ fzf#vim#with_preview({'options': ['--prompt', ' ']}), <bang>0)
