@@ -18,6 +18,11 @@ bindkey -M vicmd '^o' edit-command-line
 bindkey -M viins '^[b' vi-backward-word # or backward-word
 bindkey -M viins '^[f' vi-forward-word # or forward-word
 
+# ^U is mapped to vi-kill-line when vi-mode is enabled in zsh. It only clears text newly inserted
+# after entering the vi-insert mode. Remapping it to backward-kill-line to clear all text between
+# cursor and the beginning of the line
+bindkey '^U' backward-kill-line
+
 # forgit Use ctrl-v to open commit in vim
 export FORGIT_LOG_FZF_OPTS="--bind=\"ctrl-v:become(echo {} |grep -Eo '[a-f0-9]+' | head -1 | xargs printf -- 'Gedit %s' | xargs -0 nvim -c )\" "
 export FORGIT_GLO_FORMAT=$FZF_GIT_COMMITS_LOG_FORMAT
