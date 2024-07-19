@@ -521,11 +521,57 @@ let g:scrollbar_max_size = 5
 " Yggdroot/indentLine
 let g:indentLine_fileTypeExclude=['help', 'fzf', 'startify', 'Fm']
 
-nnoremap <silent> <leader>e :Lf %<CR>
-augroup LfFileExplorer
+function! RunTmuxAndOpenFile(...) abort
+    " Use the current directory if no directory is provided
+    let dir = a:0 > 0 && a:1 !=# '' ? a:1 : '.'
+
+    " Specify the path to the file containing the filename
+    let filename_path = '/tmp/yazi_selected'
+    call system("rm -rf " . filename_path)
+    let file_opener_path = '/tmp/yazi_vim_opener'
+    call system("rm -rf " . file_opener_path)
+
+    " Run the tmux command with the directory argument
+    let command = 'tmux popup -E -w80\% -h60\% "yazi --chooser-file='. filename_path . ' ' . dir . '"'
+    call system(command)
+
+    " Check if the file is readable
+    if !filereadable(filename_path)
+        return
+    endif
+
+    " Read the content of the file
+    let file = readfile(filename_path)
+    if empty(file)
+        return
+    endif
+
+    let filename = file[0]
+
+    let open_command = 'edit'
+
+    if filereadable(file_opener_path)
+        let file = readfile(file_opener_path)
+        echom file
+        if !empty(file)
+            let open_command = file[0]
+        endif
+    endif
+
+    echom open_command
+
+    " Open the file in Vim
+    execute 'edit' fnameescape(filename)
+endfunction
+
+" Create a command to run the tmux command and open the file, with an optional directory argument
+command! -nargs=? RunTmuxAndOpenFile call RunTmuxAndOpenFile(<f-args>)
+nnoremap <silent> <leader>e :execute 'RunTmuxAndOpenFile ' . expand('%:p')<CR>
+
+augroup YaziFileExplorer
     autocmd!
     autocmd VimEnter * ++once silent! autocmd! FileExplorer
-    autocmd VimEnter * ++once let s:buf_path = expand("<amatch>") | if isdirectory(s:buf_path) | bdelete! | silent! execute(printf("Lf " . s:buf_path)) | endif
+    autocmd VimEnter * ++once let s:buf_path = expand("<amatch>") | if isdirectory(s:buf_path) | bdelete! | silent! execute(printf("RunTmuxAndOpenFile" . s:buf_path)) | endif
 augroup END
 
 if has('nvim')
