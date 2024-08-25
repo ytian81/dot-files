@@ -23,8 +23,8 @@
     "coc.source.around.priority": 100,
     "suggest.languageSourcePriority": 95,
     "diagnostic.errorSign": "✘",
-    "diagnostic.warningSign": "",
-    "diagnostic.infoSign": "",
+    "diagnostic.warningSign": "󱈸",
+    "diagnostic.infoSign": "󰙎",
     "colors.filetypes": [
         "vim"
     ],
@@ -79,30 +79,30 @@
     "notification.highlightGroup": "Normal",
     "snippets.priority": 100,
     "suggest.completionItemKindLabels": {
-        "class": " פּ ",
+        "class": " 󰙅 ",
         "color": "  ",
-        "constant": "  ",
+        "constant": " 󰏿 ",
         "constructor": "  ",
         "enum": "  ",
         "enumMember": "  ",
         "event": "  ",
         "field": "  ",
         "file": "  ",
-        "folder": " ﱮ ",
+        "folder": " 󰝰 ",
         "function": " ƒ ",
         "interface": "  ",
-        "keyword": "  ",
+        "keyword": " 󰉨 ",
         "method": "  ",
         "module": "  ",
-        "operator": "  ",
+        "operator": " 󰆕 ",
         "property": "  ",
         "reference": "  ",
-        "snippet": "  ",
+        "snippet": " 󰃐 ",
         "struct": "  ",
         "text": "  ",
-        "typeParameter": "<>",
-        "unit": " 塞 ",
-        "value": "  ",
+        "typeParameter": "<󰊄>",
+        "unit": " 󰑭 ",
+        "value": " 󰎠 ",
         "variable": "[]",
         "default": "  "
     },
@@ -116,5 +116,9 @@
         "rounded": true,
         "winblend": 10
     },
+    "lightbulb.text" : {
+        "default": "󰌵",
+        "quickfix": "󰁨"
+    }
     "suggest.labelMaxLength": 100
 }
