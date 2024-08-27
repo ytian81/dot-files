@@ -521,6 +521,72 @@ let g:scrollbar_max_size = 5
 " Yggdroot/indentLine
 let g:indentLine_fileTypeExclude=['help', 'fzf', 'startify', 'Fm']
 
+function! OpenFloatingTerminal(...) abort
+  " Use the current directory if no directory is provided
+  let dir = a:0 > 0 && a:1 !=# '' ? a:1 : '.'
+
+  let width = &columns
+  let height = &lines
+
+  let win_height = float2nr(height * 0.6) + 2
+  let win_width = float2nr(width * 0.8)
+  let row = float2nr((height - win_height) / 2)
+  let col = float2nr((width - win_width) / 2)
+
+  let buf = nvim_create_buf(v:false, v:true)
+
+  " Open the floating window with a border
+  let win = nvim_open_win(buf, v:true, {
+        \ 'relative': 'editor',
+        \ 'row': row,
+        \ 'col': col,
+        \ 'width': win_width,
+        \ 'height': win_height,
+        \ 'style': 'minimal',
+        \ 'border': 'single'
+        \ })
+
+  " Set the highlight group for the floating window and its border
+  call nvim_win_set_option(win, 'winhighlight', 'Normal:Normal,FloatBorder:Comment')
+
+  let filename_path = '/tmp/yazi_selected'
+  call system("rm -rf " . filename_path)
+
+  " Open the terminal in the buffer asynchronously, so to close the winow and open the selected file
+  " we have to provide a callback function
+  let job_id = termopen('yazi --chooser-file='.filename_path . ' ' . dir, {
+        \ 'on_exit': {job_id, exit_status, event -> s:YaziCallback(win, filename_path)}
+        \ })
+
+  " Switch to terminal mode
+  startinsert
+endfunction
+
+function! s:YaziCallback(win, filename_path)
+  " Close the floating window
+  call nvim_win_close(a:win, v:true)
+
+  " Check if the file is readable
+  if !filereadable(a:filename_path)
+    return
+  endif
+
+  " Read the content of the file
+  let file = readfile(a:filename_path)
+  if empty(file)
+    return
+  endif
+
+  let filename = file[0]
+
+  " Open the file in Vim
+  echom "Opening file: " . filename
+  execute 'edit' fnameescape(filename)
+endfunction
+
+" Optionally, map the function to a key for easy access
+nnoremap <leader>E :call OpenFloatingTerminal( expand('%:p') )<CR>
+
 function! RunTmuxAndOpenFile(...) abort
     " Use the current directory if no directory is provided
     let dir = a:0 > 0 && a:1 !=# '' ? a:1 : '.'
