@@ -181,8 +181,7 @@ let g:fzf_vim = {"grep_multi_line": 1, "preview_window": ['right,60%'] }
 command! -bang -nargs=* BTags
   \ call fzf#vim#buffer_tags(<q-args>,
   \ fzf#vim#with_preview({'placeholder': '{2}:{3}',
-  \                       'options': ['--prompt', '笠 ',
-  \                                   '--tabstop=1',
+  \                       'options': ['--tabstop=1',
   \                                   '-d', '[:\t]',
   \                                   '--with-nth', '1,4,6..',
   \                                   '-n', '1,3..',
