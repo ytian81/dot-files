@@ -207,7 +207,7 @@ nnoremap <silent> <Leader>h; :BCommits<CR>
 nnoremap <silent> <Leader>; :Jumps<CR>
 let g:fzf_buffers_jump=1
 if exists('$TMUX')
-    let g:fzf_layout = { 'tmux': '80%,60%' }
+    let g:fzf_layout = { 'tmux': '80%,80%' }
 else
     augroup FzfLayoutResize
         autocmd!
