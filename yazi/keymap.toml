@@ -1,0 +1,11 @@
+[manager]
+
+prepend_keymap = [
+	{ on = [ "<C-b>" ], run = "seek -5", desc = "Seek up 5 units in the preview" },
+	{ on = [ "<C-f>" ], run = "seek 5",  desc = "Seek down 5 units in the preview" },
+
+	# { on = [ "<C-v>" ], run = "open",   desc = "Open the selected files" },
+	# { on = [ "<C-x>" ], run = "open",   desc = "Open the selected files" },
+    # { on = [ "<C-v>" ], run =["shell 'echo vsplit > /tmp/yazi_vim_opener' --confirm", "open"],   desc = "Open the selected files" },
+    # { on = [ "<C-x>" ], run =["shell 'echo split  > /tmp/yazi_vim_opener' --confirm",  "open"],   desc = "Open the selected files" },
+]
