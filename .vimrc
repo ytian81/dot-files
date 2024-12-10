@@ -36,6 +36,7 @@ call s:IncludeLocalPlugin('function.vim')
 call plug#begin('~/.vim/plugged')
 
 " Declare the list of plugins.
+Plug 'ytian81/flexfloat.nvim'
 Plug 'MunifTanjim/nui.nvim'
 Plug 'folke/noice.nvim'
 Plug 'rcarriga/nvim-notify'
