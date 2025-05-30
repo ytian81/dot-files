@@ -114,3 +114,6 @@ augroup CppFormat
 augroup end
 
 nnoremap <silent> gQ :call general#clang_format()<CR>
+
+command! Vtmp execute "vsplit /tmp/temp_" . strftime("%Y%m%d%H%M%S")
+nnoremap <silent> <space>v :Vtmp<CR>
