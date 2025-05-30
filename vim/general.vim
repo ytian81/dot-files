@@ -91,7 +91,6 @@ autocmd BufReadPost *
     \ endif
 
 set encoding=utf-8
-set termencoding=utf-8
 set fileencodings=utf-8,ucs-bom,shift-jis,gb18030,gbk,gb2312,cp936,latin1
 
 function! general#clang_format()
