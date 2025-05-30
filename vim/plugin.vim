@@ -64,12 +64,12 @@ nmap <silent> <Leader>sl :FSSplitRight<CR>
 nmap <silent> <Leader>sj :FSSplitBelow<CR>
 nmap <silent> <Leader>sk :FSSplitAbove<CR>
 let g:fsnonewfiles=1
-autocmd! BufEnter *.cpp let b:fswitchdst = 'h,hpp'
+autocmd! BufEnter *.cpp,*.cc,*.c let b:fswitchdst = 'h,hpp'
             \ | let b:fswitchlocs = 'reg:|\(.*\)src|\1include/**/|,
                                     \reg:/src/include/,
                                     \reg:|src|include/**|,
                                     \../include'
-autocmd! BufEnter *.h let b:fswitchdst  = 'cpp,c'
+autocmd! BufEnter *.h,*.hpp let b:fswitchdst  = 'cpp,c,cc'
             \ | let b:fswitchlocs = 'reg:|\(.*\)include\(.*\)|\1src/**|,
                                     \reg:/include/src/,
                                     \reg:/include.*/src/,
