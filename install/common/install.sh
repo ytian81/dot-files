@@ -64,8 +64,8 @@ function link_config_files() {
   git clone https://github.com/facelessuser/sublime-languages $HOME/.config/bat/syntaxes
   batcat cache --build
 
-  # lf
-  ln -sf ${DOT_FILES_PATH:-$HOME/Documents/Configurations/dot-files}/lf $HOME/.config/lf
+  # yazi
+  ln -sf ${DOT_FILES_PATH:-$HOME/Documents/Configurations/dot-files}/yazi $HOME/.config/yazi
 
   # bazel zsh auto completion
   mkdir -p $HOME/.zsh/completion
