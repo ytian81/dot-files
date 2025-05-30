@@ -69,6 +69,10 @@ function! MyHighlights() abort
     highlight link BqfPreviewBorder Comment
     highlight link NoicePopupmenuSelected CocMenuSel
     highlight link WinSeparator VertSplit
+
+    " https://github.com/gruvbox-community/gruvbox/issues/200#issuecomment-2869162757
+    " https://github.com/vim-airline/vim-airline/issues/2693#issuecomment-2424151997
+    highlight statusline gui=none
 endfunction
 augroup ColorSchemeOverWrite
     autocmd!
