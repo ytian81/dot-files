@@ -114,5 +114,32 @@ augroup end
 
 nnoremap <silent> gQ :call general#clang_format()<CR>
 
-command! Vtmp execute "vsplit /tmp/temp_" . strftime("%Y%m%d%H%M%S")
+" Define a function to create the temporary file with an optional extension
+" Using '...' makes the function variadic, so it can be called with 0 or more arguments.
+function! VtmpCreateFile(...)
+    let l:timestamp = strftime("%Y%m%d%H%M%S")
+    let l:filepath = "/tmp/temp_" . l:timestamp
+    let l:extension_arg = ""
+
+    " Check if any argument was passed (a:0 holds the number of arguments)
+    if a:0 > 0
+        " If arguments exist, the first one is a:1
+        let l:extension_arg = a:1
+    endif
+
+    " If an extension argument was provided and is not empty, append it to the file path
+    if !empty(l:extension_arg)
+        let l:filepath = l:filepath . "." . l:extension_arg
+    endif
+
+    " Split the window and open the new temporary file
+    execute "vsplit" l:filepath
+endfunction
+
+" Define the Vtmp command to accept 0 or 1 argument
+" <f-args> correctly passes the raw arguments to the function,
+" which the variadic function now handles gracefully.
+command! -nargs=? Vtmp call VtmpCreateFile(<f-args>)
+
+" Existing normal mode mapping to open a temp file without an extension
 nnoremap <silent> <space>v :Vtmp<CR>

@@ -13,7 +13,6 @@ alias gcne='git commit --no-edit'
 alias gstf='gst | fpp'
 alias vi='vim -u NONE'
 alias gcn='forgit::clean'
-alias vtmp='vim /tmp/temp_$(date +%Y%m%d%H%M%S)'
 [[ -n "$(command -v nvim)" ]] && alias vim="nvim"
 if [ `uname` = 'Linux' ]; then
     alias o='xdg-open'

@@ -105,3 +105,16 @@ export BAT_STYLE='numbers,changes,rule'
 function fix_ssh_auth() {
     ln -sf `ls /tmp/ssh-*/agent*` ~/.ssh/ssh_auth_sock
 }
+
+# open a temp file
+function vtmp() {
+    local timestamp=$(date +%Y%m%d%H%M%S)
+    local extension=""
+
+    # Check if an argument is provided
+    if [ -n "$1" ]; then
+        extension=".$1"
+    fi
+
+    $EDITOR "/tmp/temp_${timestamp}${extension}"
+}
