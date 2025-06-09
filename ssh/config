@@ -1,5 +1,5 @@
 Host *
   AddKeysToAgent yes
   ForwardAgent yes
-  RemoteForward /home/yang.tian/.opener.sock /Users/yang.tian/.opener.sock
+  RemoteForward /tmp/remote-open.sock /tmp/local-open.sock
   UseKeychain yes

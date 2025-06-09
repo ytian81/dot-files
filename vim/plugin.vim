@@ -432,7 +432,7 @@ nnoremap <silent> <Leader>ha :Git add %<CR>
 nnoremap <silent> <Leader>u :Git -c push.default=current push<CR>
 nnoremap <silent> <Leader>hb  :Git blame<CR>
 if function#is_in_ssh()
-    let g:netrw_browsex_viewer = $DOT_FILES_PATH . '/scripts/local-open.sh'
+    let g:netrw_browsex_viewer = $DOT_FILES_PATH . '/scripts/remote-open.sh'
 endif
 " open file under current branch in github
 nnoremap <silent> <Leader>o  :.GBrowse<CR>

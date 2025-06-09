@@ -11,4 +11,4 @@ else
   buf=$@
 fi
 
-echo "$buf" | nc -U "$HOME/.opener.sock"
+echo "$buf" | nc -NU /tmp/remote-open.sock
