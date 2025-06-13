@@ -346,7 +346,7 @@ nmap <silent> gp :call CocAction('jumpDefinition', v:false)<CR>
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gc <Plug>(coc-references)
+nmap <silent> gr <Plug>(coc-references)
 nmap <silent> gf <Plug>(coc-codeaction-cursor)
 vmap <silent> gf <Plug>(coc-codeaction-selected)
 " Use K to show documentation in preview window.
@@ -498,6 +498,11 @@ let g:airline#extensions#default#section_truncate_width = {
   \ 'warning': 45,
   \ 'error': 45,
   \ }
+
+" vim-scripts/ReplaceWithRegister
+nmap gw  <Plug>ReplaceWithRegisterOperator
+nmap gwr <Plug>ReplaceWithRegisterLine
+xmap gw  <Plug>ReplaceWithRegisterVisual
 
 " Xuyuanp/scrollbar.nvim
 augroup ScrollbarInit
