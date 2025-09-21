@@ -199,7 +199,7 @@ nnoremap <Leader>g :Rg<Space>
 nnoremap <silent> <Leader>* :execute 'Rg '.expand('<cword>')<CR>
 nnoremap <silent> <Leader>j :BTags<CR>
 nnoremap <silent> <Leader>J :CocFzfList outline<CR>
-nnoremap <silent> <Leader>a :Buffers<CR>
+nnoremap <silent> <Leader>l :Buffers<CR>
 nnoremap <silent> <Leader>m :Marks<CR>
 nnoremap <silent> <Leader>hh :History<CR>
 nnoremap <silent> <Leader>hl :Commits<CR>
@@ -454,7 +454,7 @@ augroup GitHistoricalBufferFold
 augroup end
 
 " tpope/vim-sensible
-nnoremap <silent> <Leader>l <Esc>:nohlsearch<CR><Esc>
+nnoremap <silent> <Leader><Leader> <Esc>:nohlsearch<CR><Esc>
 
 " rhysd/conflict-marker.vim
 " disable the default highlight group
