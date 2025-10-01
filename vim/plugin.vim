@@ -332,6 +332,10 @@ inoremap <silent><expr> <TAB>
   \ coc#pum#visible() ? coc#pum#next(1):
   \ <SID>check_back_space() ? "\<Tab>" :
   \ coc#refresh()
+inoremap <silent><expr><C-J> coc#inline#visible()? coc#inline#accept() :
+    \ coc#expandableOrJumpable() ?
+    \ "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+    \ "\<C-J>"
 inoremap <silent><expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 " Make <CR> to accept selected completion item or activate auto-pairs return
 " <C-g>u breaks current undo, please make your own choice.
@@ -370,8 +374,6 @@ xmap if <Plug>(coc-funcobj-i)
 xmap af <Plug>(coc-funcobj-a)
 omap if <Plug>(coc-funcobj-i)
 omap af <Plug>(coc-funcobj-a)
-" Use <C-j> for both expand and jump (make expand higher priority)
-imap <C-j> <Plug>(coc-snippets-expand-jump)
 nnoremap <silent> <leader>he :CocCommand git.showCommit<CR>
 " Remap <C-f> and <C-b> for scroll float windows/popups.
 if has('nvim-0.4.0') || has('patch-8.2.0750')
@@ -531,5 +533,5 @@ if has('nvim')
 endif
 
 " github/copilot.vim
-imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
-let g:copilot_no_tab_map = v:true
+" imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
+" let g:copilot_no_tab_map = v:true
