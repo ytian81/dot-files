@@ -17,9 +17,12 @@ require("noice").setup({
   },
 })
 
--- require('notify').setup({
---     timeout = 500,
--- })
+require('notify').setup({
+    max_wdith = 80,
+    render = "wrapped-compact",
+    stages = "fade",
+    timeout = 500,
+})
 
 require('fm-nvim').setup({
   ui = {
