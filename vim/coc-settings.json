@@ -36,7 +36,7 @@
         "maxHeight": 120,
         "maxWidth": 100,
         "rounded": true,
-        "winblend": 10
+        "winblend": 0
     },
     "diagnostic.floatConfig": {
         "border": true,
@@ -46,7 +46,7 @@
         "maxHeight": 120,
         "maxWidth": 100,
         "rounded": true,
-        "winblend": 10
+        "winblend": 0
     },
     "dialog.floatBorderHighlight": "Comment",
     "dialog.floatHighlight": "Normal",
@@ -61,7 +61,7 @@
         "maxHeight": 120,
         "maxWidth": 100,
         "rounded": true,
-        "winblend": 10
+        "winblend": 0
     },
     "git.showCommitInFloating": true,
     "hover.floatConfig": {
@@ -72,7 +72,7 @@
         "maxHeight": 120,
         "maxWidth": 100,
         "rounded": true,
-        "winblend": 10
+        "winblend": 0
     },
     "lightbulb.enableSign": true,
     "lightbulb.enableVirtualText": false,
@@ -114,7 +114,7 @@
         "maxHeight": 120,
         "maxWidth": 100,
         "rounded": true,
-        "winblend": 10
+        "winblend": 0
     },
     "lightbulb.text" : {
         "default": "󰌵",
