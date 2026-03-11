@@ -88,3 +88,17 @@ function! YankInput(input)
 endfunction
 nnoremap <silent> y; :call YankInput(expand('%:t'))<cr>
 nnoremap <silent> y' :call YankInput(expand('%:.'))<cr>
+
+function! GetVisualRange()
+    " The marks '< and '> are set to the start and end of the last visual selection
+    let l1 = line("'<")
+    let l2 = line("'>")
+
+    " If they are the same, just return one line number, otherwise return the range
+    return l1 == l2 ? l1 : l1 . '-' . l2
+endfunction
+
+" Copy range of line numbers (e.g. 10-15)
+xnoremap <silent> y; :<c-u>call YankInput(expand('%:t') . ':' . GetVisualRange())<cr>
+" Copy relative path with line range (e.g. path/to/file.txt:10-15)
+xnoremap <silent> y' :<c-u>call YankInput(expand('%:.') . ':' . GetVisualRange())<cr>
