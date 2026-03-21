@@ -46,14 +46,11 @@ Plug 'antoinemadec/coc-fzf'
 Plug 'antoinemadec/FixCursorHold.nvim'
 Plug 'bfredl/nvim-miniyank'
 Plug 'bkad/CamelCaseMotion'
-Plug 'chrisbra/Colorizer', {'on': 'ColorToggle'}
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'derekwyatt/vim-fswitch'
 Plug 'dstein64/vim-win'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'honza/vim-snippets'
-Plug 'is0n/fm-nvim'
 Plug 'jacquesbh/vim-showmarks'
 Plug 'LunarWatcher/auto-pairs'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --no-zsh' }
@@ -69,7 +66,6 @@ Plug 'lambdalisue/nerdfont.vim'
 Plug 'machakann/vim-swap'
 Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
 Plug 'markonm/traces.vim'
-Plug 'mhinz/vim-startify'
 Plug 'gruvbox-community/gruvbox'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'PeterRincker/vim-searchlight'

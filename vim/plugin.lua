@@ -24,22 +24,6 @@ require('notify').setup({
     timeout = 500,
 })
 
-require('fm-nvim').setup({
-  ui = {
-    float = {
-        border    = "rounded",
-        float_hl  = "Normal",
-        border_hl = "Comment",
-        blend     = 10,
-
-        width     = vim.api.nvim_win_get_width(0) > 240 and 0.8 or 0.9,
-        height    = 0.65,
-        x         = 0.5,
-        y         = 0.5,
-      }
-  },
-})
-
 require('bqf').setup({
   preview = {
     win_height = 30,

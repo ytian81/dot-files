@@ -111,63 +111,6 @@ let g:win_ext_command_map = {
 	      \   "\<space>": 'Win#exit',
 	      \ }
 
-" " easymotion/vim-easymotion
-" nmap f <Plug>(easymotion-bd-f)
-" nmap t <Plug>(easymotion-bd-t)
-" nmap <Leader>w <Plug>(easymotion-bd-w)
-" let g:EasyMotion_space_jump_first = 1
-
-if !has('nvim-0.9')
-" gelguy/wilder.nvim
-" set up an autocmd to defer initialization to the first CmdlineEnter:
-autocmd CmdlineEnter * ++once call s:wilder_init() | call wilder#main#start()
-function! s:wilder_init() abort
-    call wilder#setup({'modes': [':']})
-    call wilder#set_option('pipeline', [
-           \   wilder#branch(
-           \     [
-           \       wilder#check({_, x -> empty(x)}),
-           \       wilder#history(15),
-           \     ],
-           \     wilder#cmdline_pipeline({
-           \       'language': 'python',
-           \       'fuzzy': 1,
-           \     }),
-           \     wilder#python_search_pipeline({
-           \       'pattern': wilder#python_fuzzy_pattern(),
-           \       'sorter': wilder#python_difflib_sorter(),
-           \       'engine': 're',
-           \     }),
-           \   ),
-           \ ])
-    call wilder#set_option('renderer', wilder#popupmenu_renderer(wilder#popupmenu_border_theme({
-          \ 'highlighter': wilder#basic_highlighter(),
-          \ 'max_height': '15%',
-          \ 'reverse': 1,
-          \ 'highlights': {
-          \   'default': "Normal",
-          \   'selected': wilder#make_hl('WilderSelected', 'Normal', [{}, {}, {'background': '#3c3836', 'bold': 1}]),
-          \   'selected_accent': wilder#make_hl('WilderSelectedAccent', 'Normal', [{}, {}, {'foreground': '#fabd2f', 'background': '#3c3836', 'bold': 1}]),
-          \   'accent': wilder#make_hl('WilderAccent', 'Normal', [{}, {}, {'foreground': '#fabd2f'}]),
-          \   'border': 'Comment',
-          \ },
-          \ 'border': 'rounded',
-          \ 'pumblend': 10,
-          \ 'left': [
-          \   ' ',
-          \   wilder#popupmenu_devicons(),
-          \   wilder#popupmenu_buffer_flags({
-          \     'icons': {'+': '', 'a': '', 'h': ''},
-          \   }),
-          \ ],
-          \ 'right': [
-          \   ' ',
-          \   wilder#popupmenu_scrollbar({'thumb_hl': 'Comment', 'scrollbar_hl': 'Normal'}),
-          \ ],
-          \ })))
-endfunction
-endif
-
 " editorconfig/editorconfig-vim
 let g:EditorConfig_exclude_patterns=['fugitive://.*']
 
@@ -274,30 +217,6 @@ augroup CppBazelBuild
     autocmd FileType cpp noremap <Leader>br :Bazel run<space>
 augroup end
 
-" " ludovicchabant/vim-gutentags
-" let $GTAGSLABEL = 'native-pygments'
-" let $GTAGSCONF = fnamemodify(expand('<sfile>:p'), ':h').'/.gtags.conf'
-" let g:gutentags_project_root = ['.root', '.svn', '.git', '.hg', '.project']
-" let g:gutentags_ctags_tagfile = '.tags'
-" let g:gutentags_modules = []
-" if executable('ctags')
-" 	let g:gutentags_modules += ['ctags']
-" endif
-" if executable('gtags-cscope') && executable('gtags')
-"     let g:gutentags_modules += ['gtags_cscope']
-" endif
-" let s:vim_tags = expand('~/.cache/tags')
-" if !isdirectory(s:vim_tags)
-"    silent! call mkdir(s:vim_tags, 'p')
-" endif
-" let g:gutentags_cache_dir = s:vim_tags
-" let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
-" let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
-" let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
-" let g:gutentags_ctags_extra_args += ['--output-format=e-ctags']
-" let g:gutentags_auto_add_gtags_cscope = 0
-" let g:gutentags_define_advanced_commands = 1
-
 " sheerun/vim-polyglot
 let g:cpp_member_highlight = 1
 
@@ -310,10 +229,6 @@ augroup MultipleCursorsSelectionFix
     autocmd User MultipleCursorsPre  if &selection ==# 'exclusive' | let g:multi_cursor_save_selection = &selection | set selection=inclusive | endif
     autocmd User MultipleCursorsPost if exists('g:multi_cursor_save_selection') | let &selection = g:multi_cursor_save_selection | unlet g:multi_cursor_save_selection | endif
 augroup END
-
-" mhinz/vim-startify
-let g:startify_change_to_dir = 0
-let g:startify_change_to_vcs_root = 1
 
 " neoclide/coc.nvim
 let g:coc_global_extensions = ['coc-clangd', 'coc-git', 'coc-highlight', 'coc-marketplace', 'coc-yaml', 'coc-spell-checker', 'coc-lightbulb']
@@ -412,18 +327,6 @@ let g:tagbar_type_yaml = {
     \ },
     \ 'sort' : 0
     \ }
-
-" " skywind3000/gutentags_plus
-" let g:gutentags_plus_nomap = 1
-" noremap <silent> <leader>as :GscopeFind s <C-R><C-W><cr>
-" noremap <silent> <leader>ag :GscopeFind g <C-R><C-W><cr>
-" noremap <silent> <leader>ac :GscopeFind c <C-R><C-W><cr>
-" noremap <silent> <leader>at :GscopeFind t <C-R><C-W><cr>
-" noremap <silent> <leader>ae :GscopeFind e <C-R><C-W><cr>
-" noremap <silent> <leader>af :GscopeFind f <C-R>=expand("<cfile>")<cr><cr>
-" noremap <silent> <leader>ai :GscopeFind i <C-R>=expand("<cfile>")<cr><cr>
-" noremap <silent> <leader>ad :GscopeFind d <C-R><C-W><cr>
-" noremap <silent> <leader>aa :GscopeFind a <C-R><C-W><cr>
 
 " tpope/vim-fugitive
 nnoremap <silent> gh :Git<CR>
@@ -526,7 +429,7 @@ let g:scrollbar_min_size = 5
 let g:scrollbar_max_size = 5
 
 " Yggdroot/indentLine
-let g:indentLine_fileTypeExclude=['help', 'fzf', 'startify', 'Fm']
+let g:indentLine_fileTypeExclude=['help', 'fzf']
 
 if has('nvim')
     exec 'source ' . expand('<sfile>:p:h') . '/plugin.lua'
