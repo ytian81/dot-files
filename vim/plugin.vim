@@ -119,7 +119,7 @@ autocmd BufRead,WinEnter    * :DoShowMarks
 " autocmd WinLeave            * :NoShowMarks
 
 " junegunn/fzf.vim
-let g:fzf_vim = {"grep_multi_line": 1, "preview_window": ['right,60%'] }
+let g:fzf_vim = {"grep_multi_line": 1, "preview_window": ['down,60%'] }
 
 command! -bang -nargs=* BTags
   \ call fzf#vim#buffer_tags(<q-args>,
@@ -179,7 +179,7 @@ let g:fzf_commits_log_options = printf('--color=always --format="%s"', expand('$
 "       \ 'header':  ['fg', 'Comment'] }
 
 " antoinemadec/coc-fzf
-let g:coc_fzf_preview = 'right,60%'
+let g:coc_fzf_preview = 'down,60%'
 let g:coc_fzf_opts = ['--layout=reverse']
 nnoremap <silent> gl :<C-u>CocFzfList<CR>
 nnoremap <silent> g; :<C-u>CocFzfList diagnostics<CR>
