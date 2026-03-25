@@ -66,6 +66,7 @@ Plug 'lambdalisue/nerdfont.vim'
 Plug 'machakann/vim-swap'
 Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
 Plug 'markonm/traces.vim'
+Plug 'mhinz/vim-signify'
 Plug 'gruvbox-community/gruvbox'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'PeterRincker/vim-searchlight'

@@ -6,6 +6,16 @@ let g:gitgutter_preview_win_floating = 0
 let g:gitgutter_sign_added = ''
 let g:gitgutter_sign_modified = ''
 let g:gitgutter_sign_removed = ''
+let g:gitgutter_signs = 0
+
+" Plug 'vim-signify'
+let g:signify_sign_add               = '█'
+let g:signify_sign_change            = '░'
+let g:signify_sign_delete            = '░'
+let g:signify_sign_delete_first_line = '▔' " Keep this for the 'top' edge
+let g:signify_sign_change_delete     = '▒' " Usually better to keep shaded
+let g:signify_sign_show_count = 1
+let g:signify_priority = 20
 
 " Plug antoinemadec/FixCursorHold.nvim
 let g:cursorhold_updatetime = 200
