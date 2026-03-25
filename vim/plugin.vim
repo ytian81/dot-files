@@ -275,6 +275,12 @@ nmap <silent> gp :call CocAction('jumpDefinition', v:false)<CR>
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
+" Remove opinionated default mappings
+unmap gra
+unmap gri
+unmap grn
+unmap grr
+unmap grt
 nmap <silent> gr <Plug>(coc-references)
 nmap <silent> gf <Plug>(coc-codeaction-cursor)
 vmap <silent> gf <Plug>(coc-codeaction-selected)
