@@ -59,17 +59,17 @@ unalias zz
 unalias d
 
 # deduplicate history
-# manually: sort -t ";" -k 2 -u ~/.zsh_history | sort -o ~/.zsh_history
+# manually: awk -F';' '!seen[$2]++' ~/.zsh_history > ~/.zsh_history_tmp && mv ~/.zsh_history_tmp ~/.zsh_history
 HISTSIZE=500000
 SAVEHIST=500000
-setopt HIST_IGNORE_DUPS
-setopt HIST_IGNORE_ALL_DUPS
-setopt HIST_SAVE_NO_DUPS
 setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_DUPS
 setopt HIST_IGNORE_SPACE
 setopt HIST_REDUCE_BLANKS
-setopt SHARE_HISTORY
+setopt HIST_SAVE_NO_DUPS
 setopt INC_APPEND_HISTORY
+setopt SHARE_HISTORY
 
 # use nvim if it exists, otherwise use vim
 if [ -n "$(command -v nvim)" ]; then
