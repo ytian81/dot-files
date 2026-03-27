@@ -30,7 +30,7 @@ set foldlevelstart=99
 set foldopen&
 set foldclose&
 
-set signcolumn=yes
+set signcolumn=yes:2
 
 set nowrap
 set linebreak
