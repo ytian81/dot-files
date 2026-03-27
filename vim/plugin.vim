@@ -155,7 +155,8 @@ nnoremap <silent> <Leader>j :BTags<CR>
 nnoremap <silent> <Leader>J :CocFzfList outline<CR>
 nnoremap <silent> <Leader>l :Buffers<CR>
 nnoremap <silent> <Leader>m :Marks<CR>
-nnoremap <silent> <Leader>hh :History<CR>
+set shada='100,<50,s10,h
+nnoremap <silent> <Leader>t :History<CR>
 nnoremap <silent> <Leader>hl :Commits<CR>
 nnoremap <silent> <Leader>h; :BCommits<CR>
 nnoremap <silent> <Leader>; :Jumps<CR>
