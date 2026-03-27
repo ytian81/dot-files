@@ -16,6 +16,7 @@ let g:signify_sign_delete_first_line = '▔' " Keep this for the 'top' edge
 let g:signify_sign_change_delete     = '▒' " Usually better to keep shaded
 let g:signify_sign_show_count = 1
 let g:signify_priority = 20
+nnoremap <silent> <Leader>hu :SignifyHunkUndo<CR>
 
 " Plug antoinemadec/FixCursorHold.nvim
 let g:cursorhold_updatetime = 200
