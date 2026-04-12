@@ -1,177 +1,123 @@
 #!/usr/bin/env bash
+# status.tmux — Status line configuration (data + layout)
+#
+# This file declares WHAT to show. The engine (status-engine.tmux) decides
+# HOW to render it (padding, separators, colors). Module text should be
+# bare content — no leading/trailing spaces.
+#
+# vim:filetype=bash:foldmethod=marker
 
-# Helper function {{{
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-_make_window_section () {
-    if [[ "$#" != 4 ]]
-    then
-        return
-    fi
+# ── Separator style ──────────────────────────────────────────────────────
+# Global default. Individual modules can override with mod_<name>_style.
+_separator_style="pill"
 
-    # Use status line background color
-    local bg="$(tmux show-option -gv status-style | sed 's/\(.*\)bg=\(.*\)/\2/')"
-    local ffg="#{@gruvbox_$1}"; shift
-    local fbg="#{@gruvbox_$1}"; shift
+# ── Load engine ──────────────────────────────────────────────────────────
+source "$SCRIPT_DIR/status-engine.tmux"
 
-    local bold
-    local bold_option=$1; shift
-    if [[ $bold_option == "bold" ]]
-    then
-        bold=",bold"
-    fi
+# ── Icons ────────────────────────────────────────────────────────────────
+_icon_zoom=🔍
+_icon_lock=
 
-    local status_section
+# ── Module definitions ──────────────────────────────────────────────────{{
+#
+# Properties:
+#   text        — bare content (engine adds padding)
+#   fg / bg     — gruvbox color names
+#   bold        — "yes" or "no"
+#   priority    — 0 = always visible; higher = survives longer when narrow
+#   width       — estimated rendered columns (for auto-computing thresholds)
+#   text_short  — optional abbreviated form
+#   style       — per-module override: "powerline" or "pill"
 
-    # Always have head 
-    status_section="${status_section}#[fg=$bg,bg=$fbg]"
+# Session (tri-state: normal / prefix / copy-mode)
+mod_session_text="#S"
+mod_session_fg="light3"
+mod_session_bg="dark3"
+mod_session_prefix_fg="dark0_hard"
+mod_session_prefix_bg="neutral_aqua"
+mod_session_copy_fg="dark0_hard"
+mod_session_copy_bg="bright_orange"
+mod_session_width=6
 
-    # Content
-    status_section="${status_section}#[fg=$ffg,bg=$fbg$bold]$1"
+# Git status (via gitstatusd)
+mod_git_text="#{gitstatusd}"
+mod_git_fg="light4"
+mod_git_bg="dark2"
+mod_git_priority=2
+mod_git_width=20
 
-    # Always have tail 
-    status_section="${status_section}#[fg=$fbg,bg=$bg]"
+# Window tabs
+mod_window_text="#I ${_sep_thin} #W#{?window_zoomed_flag, ${_icon_zoom},}"
+mod_window_fg="light1"
+mod_window_bg="dark2"
 
-    echo "$status_section"
-}
+mod_window_current_text="#I ${_sep_thin} #W#{?window_zoomed_flag, ${_icon_zoom},} #{?#{==:#{client_key_table},WINDOW},${_icon_lock},}"
+mod_window_current_fg="dark0_hard"
+mod_window_current_bg="neutral_yellow"
+mod_window_current_bold="yes"
 
-_make_left_section () {
-    if [[ "$#" != 4 ]]
-    then
-        return
-    fi
+# Pomodoro (raw — plugin handles its own styling)
+mod_pomodoro_text="#{pomodoro_status} "
+mod_pomodoro_raw="yes"
 
-    # Use status line background color
-    local bg="$(tmux show-option -gv status-style | sed 's/\(.*\)bg=\(.*\)/\2/')"
-    local ffg="#{@gruvbox_$1}"; shift
-    local fbg="#{@gruvbox_$1}"; shift
+# CPU
+mod_cpu_text="#{sysstat_cpu}"
+mod_cpu_fg="light4"
+mod_cpu_bg="dark1"
+mod_cpu_priority=1
+mod_cpu_width=8
 
-    local bold
-    local bold_option=$1; shift
-    if [[ $bold_option == "bold" ]]
-    then
-        bold=",bold"
-    fi
+# Memory
+mod_mem_text="#{sysstat_mem}"
+mod_mem_fg="light4"
+mod_mem_bg="dark1"
+mod_mem_priority=1
+mod_mem_width=8
 
-    local status_section
+# Swap
+mod_swap_text="#{sysstat_swap}"
+mod_swap_fg="light4"
+mod_swap_bg="dark1"
+mod_swap_priority=1
+mod_swap_width=8
 
-    # Content
-    status_section="${status_section}#[fg=$ffg,bg=$fbg$bold]$1"
+# Load average
+mod_loadavg_text="#{sysstat_loadavg}"
+mod_loadavg_fg="light4"
+mod_loadavg_bg="dark1"
+mod_loadavg_priority=1
+mod_loadavg_width=10
 
-    # Always have tail 
-    status_section="${status_section}#[fg=$fbg,bg=$bg]"
+# Battery
+mod_battery_text="#{battery_icon_status} - #{battery_icon_charge} #{battery_percentage} #{battery_remain}"
+mod_battery_text_short="#{battery_icon_charge} #{battery_percentage}"
+mod_battery_fg="light2"
+mod_battery_bg="dark3"
+mod_battery_priority=0
+mod_battery_width=25
+mod_battery_width_short=10
 
-    echo "$status_section"
-}
+# Date/time
+mod_datetime_text="%b %d  %H:%M"
+mod_datetime_text_short="%H:%M"
+mod_datetime_fg="light2"
+mod_datetime_bg="dark4"
+mod_datetime_priority=0
+mod_datetime_width=14
+mod_datetime_width_short=7
 
-_make_session_section () {
-    if [[ "$#" != 8 ]]
-    then
-        return
-    fi
+# }}
+# ── Layout ──────────────────────────────────────────────────────────────{{
 
-    # Use status line background color
-    # local bg="$(tmux show-option -gv status-style | sed 's/\(.*\)bg=\(.*\)/\2/')"
-    local bg="#{@gruvbox_$1}"; shift
-    local ffg="#{@gruvbox_$1}"; shift
-    local fbg="#{@gruvbox_$1}"; shift
-    local affg="#{@gruvbox_$1}"; shift
-    local afbg="#{@gruvbox_$1}"; shift
-    local vffg="#{@gruvbox_$1}"; shift
-    local vfbg="#{@gruvbox_$1}"; shift
+layout_left=(session git)
+layout_right=(pomodoro cpu mem swap loadavg battery datetime)
 
-    local status_section
-
-    # Content
-    status_section="${status_section}#{?client_prefix,#[fg=$affg#,bg=$afbg]$1,#{?pane_in_mode,#[fg=$vffg#,bg=$vfbg]$1,#[fg=$ffg#,bg=$fbg]$1}}"
-
-    # Always have tail 
-    status_section="${status_section}#{?client_prefix,#[fg=$afbg#,bg=$bg],#{?pane_in_mode,#[fg=$vfbg#,bg=$bg],#[fg=$fbg#,bg=$bg]}}"
-
-    echo "$status_section"
-}
-
-_make_right_section () {
-    if [[ "$#" != 4 ]]
-    then
-        return
-    fi
-
-    local bg="$(tmux show-option -gv status-style | sed 's/\(.*\)bg=\(.*\)/\2/')"
-    local ffg="#{@gruvbox_$1}"; shift
-    local fbg="#{@gruvbox_$1}"; shift
-
-    local tbg
-    local tail_option="$1"; shift
-    if [[ "$tail_option" == "tail" ]]
-    then
-        tbg=$bg
-    else
-        tbg="#{@gruvbox_$tail_option}"
-    fi
-
-    # Use #, to escape , because this function maybe inside a conditional
-    local status_section
-
-    # Content
-    status_section="#[fg=$ffg#,bg=$fbg]$1${status_section}"
-
-    # Always have tail 
-    status_section="#[fg=$fbg#,bg=$tbg]${status_section}"
-
-    echo "$status_section"
-}
-# }}}
-# Status constants {{{
-
-# Automatically collapse the status section when the window width is less than the tier value.
-# Nesting FORMAT into conditional would result no output.
-# Nesting conditional into FORMAT would keep the status tail.
-tmux set-option -g @collapse_tier1 140
-tmux set-option -g @collapse_tier2 100
-
-# }}}
-# Status position {{{
+# }}
+# ── Apply ────────────────────────────────────────────────────────────────
 
 tmux set-option -g status-position top
+tmux set-option -gF status-style "fg=#{@gruvbox_light1}, bg=#{@gruvbox_dark0_soft}"
 
-# }}}
-# Status color {{{
-
-tmux set-option -gF status-style        "fg=#{@gruvbox_light1},    bg=#{@gruvbox_dark0_soft}"
-
-# }}}
-# Status window {{{
-
-tmux set-option -g status-justify "absolute-centre"
-tmux set-option -g window-status-separator ""
-tmux set-option -g window-status-format         "$(_make_window_section light1     dark2 no_bold ' #I  #W#{?window_zoomed_flag, 🔍,} ')"
-tmux set-option -g window-status-current-format "$(_make_window_section dark0_hard neutral_yellow bold    ' #I  #W#{?window_zoomed_flag, 🔍,} #{?#{==:#{client_key_table},WINDOW},,} ')"
-
-# }}}
-# Status left {{{
-
-tmux set-option -g status-left-length "200"
-tmux set-option -g status-left                  "\
-$(_make_session_section dark2 light3 dark3 dark0_hard neutral_aqua dark0_hard bright_orange ' #S ')\
-$(_make_left_section light4 dark2 dark1 '#{?#{&&:#{m/ri:^[0-9][0-9][0-9]$,#{window_width}},#{>:#{window_width},#{@collapse_tier2}}},#{gitstatusd},}')"
-
-# }}}
-# Status right {{{
-
-tmux set-option -g status-right-length "300"
-
-# The format conditional is string comparison, we have to use regex to check the number of digits
-# before comparing. More details at https://github.com/tmux/tmux/issues/2318.
-tmux set-option -g status-right "\
-#{pomodoro_status} \
-$(_make_right_section light4 dark1 tail  '#{?#{&&:#{m/ri:^[0-9][0-9][0-9]$,#{window_width}},#{>:#{window_width},#{@collapse_tier1}}}, #{sysstat_cpu},}')\
-#{?#{&&:#{m/ri:^[0-9][0-9][0-9]$,#{window_width}},#{>:#{window_width},#{@collapse_tier1}}},$(_make_right_section light4 dark1 dark1 ' #{sysstat_mem}'),}\
-#{?#{&&:#{m/ri:^[0-9][0-9][0-9]$,#{window_width}},#{>:#{window_width},#{@collapse_tier1}}},$(_make_right_section light4 dark1 dark1 ' #{sysstat_swap}'),}\
-#{?#{&&:#{m/ri:^[0-9][0-9][0-9]$,#{window_width}},#{>:#{window_width},#{@collapse_tier1}}},$(_make_right_section light4 dark1 dark1 ' #{sysstat_loadavg} '),}\
-$(_make_right_section light2 dark3 dark1 ' #{battery_icon_status} - #{battery_icon_charge} #{battery_percentage} #{battery_remain} ')\
-$(_make_right_section light2 dark4 dark3 ' %b %d  %H:%M') "
-
-# }}}
-
-
-# vim:filetype=tmux:foldmethod=marker
+status_engine_apply
