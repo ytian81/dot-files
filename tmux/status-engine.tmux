@@ -329,10 +329,17 @@ _powerline_right() {
   [[ "$escape_comma" == "yes" ]] && comma="#,"
 
   # Format: #[arrow style]#[text style] <space>content<space>
-  local full="#[fg=$section_bg${comma}bg=$prev_bg]${_sep_left}#[fg=$text_fg${comma}bg=$section_bg] $text "
+  local full=""
+  full+="#[fg=$section_bg${comma}bg=$prev_bg]${_sep_left}" # open left arrow
+  full+="#[fg=$text_fg${comma}bg=$section_bg] "            # padded whitespace
+  full+="#[fg=$text_fg${comma}bg=$section_bg]$text"        # content
+  full+="#[fg=$text_fg${comma}bg=$section_bg] "            # padded whitespace, reset to text_fg/bg because text might use #[default]
   local short=""
   if [[ -n "$text_short" ]]; then
-    short="#[fg=$section_bg${comma}bg=$prev_bg]${_sep_left}#[fg=$text_fg${comma}bg=$section_bg] $text_short "
+    short+="#[fg=$section_bg${comma}bg=$prev_bg]${_sep_left}" # open left arrow
+    short+="#[fg=$text_fg${comma}bg=$section_bg] "            # padded whitespace
+    short+="#[fg=$text_fg${comma}bg=$section_bg]$text_short"        # content
+    short+="#[fg=$text_fg${comma}bg=$section_bg] "            # padded whitespace, reset to text_fg/bg because text might use #[default]
   fi
 
   _collapse_wrap "$priority" "$full" "$short"
@@ -392,7 +399,9 @@ _pill_capsule() {
 
   local out=""
   out+="#[fg=$section_bg#,bg=$status_bg]${_sep_pill_open}"    # open half-circle
-  out+="#[fg=$text_fg#,bg=$section_bg$bold_attr] $text "         # padded content
+  out+="#[fg=$text_fg#,bg=$section_bg$bold_attr] "         # padded whitespace
+  out+="#[fg=$text_fg#,bg=$section_bg$bold_attr]$text"     # content
+  out+="#[fg=$text_fg#,bg=$section_bg$bold_attr] "         # padded whitespace, reset to text_fg/bg because text might use #[default]
   out+="#[fg=$section_bg#,bg=$status_bg]${_sep_pill_close}"   # close half-circle
   out+="#[fg=$status_bg#,bg=$status_bg]"                         # reset to prevent color bleed
   echo "$out"

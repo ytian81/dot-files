@@ -11,7 +11,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # ── Separator style ──────────────────────────────────────────────────────
 # Global default. Individual modules can override with mod_<name>_style.
-_separator_style="pill"
+# _separator_style="pill"
 
 # ── Load engine ──────────────────────────────────────────────────────────
 source "$SCRIPT_DIR/status-engine.tmux"
@@ -86,7 +86,7 @@ mod_swap_width=8
 # Load average
 mod_loadavg_text="#{sysstat_loadavg}"
 mod_loadavg_fg="light4"
-mod_loadavg_bg="dark1"
+mod_loadavg_bg="dark2"
 mod_loadavg_priority=1
 mod_loadavg_width=10
 
