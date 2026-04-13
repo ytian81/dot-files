@@ -95,7 +95,7 @@
 : "${_sep_left:=}"             # U+E0B2: left-pointing arrow (powerline right sections)
 : "${_sep_pill_open:=}"        # U+E0B6: left half-circle (pill open)
 : "${_sep_pill_close:=}"       # U+E0B4: right half-circle (pill close)
-: "${_sep_thin:=}"             # U+E0B1: thin right separator (decorative, used in window text)
+: "${_sep_right_thin:=}"       # U+E0B1: thin right separator (decorative, used in window text)
 : "${_sep_left_thin:=}"        # U+E0B3: thin left separator (decorative)
 # }}
 

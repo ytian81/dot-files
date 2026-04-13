@@ -49,11 +49,11 @@ mod_git_priority=2
 mod_git_width=20
 
 # Window tabs
-mod_window_text="#I ${_sep_thin} #W#{?window_zoomed_flag, ${_icon_zoom},}"
+mod_window_text="#I ${_sep_right_thin} #W#{?window_zoomed_flag, ${_icon_zoom},}"
 mod_window_fg="light1"
 mod_window_bg="dark2"
 
-mod_window_current_text="#I ${_sep_thin} #W#{?window_zoomed_flag, ${_icon_zoom},} #{?#{==:#{client_key_table},WINDOW},${_icon_lock},}"
+mod_window_current_text="#I ${_sep_right_thin} #W#{?window_zoomed_flag, ${_icon_zoom},} #{?#{==:#{client_key_table},WINDOW},${_icon_lock},}"
 mod_window_current_fg="dark0_hard"
 mod_window_current_bg="neutral_yellow"
 mod_window_current_bold="yes"
