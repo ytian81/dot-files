@@ -709,7 +709,7 @@ status_engine_apply() {
   tmux set-option -g status-left "$(_build_left "${layout_left[@]}")"
 
   tmux set-option -g status-right-length 300
-  tmux set-option -g status-right "$(_build_right "${layout_right[@]}") "
+  tmux set-option -g status-right "$(_build_right "${layout_right[@]}")"
 }
 
 # }}
