@@ -52,6 +52,7 @@ mod_git_width=20
 mod_window_text="#I ${_sep_right_thin} #W#{?window_zoomed_flag, ${_icon_zoom},}"
 mod_window_fg="light1"
 mod_window_bg="dark2"
+mod_window_style="pill"
 
 mod_window_current_text="#I ${_sep_right_thin} #W#{?window_zoomed_flag, ${_icon_zoom},} #{?#{==:#{client_key_table},WINDOW},${_icon_lock},}"
 mod_window_current_fg="dark0_hard"
@@ -59,36 +60,16 @@ mod_window_current_bg="neutral_yellow"
 mod_window_current_bold="yes"
 
 # Pomodoro (raw — plugin handles its own styling)
-mod_pomodoro_text="#{pomodoro_status} "
+mod_pomodoro_text="#{pomodoro_status}"
 mod_pomodoro_raw="yes"
 
-# CPU
-mod_cpu_text="#{sysstat_cpu}"
-mod_cpu_fg="light4"
-mod_cpu_bg="dark1"
-mod_cpu_priority=1
-mod_cpu_width=8
-
-# Memory
-mod_mem_text="#{sysstat_mem}"
-mod_mem_fg="light4"
-mod_mem_bg="dark1"
-mod_mem_priority=1
-mod_mem_width=8
-
-# Swap
-mod_swap_text="#{sysstat_swap}"
-mod_swap_fg="light4"
-mod_swap_bg="dark1"
-mod_swap_priority=1
-mod_swap_width=8
-
-# Load average
-mod_loadavg_text="#{sysstat_loadavg}"
-mod_loadavg_fg="light4"
-mod_loadavg_bg="dark2"
-mod_loadavg_priority=1
-mod_loadavg_width=10
+# System Stats
+mod_sysstat_text="#{sysstat_cpu} ${_sep_left_thin} #{sysstat_mem} ${_sep_left_thin} #{sysstat_swap} ${_sep_left_thin} #{sysstat_loadavg}"
+mod_systtat_text_short="#{sysstat_loadavg}"
+mod_sysstat_fg="light4"
+mod_sysstat_bg="dark2"
+mod_sysstat_priority=1
+mod_sysstat_width=34
 
 # Battery
 mod_battery_text="#{battery_icon_status} - #{battery_icon_charge} #{battery_percentage} #{battery_remain}"
@@ -112,7 +93,7 @@ mod_datetime_width_short=7
 # ── Layout ──────────────────────────────────────────────────────────────{{
 
 layout_left=(session git)
-layout_right=(pomodoro cpu mem swap loadavg battery datetime)
+layout_right=(pomodoro sysstat battery datetime)
 
 # }}
 # ── Apply ────────────────────────────────────────────────────────────────
