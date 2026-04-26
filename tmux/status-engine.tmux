@@ -5,7 +5,9 @@
 # declarations. The config file (status.tmux) declares data; this file
 # handles all visual formatting.
 #
-# REQUIRES: tmux >= 3.2 (for #{e|>=:} numeric comparison in formats)
+# REQUIRES: tmux >= 3.4
+#   - tmux 3.2+: #{e|>=:} numeric comparison in formats
+#   - tmux 3.4+: #[push-default] / #[pop-default] (see "DEFAULT STYLE STACK")
 #
 # HOW IT WORKS
 # ============
@@ -64,6 +66,37 @@
 #   - Always-visible modules (priority = 0) are NOT wrapped, so their
 #     styles use bare commas.
 #   - The "escape_comma" parameter controls which style is used.
+#
+# DEFAULT STYLE STACK (push-default / pop-default)
+# ================================================
+#
+# Some plugins (e.g. tmux-plugin-sysstat: CPU/MEM/SWAP/LOADAVG) emit
+# #[default] inside their content — for example:
+#   CPU:#[fg=green]42.0%#[default]
+# By itself, #[default] resets to the GLOBAL status-line default style,
+# breaking the surrounding section's fg/bg.
+#
+# tmux 3.4 adds #[push-default] / #[pop-default], which save and restore
+# the "default" style on a stack. By wrapping each module's content as:
+#   #[fg=X,bg=Y,push-default] $text#[default] #[pop-default]
+# we make the section's fg/bg the LOCAL default for the duration of $text.
+# Any #[default] inside $text now resets to the section style, not to the
+# status-line global.
+#
+# Layout details that matter:
+#   - push-default must come AFTER fg/bg so the saved default reflects
+#     the section style.
+#   - The #[default] BEFORE the trailing pad-space covers plugins that
+#     don't reset their own style — it forces the pad-space into section
+#     colors.
+#   - pop-default must come AFTER the trailing pad-space. tmux's
+#     pop-default also resets the ACTIVE style to the popped default
+#     (i.e. global), so anything between #[default] and #[pop-default]
+#     would render in the global status-line style. Keep the pad-space
+#     inside the push/pop scope.
+#
+# This is plugin-agnostic — works for any current or future module whose
+# text contains a style reset.
 #
 # PRIORITY-BASED COLLAPSE
 # =======================
@@ -295,10 +328,13 @@ _powerline_left() {
   local section_bg="$(_resolve_color "$bg")"
 
   # Format: #[text style] <space>content<space> #[arrow style]
-  local full="#[fg=$text_fg,bg=$section_bg$bold_attr] $text #[fg=$section_bg,bg=$next_bg]${_sep_right}"
+  # push-default makes the section style the local default so any
+  # #[default] emitted from inside $text (e.g. by sysstat) resets to it.
+  # See "DEFAULT STYLE STACK" in the file header.
+  local full="#[fg=$text_fg,bg=$section_bg$bold_attr]#[push-default] $text#[default] #[pop-default]#[fg=$section_bg,bg=$next_bg]${_sep_right}"
   local short=""
   if [[ -n "$text_short" ]]; then
-    short="#[fg=$text_fg,bg=$section_bg$bold_attr] $text_short #[fg=$section_bg,bg=$next_bg]${_sep_right}"
+    short="#[fg=$text_fg,bg=$section_bg$bold_attr]#[push-default] $text_short#[default] #[pop-default]#[fg=$section_bg,bg=$next_bg]${_sep_right}"
   fi
 
   _collapse_wrap "$priority" "$full" "$short"
@@ -329,17 +365,13 @@ _powerline_right() {
   [[ "$escape_comma" == "yes" ]] && comma="#,"
 
   # Format: #[arrow style]#[text style] <space>content<space>
-  local full=""
-  full+="#[fg=$section_bg${comma}bg=$prev_bg]${_sep_left}" # open left arrow
-  full+="#[fg=$text_fg${comma}bg=$section_bg] "            # padded whitespace
-  full+="#[fg=$text_fg${comma}bg=$section_bg]$text"        # content
-  full+="#[fg=$text_fg${comma}bg=$section_bg] "            # padded whitespace, reset to text_fg/bg because text might use #[default]
+  # push-default makes the section style the local default so any
+  # #[default] emitted from inside $text (e.g. by sysstat) resets to it.
+  # See "DEFAULT STYLE STACK" in the file header.
+  local full="#[fg=$section_bg${comma}bg=$prev_bg]${_sep_left}#[fg=$text_fg${comma}bg=$section_bg]#[push-default] $text #[pop-default]"
   local short=""
   if [[ -n "$text_short" ]]; then
-    short+="#[fg=$section_bg${comma}bg=$prev_bg]${_sep_left}" # open left arrow
-    short+="#[fg=$text_fg${comma}bg=$section_bg] "            # padded whitespace
-    short+="#[fg=$text_fg${comma}bg=$section_bg]$text_short"        # content
-    short+="#[fg=$text_fg${comma}bg=$section_bg] "            # padded whitespace, reset to text_fg/bg because text might use #[default]
+    short="#[fg=$section_bg${comma}bg=$prev_bg]${_sep_left}#[fg=$text_fg${comma}bg=$section_bg]#[push-default] $text_short#[default] #[pop-default]"
   fi
 
   _collapse_wrap "$priority" "$full" "$short"
@@ -364,7 +396,9 @@ _powerline_window() {
   local section_bg="$(_resolve_color "$section_bg_name")"
 
   # Format: #[open arrow]#[text style] content #[close arrow]
-  echo "#[fg=$status_bg,bg=$section_bg]${_sep_right}#[fg=$text_fg,bg=$section_bg$bold_attr] $text #[fg=$section_bg,bg=$status_bg]${_sep_right}"
+  # push-default makes the section style the local default so any
+  # #[default] emitted from inside $text resets to it (see file header).
+  echo "#[fg=$status_bg,bg=$section_bg]${_sep_right}#[fg=$text_fg,bg=$section_bg$bold_attr]#[push-default] $text#[default] #[pop-default]#[fg=$section_bg,bg=$status_bg]${_sep_right}"
 }
 
 # }}
@@ -397,11 +431,11 @@ _powerline_window() {
 _pill_capsule() {
   local text_fg="$1" section_bg="$2" bold_attr="$3" text="$4" status_bg="$5"
 
+  # push-default makes the section style the local default so any
+  # #[default] emitted from inside $text resets to it (see file header).
   local out=""
   out+="#[fg=$section_bg#,bg=$status_bg]${_sep_pill_open}"    # open half-circle
-  out+="#[fg=$text_fg#,bg=$section_bg$bold_attr] "         # padded whitespace
-  out+="#[fg=$text_fg#,bg=$section_bg$bold_attr]$text"     # content
-  out+="#[fg=$text_fg#,bg=$section_bg$bold_attr] "         # padded whitespace, reset to text_fg/bg because text might use #[default]
+  out+="#[fg=$text_fg#,bg=$section_bg$bold_attr]#[push-default] $text#[default] #[pop-default]"  # padded content (style-reset safe)
   out+="#[fg=$section_bg#,bg=$status_bg]${_sep_pill_close}"   # close half-circle
   out+="#[fg=$status_bg#,bg=$status_bg]"                         # reset to prevent color bleed
   echo "$out"
