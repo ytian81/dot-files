@@ -3,6 +3,7 @@
 # Title {{{
 
 # Terminal title
+
 tmux set-option -g set-titles on
 tmux set-option -g set-titles-string '❐ #S ● #I #W'
 
@@ -26,11 +27,23 @@ tmux set-option -g pane-base-index 1
 
 # }}}
 # Mouse {{{
+
 tmux set-option -g mouse on
 
 # }}}
 # Clipboard {{{
+
 tmux set-option -g set-clipboard on
+
+# }}}
+# Enable Hyperlink {{{
+
+tmux set-option -ga terminal-features ",*:hyperlinks"
+
+# }}}
+# Enable colored underlines and undercurls
+#
+tmux set-option -ga terminal-features ",*:usstyle"
 
 # }}}
 # tmux version {{{
