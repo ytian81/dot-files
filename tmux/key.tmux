@@ -10,6 +10,14 @@ tmux set-option -g prefix C-Space
 
 tmux bind-key c new-window
 
+# }}}
+# Switch session {{{
+
+# Unbind default 's' key first
+tmux unbind-key s
+
+tmux bind-key s run-shell "$DOT_FILES_PATH/scripts/fzf-tmux-switch.sh"
+
 #}}}
 # New Pane {{{
 
