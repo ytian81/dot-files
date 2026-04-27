@@ -54,5 +54,12 @@ tmux set-option -g @yank_action 'copy-pipe'
 tmux set-option -g @custom_copy_command 'yank'
 
 # }}}
+# schasse/tmux-jump {{{
 
+tmux set-option -g @jump-key 'f'
+tmux set-option -g @jump-bg-color '\e[0m\e[90m'
+tmux set-option -g @jump-fg-color '\e[1m\e[31m'
+
+# }}}
+#
 # vim:filetype=tmux:foldmethod=marker
