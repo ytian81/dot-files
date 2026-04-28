@@ -42,7 +42,7 @@ export FZF_DEFAULT_OPTS="
 export FZF_DEFAULT_OPTS_RESET=$FZF_DEFAULT_OPTS
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --ignore-vcs 2>/dev/null'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_CTRL_R_OPTS="${FZF_CTRL_R_OPTS:+$FZF_CTRL_R_OPTS }--preview 'echo {}' --preview-window down:5:wrap"
+export FZF_CTRL_R_OPTS="${FZF_CTRL_R_OPTS:+$FZF_CTRL_R_OPTS }--with-nth 2.. --preview 'echo {2..}' --preview-window down:5:wrap --bind 'ctrl-y:execute-silent(echo {2..} | $YANK_SCRIPT)'"
 export FZF_GIT_COMMITS_LOG_FORMAT="%C(auto)%h%d %s %C(black)%C(bold)%aN %cr%Creset"
 
 if [[ `uname` = 'Linux' ]]; then
@@ -100,6 +100,9 @@ zstyle ':completion:*' cache-path ~/.zsh/cache
 # bat configuation
 export BAT_THEME='gruvbox-dark'
 export BAT_STYLE='numbers,changes,rule'
+
+# use completion for autosuggest
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
 # fix ssh-agent issue
 function fix_ssh_auth() {
