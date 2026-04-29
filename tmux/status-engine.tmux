@@ -17,21 +17,23 @@
 #      mod_<name>_fg        — gruvbox color name for text
 #      mod_<name>_bg        — gruvbox color name for background
 #      mod_<name>_bold      — "yes" or "no"
-#      mod_<name>_priority  — collapse priority (0 = always visible)
 #      mod_<name>_width     — estimated column width (for auto thresholds)
 #      mod_<name>_text_short — optional abbreviated text
 #      mod_<name>_style     — "powerline" or "pill" (overrides global default)
 #      mod_<name>_raw       — "yes" to inject text without formatting
 #
-# 2. The config file defines layout arrays:
+# 2. The config file defines layout and survival arrays:
 #      layout_left=(session git)
-#      layout_right=(pomodoro cpu mem swap loadavg battery datetime)
+#      layout_right=(pomodoro sysstat battery datetime)
+#      survival_left=(git)
+#      survival_right=(datetime battery sysstat pomodoro)
 #
 # 3. The config calls status_engine_apply, which:
-#      a) Computes collapse thresholds from module widths
-#      b) Renders each module with the appropriate style
-#      c) Chains separator colors between adjacent modules
-#      d) Sets tmux options (status-left, status-right, window-status-*)
+#      a) Infers priority ranks for left and right modules from survival arrays
+#      b) Computes collapse thresholds separately for left and right sides
+#      c) Renders each module with the appropriate style
+#      d) Chains separator colors between adjacent modules
+#      e) Sets tmux options (status-left, status-right, window-status-*)
 #
 # SEPARATOR STYLES
 # ================
@@ -98,14 +100,18 @@
 # This is plugin-agnostic — works for any current or future module whose
 # text contains a style reset.
 #
-# PRIORITY-BASED COLLAPSE
-# =======================
+# SURVIVAL-BASED COLLAPSE WITH FIXED CENTER BUDGET
+# ================================================
 #
-# Each module declares a priority (0 = always visible, higher = more
-# important). The engine computes a COLLAPSE_THRESHOLD for each priority
-# level based on the sum of module widths. At render time, tmux evaluates
-# #{e|>=:#{window_width},threshold} and shows/hides sections accordingly.
-# This happens on every resize — no re-sourcing needed.
+# The survival arrays list the exact sequence in which modules should be
+# dropped. Priorities are inferred directly from array indices.
+#
+# The engine computes thresholds separately for the left and right sides
+# using a fixed center width baseline (3 * mod_window_width).
+#
+# Formulas:
+#   Left Threshold = Center Width + 2 * (Sum of visible Left widths)
+#   Right Threshold = Center Width + 2 * (Sum of visible Right widths)
 #
 # Three collapse states per module:
 #   1. Full:   window >= threshold        → show mod_<name>_text
@@ -168,39 +174,76 @@ _width_guard() {
 #   COLLAPSE_THRESHOLD_1=115  (show sysstat when window >= 115 cols)
 #   COLLAPSE_THRESHOLD_2=73   (show git when window >= 73 cols)
 _compute_thresholds() {
-  local side="$1"; shift
-  local modules=("$@")
-  local -A priority_widths  # priority → total width of that group
-  local always_width=0      # total width of priority-0 modules
+  local center_est=$(( 3 * ${mod_window_width:-15} ))
 
-  for name in "${modules[@]}"; do
+  # Left side
+  local -A left_widths
+  local left_always=0
+  for name in "${layout_left[@]}"; do
     local raw_var="mod_${name}_raw"
-    [[ "${!raw_var}" == "yes" ]] && continue  # skip raw modules
-    [[ "$name" == "session" ]] && continue       # session handled separately
-
+    [[ "${!raw_var}" == "yes" ]] && continue
     local w_var="mod_${name}_width"; local w="${!w_var:-0}"
-    local pri_var="mod_${name}_priority"; local pri="${!pri_var:-0}"
-    local sep_overhead=2  # ~2 cols for separator + padding
+    local sep_overhead=2
+
+    # Is it in survival_left?
+    local pri=0
+    for ((i=0; i<${#survival_left[@]}; i++)); do
+      if [[ "${survival_left[$i]}" == "$name" ]]; then
+        pri=$(( ${#survival_left[@]} - i ))
+        break
+      fi
+    done
+    eval "mod_${name}_priority=$pri"
 
     if [[ "$pri" == "0" ]]; then
-      always_width=$((always_width + w + sep_overhead))
+      left_always=$(( left_always + w + sep_overhead ))
     else
-      priority_widths[$pri]=$((${priority_widths[$pri]:-0} + w + sep_overhead))
+      left_widths[$pri]=$((${left_widths[$pri]:-0} + w + sep_overhead))
     fi
   done
 
-  # Add session width (always visible)
-  local sw_var="mod_session_width"; local sw="${!sw_var:-6}"
-  always_width=$((always_width + sw + 2))
+  # Accumulate left thresholds
+  local cumulative=$left_always
+  local sorted_left=($(echo "${!left_widths[@]}" | tr ' ' '\n' | sort -rn))
+  for pri in "${sorted_left[@]}"; do
+    cumulative=$(( cumulative + left_widths[$pri] ))
+    eval "LEFT_COLLAPSE_THRESHOLD_$pri=$(( center_est + 2 * cumulative ))"
+  done
 
-  # Sort priorities descending: highest priority = most important = last to drop
-  local sorted_pris=($(echo "${!priority_widths[@]}" | tr ' ' '\n' | sort -rn))
+  # Right side
+  local -A right_widths
+  local right_always=0
+  for name in "${layout_right[@]}"; do
+    local raw_var="mod_${name}_raw"
+    [[ "${!raw_var}" == "yes" ]] && continue
+    local w_var="mod_${name}_width"; local w="${!w_var:-0}"
+    local sep_overhead=2
 
-  # Build cumulative thresholds
-  local cumulative=$always_width
-  for pri in "${sorted_pris[@]}"; do
-    cumulative=$((cumulative + priority_widths[$pri]))
-    eval "COLLAPSE_THRESHOLD_$pri=$cumulative"
+    # Is it in survival_right?
+    # Survival order from MOST important to LEAST important:
+    # Leftmost module survives longest, rightmost drops first.
+    local pri=0
+    for ((i=0; i<${#survival_right[@]}; i++)); do
+      if [[ "${survival_right[$i]}" == "$name" ]]; then
+        pri=$(( ${#survival_right[@]} - i ))
+        break
+      fi
+    done
+    eval "mod_${name}_priority=$pri"
+
+    if [[ "$pri" == "0" ]]; then
+      right_always=$(( right_always + w + sep_overhead ))
+    else
+      right_widths[$pri]=$((${right_widths[$pri]:-0} + w + sep_overhead))
+    fi
+  done
+
+  # Accumulate right thresholds
+  cumulative=$right_always
+  local sorted_right=($(echo "${!right_widths[@]}" | tr ' ' '\n' | sort -rn))
+  for pri in "${sorted_right[@]}"; do
+    cumulative=$(( cumulative + right_widths[$pri] ))
+    eval "RIGHT_COLLAPSE_THRESHOLD_$pri=$(( center_est + 2 * cumulative ))"
   done
 }
 
@@ -209,11 +252,16 @@ _compute_thresholds() {
 # Priority N → COLLAPSE_THRESHOLD_N (set by _compute_thresholds).
 # Falls back to a formula if threshold wasn't computed.
 _priority_threshold() {
-  local priority="$1"
+  local priority="$1" side="$2"
   case "$priority" in
     0|"") echo "0" ;;
     *)
-      local var="COLLAPSE_THRESHOLD_${priority}"
+      local var
+      if [[ "$side" == "left" ]]; then
+        var="LEFT_COLLAPSE_THRESHOLD_${priority}"
+      else
+        var="RIGHT_COLLAPSE_THRESHOLD_${priority}"
+      fi
       local val="${!var}"
       if [[ -n "$val" ]]; then
         echo "$val"
@@ -232,15 +280,15 @@ _priority_threshold() {
 #   priority>0, with short text → show $full above threshold,
 #                                  show $short at medium width, hide below
 _collapse_wrap() {
-  local priority="$1" full="$2" short="$3"
-  local threshold; threshold="$(_priority_threshold "$priority")"
+  local priority="$1" side="$2" full="$3" short="$4"
+  local threshold; threshold="$(_priority_threshold "$priority" "$side")"
 
   if [[ "$threshold" == "0" ]]; then
     # Always visible — return the full section as-is (no conditional)
     echo "$full"
   elif [[ -n "$short" ]]; then
     # Three-tier: full → short → hidden
-    local short_threshold; short_threshold="$(_priority_threshold $((priority - 1)))"
+    local short_threshold; short_threshold="$(_priority_threshold $((priority + 1)) "$side")"
     [[ "$short_threshold" == "0" ]] && short_threshold="$((threshold - 40))"
     echo "#{?#{e|>=:#{window_width},${threshold}},$full,$(_width_guard "$short_threshold" "$short")}"
   else
@@ -314,7 +362,7 @@ _powerline_session() {
 # $1 = module name
 # $2 = next_bg: bg color of the section to the RIGHT
 _powerline_left() {
-  local name="$1" next_bg="$2"
+  local name="$1" next_bg="$2" escape_comma="${3:-no}"
   local fg_var="mod_${name}_fg"         ; local fg="${!fg_var}"
   local bg_var="mod_${name}_bg"         ; local bg="${!bg_var}"
   local bold_var="mod_${name}_bold"     ; local bold="${!bold_var:-no}"
@@ -322,8 +370,11 @@ _powerline_left() {
   local pri_var="mod_${name}_priority"  ; local priority="${!pri_var:-0}"
   local short_var="mod_${name}_text_short" ; local text_short="${!short_var}"
 
+  local comma=","
+  [[ "$escape_comma" == "yes" ]] && comma="#,"
+
   local bold_attr=""
-  [[ "$bold" == "yes" ]] && bold_attr=",bold"
+  [[ "$bold" == "yes" ]] && bold_attr="${comma}bold"
   local text_fg="$(_resolve_color "$fg")"
   local section_bg="$(_resolve_color "$bg")"
 
@@ -331,13 +382,13 @@ _powerline_left() {
   # push-default makes the section style the local default so any
   # #[default] emitted from inside $text (e.g. by sysstat) resets to it.
   # See "DEFAULT STYLE STACK" in the file header.
-  local full="#[fg=$text_fg,bg=$section_bg$bold_attr]#[push-default] $text#[default] #[pop-default]#[fg=$section_bg,bg=$next_bg]${_sep_right}"
+  local full="#[fg=$text_fg${comma}bg=$section_bg$bold_attr]#[push-default] $text#[default] #[pop-default]#[fg=$section_bg${comma}bg=$next_bg]${_sep_right}"
   local short=""
   if [[ -n "$text_short" ]]; then
-    short="#[fg=$text_fg,bg=$section_bg$bold_attr]#[push-default] $text_short#[default] #[pop-default]#[fg=$section_bg,bg=$next_bg]${_sep_right}"
+    short="#[fg=$text_fg${comma}bg=$section_bg$bold_attr]#[push-default] $text_short#[default] #[pop-default]#[fg=$section_bg${comma}bg=$next_bg]${_sep_right}"
   fi
 
-  _collapse_wrap "$priority" "$full" "$short"
+  _collapse_wrap "$priority" "left" "$full" "$short"
 }
 
 # Renders a right-side powerline section.
@@ -374,7 +425,7 @@ _powerline_right() {
     short="#[fg=$section_bg${comma}bg=$prev_bg]${_sep_left}#[fg=$text_fg${comma}bg=$section_bg]#[push-default] $text_short#[default] #[pop-default]"
   fi
 
-  _collapse_wrap "$priority" "$full" "$short"
+  _collapse_wrap "$priority" "right" "$full" "$short"
 }
 
 # Renders a window tab (used for both active and inactive windows).
@@ -467,7 +518,7 @@ _pill_session() {
 # Renders a generic pill section (left or right — pills are symmetric).
 # $1 = module name
 _pill_section() {
-  local name="$1"
+  local name="$1" side="$2"
   local fg_var="mod_${name}_fg"         ; local fg="${!fg_var}"
   local bg_var="mod_${name}_bg"         ; local bg="${!bg_var}"
   local bold_var="mod_${name}_bold"     ; local bold="${!bold_var:-no}"
@@ -488,7 +539,7 @@ _pill_section() {
     short="$(_pill_capsule "$text_fg" "$section_bg" "$bold_attr" "$text_short" "$status_bg")"
   fi
 
-  _collapse_wrap "$priority" "$full" "$short"
+  _collapse_wrap "$priority" "$side" "$full" "$short"
 }
 
 # Renders a window tab as a pill capsule.
@@ -545,23 +596,46 @@ _build_left() {
       else
         # For powerline, determine what's to the RIGHT of session
         local next_bg="$status_bg"
+        local adaptive_session=""
         if ((i + 1 < count)); then
           local next_name="${modules[$((i+1))]}"
           local next_bg_var="mod_${next_name}_bg"
           local next_bg_color="${!next_bg_var}"
           if [[ -n "$next_bg_color" ]]; then
             local next_pri_var="mod_${next_name}_priority"
-            # Only use neighbor's bg if it's always-visible (pri=0)
-            if [[ "${!next_pri_var:-0}" == "0" ]]; then
+            local next_pri="${!next_pri_var:-0}"
+            if [[ "$next_pri" == "0" ]]; then
               next_bg="$(_resolve_color "$next_bg_color")"
+            else
+              # The neighbor is collapsible. We need an adaptive transition:
+              # when next is visible: arrow bg = neighbor's bg
+              # when next is hidden: arrow bg = status bg
+              local next_threshold; next_threshold="$(_priority_threshold "$next_pri" "left")"
+              local next_short_var="mod_${next_name}_text_short"
+              if [[ -n "${!next_short_var}" ]]; then
+                next_threshold="$(_priority_threshold $((next_pri + 1)) "left")"
+                [[ "$next_threshold" == "0" ]] && next_threshold="$(( $(_priority_threshold "$next_pri" "left") - 40 ))"
+              fi
+
+              local next_resolved_bg="$(_resolve_color "$next_bg_color")"
+
+              local when_visible; when_visible="$(_powerline_session "$next_resolved_bg")"
+              local when_hidden; when_hidden="$(_powerline_session "$status_bg")"
+
+              adaptive_session="#{?#{e|>=:#{window_width},${next_threshold}},$when_visible,$when_hidden}"
             fi
           fi
         fi
-        result+="$(_powerline_session "$next_bg")"
+
+        if [[ -n "$adaptive_session" ]]; then
+          result+="$adaptive_session"
+        else
+          result+="$(_powerline_session "$next_bg")"
+        fi
       fi
     else
       if [[ "$style" == "pill" ]]; then
-        result+="$(_pill_section "$name")"
+        result+="$(_pill_section "$name" "left")"
       else
         local next_bg="$status_bg"
         if ((i + 1 < count)); then
@@ -575,7 +649,10 @@ _build_left() {
             fi
           fi
         fi
-        result+="$(_powerline_left "$name" "$next_bg")"
+        local escape="no"
+        local current_priority_var="mod_${name}_priority"
+        [[ "${!current_priority_var:-0}" != "0" ]] && escape="yes"
+        result+="$(_powerline_left "$name" "$next_bg" "$escape")"
       fi
     fi
   done
@@ -616,7 +693,7 @@ _build_right() {
 
     if [[ "$style" == "pill" ]]; then
       # Pill sections are self-contained — no neighbor awareness needed
-      result+="$(_pill_section "$name")"
+      result+="$(_pill_section "$name" "right")"
     else
       # Powerline: find the bg of the section to our LEFT
       local current_priority_var="mod_${name}_priority"
@@ -644,7 +721,12 @@ _build_right() {
             #   when_hidden:  arrow bg = status line bg
             # Wrap both in a conditional. Both use escape_comma=yes
             # because they'll be inside #{?...}.
-            local prev_threshold; prev_threshold="$(_priority_threshold "$prev_priority")"
+            local prev_threshold; prev_threshold="$(_priority_threshold "$prev_priority" "right")"
+            local prev_short_var="mod_${prev_name}_text_short"
+            if [[ -n "${!prev_short_var}" ]]; then
+              prev_threshold="$(_priority_threshold $((prev_priority + 1)) "right")"
+              [[ "$prev_threshold" == "0" ]] && prev_threshold="$(( $(_priority_threshold "$prev_priority" "right") - 40 ))"
+            fi
             local prev_resolved_bg="$(_resolve_color "$prev_bg_color")"
             local when_visible; when_visible="$(_powerline_right "$name" "$prev_resolved_bg" yes)"
             local when_hidden; when_hidden="$(_powerline_right "$name" "$status_bg" yes)"
@@ -696,7 +778,7 @@ _build_windows() {
 # It computes thresholds, renders all sections, and applies them to tmux.
 status_engine_apply() {
   # Step 1: Auto-compute collapse thresholds from module widths
-  _compute_thresholds "both" "${layout_left[@]}" "${layout_right[@]}"
+  _compute_thresholds
 
   # Step 2: Set global tmux options
   tmux set-option -g status-justify "absolute-centre"

@@ -26,7 +26,6 @@ _icon_lock=
 #   text        — bare content (engine adds padding)
 #   fg / bg     — gruvbox color names
 #   bold        — "yes" or "no"
-#   priority    — 0 = always visible; higher = survives longer when narrow
 #   width       — estimated rendered columns (for auto-computing thresholds)
 #   text_short  — optional abbreviated form
 #   style       — per-module override: "powerline" or "pill"
@@ -45,7 +44,6 @@ mod_session_width=6
 mod_git_text="#{gitstatusd}"
 mod_git_fg="light4"
 mod_git_bg="dark2"
-mod_git_priority=2
 mod_git_width=20
 
 # Window tabs
@@ -53,6 +51,7 @@ mod_window_text="#I ${_sep_right_thin} #W#{?window_zoomed_flag, ${_icon_zoom},}"
 mod_window_fg="light1"
 mod_window_bg="dark2"
 mod_window_style="pill"
+mod_window_width=15
 
 mod_window_current_text="#I ${_sep_right_thin} #W#{?window_zoomed_flag, ${_icon_zoom},} #{?#{==:#{client_key_table},WINDOW},${_icon_lock},}"
 mod_window_current_fg="dark0_hard"
@@ -65,10 +64,9 @@ mod_pomodoro_raw="yes"
 
 # System Stats
 mod_sysstat_text="#{sysstat_cpu} ${_sep_left_thin} #{sysstat_mem} ${_sep_left_thin} #{sysstat_swap} ${_sep_left_thin} #{sysstat_loadavg}"
-mod_systtat_text_short="#{sysstat_loadavg}"
+mod_sysstat_text_short="#{sysstat_loadavg}"
 mod_sysstat_fg="light4"
 mod_sysstat_bg="dark2"
-mod_sysstat_priority=1
 mod_sysstat_width=34
 
 # Battery
@@ -76,7 +74,6 @@ mod_battery_text="#{battery_icon_status} - #{battery_icon_charge} #{battery_perc
 mod_battery_text_short="#{battery_icon_charge} #{battery_percentage}"
 mod_battery_fg="light2"
 mod_battery_bg="dark3"
-mod_battery_priority=0
 mod_battery_width=25
 mod_battery_width_short=10
 
@@ -85,7 +82,6 @@ mod_datetime_text="%b %d  %H:%M"
 mod_datetime_text_short="%H:%M"
 mod_datetime_fg="light2"
 mod_datetime_bg="dark4"
-mod_datetime_priority=0
 mod_datetime_width=14
 mod_datetime_width_short=7
 
@@ -94,6 +90,9 @@ mod_datetime_width_short=7
 
 layout_left=(session git)
 layout_right=(pomodoro sysstat battery datetime)
+
+survival_left=(git)
+survival_right=(datetime battery sysstat pomodoro)
 
 # }}
 # ── Apply ────────────────────────────────────────────────────────────────
