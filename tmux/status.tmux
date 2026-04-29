@@ -53,7 +53,7 @@ mod_window_bg="dark2"
 mod_window_style="pill"
 mod_window_width=15
 
-mod_window_current_text="#I ${_sep_right_thin} #W#{?window_zoomed_flag, ${_icon_zoom},} #{?#{==:#{client_key_table},WINDOW},${_icon_lock},}"
+mod_window_current_text="#I ${_sep_right_thin} #W#{?window_zoomed_flag, ${_icon_zoom},}#{?#{==:#{client_key_table},WINDOW}, ${_icon_lock},}"
 mod_window_current_fg="dark0_hard"
 mod_window_current_bg="neutral_yellow"
 mod_window_current_bold="yes"
