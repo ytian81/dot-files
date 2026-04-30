@@ -266,10 +266,26 @@ _priority_threshold() {
       if [[ -n "$val" ]]; then
         echo "$val"
       else
-        echo "$((120 + priority * 20))"  # fallback formula
+        echo "0"
       fi
       ;;
   esac
+}
+
+# Returns the true minimum window width required for a module to be visible
+# on the screen (either in full or short format).
+_module_visible_threshold() {
+  local priority="$1" side="$2" name="$3"
+  local threshold; threshold="$(_priority_threshold "$priority" "$side")"
+  local short_var="mod_${name}_text_short"
+
+  if [[ -n "${!short_var}" ]]; then
+    local next_threshold; next_threshold="$(_priority_threshold $((priority + 1)) "$side")"
+    [[ "$next_threshold" == "0" ]] && next_threshold="$((threshold - 40))"
+    echo $(( (threshold + next_threshold) / 2 ))
+  else
+    echo "$threshold"
+  fi
 }
 
 # Wraps a rendered section in a tmux width conditional based on its priority.
@@ -280,7 +296,7 @@ _priority_threshold() {
 #   priority>0, with short text → show $full above threshold,
 #                                  show $short at medium width, hide below
 _collapse_wrap() {
-  local priority="$1" side="$2" full="$3" short="$4"
+  local priority="$1" side="$2" full="$3" short="$4" name="$5"
   local threshold; threshold="$(_priority_threshold "$priority" "$side")"
 
   if [[ "$threshold" == "0" ]]; then
@@ -288,8 +304,7 @@ _collapse_wrap() {
     echo "$full"
   elif [[ -n "$short" ]]; then
     # Three-tier: full → short → hidden
-    local short_threshold; short_threshold="$(_priority_threshold $((priority + 1)) "$side")"
-    [[ "$short_threshold" == "0" ]] && short_threshold="$((threshold - 40))"
+    local short_threshold; short_threshold="$(_module_visible_threshold "$priority" "$side" "$name")"
     echo "#{?#{e|>=:#{window_width},${threshold}},$full,$(_width_guard "$short_threshold" "$short")}"
   else
     # Two-tier: full → hidden
@@ -388,7 +403,7 @@ _powerline_left() {
     short="#[fg=$text_fg${comma}bg=$section_bg$bold_attr]#[push-default] $text_short#[default] #[pop-default]#[fg=$section_bg${comma}bg=$next_bg]${_sep_right}"
   fi
 
-  _collapse_wrap "$priority" "left" "$full" "$short"
+  _collapse_wrap "$priority" "left" "$full" "$short" "$name"
 }
 
 # Renders a right-side powerline section.
@@ -425,7 +440,7 @@ _powerline_right() {
     short="#[fg=$section_bg${comma}bg=$prev_bg]${_sep_left}#[fg=$text_fg${comma}bg=$section_bg]#[push-default] $text_short#[default] #[pop-default]"
   fi
 
-  _collapse_wrap "$priority" "right" "$full" "$short"
+  _collapse_wrap "$priority" "right" "$full" "$short" "$name"
 }
 
 # Renders a window tab (used for both active and inactive windows).
@@ -539,7 +554,7 @@ _pill_section() {
     short="$(_pill_capsule "$text_fg" "$section_bg" "$bold_attr" "$text_short" "$status_bg")"
   fi
 
-  _collapse_wrap "$priority" "$side" "$full" "$short"
+  _collapse_wrap "$priority" "$side" "$full" "$short" "$name"
 }
 
 # Renders a window tab as a pill capsule.
@@ -610,13 +625,7 @@ _build_left() {
               # The neighbor is collapsible. We need an adaptive transition:
               # when next is visible: arrow bg = neighbor's bg
               # when next is hidden: arrow bg = status bg
-              local next_threshold; next_threshold="$(_priority_threshold "$next_pri" "left")"
-              local next_short_var="mod_${next_name}_text_short"
-              if [[ -n "${!next_short_var}" ]]; then
-                next_threshold="$(_priority_threshold $((next_pri + 1)) "left")"
-                [[ "$next_threshold" == "0" ]] && next_threshold="$(( $(_priority_threshold "$next_pri" "left") - 40 ))"
-              fi
-
+              local next_threshold; next_threshold="$(_module_visible_threshold "$next_pri" "left" "$next_name")"
               local next_resolved_bg="$(_resolve_color "$next_bg_color")"
 
               local when_visible; when_visible="$(_powerline_session "$next_resolved_bg")"
@@ -721,12 +730,7 @@ _build_right() {
             #   when_hidden:  arrow bg = status line bg
             # Wrap both in a conditional. Both use escape_comma=yes
             # because they'll be inside #{?...}.
-            local prev_threshold; prev_threshold="$(_priority_threshold "$prev_priority" "right")"
-            local prev_short_var="mod_${prev_name}_text_short"
-            if [[ -n "${!prev_short_var}" ]]; then
-              prev_threshold="$(_priority_threshold $((prev_priority + 1)) "right")"
-              [[ "$prev_threshold" == "0" ]] && prev_threshold="$(( $(_priority_threshold "$prev_priority" "right") - 40 ))"
-            fi
+            local prev_threshold; prev_threshold="$(_module_visible_threshold "$prev_priority" "right" "$prev_name")"
             local prev_resolved_bg="$(_resolve_color "$prev_bg_color")"
             local when_visible; when_visible="$(_powerline_right "$name" "$prev_resolved_bg" yes)"
             local when_hidden; when_hidden="$(_powerline_right "$name" "$status_bg" yes)"
