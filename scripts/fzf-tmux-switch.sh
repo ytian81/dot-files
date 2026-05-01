@@ -66,7 +66,8 @@ selected=$(echo "$targets" | fzf \
     --ansi \
     --delimiter=" | " \
     --with-nth=2.. \
-    --preview 'tmux capture-pane -ep -t {1}'
+    --preview 'tmux capture-pane -ep -t {1}' \
+    --preview-window 'follow'
 )
 
 # 4. Execute the switch if a selection was made
