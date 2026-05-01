@@ -19,6 +19,7 @@ source "$SCRIPT_DIR/status-engine.tmux"
 # ── Icons ────────────────────────────────────────────────────────────────
 _icon_zoom=🔍
 _icon_lock=
+_icon_bell=🔔
 
 # ── Module definitions ──────────────────────────────────────────────────{{
 #
@@ -47,13 +48,13 @@ mod_git_bg="dark2"
 mod_git_width=20
 
 # Window tabs
-mod_window_text="#I ${_sep_right_thin} #W#{?window_zoomed_flag, ${_icon_zoom},}"
+mod_window_text="#{?window_bell_flag,${_icon_bell} ,}#I ${_sep_right_thin} #W#{?window_zoomed_flag, ${_icon_zoom},}"
 mod_window_fg="light1"
 mod_window_bg="dark2"
 mod_window_style="pill"
 mod_window_width=15
 
-mod_window_current_text="#I ${_sep_right_thin} #W#{?window_zoomed_flag, ${_icon_zoom},}#{?#{==:#{client_key_table},WINDOW}, ${_icon_lock},}"
+mod_window_current_text="#{?window_bell_flag,${_icon_bell} ,}#I ${_sep_right_thin} #W#{?window_zoomed_flag, ${_icon_zoom},}#{?#{==:#{client_key_table},WINDOW}, ${_icon_lock},}"
 mod_window_current_fg="dark0_hard"
 mod_window_current_bg="neutral_yellow"
 mod_window_current_bold="yes"
@@ -99,5 +100,6 @@ survival_right=(datetime battery sysstat pomodoro)
 
 tmux set-option -g status-position top
 tmux set-option -gF status-style "fg=#{@gruvbox_light1}, bg=#{@gruvbox_dark0_soft}"
+tmux set-option -g window-status-bell-style "default"
 
 status_engine_apply

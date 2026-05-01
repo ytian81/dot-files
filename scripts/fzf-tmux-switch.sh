@@ -23,23 +23,30 @@ while IFS=$'\t' read -r session is_attached; do
 
     # --- SMART FILTER INTEGRATION START ---
     windows=""
-    while IFS=$'\t' read -r w_idx w_name w_cmd w_title w_path w_host; do
+    # Added w_bell to the read command
+    while IFS=$'\t' read -r w_idx w_name w_cmd w_title w_path w_host w_bell; do
+
+        # 1. Determine if the bell emoji should be shown
+        bell_ui=""
+        if [[ "$w_bell" == "1" ]]; then
+            bell_ui="🔔 "
+        fi
 
         # Get just the current folder name
         w_folder=$(basename "$w_path")
 
-        # We check: Is it empty? OR Is it the bare hostname? OR Does it match the user@host: regex?
+        # Logic for title (existing)
         if [[ -z "$w_title" || ( -n "$w_host" && "$w_title" == "$w_host" ) || "$w_title" =~ ^[[:alnum:]_.-]+@[[:alnum:]_.-]+: ]]; then
             title_ui=""
         else
             title_ui=" ${C_DIM}- ${w_title}${C_RST}"
         fi
 
-        # Append the intelligently formatted window to our horizontal string
-        windows+="${C_WIN} ${w_idx}:${w_name}${C_RST}  ${C_CMD} ${w_cmd}${C_RST}${title_ui}   "
+        # 2. Prepend the bell_ui to the window string
+        windows+="${bell_ui}${C_WIN} ${w_idx}:${w_name}${C_RST}  ${C_CMD} ${w_cmd}${C_RST}${title_ui}    "
 
-    # Ask tmux for the trimmed title, path, and hostname to feed our filter logic
-    done < <(tmux list-windows -t "$session" -F "#{window_index}	#{window_name}	#{pane_current_command}	#{s/ +$//:pane_title}	#{pane_current_path}	#{host}")
+    # Added #{window_bell_flag} to the end of the format string
+    done < <(tmux list-windows -t "$session" -F "#{window_index}	#{window_name}	#{pane_current_command}	#{s/ +$//:pane_title}	#{pane_current_path}	#{host}	#{window_bell_flag}")
     # --- SMART FILTER INTEGRATION END ---
 
     # 4. THE FIX: Add a newline ONLY if 'targets' is not empty
