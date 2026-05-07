@@ -51,6 +51,12 @@ tmux bind-key -T WINDOW T 'break-pane'
 
 tmux bind-key r command-prompt -I "#W" "rename-window '%%'"
 
+# }}}
+# Pane management {{{
+
+# first mark the pane by bind-key m, and then join pane to current window
+tmux bind-key J join-pane
+
 #}}}
 # Copy mode {{{
 
@@ -58,15 +64,17 @@ tmux bind-key r command-prompt -I "#W" "rename-window '%%'"
 tmux bind-key Escape copy-mode
 
 # Visual selection in copy mode
+
 tmux bind-key -T copy-mode-vi 'v' send -X begin-selection
 
 # Paste buffer
+
 tmux bind-key C-p paste-buffer
 
 #}}}
 # Save history to file {{{
 
-tmux bind-key M command-prompt -p 'save history to filename:' -I '/tmp/tmux.history' 'capture-pane -J -S- -E-; save-buffer %1 ; delete-buffer'
+tmux bind-key S command-prompt -p 'save history to filename:' -I '/tmp/tmux.history' 'capture-pane -J -S- -E-; save-buffer %1 ; delete-buffer'
 
 #}}}
 # Float window for top {{{
