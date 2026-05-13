@@ -62,11 +62,11 @@ done < <(tmux list-sessions -F '#{session_name}	#{?session_attached,1,}')
 
 # 3. Pipe into fzf
 selected=$(echo "$targets" | fzf \
-    --prompt="  workspace: " \
+    --prompt="❯ " \
     --ansi \
     --delimiter=" | " \
     --with-nth=2.. \
-    --preview 'tmux capture-pane -ep -t {1}' \
+    --preview 'tmux capture-pane -ep -t {1} | awk NF' \
     --preview-window 'follow'
 )
 
