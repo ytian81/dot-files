@@ -46,8 +46,10 @@ run_fzf() {
     # Build FZF configuration.
     # 1. Start with caller's global FZF_DEFAULT_OPTS environment variable (respects theme styling).
     # 2. Inject base TUI engine behavior (ansi, zero-match exit, preview toggles).
-    local fzf_opts="${FZF_DEFAULT_OPTS}"
-
+    #    CRITICAL FIX: If FZF_DEFAULT_OPTS contains multi-line \n newlines (common in zshrc configs),
+    #    we sanitize them into spaces so eval doesn't treat them as multi-line command separators!
+    local fzf_opts="${FZF_DEFAULT_OPTS//$'\n'/ }"
+    
     # 3. Conditionally append preview window if defined.
     # 4. View-specific $opts handle all custom bindings (enter, ctrl-v, etc.) and override defaults.
     [[ -n "$preview" ]] && fzf_opts+=" --preview=\"$preview\""
@@ -55,7 +57,10 @@ run_fzf() {
 
     # Execute fzf
     # - Trailing arguments ($@) are interpolated into the input command.
-    # - FZF_DEFAULT_OPTS dynamically injects the aggregated TUI configuration.
-    eval "$input" "$@" | FZF_DEFAULT_OPTS="$fzf_opts" fzf
+    # - We pass $fzf_opts as direct CLI arguments via eval.
+    #   CRITICAL ARCHITECTURAL BENEFIT: By passing options via CLI instead of overriding FZF_DEFAULT_OPTS,
+    #   any child process spawned by fzf (become/execute like Neovim) inherits the PRISTINE, ORIGINAL
+    #   FZF_DEFAULT_OPTS from the parent shell! This ensures fzf plugins inside Neovim work flawlessly!
+    eval "$input" "$@" | eval "fzf $fzf_opts"
 }
 
