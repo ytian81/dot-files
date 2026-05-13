@@ -26,16 +26,17 @@ fi
 export FZF_DISPLAY_OPTS="--height 80% --tmux center,80%,80%"
 export FZF_DEFAULT_OPTS="
   --color fg:#ebdbb2,bg:#282828,hl:#fabd2f,fg+:#ebdbb2,bg+:#3c3836,hl+:#fabd2f
-  --color info:#83a598,prompt:#bdae93,spinner:#fabd2f,pointer:#83a598,marker:#fe8019,header:#665c54,border:#928374
+  --color info:#83a598,prompt:#b8bb26,ghost:#504945,spinner:#fabd2f,pointer:#83a598,marker:#fe8019,header:#665c54,border:#928374
   --style=full
   --layout=reverse
   --border
   --no-separator
   --info=inline-right
   --prompt='❯ '
-  --header=\"$(printf ' Press \033[38;5;208mCTRL-Y\033[0m to yank, \033[38;5;208mCTRL-/\033[0m to toggle preview')\"
+  --header=\"$(printf '\033[94m\033[0m Press \033[38;5;208mCTRL-Y\033[0m to yank, \033[38;5;208mCTRL-/\033[0m to toggle preview')\"
   --header-border=inline
   --preview-window=down,60%
+  --ansi
   --bind='ctrl-b:preview-half-page-up,ctrl-f:preview-half-page-down'
   --bind='ctrl-u:half-page-up,ctrl-d:half-page-down'
   --bind='ctrl-/:change-preview-window(right,60%|hidden|down,60%)'
@@ -124,3 +125,7 @@ function vtmp() {
 
     $EDITOR "/tmp/temp_${timestamp}${extension}"
 }
+
+source $DOT_FILES_PATH/scripts/fzf-viewer.sh
+source $DOT_FILES_PATH/scripts/fzf-git-views.sh
+source $DOT_FILES_PATH/scripts/fzf-file-views.sh
