@@ -48,12 +48,16 @@ run_fzf() {
     # 2. Inject base TUI engine behavior (ansi, zero-match exit, preview toggles).
     #    CRITICAL FIX: If FZF_DEFAULT_OPTS contains multi-line \n newlines (common in zshrc configs),
     #    we sanitize them into spaces so eval doesn't treat them as multi-line command separators!
-    local fzf_opts="${FZF_DEFAULT_OPTS//$'\n'/ }"
-    
+    local fzf_opts="$FZF_DEFAULT_OPTS"
+
     # 3. Conditionally append preview window if defined.
     # 4. View-specific $opts handle all custom bindings (enter, ctrl-v, etc.) and override defaults.
     [[ -n "$preview" ]] && fzf_opts+=" --preview=\"$preview\""
     [[ -n "$opts" ]]    && fzf_opts+=" $opts"
+
+    #    CRITICAL FIX: If fzf opts contains multi-line \n newlines (common in zshrc configs),
+    #    we sanitize them into spaces so eval doesn't treat them as multi-line command separators!
+    fzf_opts="${fzf_opts//$'\n'/ }"
 
     # Execute fzf
     # - Trailing arguments ($@) are interpolated into the input command.
@@ -63,4 +67,3 @@ run_fzf() {
     #   FZF_DEFAULT_OPTS from the parent shell! This ensures fzf plugins inside Neovim work flawlessly!
     eval "$input" "$@" | eval "fzf $fzf_opts"
 }
-
