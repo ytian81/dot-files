@@ -53,6 +53,7 @@ run_fzf() {
     # 3. Conditionally append preview window if defined.
     # 4. View-specific $opts handle all custom bindings (enter, ctrl-v, etc.) and override defaults.
     [[ -n "$preview" ]] && fzf_opts+=" --preview=\"$preview\""
+    [[ -n "$header" ]]  && fzf_opts+=" --header=\"${FZF_HEADER_OPTS:+$FZF_HEADER_OPTS, }$header\""
     [[ -n "$opts" ]]    && fzf_opts+=" $opts"
 
     #    CRITICAL FIX: If fzf opts contains multi-line \n newlines (common in zshrc configs),

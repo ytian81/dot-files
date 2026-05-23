@@ -21,7 +21,7 @@ file_fzf_finder() {
     # Native FZF become:
     # - enter: Opens selected files in vertical splits (nvim -O)
     # - ctrl-v: Opens selected files in horizontal splits (nvim -o)
-    local opts="-m -0 --select-1 --border-label=' fuzzfy finder ' --bind='enter:become(nvim -O {+})' --bind='ctrl-v:become(nvim -o {+})'"
+    local opts="-m -0 --select-1 --input-label=' fuzzfy finder ' --bind='enter:become(nvim -O {+})' --bind='ctrl-v:become(nvim -o {+})'"
 
     # If query argument ($1) is passed, feed it to fzf
     [[ -n "$1" ]] && opts+=" --query=\"$1\""
@@ -52,7 +52,7 @@ file_fzf_mru() {
     # Native FZF become:
     # - enter: Opens selected history files in vertical splits (nvim -O)
     # - ctrl-v: Opens selected history files in horizontal splits (nvim -o)
-    local opts="-m -0 --select-1 --border-label=' mru finder ' --bind='enter:become(nvim -O {+})' --bind='ctrl-v:become(nvim -o {+})'"
+    local opts="-m -0 --select-1 --input-label=' mru finder ' --bind='enter:become(nvim -O {+})' --bind='ctrl-v:become(nvim -o {+})'"
 
     run_fzf
 }
@@ -60,3 +60,14 @@ file_fzf_mru() {
 export FZF_CTRL_T_COMMAND=
 zle -N file_fzf_mru
 bindkey '^t' file_fzf_mru
+
+clean_mru() {
+    echo "Pruning dead entries from Neovim history..."
+
+    nvim --clean --headless \
+        -c 'let v:oldfiles = filter(copy(v:oldfiles), { _, val -> filereadable(expand(val)) })' \
+        -c 'wshada!' \
+        -c 'qa'
+
+    echo "Done! ShaDa history optimized."
+}
