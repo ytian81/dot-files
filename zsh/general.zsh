@@ -23,17 +23,17 @@ fi
 
 # fzf
 # Open in tmux popup if on tmux, otherwise use --height mode
-export FZF_DISPLAY_OPTS="--height 80% --tmux center,80%,80%"
+export FZF_DISPLAY_OPTS="--height 80% --tmux center,80%,80%,border-native"
+export FZF_HEADER_OPTS=$'\e[94m\e[0m Press \e[38;5;208mCTRL-Y\e[0m to yank, \e[38;5;208mCTRL-/\e[0m to toggle preview'
 export FZF_DEFAULT_OPTS="
   --color fg:#ebdbb2,bg:#282828,hl:#fabd2f,fg+:#ebdbb2,bg+:#3c3836,hl+:#fabd2f
   --color info:#83a598,prompt:#b8bb26,ghost:#504945:italic,spinner:#fabd2f,pointer:#83a598,marker:#fe8019,header:#665c54,border:#928374
   --style=full
   --layout=reverse
-  --border
   --no-separator
   --info=inline-right
   --prompt=' '
-  --header=\"$(printf '\033[94m\033[0m Press \033[38;5;208mCTRL-Y\033[0m to yank, \033[38;5;208mCTRL-/\033[0m to toggle preview')\"
+  --header=\"$FZF_HEADER_OPTS\"
   --header-border=inline
   --preview-window=down,60%
   --ghost='type to search'
