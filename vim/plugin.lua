@@ -1,4 +1,26 @@
 require("noice").setup({
+    views = {
+        cmdline_popup = {
+            position = {
+                row = "20%",
+                col = "50%",
+            }
+        },
+        cmdline_popupmenu = {
+            position = {
+                -- Dynamically calculate: (20% of total editor lines) + 2 lines offset
+                row = math.floor(vim.o.lines * 0.20) + 3,
+                col = "50%",
+            },
+            size = {
+                -- Dynamically fits the longest completion item
+                width = "auto",
+                -- Ensures enough space for completion details
+                min_width = 30,
+                height = 10,
+            },
+        },
+    },
   lsp = {
     -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
     override = {
