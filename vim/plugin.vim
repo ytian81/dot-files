@@ -143,10 +143,10 @@ command! -bang -nargs=* BTags
 
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case -- ".shellescape(<q-args>), 1,
-  \ fzf#vim#with_preview({'options': ['--prompt', ' ']}), <bang>0)
+  \ fzf#vim#with_preview({'options': ['--input-label', ' Ripgrep ']}), <bang>0)
 
 command! -bar -bang -nargs=? -complete=buffer Buffers
-  \ call fzf#vim#buffers(<q-args>, fzf#vim#with_preview({ "placeholder": "{1}", 'options': ['--prompt', '  ']}), <bang>0)
+  \ call fzf#vim#buffers(<q-args>, fzf#vim#with_preview({ "placeholder": "{1}", 'options': ['--input-label', 'Opened Files']}), <bang>0)
 
 nnoremap <silent> <Leader>f :Files<CR>
 nnoremap <Leader>g :Rg<Space>
@@ -192,7 +192,7 @@ let g:fzf_commits_log_options = printf('--color=always --format="%s"', expand('$
 
 " antoinemadec/coc-fzf
 let g:coc_fzf_preview = 'down,60%'
-let g:coc_fzf_opts = ['--layout=reverse']
+let g:coc_fzf_opts = ['--layout=reverse', '--input-label=coc locations']
 nnoremap <silent> gl :<C-u>CocFzfList<CR>
 nnoremap <silent> g; :<C-u>CocFzfList diagnostics<CR>
 
