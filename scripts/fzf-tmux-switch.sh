@@ -62,7 +62,6 @@ done < <(tmux list-sessions -F '#{session_name}	#{?session_attached,1,}')
 
 # 3. Pipe into fzf
 selected=$(echo "$targets" | fzf \
-    --prompt="❯ " \
     --ansi \
     --delimiter=" | " \
     --with-nth=2.. \
