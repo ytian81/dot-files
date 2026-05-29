@@ -1,6 +1,12 @@
 # general setting
 # echo "Loading general setting"
 
+# Zsh automatically boots into Vi-mode if $EDITOR is set to vim/nvim.
+# Vi-mode ignores standard 'bindkey' rules. 'bindkey -e' explicitly forces the
+# Emacs layout. This MUST happen BEFORE running 'bindkey' commands, otherwise
+# switching modes later will wipe out your custom shortcuts.
+bindkey -v
+
 # # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
