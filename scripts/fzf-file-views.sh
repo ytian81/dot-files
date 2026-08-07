@@ -64,7 +64,7 @@ bindkey '^t' file_fzf_mru
 clean_mru() {
     echo "Pruning dead entries from Neovim history..."
 
-    nvim --clean --headless \
+    nvim --headless \
         -c 'let v:oldfiles = filter(copy(v:oldfiles), { _, val -> filereadable(expand(val)) })' \
         -c 'wshada!' \
         -c 'qa'

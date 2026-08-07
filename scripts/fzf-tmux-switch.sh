@@ -12,7 +12,8 @@ targets=""
 
 # 2. Loop through every session
 # We use a hidden flag ('1') from tmux to tell us if the session is attached
-while IFS=$'\t' read -r session is_attached; do
+# Added 'last_attached' as the first variable to read the sorted timestamp
+while IFS=$'\t' read -r last_attached session is_attached; do
 
     # 3. Apply Orange color ONLY if the session is currently attached
     if [[ -n "$is_attached" ]]; then
@@ -57,8 +58,9 @@ while IFS=$'\t' read -r session is_attached; do
     # Construct the final row (without a trailing newline at the end)
     targets+="${session} | ${session_text} | ${windows}"
 
-# We changed the tmux format string to output a hidden '1' instead of '[Attached]'
-done < <(tmux list-sessions -F '#{session_name}	#{?session_attached,1,}')
+# We modified the format string to include the last attached time (defaulting to 0 if never attached)
+# and piped the output to 'sort' to order them numerically in reverse (newest first)
+done < <(tmux list-sessions -F '#{?session_last_attached,#{session_last_attached},0}	#{session_name}	#{?session_attached,1,}' | sort -t$'\t' -k1,1nr)
 
 # 3. Pipe into fzf
 selected=$(echo "$targets" | fzf \
