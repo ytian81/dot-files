@@ -50,12 +50,55 @@ endif
 
 set background=dark
 
+function! SetTwoWayDiffHighlights()
+  if &diff
+    " Find all window numbers currently in diff mode in the active tab
+    let l:diff_wins = []
+    for l:w in range(1, winnr('$'))
+      if getwinvar(l:w, '&diff')
+        call add(l:diff_wins, l:w)
+      endif
+    endfor
+
+    " Apply custom window-local highlights if there are exactly 2 diff windows
+    if len(l:diff_wins) == 2
+      " Left / Old Buffer: DiffAdd -> DiffDelete, DiffChange -> Red
+      call setwinvar(l:diff_wins[0], '&winhighlight', 'DiffAdd:DiffAddOld,DiffDelete:DiffDeleteOld,DiffChange:DiffChangeOld,DiffText:DiffTextOld')
+
+      " Right / New Buffer: DiffChange -> Green
+      call setwinvar(l:diff_wins[1], '&winhighlight', 'DiffAdd:DiffAddNew,DiffDelete:DiffDeleteNew,DiffChange:DiffChangeNew,DiffText:DiffTextNew')
+    endif
+  endif
+endfunction
+
+augroup TwoWayDiffHighlights
+  autocmd!
+  autocmd OptionSet diff call timer_start(0, {-> SetTwoWayDiffHighlights()})
+augroup END
+
 " https://gist.github.com/romainl/379904f91fa40533175dfaec4c833f2f
 function! MyHighlights() abort
-    highlight DiffAdd     gui=none guifg=none    guibg=#15420e
-    highlight DiffDelete  gui=none guifg=#4b0000 guibg=#4b0000
+    highlight DiffAdd     gui=none guifg=none    guibg=#012800
+    highlight DiffDelete  gui=none guifg=none    guibg=#340001
     highlight DiffChange  gui=none guifg=none    guibg=#516c5b
     highlight DiffText    gui=none guifg=#fabd2f guibg=#516c5b
+
+    " DiffAdd is DiffDelete on left and DiffAdd on right
+    highlight link DiffAddOld DiffDelete
+    highlight link DiffAddNew DiffAdd
+
+    " DiffDelete on both side should be hidden by having fg/bg
+    highlight DiffDeleteOld guibg=#282828 guifg=#282828
+    highlight DiffDeleteNew guibg=#282828 guifg=#282828
+
+    " DiffChange is dark red on the left and dark green on the right
+    highlight DiffChangeOld guibg=#340001
+    highlight DiffChangeNew guibg=#012800
+
+    " DiffText is bright red bold on the left and bright green bold on the right
+    highlight DiffTextOld   guibg=#821e1a gui=bold
+    highlight DiffTextNew   guibg=#2a531e gui=bold
+
     highlight ConflictMarkerBegin               gui=italic guifg=none    guibg=#2f7366
     highlight ConflictMarkerOurs                gui=none   guifg=#fb4934 guibg=#2e5049
     highlight ConflictMarkerTheirs              gui=none   guifg=#b8bb26 guibg=#344f69
