@@ -43,6 +43,7 @@ export FZF_DEFAULT_OPTS="
   --header-border=inline
   --preview-window=down,60%
   --ghost='type to search'
+  --cycle
   --bind='ctrl-b:preview-half-page-up,ctrl-f:preview-half-page-down'
   --bind='ctrl-u:half-page-up,ctrl-d:half-page-down'
   --bind='ctrl-/:change-preview-window(right,60%|hidden|down,60%)'
