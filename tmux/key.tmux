@@ -49,8 +49,6 @@ tmux bind-key -T WINDOW J 'split-window -fv  ; swap-pane -t ! ; kill-pane -t !'
 tmux bind-key -T WINDOW K 'split-window -fvb ; swap-pane -t ! ; kill-pane -t !'
 tmux bind-key -T WINDOW T 'break-pane'
 
-tmux bind-key r command-prompt -I "#W" "rename-window '%%'"
-
 # }}}
 # Pane management {{{
 
