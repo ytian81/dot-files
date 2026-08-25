@@ -65,15 +65,14 @@ done < <(tmux list-sessions -F '#{?session_last_attached,#{session_last_attached
 # 3. Pipe into fzf
 selected=$(echo "$targets" | fzf \
     --ansi \
-    --delimiter=" | " \
+    --delimiter=' \| ' \
     --with-nth=2.. \
     --preview 'tmux capture-pane -ep -t {1} | awk NF' \
-    --preview-window 'follow'
+    --preview-window 'follow' \
+    --bind 'enter:become(echo {1})'
 )
 
-# 4. Execute the switch if a selection was made
+# # 4. Execute the switch if a selection was made
 if [[ -n "$selected" ]]; then
-    # Extract the hidden raw ID from the first column using awk
-    target_window=$(echo "$selected" | awk -F ' \\| ' '{print $1}')
-    tmux switch-client -t "$target_window"
+    tmux switch-client -t "$selected"
 fi
