@@ -61,13 +61,5 @@ export FZF_CTRL_T_COMMAND=
 zle -N file_fzf_mru
 bindkey '^t' file_fzf_mru
 
-clean_mru() {
-    echo "Pruning dead entries from Neovim history..."
-
-    nvim --headless \
-        -c 'let v:oldfiles = filter(copy(v:oldfiles), { _, val -> filereadable(expand(val)) })' \
-        -c 'wshada!' \
-        -c 'qa'
-
-    echo "Done! ShaDa history optimized."
-}
+export CLEAN_SHADA_SCRIPT="$DOT_FILES_PATH/scripts/clean-shada.lua"
+alias clean_shada=$CLEAN_SHADA_SCRIPT
