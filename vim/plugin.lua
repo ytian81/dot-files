@@ -52,3 +52,12 @@ require('bqf').setup({
     win_vheight = 30,
   },
 })
+
+require("touchup").setup({
+  bullets = { enabled = true, icons = { "✸", "✿", "✦", "✧" } },
+  checkboxes = { enabled = true },
+  code_blocks = { enabled = true },
+  markers = { enabled = true },
+  quotes = { enabled = true },
+  enter = { enabled = true },
+})
