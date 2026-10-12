@@ -64,11 +64,11 @@ mod_pomodoro_text="#{pomodoro_status}"
 mod_pomodoro_raw="yes"
 
 # System Stats
-mod_sysstat_text="#{sysstat_cpu} ${_sep_left_thin} #{sysstat_mem} ${_sep_left_thin} #{sysstat_swap} ${_sep_left_thin} #{sysstat_loadavg}"
-mod_sysstat_text_short="#{sysstat_loadavg}"
-mod_sysstat_fg="light4"
+mod_sysstat_text="#{sysstat_cpu} #{sysstat_mem}"
+mod_sysstat_text_short=""
+mod_sysstat_fg="light2"
 mod_sysstat_bg="dark2"
-mod_sysstat_width=34
+mod_sysstat_width=14
 
 # Battery
 mod_battery_text="#{battery_icon_status} - #{battery_icon_charge} #{battery_percentage} #{battery_remain}"
@@ -79,11 +79,11 @@ mod_battery_width=25
 mod_battery_width_short=10
 
 # Date/time
-mod_datetime_text="%b %d  %H:%M"
+mod_datetime_text="%b %d %H:%M"
 mod_datetime_text_short="%H:%M"
 mod_datetime_fg="light2"
 mod_datetime_bg="dark4"
-mod_datetime_width=14
+mod_datetime_width=13
 mod_datetime_width_short=7
 
 # }}
@@ -99,7 +99,7 @@ survival_right=(datetime battery sysstat pomodoro)
 # ── Apply ────────────────────────────────────────────────────────────────
 
 tmux set-option -g status-position top
-tmux set-option -gF status-style "fg=#{@gruvbox_light1}, bg=#{@gruvbox_dark0_soft}"
+tmux set-option -gF status-style "fg=#{@gruvbox_light1}, bg=#{@gruvbox_dark0}"
 tmux set-option -g window-status-bell-style "default"
 
 status_engine_apply
