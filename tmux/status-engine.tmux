@@ -415,7 +415,7 @@ _powerline_left() {
 #      "no" to use bare commas (when the output is NOT inside a conditional).
 #      See the COMMA ESCAPING section in the file header for details.
 _powerline_right() {
-  local name="$1" prev_bg="$2" escape_comma="${3:-no}"
+  local name="$1" prev_bg="$2" escape_comma="${3:-no}" has_neighbor="${4:-no}"
   local fg_var="mod_${name}_fg"         ; local fg="${!fg_var}"
   local bg_var="mod_${name}_bg"         ; local bg="${!bg_var}"
   local text_var="mod_${name}_text"     ; local text="${!text_var}"
@@ -430,14 +430,19 @@ _powerline_right() {
   local comma=","
   [[ "$escape_comma" == "yes" ]] && comma="#,"
 
+  local sep_str="#[fg=$section_bg${comma}bg=$prev_bg]${_sep_left}"
+  if [[ "$has_neighbor" == "yes" && "$section_bg" == "$prev_bg" ]]; then
+    sep_str="#[fg=$(_resolve_color gray_244)${comma}bg=$section_bg]${_sep_left_thin}"
+  fi
+
   # Format: #[arrow style]#[text style] <space>content<space>
   # push-default makes the section style the local default so any
   # #[default] emitted from inside $text (e.g. by sysstat) resets to it.
   # See "DEFAULT STYLE STACK" in the file header.
-  local full="#[fg=$section_bg${comma}bg=$prev_bg]${_sep_left}#[fg=$text_fg${comma}bg=$section_bg]#[push-default] $text #[pop-default]"
+  local full="${sep_str}#[fg=$text_fg${comma}bg=$section_bg]#[push-default] $text#[default] #[pop-default]"
   local short=""
   if [[ -n "$text_short" ]]; then
-    short="#[fg=$section_bg${comma}bg=$prev_bg]${_sep_left}#[fg=$text_fg${comma}bg=$section_bg]#[push-default] $text_short#[default] #[pop-default]"
+    short="${sep_str}#[fg=$text_fg${comma}bg=$section_bg]#[push-default] $text_short#[default] #[pop-default]"
   fi
 
   _collapse_wrap "$priority" "right" "$full" "$short" "$name"
@@ -710,6 +715,7 @@ _build_right() {
       local adaptive_section=""  # set if we need a conditional separator
 
       local prev_bg="$status_bg"
+      local has_neighbor="no"
       for ((j=i-1; j>=0; j--)); do
         local prev_name="${modules[$j]}"
         local prev_raw_var="mod_${prev_name}_raw"
@@ -732,12 +738,13 @@ _build_right() {
             # because they'll be inside #{?...}.
             local prev_threshold; prev_threshold="$(_module_visible_threshold "$prev_priority" "right" "$prev_name")"
             local prev_resolved_bg="$(_resolve_color "$prev_bg_color")"
-            local when_visible; when_visible="$(_powerline_right "$name" "$prev_resolved_bg" yes)"
-            local when_hidden; when_hidden="$(_powerline_right "$name" "$status_bg" yes)"
+            local when_visible; when_visible="$(_powerline_right "$name" "$prev_resolved_bg" yes yes)"
+            local when_hidden; when_hidden="$(_powerline_right "$name" "$status_bg" yes no)"
             adaptive_section="#{?#{e|>=:#{window_width},${prev_threshold}},$when_visible,$when_hidden}"
           else
             # Neighbor is always-visible or same priority — static bg
             prev_bg="$(_resolve_color "$prev_bg_color")"
+            has_neighbor="yes"
           fi
           break
         fi
@@ -751,7 +758,7 @@ _build_right() {
         # Always-visible modules (pri = 0) are bare — use normal commas.
         local escape="no"
         [[ "$current_priority" != "0" ]] && escape="yes"
-        result+="$(_powerline_right "$name" "$prev_bg" "$escape")"
+        result+="$(_powerline_right "$name" "$prev_bg" "$escape" "$has_neighbor")"
       fi
     fi
   done
