@@ -20,15 +20,17 @@ tmux set-option -g @logging-path "/tmp"
 # }}}
 # samoshkin/tmux-plugin-sysstat {{{
 
-tmux set-option -g @sysstat_cpu_color_low "#{@gruvbox_neutral_green}"
-tmux set-option -g @sysstat_cpu_color_medium "#{@gruvbox_neutral_yellow}"
-tmux set-option -g @sysstat_cpu_color_stress "#{@gruvbox_neutral_red}"
-tmux set-option -g @sysstat_mem_color_low "#{@gruvbox_neutral_green}"
-tmux set-option -g @sysstat_mem_color_medium "#{@gruvbox_neutral_yellow}"
-tmux set-option -g @sysstat_mem_color_stress "#{@gruvbox_neutral_red}"
-tmux set-option -g @sysstat_swap_color_low "#{@gruvbox_neutral_green}"
-tmux set-option -g @sysstat_swap_color_medium "#{@gruvbox_neutral_yellow}"
-tmux set-option -g @sysstat_swap_color_stress "#{@gruvbox_neutral_red}"
+tmux set-option -g @sysstat_cpu_view_tmpl ' #[fg=#{cpu.color}]#{cpu.pused}#[default]'
+tmux set-option -g @sysstat_mem_view_tmpl ' #[fg=#{mem.color}]#{mem.pused}#[default]'
+tmux set-option -gF @sysstat_cpu_color_low "#{@gruvbox_bright_green}"
+tmux set-option -gF @sysstat_cpu_color_medium "#{@gruvbox_bright_yellow}"
+tmux set-option -gF @sysstat_cpu_color_stress "#{@gruvbox_bright_red}"
+tmux set-option -gF @sysstat_mem_color_low "#{@gruvbox_bright_green}"
+tmux set-option -gF @sysstat_mem_color_medium "#{@gruvbox_bright_yellow}"
+tmux set-option -gF @sysstat_mem_color_stress "#{@gruvbox_bright_red}"
+tmux set-option -gF @sysstat_swap_color_low "#{@gruvbox_bright_green}"
+tmux set-option -gF @sysstat_swap_color_medium "#{@gruvbox_bright_yellow}"
+tmux set-option -gF @sysstat_swap_color_stress "#{@gruvbox_bright_red}"
 
 # }}}
 # ytian/tmux-pomodoro {{{
