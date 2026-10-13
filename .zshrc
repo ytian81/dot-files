@@ -81,7 +81,6 @@ plugins=(
   git
   gnu-utils
   forgit
-  thefuck
   tmux
   you-should-use
   zsh-completions
