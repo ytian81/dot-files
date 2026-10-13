@@ -220,7 +220,6 @@
   # Don't shorten directories that contain any of these files. They are anchors.
   local anchor_files=(
     .bzr
-    .citc
     .git
     .hg
     .node-version
