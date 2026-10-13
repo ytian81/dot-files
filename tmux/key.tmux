@@ -77,7 +77,7 @@ tmux bind-key S command-prompt -p 'save history to filename:' -I '/tmp/tmux.hist
 #}}}
 # Float window for top {{{
 
-tmux bind-key b run-shell "tmux popup -w80% -h60% -E btop > /dev/null 2>&1"
+tmux bind-key b display-popup -w80% -h80% -E "$DOT_FILES_PATH/scripts/btop-popup.sh"
 
 #}}}
 
