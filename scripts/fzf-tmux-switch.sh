@@ -49,7 +49,8 @@ _generate_list() {
     local idx vlen
 
     # Single-pass query across all panes in all sessions (zero per-session forks)
-    while IFS=$'\t' read -r s_name w_idx p_idx w_name w_act p_act w_cmd w_title w_path w_host w_bell w_zoom w_panes; do
+    # Doubled IFS=$'\t\t' in zsh preserves empty tab-delimited fields (e.g. empty pane_title)
+    while IFS=$'\t\t' read -r s_name w_idx p_idx w_name w_act p_act w_cmd w_title w_path w_host w_bell w_zoom w_panes; do
         [[ -z "$s_name" ]] && continue
 
         if [[ "$w_bell" == "1" ]]; then
@@ -189,7 +190,7 @@ _capture_preview_frame() {
     local -a p_wps p_labels p_paths p_is_act
     local active_wp=""
 
-    while IFS=$'\t' read -r wp w_idx w_name w_cmd w_path w_act p_act w_panes; do
+    while IFS=$'\t\t' read -r wp w_idx w_name w_cmd w_path w_act p_act w_panes; do
         [[ -z "$wp" ]] && continue
         p_wps+=("$wp")
         if (( w_panes > 1 )); then
@@ -257,20 +258,29 @@ _capture_preview_frame() {
 # Mode 2: Live-streaming session preview (--preview)
 # Renders the first frame immediately (0ms delay), then polls every 500ms
 # using zsh's builtin zselect and only redraws (\033[2J) when output changes.
+# Watching FD 1 (-r 1 -e 1) wakes zselect in 0ms when fzf closes the preview pipe.
 _render_preview() {
     local target="$1"
     [[ -z "$target" ]] && return 0
 
-    zmodload zsh/zselect 2>/dev/null || true
+    local has_zselect=0
+    zmodload zsh/zselect 2>/dev/null && has_zselect=1
 
+    local ppid=$PPID
     local last_frame frame
     last_frame="$(_capture_preview_frame "$target")"
-    printf "%s\n" "$last_frame"
+    printf "%s\n" "$last_frame" 2>/dev/null || return 0
 
-    while zselect -t 50 2>/dev/null || sleep 0.5; do
+    while kill -0 "$ppid" 2>/dev/null; do
+        if (( has_zselect )); then
+            zselect -t 50 -r 1 -e 1 2>/dev/null && break
+        else
+            sleep 0.5
+        fi
+        kill -0 "$ppid" 2>/dev/null || break
         frame="$(_capture_preview_frame "$target")"
         if [[ -n "$frame" && "$frame" != "$last_frame" ]]; then
-            printf "\033[2J%s\n" "$frame"
+            printf "\033[2J%s\n" "$frame" 2>/dev/null || break
             last_frame="$frame"
         fi
     done
@@ -296,23 +306,29 @@ rm -f "$STATE_FILE" 2>/dev/null || true
 SELF_PATH="${0:A}"
 HEADER_TEXT=$'\e[94m\e[0m \e[38;5;208mEnter\e[0m switch  \e[38;5;208mTAB/S-TAB\e[0m switch pane  \e[38;5;208mCTRL-R\e[0m reload  \e[38;5;208mCTRL-X\e[0m kill session  \e[38;5;208mCTRL-/\e[0m toggle preview'
 
+typeset -a tmux_popup_opts
+[[ -n "${TMUX:-}" ]] && tmux_popup_opts=(--tmux "center,80%,80%,border-native")
+
 selected=$(
     _generate_list | fzf \
+        "${tmux_popup_opts[@]}" \
         --ansi \
         --delimiter=$'\t' \
         --with-nth=2.. \
         --input-label='   tmux sessions ' \
         --preview-label='   pane preview ' \
         --header="$HEADER_TEXT" \
-        --preview="\"$SELF_PATH\" --preview {1}" \
+        --preview="exec \"$SELF_PATH\" --preview {1}" \
         --preview-window='down,55%,follow,~2' \
-        --bind="enter:become(echo {1})" \
+        --bind="enter:accept" \
         --bind="tab:execute-silent(\"$SELF_PATH\" --cycle-pane {1} 1)+refresh-preview" \
         --bind="btab:execute-silent(\"$SELF_PATH\" --cycle-pane {1} -1)+refresh-preview" \
         --bind="ctrl-/:change-preview-window(right,55%,follow,~2|hidden|down,55%,follow,~2)" \
         --bind="ctrl-r:reload(\"$SELF_PATH\" --list)" \
         --bind="ctrl-x:execute-silent(tmux kill-session -t {1} 2>/dev/null)+reload(\"$SELF_PATH\" --list)"
 )
+
+selected="${selected%%$'\t'*}"
 
 if [[ -n "$selected" ]]; then
     target_switch="$selected"
