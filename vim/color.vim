@@ -51,29 +51,35 @@ endif
 set background=dark
 
 function! SetTwoWayDiffHighlights()
-  if &diff
-    " Find all window numbers currently in diff mode in the active tab
-    let l:diff_wins = []
-    for l:w in range(1, winnr('$'))
-      if getwinvar(l:w, '&diff')
-        call add(l:diff_wins, l:w)
-      endif
-    endfor
+  " Find all window numbers currently in diff mode in the active tab
+  let l:diff_wins = []
+  for l:w in range(1, winnr('$'))
+    if getwinvar(l:w, '&diff')
+      call add(l:diff_wins, l:w)
+    endif
+  endfor
 
-    " Apply custom window-local highlights if there are exactly 2 diff windows
-    if len(l:diff_wins) == 2
-      " Left / Old Buffer: DiffAdd -> DiffDelete, DiffChange -> Red
-      call setwinvar(l:diff_wins[0], '&winhighlight', 'DiffAdd:DiffAddOld,DiffDelete:DiffDeleteOld,DiffChange:DiffChangeOld,DiffText:DiffTextOld')
+  " Apply custom window-local highlights if there are exactly 2 diff windows
+  if len(l:diff_wins) == 2
+    let l:old_hl = 'DiffAdd:DiffAddOld,DiffDelete:DiffDeleteOld,DiffChange:DiffChangeOld,DiffText:DiffTextOld'
+    let l:new_hl = 'DiffAdd:DiffAddNew,DiffDelete:DiffDeleteNew,DiffChange:DiffChangeNew,DiffText:DiffTextNew'
 
-      " Right / New Buffer: DiffChange -> Green
-      call setwinvar(l:diff_wins[1], '&winhighlight', 'DiffAdd:DiffAddNew,DiffDelete:DiffDeleteNew,DiffChange:DiffChangeNew,DiffText:DiffTextNew')
+    " Left / Old Buffer: DiffAdd -> DiffDelete, DiffChange -> Red
+    if getwinvar(l:diff_wins[0], '&winhighlight') !=# l:old_hl
+      call setwinvar(l:diff_wins[0], '&winhighlight', l:old_hl)
+    endif
+
+    " Right / New Buffer: DiffChange -> Green
+    if getwinvar(l:diff_wins[1], '&winhighlight') !=# l:new_hl
+      call setwinvar(l:diff_wins[1], '&winhighlight', l:new_hl)
     endif
   endif
 endfunction
 
 augroup TwoWayDiffHighlights
   autocmd!
-  autocmd OptionSet diff call timer_start(0, {-> SetTwoWayDiffHighlights()})
+  autocmd OptionSet diff call SetTwoWayDiffHighlights()
+  autocmd DiffUpdated,VimEnter,WinEnter * call SetTwoWayDiffHighlights()
 augroup END
 
 " https://gist.github.com/romainl/379904f91fa40533175dfaec4c833f2f
