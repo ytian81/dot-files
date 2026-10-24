@@ -16,7 +16,7 @@ source $DOT_FILES_PATH/scripts/fzf-viewer.sh
 # Example: file_fzf_finder [query]
 file_fzf_finder() {
     local input="${FZF_DEFAULT_COMMAND:-find . -type f}"
-    local preview="bat --style=numbers --color=always --line-range :500 {}"
+    local preview="\$DOT_FILES_PATH/scripts/fzf-preview.sh {}"
 
     # Native FZF become:
     # - enter: Opens selected files in vertical splits (nvim -O)
@@ -47,7 +47,7 @@ file_fzf_mru() {
         -c 'echo join(hybrid_list, \"\\n\")' \
         -c 'qa' 2>&1 | tr -d '\r'"
 
-    local preview="bat --style=numbers --color=always --line-range :500 {}"
+    local preview="\$DOT_FILES_PATH/scripts/fzf-preview.sh {}"
 
     # Native FZF become:
     # - enter: Opens selected history files in vertical splits (nvim -O)
