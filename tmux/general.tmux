@@ -46,6 +46,15 @@ tmux set-option -ga terminal-features ",*:hyperlinks"
 tmux set-option -ga terminal-features ",*:usstyle"
 
 # }}}
+# Passthrough & Image Previews {{{
+
+# Forward Kitty graphics (yazi, fzf/chafa) and OSC 52 sequences to outer terminal
+tmux set-option -g allow-passthrough on
+
+# Let yazi identify the outer terminal emulator when attaching to a tmux session
+tmux set-option -ga update-environment "TERM_PROGRAM"
+
+# }}}
 # tmux version {{{
 
 tmux set-environment -g TMUX_VERSION $(tmux -V | sed -En "s/^tmux[^0-9]*([.0-9]+).*/\1/p")

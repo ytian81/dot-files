@@ -61,8 +61,8 @@ tmux set-option -gF clock-mode-colour "#{@gruvbox_bright_blue}"
 # Message infos
 tmux set-option -gF message-style "fg=#{@gruvbox_light1},bg=#{@gruvbox_dark2}"
 
-# Pane border
-tmux set-option -gF pane-active-border-style "fg=#{@gruvbox_light2}"
+# Pane border (use popup gray_244 for tmux 3.7+ floating panes, light2 for tiled)
+tmux set-option -g  pane-active-border-style "fg=#{?pane_floating_flag,#{@gruvbox_gray_244},#{@gruvbox_light2}}"
 tmux set-option -gF pane-border-style "fg=#{@gruvbox_dark1}"
 
 # Pane number display
