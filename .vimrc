@@ -47,20 +47,21 @@ Plug 'antoinemadec/FixCursorHold.nvim'
 Plug 'bfredl/nvim-miniyank'
 Plug 'bkad/CamelCaseMotion'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'derekwyatt/vim-fswitch'
+Plug 'derekwyatt/vim-fswitch', { 'on': ['FSHere', 'FSSplitLeft', 'FSSplitRight', 'FSSplitBelow', 'FSSplitAbove'] }
 Plug 'dstein64/vim-win'
-Plug 'editorconfig/editorconfig-vim'
+if !has('nvim')
+    Plug 'editorconfig/editorconfig-vim'
+endif
 Plug 'honza/vim-snippets'
 Plug 'jacquesbh/vim-showmarks'
 Plug 'LunarWatcher/auto-pairs'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --no-zsh' }
 Plug 'junegunn/fzf.vim'
-Plug 'junegunn/vim-easy-align'
+Plug 'junegunn/vim-easy-align', { 'on': ['<Plug>(EasyAlign)', 'EasyAlign'] }
 Plug 'junegunn/vim-peekaboo'
 Plug 'justinmk/vim-sneak'
 Plug 'kevinhwang91/nvim-bqf'
-Plug 'skywind3000/asyncrun.vim'
-Plug 'ytian81/vim-bazel'
+Plug 'ytian81/vim-bazel', { 'on': 'Bazel' }
 Plug 'lambdalisue/glyph-palette.vim'
 Plug 'lambdalisue/nerdfont.vim'
 Plug 'machakann/vim-swap'
@@ -79,7 +80,9 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-rhubarb'
-Plug 'tpope/vim-sensible'
+if !has('nvim')
+    Plug 'tpope/vim-sensible'
+endif
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
