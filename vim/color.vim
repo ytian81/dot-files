@@ -120,6 +120,10 @@ function! MyHighlights() abort
     highlight link WinSeparator VertSplit
     highlight CurSearch gui=bold guifg=#282828 guibg=#fabd2f
 
+    " nvim-treesitter-context sticky header highlights
+    highlight TreesitterContext gui=bold,italic guibg=#282828 ctermbg=237
+    highlight TreesitterContextLineNumber guifg=#fabd2f guibg=#282828 ctermfg=214 ctermbg=237
+
     " https://github.com/gruvbox-community/gruvbox/issues/200#issuecomment-2869162757
     " https://github.com/vim-airline/vim-airline/issues/2693#issuecomment-2424151997
     highlight statusline gui=none
