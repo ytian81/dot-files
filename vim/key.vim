@@ -102,3 +102,24 @@ endfunction
 xnoremap <silent> y; :<c-u>call YankInput(expand('%:t') . ':' . GetVisualRange())<cr>
 " Copy relative path with line range (e.g. path/to/file.txt:10-15)
 xnoremap <silent> y' :<c-u>call YankInput(expand('%:.') . ':' . GetVisualRange())<cr>
+
+" Strip trailing line-continuation backslash when joining lines in zsh buffers
+function! s:JoinStripBackslash(type) abort
+    if a:type ==# 'V' || a:type ==# 'v' || a:type ==# "\<C-v>"
+        let l:start = line("'<")
+        let l:end = min([max([line("'>"), l:start + 1]), line('$')])
+    else
+        let l:start = line("'[")
+        let l:end = min([l:start + max([1, get(b:, 'join_count', 1) - 1]), line('$')])
+    endif
+    if l:end > l:start
+        execute 'keeppatterns ' . l:start . ',' . (l:end - 1) . 'substitute/\s*\\\s*$//e'
+        execute 'normal! ' . l:start . 'G' . (l:end - l:start + 1) . 'J'
+    endif
+endfunction
+
+augroup ZshJoinStripBackslash
+    autocmd!
+    autocmd FileType zsh nnoremap <buffer><silent> J :<C-u>let b:join_count = v:count1 \| set opfunc=<SID>JoinStripBackslash<CR>g@l
+    autocmd FileType zsh xnoremap <buffer><silent> J :<C-u>call <SID>JoinStripBackslash(visualmode())<CR>
+augroup end
